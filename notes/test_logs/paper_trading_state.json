@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-21T18:07:15.175414+00:00",
+  "timestamp": "2025-12-21T18:13:15.218512+00:00",
   "strategy": "eth_btc_ratio_optimized",
   "status": {
     "running": true,
