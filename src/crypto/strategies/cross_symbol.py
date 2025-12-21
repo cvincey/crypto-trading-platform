@@ -446,3 +446,123 @@ class BTCVolatilityFilterStrategy(CrossSymbolBaseStrategy):
         signals.loc[buy_mask & high_vol] = Signal.HOLD
 
         return self.apply_filters(signals, candles)
+
+
+@strategy_registry.register(
+    "ratio_reversion",
+    description="Generic X/BTC ratio reversion strategy",
+)
+class RatioReversionStrategy(CrossSymbolBaseStrategy):
+    """
+    Generic Ratio Reversion Strategy.
+    
+    Trades mean reversion on the ratio between any asset and a reference asset
+    (typically BTC). When the target underperforms the reference significantly
+    (z-score below threshold), go long expecting convergence.
+    
+    This is a generalized version of ETHBTCRatioReversionStrategy that works
+    for any trading pair.
+    
+    Use cases:
+    - SOL/BTC ratio reversion
+    - BNB/BTC ratio reversion  
+    - LINK/BTC ratio reversion
+    - Any alt vs BTC or ETH
+    """
+
+    name = "ratio_reversion"
+
+    def _setup(
+        self,
+        reference_symbol: str = "BTCUSDT",
+        target_symbol: str = "SOLUSDT",
+        lookback: int = 168,
+        entry_threshold: float = -1.5,
+        exit_threshold: float = -0.7,
+        max_hold_hours: int = 72,
+        **kwargs,
+    ) -> None:
+        """
+        Initialize ratio reversion strategy.
+        
+        Args:
+            reference_symbol: Symbol to use as reference (e.g., BTCUSDT)
+            target_symbol: Symbol being traded (e.g., SOLUSDT)
+            lookback: Bars for rolling z-score calculation
+            entry_threshold: Z-score below which to enter long
+            exit_threshold: Z-score above which to exit
+            max_hold_hours: Maximum bars to hold position
+        """
+        self.reference_symbol = reference_symbol
+        self.target_symbol = target_symbol
+        self.lookback = lookback
+        self.entry_threshold = entry_threshold
+        self.exit_threshold = exit_threshold
+        self.max_hold_hours = max_hold_hours
+
+    def get_reference_symbols(self) -> list[str]:
+        """Return the reference symbol for ratio calculation."""
+        return [self.reference_symbol]
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        """
+        Generate signals based on ratio z-score.
+        
+        Logic:
+        1. Calculate target/reference price ratio
+        2. Compute rolling z-score of ratio
+        3. Enter long when z-score < entry_threshold
+        4. Exit when z-score > exit_threshold or max hold reached
+        """
+        self.validate_candles(candles)
+        signals = self.create_signal_series(candles.index)
+
+        if not self.has_reference_data(self.reference_symbol):
+            logger.warning(f"No reference data for {self.reference_symbol}")
+            return signals
+
+        # Get reference close aligned to target candles
+        ref = self.align_reference_to_target(
+            self.reference_symbol, candles.index, ["close"]
+        )
+
+        if ref.empty or ref["close"].isna().all():
+            logger.warning(f"Reference data for {self.reference_symbol} is empty")
+            return signals
+
+        # Calculate ratio
+        ratio = candles["close"].astype(float) / ref["close"].astype(float)
+
+        # Calculate rolling z-score
+        ratio_mean = ratio.rolling(
+            self.lookback, min_periods=self.lookback // 2
+        ).mean()
+        ratio_std = ratio.rolling(
+            self.lookback, min_periods=self.lookback // 2
+        ).std()
+        z_score = (ratio - ratio_mean) / ratio_std
+
+        # Generate signals with state tracking
+        in_position = False
+        entry_bar = 0
+
+        for i, idx in enumerate(candles.index):
+            z = z_score.get(idx, float("nan"))
+
+            if pd.isna(z):
+                continue
+
+            if not in_position:
+                # Enter when target severely underperforms reference
+                if z < self.entry_threshold:
+                    signals.loc[idx] = Signal.BUY
+                    in_position = True
+                    entry_bar = i
+            else:
+                # Exit when ratio normalizes or max hold reached
+                bars_held = i - entry_bar
+                if z > self.exit_threshold or bars_held >= self.max_hold_hours:
+                    signals.loc[idx] = Signal.SELL
+                    in_position = False
+
+        return self.apply_filters(signals, candles)

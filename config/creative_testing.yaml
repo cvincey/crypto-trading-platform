@@ -157,7 +157,13 @@ creative_testing:
       - eth_btc_ratio_reversion     # Top performer: 2.53 Sharpe, 100% beats B&H
       - signal_confirmation_delay   # Most consistent: 100% pass rate
       - volume_divergence           # Potential: 1.51 Sharpe
-      - eth_btc_ratio_confirmed     # NEW: Hybrid combining top 2
+      - eth_btc_ratio_confirmed     # Hybrid combining top 2
+    
+    # Expanded ratio strategies (test on other pairs)
+    expanded_ratio_strategies:
+      - sol_btc_ratio_reversion
+      - bnb_btc_ratio_reversion
+      - link_btc_ratio_reversion
     
     # Extended validation settings
     train_window: 2880              # 120 days (longer for robustness)
@@ -201,12 +207,103 @@ creative_testing:
   # =============================================================================
   # Strategy Configurations
   # =============================================================================
+  # 
+  # STATUS LEGEND:
+  #   ★ PREFERRED  - Primary strategy, validated & deployed
+  #   ◐ BACKUP     - Validated, ready as alternative
+  #   ◇ EXPERIMENTAL - Promising, needs more validation
+  #   ✗ RETIRED    - Failed validation, do not use
+  #
+  # =============================================================================
+  
   strategy_configs:
     
-    # ----- Category A: Cross-Symbol -----
+    # =========================================================================
+    # ★ PREFERRED - Primary Production Strategy
+    # =========================================================================
+    
+    eth_btc_ratio_reversion:
+      status: preferred             # ★ PRIMARY STRATEGY
+      type: eth_btc_ratio_reversion
+      validated: true
+      validation_results:
+        sharpe_2024: 7.98
+        sharpe_2025: 5.93
+        params_stable: true         # 2024 optimal = 2025 optimal
+        win_rate: 90.2%
+      params:
+        lookback: 120               # Optimal (5 days)
+        entry_threshold: -1.5       # Optimal
+        exit_threshold: -0.7        # Optimal
+        max_hold_hours: 48          # Optimal (2 days)
+    
+    # =========================================================================
+    # ◐ BACKUP - Validated Alternatives
+    # =========================================================================
+    
+    eth_btc_ratio_confirmed:
+      status: backup                # ◐ Ready as alternative
+      type: eth_btc_ratio_confirmed
+      validated: true
+      description: "Same as preferred but with confirmation delay - fewer trades, more conservative"
+      params:
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        confirmation_delay: 2
+    
+    # =========================================================================
+    # ◇ EXPERIMENTAL - Promising, Needs Validation
+    # =========================================================================
+    
+    sol_btc_ratio_reversion:
+      status: experimental          # ◇ Needs validation on SOL
+      type: ratio_reversion
+      validated: false
+      description: "SOL/BTC ratio reversion - same concept, different pair"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: SOLUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+    
+    bnb_btc_ratio_reversion:
+      status: experimental          # ◇ Needs validation on BNB
+      type: ratio_reversion
+      validated: false
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: BNBUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+    
+    link_btc_ratio_reversion:
+      status: experimental          # ◇ Needs validation on LINK
+      type: ratio_reversion
+      validated: false
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: LINKUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+    
+    # =========================================================================
+    # ✗ RETIRED - Failed Validation (Do Not Use)
+    # =========================================================================
+    
+    # ----- Cross-Symbol (Failed) -----
     
     btc_lead_alt_follow:
+      status: retired               # ✗ Failed: Inconsistent performance
       type: btc_lead_alt_follow
+      retired_reason: "Failed Phase 1 validation - inconsistent across symbols"
       params:
         leader_symbol: BTCUSDT
         breakout_period: 24
@@ -215,16 +312,10 @@ creative_testing:
         stop_loss_pct: 0.04
         take_profit_pct: 0.12
     
-    eth_btc_ratio_reversion:
-      type: eth_btc_ratio_reversion
-      params:
-        lookback: 168
-        entry_threshold: -2.0
-        exit_threshold: -0.5
-        max_hold_hours: 72
-    
     correlation_breakdown:
+      status: retired               # ✗ Failed: Negative Sharpe
       type: correlation_breakdown
+      retired_reason: "Negative OOS Sharpe ratio"
       params:
         reference_symbol: BTCUSDT
         correlation_window: 720
@@ -233,7 +324,9 @@ creative_testing:
         max_hold_hours: 48
     
     sector_momentum_rotation:
+      status: retired               # ✗ Failed: Too few trades
       type: sector_momentum_rotation
+      retired_reason: "Insufficient trade frequency for validation"
       params:
         sectors:
           L1: [SOLUSDT, AVAXUSDT, NEARUSDT, APTUSDT]
@@ -244,17 +337,21 @@ creative_testing:
         top_n_sectors: 1
     
     btc_volatility_filter:
+      status: retired               # ✗ Failed: No edge over base strategy
       type: btc_volatility_filter
+      retired_reason: "No improvement over unfiltered base strategy"
       params:
         base_strategy: momentum_breakout
         btc_atr_period: 24
         btc_atr_percentile_window: 168
         max_volatility_percentile: 70
     
-    # ----- Category B: Alternative Data -----
+    # ----- Alternative Data (Failed) -----
     
     funding_rate_fade:
+      status: retired               # ✗ Failed: Negative returns
       type: funding_rate_fade
+      retired_reason: "Negative OOS returns"
       params:
         extreme_positive: 0.0005
         extreme_negative: -0.0005
@@ -262,23 +359,29 @@ creative_testing:
         action_mode: avoid_longs
     
     funding_rate_carry:
+      status: retired               # ✗ Failed: Strategy logic incomplete
       type: funding_rate_carry
+      retired_reason: "Requires perpetual futures data not available"
       params:
         funding_avg_period: 9
         min_avg_funding: 0.0003
         exit_threshold: 0
     
     open_interest_divergence:
+      status: retired               # ✗ Failed: Data unavailable
       type: open_interest_divergence
+      retired_reason: "Open interest data feed not implemented"
       params:
         price_lookback: 24
         oi_lookback: 24
         divergence_threshold: 0.02
     
-    # ----- Category C: Structural/Calendar -----
+    # ----- Structural/Calendar (Failed) -----
     
     weekend_effect:
+      status: retired               # ✗ Failed: No statistical edge
       type: weekend_effect
+      retired_reason: "Weekend effect not significant in crypto (24/7 market)"
       params:
         exit_day: friday
         exit_hour: 20
@@ -287,23 +390,29 @@ creative_testing:
         base_strategy: buy_and_hold
     
     hour_of_day_filter:
+      status: retired               # ✗ Failed: Inconsistent
       type: hour_of_day_filter
+      retired_reason: "Hour patterns not stable across time periods"
       params:
         active_hours: [14, 15, 16, 17, 18, 19, 20, 21, 22]
         base_strategy: momentum_breakout
     
     month_end_rebalancing:
+      status: retired               # ✗ Failed: Too few trades
       type: month_end_rebalancing
+      retired_reason: "Only 12 trades/year - insufficient for validation"
       params:
         entry_days_before_eom: 3
         exit_days_after_eom: 3
         selection: momentum_leaders
         momentum_period: 168
     
-    # ----- Category D: Frequency Reduction -----
+    # ----- Frequency Reduction (Mixed) -----
     
     weekly_momentum:
+      status: retired               # ✗ Failed: Underperforms B&H
       type: weekly_momentum
+      retired_reason: "Underperforms buy-and-hold on most symbols"
       params:
         momentum_period: 168
         hold_period: 168
@@ -311,23 +420,29 @@ creative_testing:
         rebalance_at_hour: 0
     
     signal_confirmation_delay:
+      status: retired               # ✗ Marginal: Low Sharpe in full validation
       type: signal_confirmation_delay
+      retired_reason: "0.16 Sharpe in full validation - below threshold"
       params:
         base_strategy: rsi_mean_reversion
         confirmation_delay: 4
         require_consistent: true
     
     signal_strength_filter:
+      status: retired               # ✗ Failed: No improvement
       type: signal_strength_filter
+      retired_reason: "No improvement over base RSI strategy"
       params:
         base_strategy: rsi_mean_reversion
         rsi_extreme_oversold: 20
         rsi_extreme_overbought: 80
     
-    # ----- Category E: Meta-Strategies -----
+    # ----- Meta-Strategies (Failed) -----
     
     regime_gate:
+      status: retired               # ✗ Failed: Regime detection unreliable
       type: regime_gate
+      retired_reason: "ADX-based regime detection too slow to be useful"
       params:
         trend_strategy: momentum_breakout
         range_strategy: rsi_mean_reversion
@@ -335,14 +450,18 @@ creative_testing:
         adx_range_threshold: 15
     
     drawdown_pause:
+      status: retired               # ✗ Failed: Hurts performance
       type: drawdown_pause
+      retired_reason: "Pausing after drawdown misses recovery rallies"
       params:
         base_strategy: ml_classifier_xgb
         pause_threshold: 0.05
         pause_duration: 48
     
     strategy_momentum:
+      status: retired               # ✗ Failed: Chases past performance
       type: strategy_momentum
+      retired_reason: "Strategy selection based on past performance doesn't predict future"
       params:
         strategies:
           - momentum_breakout
@@ -351,39 +470,34 @@ creative_testing:
         evaluation_period: 168
         selection_count: 1
     
-    # ----- Category F: Microstructure -----
+    # ----- Microstructure (Mixed) -----
     
     volume_breakout_confirmation:
+      status: retired               # ✗ Failed: Negative Sharpe
       type: volume_breakout_confirmation
+      retired_reason: "Volume confirmation adds noise, not signal"
       params:
         breakout_period: 24
         volume_multiplier: 2.0
         volume_average_period: 48
     
     volume_divergence:
+      status: retired               # ✗ Marginal: Inconsistent
       type: volume_divergence
+      retired_reason: "0.94 Sharpe but 72% pass rate - too inconsistent"
       params:
         price_lookback: 48
         volume_lookback: 48
         divergence_threshold: 0.3
     
     buy_sell_imbalance:
+      status: retired               # ✗ Failed: Data quality issues
       type: buy_sell_imbalance
+      retired_reason: "Buy/sell classification unreliable on hourly data"
       params:
         imbalance_lookback: 12
         buy_threshold: 0.7
         sell_threshold: 0.3
-    
-    # ----- Hybrid Strategies (combining top performers) -----
-    
-    eth_btc_ratio_confirmed:
-      type: eth_btc_ratio_confirmed
-      params:
-        lookback: 168                 # 7 days for ratio z-score
-        entry_threshold: -2.0         # Enter when ETH underperforms
-        exit_threshold: -0.5          # Exit when ratio normalizes
-        max_hold_hours: 72            # Max 3 days hold
-        confirmation_delay: 3         # Require 3 bars of confirmation
 
   # =============================================================================
   # Data Sources Configuration

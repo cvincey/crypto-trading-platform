@@ -1,0 +1,203 @@
+# Paper Trading Configuration
+# Live simulation with real market data but no real money at risk
+
+paper_trading:
+  enabled: true
+  description: "Paper trading with validated strategies"
+  
+  # Exchange configuration
+  exchange: binance_testnet
+  
+  # =============================================================================
+  # Strategies to Paper Trade
+  # =============================================================================
+  #
+  # STATUS:
+  #   ★ PREFERRED  - Primary, validated, currently running
+  #   ◐ BACKUP     - Validated, available as alternative
+  #   ◇ EXPERIMENTAL - Not yet validated
+  #
+  # =============================================================================
+  
+  strategies:
+    
+    # =========================================================================
+    # ★ PREFERRED - Currently Running
+    # =========================================================================
+    
+    eth_btc_ratio_optimized:
+      status: preferred             # ★ PRIMARY STRATEGY
+      type: eth_btc_ratio_reversion
+      description: "ETH/BTC ratio mean reversion - buys ETH when underperforming BTC"
+      validation:
+        sharpe_2024: 7.98
+        sharpe_2025: 5.93
+        win_rate: 90.2%
+        params_stable: true         # 2024 optimal = 2025 optimal
+      params:
+        lookback: 120               # 5 days (optimal)
+        entry_threshold: -1.5       # Buy when z-score < -1.5
+        exit_threshold: -0.7        # Sell when z-score > -0.7
+        max_hold_hours: 48          # Max 2 days hold
+      symbol: ETHUSDT
+      interval: 1h
+      enabled: true                 # ✓ ACTIVE
+    
+    # =========================================================================
+    # ◐ BACKUP - Ready to Enable
+    # =========================================================================
+    
+    eth_btc_ratio_confirmed_optimized:
+      status: backup                # ◐ Alternative strategy
+      type: eth_btc_ratio_confirmed
+      description: "Same as preferred but requires 2-hour signal confirmation"
+      params:
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        confirmation_delay: 2       # Wait 2 bars to confirm
+      symbol: ETHUSDT
+      interval: 1h
+      enabled: false                # Enable if preferred underperforms
+    
+    # =========================================================================
+    # ★ VALIDATED - Stable params across 2024-2025
+    # =========================================================================
+    
+    sol_btc_ratio:
+      status: validated             # ★ Params stable 2024=2025
+      type: ratio_reversion
+      description: "SOL/BTC ratio reversion"
+      validation:
+        sharpe_2024: 4.07
+        sharpe_2025: 4.25
+        params_stable: true
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: SOLUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+      symbol: SOLUSDT
+      interval: 1h
+      enabled: true                 # ✓ ACTIVE
+    
+    ltc_btc_ratio:
+      status: validated             # ★ Params stable 2024=2025
+      type: ratio_reversion
+      description: "LTC/BTC ratio reversion"
+      validation:
+        sharpe_2024: 4.98
+        sharpe_2025: 5.31
+        params_stable: true
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: LTCUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 72          # Note: 72 optimal for LTC (not 48)
+      symbol: LTCUSDT
+      interval: 1h
+      enabled: true                 # ✓ ACTIVE
+    
+    avax_btc_ratio:
+      status: validated             # ★ Params stable 2024=2025
+      type: ratio_reversion
+      description: "AVAX/BTC ratio reversion"
+      validation:
+        sharpe_2024: 3.10
+        sharpe_2025: 2.38
+        params_stable: true
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: AVAXUSDT
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+      symbol: AVAXUSDT
+      interval: 1h
+      enabled: true                 # ✓ ACTIVE
+  
+  # =============================================================================
+  # Risk Management
+  # =============================================================================
+  risk_limits:
+    # Position sizing
+    max_position_pct: 0.25            # Max 25% of capital per position
+    min_position_usd: 100             # Minimum position size
+    max_positions: 3                  # Max concurrent positions
+    
+    # Loss limits
+    max_drawdown_pct: 0.15            # Stop trading if down 15%
+    daily_loss_limit_pct: 0.05        # Stop trading if down 5% in a day
+    max_consecutive_losses: 5         # Pause after 5 losing trades
+    
+    # Trade limits
+    max_trades_per_day: 10            # Prevent overtrading
+    min_time_between_trades: 3600     # 1 hour between trades (seconds)
+  
+  # =============================================================================
+  # Capital & Fees
+  # =============================================================================
+  initial_capital: 10000              # Starting capital in USD
+  
+  fees:
+    commission_rate: 0.001            # 0.1% per trade
+    slippage_rate: 0.0005             # 0.05% slippage estimate
+  
+  # =============================================================================
+  # Reference Data (for cross-symbol strategies)
+  # =============================================================================
+  reference_data:
+    symbols:
+      - BTCUSDT
+      - ETHUSDT
+    lookback_days: 30                 # Load last 30 days for warmup
+    update_interval: 3600             # Refresh reference data hourly
+  
+  # =============================================================================
+  # Logging & Monitoring
+  # =============================================================================
+  logging:
+    level: INFO
+    file: notes/test_logs/paper_trading.log
+    
+    # Log these events
+    log_signals: true
+    log_trades: true
+    log_positions: true
+    log_risk_checks: true
+    
+    # Metrics to track
+    metrics_interval: 300             # Log metrics every 5 minutes
+  
+  # =============================================================================
+  # Alerts (optional)
+  # =============================================================================
+  alerts:
+    enabled: false
+    
+    # Webhook for trade notifications
+    webhook_url: null
+    
+    # Alert conditions
+    on_trade: true
+    on_drawdown_threshold: 0.10       # Alert if drawdown exceeds 10%
+    on_daily_loss: true
+  
+  # =============================================================================
+  # Session Management
+  # =============================================================================
+  session:
+    auto_restart: true                # Restart on error
+    max_restart_attempts: 3           # Max restarts before giving up
+    restart_delay: 60                 # Wait 60s between restarts
+    
+    # State persistence
+    save_state: true
+    state_file: notes/test_logs/paper_trading_state.json
+    save_interval: 300                # Save state every 5 minutes

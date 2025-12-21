@@ -1,0 +1,4 @@
+eth_btc_ratio_optimized,93681
+sol_btc_ratio,93682
+ltc_btc_ratio,93683
+avax_btc_ratio,93684

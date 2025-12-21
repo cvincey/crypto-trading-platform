@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-12-21T17:43:15.007290+00:00",
+  "strategy": "ltc_btc_ratio",
+  "status": {
+    "running": true,
+    "strategy": "ratio_reversion",
+    "symbol": "LTCUSDT",
+    "interval": "1h",
+    "paper": true,
+    "last_signal": "HOLD",
+    "candle_buffer_size": 0,
+    "risk": {
+      "current_capital": 10000.0,
+      "peak_capital": 10000.0,
+      "drawdown_pct": 0.0,
+      "daily_pnl": 0.0,
+      "open_positions": 0,
+      "max_positions": 3
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "timestamp": "2025-12-21T17:29:24.674034",
+  "quick_validation": {
+    "eth_btc_ratio_reversion": {
+      "avg_oos_sharpe": 2.5259577565910316,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 23.333333333333332,
+      "pass_rate": 66.66666666666666,
+      "n_validations": 3,
+      "status": "promising"
+    },
+    "signal_confirmation_delay": {
+      "avg_oos_sharpe": 1.3717127708435897,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 26.666666666666668,
+      "pass_rate": 100.0,
+      "n_validations": 3,
+      "status": "promising"
+    },
+    "volume_divergence": {
+      "avg_oos_sharpe": 1.6614648720519565,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 14.0,
+      "pass_rate": 33.33333333333333,
+      "n_validations": 3,
+      "status": "potential"
+    },
+    "eth_btc_ratio_confirmed": {
+      "avg_oos_sharpe": 0.9825321386501019,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 12.0,
+      "pass_rate": 66.66666666666666,
+      "n_validations": 3,
+      "status": "promising"
+    }
+  },
+  "full_validation": {
+    "eth_btc_ratio_reversion": {
+      "avg_oos_sharpe": 3.2156488911727097,
+      "beats_bh_rate": 94.44444444444444,
+      "trades_per_month": 132.16666666666666,
+      "pass_rate": 94.44444444444444,
+      "n_validations": 18,
+      "status": "promising"
+    },
+    "signal_confirmation_delay": {
+      "avg_oos_sharpe": 0.15643197889361413,
+      "beats_bh_rate": 83.33333333333334,
+      "trades_per_month": 107.38888888888889,
+      "pass_rate": 38.88888888888889,
+      "n_validations": 18,
+      "status": "potential"
+    },
+    "volume_divergence": {
+      "avg_oos_sharpe": 0.9390292297394587,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 79.44444444444444,
+      "pass_rate": 72.22222222222221,
+      "n_validations": 18,
+      "status": "promising"
+    },
+    "eth_btc_ratio_confirmed": {
+      "avg_oos_sharpe": 1.8690730485231606,
+      "beats_bh_rate": 94.44444444444444,
+      "trades_per_month": 70.44444444444444,
+      "pass_rate": 88.88888888888889,
+      "n_validations": 18,
+      "status": "promising"
+    }
+  },
+  "robustness": {
+    "cost_sensitivity": {
+      "0.05%": 0,
+      "0.10%": 0,
+      "0.15%": 0
+    },
+    "time_periods": {
+      "2023_H2": 0.0,
+      "2024_H1": 0.0,
+      "2024_H2": 0.0
+    },
+    "holdout_symbols": [
+      {
+        "symbol": "AVAXUSDT",
+        "sharpe": 1.941506186661687
+      },
+      {
+        "symbol": "LINKUSDT",
+        "sharpe": 5.385692108204997
+      },
+      {
+        "symbol": "UNIUSDT",
+        "sharpe": 2.472794048623726
+      }
+    ]
+  }
+}

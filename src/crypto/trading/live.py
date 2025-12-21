@@ -1,10 +1,12 @@
-"""Live trading loop."""
+"""Live trading loop with cross-symbol strategy support."""
 
 import asyncio
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any, Callable
+
+import pandas as pd
 
 from crypto.config.settings import get_settings
 from crypto.core.types import Candle, OrderSide, Signal
@@ -12,6 +14,7 @@ from crypto.data.repository import CandleRepository
 from crypto.exchanges.base import Exchange
 from crypto.exchanges.registry import get_exchange
 from crypto.strategies.base import Strategy
+from crypto.strategies.cross_symbol_base import CrossSymbolBaseStrategy
 from crypto.strategies.registry import strategy_registry
 from crypto.trading.executor import ExchangeOrderExecutor, OrderExecutor, PaperOrderExecutor
 from crypto.trading.risk import RiskLimits, RiskManager
@@ -74,6 +77,62 @@ class LiveTrader:
         self._candle_buffer: list[Candle] = []
         self._last_signal: Signal = Signal.HOLD
         self._callbacks: list[Callable[[dict[str, Any]], None]] = []
+        
+        # Cross-symbol support
+        self._reference_data: dict[str, pd.DataFrame] = {}
+        self._reference_update_interval = 3600  # Update reference data hourly
+        self._last_reference_update: datetime | None = None
+
+    async def _load_reference_data(self, lookback_days: int = 30) -> None:
+        """
+        Load reference data for cross-symbol strategies.
+        
+        This method loads historical data for reference symbols (e.g., BTC, ETH)
+        that cross-symbol strategies need to generate signals.
+        
+        Args:
+            lookback_days: Number of days of historical data to load
+        """
+        if not isinstance(self.strategy, CrossSymbolBaseStrategy):
+            return
+        
+        ref_symbols = self.strategy.get_reference_symbols()
+        if not ref_symbols:
+            return
+        
+        logger.info(f"Loading reference data for: {ref_symbols}")
+        
+        end = datetime.now(timezone.utc)
+        start = end - timedelta(days=lookback_days)
+        
+        for symbol in ref_symbols:
+            try:
+                candles = await self.repository.get_candles_df(
+                    symbol, self.interval, start, end
+                )
+                if not candles.empty:
+                    self._reference_data[symbol] = candles
+                    self.strategy.set_reference_data(symbol, candles)
+                    logger.info(f"  Loaded {len(candles)} candles for {symbol}")
+                else:
+                    logger.warning(f"  No data found for {symbol}")
+            except Exception as e:
+                logger.error(f"  Error loading {symbol}: {e}")
+        
+        self._last_reference_update = datetime.now(timezone.utc)
+
+    async def _maybe_update_reference_data(self) -> None:
+        """Update reference data if enough time has passed."""
+        if not isinstance(self.strategy, CrossSymbolBaseStrategy):
+            return
+        
+        if self._last_reference_update is None:
+            await self._load_reference_data()
+            return
+        
+        elapsed = (datetime.now(timezone.utc) - self._last_reference_update).total_seconds()
+        if elapsed >= self._reference_update_interval:
+            await self._load_reference_data()
 
     async def start(self) -> None:
         """Start the live trading loop."""
@@ -83,6 +142,9 @@ class LiveTrader:
         )
 
         self._running = True
+        
+        # Load reference data for cross-symbol strategies
+        await self._load_reference_data()
 
         # Subscribe to candle updates
         await self.exchange.subscribe_candles(
@@ -91,9 +153,10 @@ class LiveTrader:
             self._on_candle,
         )
 
-        # Keep running
+        # Keep running and periodically update reference data
         while self._running:
-            await asyncio.sleep(1)
+            await self._maybe_update_reference_data()
+            await asyncio.sleep(60)  # Check every minute
 
     async def stop(self) -> None:
         """Stop the live trading loop."""
