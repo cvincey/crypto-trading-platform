@@ -1,0 +1,76 @@
+# Strategy configurations
+# Each strategy references a registered strategy type and provides parameters
+
+strategies:
+  # Simple Moving Average Crossover
+  sma_crossover_btc:
+    type: sma_crossover
+    params:
+      fast_period: 10
+      slow_period: 30
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  sma_crossover_eth:
+    type: sma_crossover
+    params:
+      fast_period: 12
+      slow_period: 26
+    symbols: [ETHUSDT]
+    interval: 1h
+    enabled: true
+
+  # RSI Mean Reversion
+  rsi_mean_reversion:
+    type: rsi_mean_reversion
+    params:
+      period: 14
+      oversold: 30
+      overbought: 70
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 4h
+    enabled: true
+
+  # MACD Strategy
+  macd_crossover:
+    type: macd_crossover
+    params:
+      fast_period: 12
+      slow_period: 26
+      signal_period: 9
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Bollinger Band Breakout
+  bollinger_breakout:
+    type: bollinger_breakout
+    params:
+      period: 20
+      std_dev: 2.0
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 4h
+    enabled: true
+
+  # Momentum Breakout
+  momentum_breakout:
+    type: momentum_breakout
+    params:
+      lookback: 20
+      threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1d
+    enabled: true
+
+  # Machine Learning Classifier
+  ml_classifier_btc:
+    type: ml_classifier
+    params:
+      model: gradient_boosting
+      features: [sma_20, rsi_14, macd, volume_sma]
+      lookback: 100
+      train_size: 0.8
+    symbols: [BTCUSDT]
+    interval: 1d
+    enabled: true

@@ -1,0 +1,57 @@
+# Backtest configurations
+# Define backtest runs with strategies, date ranges, and parameters
+
+backtests:
+  # Compare multiple strategies on BTC
+  btc_strategies_2024:
+    name: "BTC Strategy Comparison 2024"
+    strategies:
+      - sma_crossover_btc
+      - rsi_mean_reversion
+      - macd_crossover
+    symbol: BTCUSDT
+    interval: 1h
+    start: "2024-01-01"
+    end: "2024-12-01"
+    initial_capital: 10000
+    commission: 0.001
+    slippage: 0.0005
+
+  # Multi-asset momentum test
+  multi_asset_momentum:
+    name: "Multi-Asset Momentum Test"
+    strategies:
+      - momentum_breakout
+    symbols:
+      - BTCUSDT
+      - ETHUSDT
+      - SOLUSDT
+    interval: 1d
+    start: "2023-06-01"
+    end: "2024-06-01"
+    initial_capital: 50000
+    commission: 0.001
+
+  # ML strategy evaluation
+  ml_evaluation:
+    name: "ML Strategy Backtest"
+    strategies:
+      - ml_classifier_btc
+    symbol: BTCUSDT
+    interval: 1d
+    start: "2022-01-01"
+    end: "2024-01-01"
+    initial_capital: 10000
+    commission: 0.001
+
+  # Quick test (short period for development)
+  quick_test:
+    name: "Quick Development Test"
+    strategies:
+      - sma_crossover_btc
+    symbol: BTCUSDT
+    interval: 1h
+    start: "2024-10-01"
+    end: "2024-11-01"
+    initial_capital: 1000
+    commission: 0.001

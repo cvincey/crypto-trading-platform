@@ -1,0 +1,21 @@
+# Global settings for the crypto trading platform
+# Environment variables can be used with ${VAR_NAME} or ${VAR_NAME:default}
+
+database:
+  host: ${DB_HOST:localhost}
+  port: ${DB_PORT:5433}
+  name: ${DB_NAME:crypto}
+  user: ${DB_USER:postgres}
+  password: ${DB_PASSWORD:crypto}
+
+logging:
+  level: ${LOG_LEVEL:INFO}
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  # file: logs/crypto.log  # Uncomment to log to file
+
+trading:
+  default_commission: 0.001      # 0.1% Binance fee
+  default_slippage: 0.0005       # 0.05% slippage assumption
+  max_position_size: 0.1         # 10% max position size
+  stop_loss_pct: 0.02            # 2% stop loss
+  take_profit_pct: 0.04          # 4% take profit

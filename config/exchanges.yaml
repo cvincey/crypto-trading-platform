@@ -1,0 +1,21 @@
+# Exchange configurations
+# Each exchange needs an adapter (registered exchange class) and credentials
+
+exchanges:
+  # Binance Testnet (safe for testing)
+  binance_testnet:
+    adapter: binance
+    testnet: true
+    api_key: ${BINANCE_TESTNET_API_KEY:}
+    api_secret: ${BINANCE_TESTNET_API_SECRET:}
+    rate_limit: 1200
+    timeout: 30
+
+  # Binance Production (use with caution!)
+  binance:
+    adapter: binance
+    testnet: false
+    api_key: ${BINANCE_API_KEY:}
+    api_secret: ${BINANCE_API_SECRET:}
+    rate_limit: 1200
+    timeout: 30
