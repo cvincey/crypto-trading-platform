@@ -55,3 +55,61 @@ backtests:
     end: "2024-11-01"
     initial_capital: 1000
     commission: 0.001
+
+  # =============================================================================
+  # ML Siblings Evaluation
+  # =============================================================================
+
+  # ML Siblings Comparison on Top Performers
+  ml_siblings_evaluation:
+    name: "ML Siblings Walk-Forward Evaluation"
+    strategies:
+      - ml_classifier_xgb
+      - ml_classifier_hybrid
+      - ml_ensemble_voting
+      - ml_classifier_v4
+    symbols:
+      - APTUSDT
+      - NEARUSDT
+      - DOTUSDT
+      - XLMUSDT
+      - XRPUSDT
+    interval: 1h
+    start: "2024-06-01"
+    end: "2024-12-21"
+    initial_capital: 10000
+    commission: 0.001
+    slippage: 0.0005
+
+  # Best ML Strategy - Production Ready Test
+  ml_production_test:
+    name: "ML Production Strategy Test"
+    strategies:
+      - ml_classifier_xgb
+    symbols:
+      - APTUSDT
+      - NEARUSDT
+      - DOTUSDT
+    interval: 1h
+    start: "2024-09-01"
+    end: "2024-12-21"
+    initial_capital: 10000
+    commission: 0.001
+    slippage: 0.0005
+
+  # Holdout Symbol Test (symbols not used in development)
+  ml_holdout_test:
+    name: "ML Holdout Symbol Validation"
+    strategies:
+      - ml_classifier_xgb
+      - ml_classifier_hybrid
+    symbols:
+      - AVAXUSDT
+      - LINKUSDT
+      - UNIUSDT
+      - AAVEUSDT
+    interval: 1h
+    start: "2024-09-01"
+    end: "2024-12-21"
+    initial_capital: 10000
+    commission: 0.001

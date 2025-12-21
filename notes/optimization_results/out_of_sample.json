@@ -1,0 +1,506 @@
+{
+  "holdout_results": [
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 5851.021795997513,
+      "sharpe": 30.44638436229454,
+      "win_rate": 83.43434343434343,
+      "trades": 990
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 8689.089293752435,
+      "sharpe": 29.875532067927008,
+      "win_rate": 84.81561822125813,
+      "trades": 923
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 2975.8834943023744,
+      "sharpe": 27.483198720220624,
+      "win_rate": 82.14285714285714,
+      "trades": 953
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 8904.204441399006,
+      "sharpe": 27.735322687823636,
+      "win_rate": 86.87782805429865,
+      "trades": 885
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 3671.9179810220753,
+      "sharpe": 28.8183783950235,
+      "win_rate": 79.64071856287424,
+      "trades": 1002
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 23673.600072025904,
+      "sharpe": 30.271021523642034,
+      "win_rate": 87.7995642701525,
+      "trades": 919
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 31600.12541005201,
+      "sharpe": 32.009400065915614,
+      "win_rate": 85.68464730290457,
+      "trades": 964
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 18276.443876721285,
+      "sharpe": 33.04002184878222,
+      "win_rate": 89.19540229885058,
+      "trades": 870
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 1758.5630523340387,
+      "sharpe": 26.344231865790185,
+      "win_rate": 80.24691358024691,
+      "trades": 973
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 14498.351886319631,
+      "sharpe": 30.54249948616815,
+      "win_rate": 86.26126126126125,
+      "trades": 889
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 4915.636014571684,
+      "sharpe": 29.346859338414774,
+      "win_rate": 85.20971302428256,
+      "trades": 906
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 6871.137095525087,
+      "sharpe": 28.413624609761747,
+      "win_rate": 85.74879227053141,
+      "trades": 829
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 2385.6393161266965,
+      "sharpe": 25.631891751671137,
+      "win_rate": 80.89887640449437,
+      "trades": 891
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 6090.220309736571,
+      "sharpe": 25.696864634089568,
+      "win_rate": 86.83544303797468,
+      "trades": 790
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 3303.620753591248,
+      "sharpe": 27.46675536702004,
+      "win_rate": 81.77874186550976,
+      "trades": 922
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 17075.757639049098,
+      "sharpe": 28.77716575355754,
+      "win_rate": 87.73584905660378,
+      "trades": 849
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 22197.192813013648,
+      "sharpe": 29.516373469703808,
+      "win_rate": 84.51327433628319,
+      "trades": 904
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 15727.759367437688,
+      "sharpe": 31.96675640602046,
+      "win_rate": 89.29440389294405,
+      "trades": 822
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 1631.2240209709475,
+      "sharpe": 25.53264617654467,
+      "win_rate": 81.14942528735632,
+      "trades": 871
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 10304.030620237338,
+      "sharpe": 28.049871231726797,
+      "win_rate": 85.92592592592592,
+      "trades": 811
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 2231.7488636206117,
+      "sharpe": 25.2594926477383,
+      "win_rate": 83.5820895522388,
+      "trades": 670
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "AVAXUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 2933.203023415125,
+      "sharpe": 21.97735284057591,
+      "win_rate": 84.09893992932862,
+      "trades": 567
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 1211.5523200486286,
+      "sharpe": 22.50753275573457,
+      "win_rate": 84.56140350877193,
+      "trades": 571
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "LINKUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 3009.0725420560657,
+      "sharpe": 21.55479679910613,
+      "win_rate": 84.14239482200647,
+      "trades": 618
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 1705.7514303119835,
+      "sharpe": 23.98919735950477,
+      "win_rate": 83.71428571428572,
+      "trades": 700
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "UNIUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 9297.464664738634,
+      "sharpe": 25.747555637779683,
+      "win_rate": 87.61061946902655,
+      "trades": 678
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 5072.727688013832,
+      "sharpe": 22.084479176785166,
+      "win_rate": 85.1963746223565,
+      "trades": 662
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "AAVEUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 5715.275842606467,
+      "sharpe": 25.075724357837647,
+      "win_rate": 87.29096989966555,
+      "trades": 598
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "development",
+      "return_pct": 979.6775786431459,
+      "sharpe": 22.71312815053198,
+      "win_rate": 83.09352517985612,
+      "trades": 556
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "ATOMUSDT",
+      "type": "holdout",
+      "period": "test",
+      "return_pct": 3530.3509254936735,
+      "sharpe": 20.625325429829868,
+      "win_rate": 82.5278810408922,
+      "trades": 538
+    }
+  ],
+  "dev_results": [
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 8992.015245761797,
+      "sharpe": 31.670234572766947,
+      "win_rate": 86.55097613882863,
+      "trades": 922
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 43683.69475269775,
+      "sharpe": 33.16498467022651,
+      "win_rate": 89.49671772428884,
+      "trades": 915
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 16011.298431126434,
+      "sharpe": 34.063979885844624,
+      "win_rate": 82.5,
+      "trades": 960
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 22251.46524765344,
+      "sharpe": 31.695862754037492,
+      "win_rate": 88.59060402684564,
+      "trades": 894
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 1772.4643679506623,
+      "sharpe": 26.516481565456022,
+      "win_rate": 80.16528925619835,
+      "trades": 969
+    },
+    {
+      "strategy": "ml_classifier_xgb",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 10688.847033793238,
+      "sharpe": 25.914186888649883,
+      "win_rate": 84.61538461538461,
+      "trades": 885
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 7054.240564481163,
+      "sharpe": 30.08179842673196,
+      "win_rate": 84.81308411214953,
+      "trades": 856
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 28475.667273729494,
+      "sharpe": 31.096438574907896,
+      "win_rate": 88.91566265060241,
+      "trades": 830
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 12686.194295747899,
+      "sharpe": 32.36613568582249,
+      "win_rate": 85.51401869158879,
+      "trades": 856
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 19925.018349740287,
+      "sharpe": 31.33314550665213,
+      "win_rate": 89.63855421686748,
+      "trades": 831
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 1449.932979351179,
+      "sharpe": 24.210252776999127,
+      "win_rate": 80.39647577092511,
+      "trades": 909
+    },
+    {
+      "strategy": "ml_classifier_hybrid",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 9215.144939944284,
+      "sharpe": 25.094407229126833,
+      "win_rate": 84.9514563106796,
+      "trades": 825
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 3238.450861726031,
+      "sharpe": 27.221504638776644,
+      "win_rate": 93.00411522633745,
+      "trades": 486
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "APTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 15143.798857014568,
+      "sharpe": 28.27401034060013,
+      "win_rate": 89.22155688622755,
+      "trades": 668
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 6767.329182450749,
+      "sharpe": 27.784443300962707,
+      "win_rate": 85.63049853372434,
+      "trades": 682
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "NEARUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 8899.918434766478,
+      "sharpe": 27.795152128617318,
+      "win_rate": 90.0990099009901,
+      "trades": 606
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "development",
+      "return_pct": 1028.6068089776004,
+      "sharpe": 21.79443326184186,
+      "win_rate": 83.4920634920635,
+      "trades": 630
+    },
+    {
+      "strategy": "ml_ensemble_voting",
+      "symbol": "DOTUSDT",
+      "type": "development",
+      "period": "test",
+      "return_pct": 4083.9077654082994,
+      "sharpe": 21.86559863330334,
+      "win_rate": 84.24657534246576,
+      "trades": 584
+    }
+  ],
+  "comparison": {
+    "ml_classifier_xgb": {
+      "holdout_avg_sharpe": 30.29287952286861,
+      "holdout_avg_return": 14808.337914043654,
+      "dev_avg_sharpe": 30.25834477097129,
+      "dev_avg_return": 25541.33567804814
+    },
+    "ml_classifier_hybrid": {
+      "holdout_avg_sharpe": 28.580856527031223,
+      "holdout_avg_return": 11213.781006397156,
+      "dev_avg_sharpe": 29.17466377022895,
+      "dev_avg_return": 19205.276854471354
+    },
+    "ml_ensemble_voting": {
+      "holdout_avg_sharpe": 22.996151013025845,
+      "holdout_avg_return": 4897.073399661993,
+      "dev_avg_sharpe": 25.97825370084026,
+      "dev_avg_return": 9375.875019063116
+    }
+  }
+}

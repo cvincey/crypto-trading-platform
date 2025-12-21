@@ -1,0 +1,158 @@
+# Optimization configuration for ML strategy improvement
+# Central configuration for walk-forward validation, hyperparameter tuning, and analysis
+
+optimization:
+  # =============================================================================
+  # Walk-Forward Validation Settings
+  # =============================================================================
+  # Proper out-of-sample testing with rolling train/test windows
+  walk_forward:
+    enabled: true
+    train_window: 720        # 30 days of 1h candles (720 = 30 * 24)
+    test_window: 168         # 7 days of 1h candles (168 = 7 * 24)
+    step_size: 168           # Roll forward 7 days at a time
+    min_train_samples: 500   # Minimum samples required for training
+    
+    strategies:
+      - ml_classifier_xgb
+      - ml_classifier_hybrid
+      - ml_ensemble_voting
+      - ml_classifier_v4
+    
+    symbols:
+      - APTUSDT
+      - NEARUSDT
+      - DOTUSDT
+      - XLMUSDT
+      - XRPUSDT
+    
+    interval: 1h
+    days: 180                # 6 months of data for walk-forward
+
+  # =============================================================================
+  # Hyperparameter Grid Search
+  # =============================================================================
+  # Parameter grids for each strategy to optimize
+  hyperparameters:
+    ml_classifier_xgb:
+      # Model parameters
+      n_estimators: [100, 150, 200, 300]
+      max_depth: [4, 5, 6, 8]
+      learning_rate: [0.01, 0.05, 0.1]
+      # Trading parameters
+      buy_threshold: [0.52, 0.55, 0.58]
+      sell_threshold: [0.42, 0.45, 0.48]
+      use_class_weights: [true]
+    
+    ml_classifier_hybrid:
+      # Ensemble weights
+      xgb_weight: [0.5, 0.6, 0.7]
+      rf_weight: [0.3, 0.4, 0.5]
+      # Model parameters
+      n_estimators: [100, 150, 200]
+      max_depth: [5, 6, 7]
+      # Adaptive thresholds
+      trend_buy_threshold: [0.50, 0.52, 0.55]
+      trend_sell_threshold: [0.45, 0.48, 0.50]
+      range_buy_threshold: [0.55, 0.58, 0.60]
+      range_sell_threshold: [0.40, 0.42, 0.45]
+    
+    ml_ensemble_voting:
+      rf_n_estimators: [50, 100, 150]
+      gb_n_estimators: [50, 100, 150]
+      buy_threshold: [0.52, 0.55, 0.58]
+      sell_threshold: [0.42, 0.45, 0.48]
+
+  # =============================================================================
+  # Risk Parameter Grid Search
+  # =============================================================================
+  # Stop-loss and take-profit optimization
+  risk_params:
+    stop_loss_pct: [0.02, 0.03, 0.04, 0.05, 0.06]
+    take_profit_pct: [0.06, 0.08, 0.10, 0.12, 0.15]
+    trailing_stop_pct: [null, 0.03, 0.05]  # null = disabled
+    
+    strategies:
+      - ml_classifier_xgb
+      - ml_classifier_hybrid
+      - ml_ensemble_voting
+    
+    symbols:
+      - APTUSDT
+      - NEARUSDT
+      - DOTUSDT
+      - XLMUSDT
+      - XRPUSDT
+    
+    interval: 1h
+    days: 90
+
+  # =============================================================================
+  # Out-of-Sample Testing
+  # =============================================================================
+  # Test on holdout data not used during development
+  out_of_sample:
+    # Time-based holdout (recent period)
+    test_period:
+      start: "2024-10-01"
+      end: "2024-12-21"
+    
+    # Symbol-based holdout (coins not used in development)
+    holdout_symbols:
+      - AVAXUSDT
+      - LINKUSDT
+      - UNIUSDT
+      - AAVEUSDT
+      - ATOMUSDT
+    
+    # Development symbols (for comparison)
+    dev_symbols:
+      - APTUSDT
+      - NEARUSDT
+      - DOTUSDT
+    
+    strategies:
+      - ml_classifier_xgb
+      - ml_classifier_hybrid
+      - ml_ensemble_voting
+    
+    interval: 1h
+
+  # =============================================================================
+  # Feature Importance Analysis
+  # =============================================================================
+  feature_analysis:
+    strategies:
+      - ml_classifier_xgb
+    
+    top_n_features: 10
+    use_shap: true           # Use SHAP values for interpretability
+    
+    # Features to analyze
+    features:
+      - sma_20
+      - ema_12
+      - rsi_14
+      - macd
+      - adx
+      - atr_ratio
+      - bb_width
+      - obv
+      - volume_momentum
+      - roc_10
+    
+    symbols:
+      - APTUSDT
+      - NEARUSDT
+    
+    interval: 1h
+    days: 90
+
+  # =============================================================================
+  # Output Settings
+  # =============================================================================
+  output:
+    results_dir: notes/optimization_results
+    save_json: true
+    save_plots: true
+    verbose: true

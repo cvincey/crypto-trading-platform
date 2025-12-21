@@ -234,3 +234,107 @@ class LiveTradingsConfig(BaseModel):
     """All live trading configurations."""
 
     trading: dict[str, LiveTradingConfig] = Field(default_factory=dict)
+
+
+# =============================================================================
+# Optimization Configuration
+# =============================================================================
+
+
+class WalkForwardConfig(BaseModel):
+    """Walk-forward validation configuration."""
+
+    enabled: bool = True
+    train_window: int = 720  # 30 days of 1h candles
+    test_window: int = 168   # 7 days of 1h candles
+    step_size: int = 168     # Roll forward 7 days at a time
+    min_train_samples: int = 500
+    strategies: list[str] = Field(default_factory=list)
+    symbols: list[str] = Field(default_factory=list)
+    interval: str = "1h"
+    days: int = 180
+
+
+class HyperparamGridConfig(BaseModel):
+    """Hyperparameter grid for a single strategy."""
+
+    # Allow any parameters to be specified
+    class Config:
+        extra = "allow"
+
+
+class RiskParamsConfig(BaseModel):
+    """Risk parameter grid search configuration."""
+
+    stop_loss_pct: list[float] = Field(default_factory=lambda: [0.02, 0.04, 0.06])
+    take_profit_pct: list[float] = Field(default_factory=lambda: [0.06, 0.10, 0.15])
+    trailing_stop_pct: list[float | None] = Field(default_factory=lambda: [None])
+    strategies: list[str] = Field(default_factory=list)
+    symbols: list[str] = Field(default_factory=list)
+    interval: str = "1h"
+    days: int = 90
+
+
+class OutOfSampleTestPeriod(BaseModel):
+    """Out-of-sample test period configuration."""
+
+    start: date | datetime | str
+    end: date | datetime | str
+
+    @field_validator("start", "end", mode="before")
+    @classmethod
+    def parse_date(cls, v: Any) -> date:
+        """Parse date from string."""
+        if isinstance(v, (date, datetime)):
+            return v if isinstance(v, date) else v.date()
+        if isinstance(v, str):
+            return datetime.strptime(v, "%Y-%m-%d").date()
+        return v
+
+
+class OutOfSampleConfig(BaseModel):
+    """Out-of-sample testing configuration."""
+
+    test_period: OutOfSampleTestPeriod
+    holdout_symbols: list[str] = Field(default_factory=list)
+    dev_symbols: list[str] = Field(default_factory=list)
+    strategies: list[str] = Field(default_factory=list)
+    interval: str = "1h"
+
+
+class FeatureAnalysisConfig(BaseModel):
+    """Feature importance analysis configuration."""
+
+    strategies: list[str] = Field(default_factory=list)
+    top_n_features: int = 10
+    use_shap: bool = True
+    features: list[str] = Field(default_factory=list)
+    symbols: list[str] = Field(default_factory=list)
+    interval: str = "1h"
+    days: int = 90
+
+
+class OutputConfig(BaseModel):
+    """Output settings for optimization results."""
+
+    results_dir: str = "notes/optimization_results"
+    save_json: bool = True
+    save_plots: bool = True
+    verbose: bool = True
+
+
+class OptimizationSettings(BaseModel):
+    """Root optimization settings."""
+
+    walk_forward: WalkForwardConfig = Field(default_factory=WalkForwardConfig)
+    hyperparameters: dict[str, dict[str, Any]] = Field(default_factory=dict)
+    risk_params: RiskParamsConfig = Field(default_factory=RiskParamsConfig)
+    out_of_sample: OutOfSampleConfig | None = None
+    feature_analysis: FeatureAnalysisConfig = Field(default_factory=FeatureAnalysisConfig)
+    output: OutputConfig = Field(default_factory=OutputConfig)
+
+
+class OptimizationConfig(BaseModel):
+    """All optimization configuration."""
+
+    optimization: OptimizationSettings = Field(default_factory=OptimizationSettings)

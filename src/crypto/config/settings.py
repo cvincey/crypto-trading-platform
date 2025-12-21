@@ -8,6 +8,7 @@ from crypto.config.loader import ConfigLoader
 from crypto.config.schemas import (
     BacktestsConfig,
     ExchangesConfig,
+    OptimizationConfig,
     SettingsConfig,
     StrategiesConfig,
 )
@@ -39,6 +40,7 @@ class Settings:
         self._exchanges: ExchangesConfig | None = None
         self._strategies: StrategiesConfig | None = None
         self._backtests: BacktestsConfig | None = None
+        self._optimization: OptimizationConfig | None = None
 
     def _ensure_config_dir(self) -> None:
         """Ensure config directory exists."""
@@ -127,6 +129,19 @@ class Settings:
         """Get a specific backtest config by name."""
         return self.backtests.get_backtest(name)
 
+    @property
+    def optimization(self) -> OptimizationConfig:
+        """Get optimization configuration."""
+        if self._optimization is None:
+            self._ensure_config_dir()
+            try:
+                raw = self._loader.load("optimization")
+                self._optimization = OptimizationConfig(**raw)
+            except FileNotFoundError:
+                logger.info("No optimization.yaml found, using defaults")
+                self._optimization = OptimizationConfig()
+        return self._optimization
+
     def reload(self) -> None:
         """Reload all configuration from disk."""
         self._loader.clear_cache()
@@ -134,6 +149,7 @@ class Settings:
         self._exchanges = None
         self._strategies = None
         self._backtests = None
+        self._optimization = None
         logger.info("Configuration reloaded")
 
     def setup_logging(self) -> None:

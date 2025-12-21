@@ -26,22 +26,49 @@ from crypto.strategies.registry import strategy_registry
 
 # Import strategies to trigger registration
 from crypto.strategies import technical, statistical, momentum, ml
+from crypto.strategies import ml_siblings  # Import ML sibling strategies
 
 from sqlalchemy import select, func
 
 console = Console()
 
-# Grid search parameters
-STOP_LOSS_VALUES = [0.02, 0.04, 0.06, 0.08, 0.10]
-TAKE_PROFIT_VALUES = [0.04, 0.08, 0.12, 0.16, 0.20]
 
-# Strategies to test (focus on best performers)
-STRATEGIES = ["ml_classifier_btc"]
+def load_config_from_yaml() -> dict:
+    """Load grid search config from optimization.yaml if available."""
+    try:
+        from crypto.config.settings import get_settings
+        settings = get_settings()
+        risk_config = settings.optimization.optimization.risk_params
+        return {
+            "stop_loss_values": risk_config.stop_loss_pct,
+            "take_profit_values": risk_config.take_profit_pct,
+            "strategies": risk_config.strategies,
+            "symbols": risk_config.symbols,
+            "interval": risk_config.interval,
+            "days": risk_config.days,
+        }
+    except Exception:
+        return {}
+
+
+# Try to load from config, fall back to defaults
+_config = load_config_from_yaml()
+
+# Grid search parameters (from config or defaults)
+STOP_LOSS_VALUES = _config.get("stop_loss_values", [0.02, 0.03, 0.04, 0.05, 0.06])
+TAKE_PROFIT_VALUES = _config.get("take_profit_values", [0.06, 0.08, 0.10, 0.12, 0.15])
+
+# Strategies to test (focus on best ML performers)
+STRATEGIES = _config.get("strategies", [
+    "ml_classifier_xgb",
+    "ml_classifier_hybrid",
+    "ml_ensemble_voting",
+])
 
 # Test on top tickers
 TOP_N_TICKERS = 10
-INTERVAL = "1h"
-DAYS = 90
+INTERVAL = _config.get("interval", "1h")
+DAYS = _config.get("days", 90)
 
 
 async def get_top_tickers(n: int = 10, interval: str = "1h") -> list[str]:
@@ -71,7 +98,7 @@ async def run_single_backtest(
         if candles is None or candles.empty:
             return None
 
-        strategy = strategy_registry.create_from_config(strategy_name)
+        strategy = strategy_registry.create(strategy_name)
         engine = BacktestEngine(
             stop_loss_pct=Decimal(str(stop_loss)),
             take_profit_pct=Decimal(str(take_profit)),

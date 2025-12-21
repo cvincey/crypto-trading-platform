@@ -1,0 +1,30 @@
+{
+  "ml_classifier_xgb": {
+    "avg_oos_return": -7.604794095479397,
+    "avg_oos_sharpe": -7.528543908373555,
+    "avg_is_sharpe": 29.182921064394673,
+    "avg_degradation": 126.06132469865642,
+    "symbols_tested": 5
+  },
+  "ml_classifier_hybrid": {
+    "avg_oos_return": -6.7727287467397845,
+    "avg_oos_sharpe": -6.688981447439185,
+    "avg_is_sharpe": 29.44946968294381,
+    "avg_degradation": 122.96287747156427,
+    "symbols_tested": 5
+  },
+  "ml_ensemble_voting": {
+    "avg_oos_return": -4.433725922239413,
+    "avg_oos_sharpe": -4.147262768734923,
+    "avg_is_sharpe": 28.88939328952255,
+    "avg_degradation": 114.41799203331257,
+    "symbols_tested": 5
+  },
+  "ml_classifier_v4": {
+    "avg_oos_return": -6.47449870313567,
+    "avg_oos_sharpe": -6.485455782123306,
+    "avg_is_sharpe": 20.075116496608025,
+    "avg_degradation": 132.62206474347175,
+    "symbols_tested": 5
+  }
+}
