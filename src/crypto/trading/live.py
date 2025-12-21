@@ -10,7 +10,6 @@ import pandas as pd
 
 from crypto.config.settings import get_settings
 from crypto.core.types import Candle, OrderSide, Signal
-from crypto.data.repository import CandleRepository
 from crypto.exchanges.base import Exchange
 from crypto.exchanges.registry import get_exchange
 from crypto.strategies.base import Strategy
@@ -70,8 +69,6 @@ class LiveTrader:
             initial_capital=initial_capital,
         )
 
-        self.repository = CandleRepository()
-
         # State
         self._running = False
         self._candle_buffer: list[Candle] = []
@@ -90,6 +87,8 @@ class LiveTrader:
         This method loads historical data for reference symbols (e.g., BTC, ETH)
         that cross-symbol strategies need to generate signals.
         
+        Fetches directly from exchange API - no database required.
+        
         Args:
             lookback_days: Number of days of historical data to load
         """
@@ -107,13 +106,22 @@ class LiveTrader:
         
         for symbol in ref_symbols:
             try:
-                candles = await self.repository.get_candles_df(
+                # Fetch directly from exchange API
+                candles = await self.exchange.fetch_ohlcv(
                     symbol, self.interval, start, end
                 )
-                if not candles.empty:
-                    self._reference_data[symbol] = candles
-                    self.strategy.set_reference_data(symbol, candles)
-                    logger.info(f"  Loaded {len(candles)} candles for {symbol}")
+                
+                if candles:
+                    # Convert to DataFrame
+                    df = pd.DataFrame([c.to_dict() for c in candles])
+                    df.set_index("open_time", inplace=True)
+                    for col in ["open", "high", "low", "close", "volume"]:
+                        if col in df.columns:
+                            df[col] = df[col].astype(float)
+                    
+                    self._reference_data[symbol] = df
+                    self.strategy.set_reference_data(symbol, df)
+                    logger.info(f"  Loaded {len(df)} candles for {symbol}")
                 else:
                     logger.warning(f"  No data found for {symbol}")
             except Exception as e:
@@ -134,6 +142,34 @@ class LiveTrader:
         if elapsed >= self._reference_update_interval:
             await self._load_reference_data()
 
+    async def _load_warmup_data(self, lookback_days: int = 10) -> None:
+        """
+        Load warmup candle data for the main trading symbol.
+        
+        This ensures the strategy has enough historical data to generate
+        signals from the start.
+        
+        Args:
+            lookback_days: Number of days of historical data to load
+        """
+        logger.info(f"Loading warmup data for {self.symbol}...")
+        
+        end = datetime.now(timezone.utc)
+        start = end - timedelta(days=lookback_days)
+        
+        try:
+            candles = await self.exchange.fetch_ohlcv(
+                self.symbol, self.interval, start, end
+            )
+            
+            if candles:
+                self._candle_buffer = candles
+                logger.info(f"  Loaded {len(candles)} warmup candles")
+            else:
+                logger.warning(f"  No warmup data found for {self.symbol}")
+        except Exception as e:
+            logger.error(f"  Error loading warmup data: {e}")
+
     async def start(self) -> None:
         """Start the live trading loop."""
         logger.info(
@@ -142,6 +178,9 @@ class LiveTrader:
         )
 
         self._running = True
+        
+        # Load warmup data for main symbol
+        await self._load_warmup_data()
         
         # Load reference data for cross-symbol strategies
         await self._load_reference_data()
