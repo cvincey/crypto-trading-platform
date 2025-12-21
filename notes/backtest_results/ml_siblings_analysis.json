@@ -1,0 +1,284 @@
+{
+  "strategy_stats": {
+    "ml_classifier": {
+      "avg_return": 424.8020493050719,
+      "avg_sharpe": 10.769054751564035,
+      "avg_win_rate": 70.7674876940856,
+      "avg_max_dd": 17.7182232438888,
+      "best_return": 1208.2321082799301,
+      "worst_return": -13.481369914861787,
+      "positive_pct": 88.88888888888889,
+      "num_tests": 9
+    },
+    "ml_classifier_v2": {
+      "avg_return": -7.485417459252365,
+      "avg_sharpe": -1.5971219458149255,
+      "avg_win_rate": 33.9984016543115,
+      "avg_max_dd": 14.093800012513288,
+      "best_return": 20.95861961834362,
+      "worst_return": -90.57225040212256,
+      "positive_pct": 33.33333333333333,
+      "num_tests": 9
+    },
+    "ml_ensemble_voting": {
+      "avg_return": 1422.6545916471723,
+      "avg_sharpe": 19.65708034127188,
+      "avg_win_rate": 83.63890141654299,
+      "avg_max_dd": 11.882551104261458,
+      "best_return": 4121.770139952629,
+      "worst_return": 34.34864988679059,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    },
+    "ml_classifier_v3": {
+      "avg_return": 305.38971758953426,
+      "avg_sharpe": 13.942391767794286,
+      "avg_win_rate": 83.55136927543577,
+      "avg_max_dd": 5.493667464796037,
+      "best_return": 468.4503940796615,
+      "worst_return": 16.204402384139595,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    },
+    "ml_classifier_xgb": {
+      "avg_return": 5467.148125829786,
+      "avg_sharpe": 25.810066135580204,
+      "avg_win_rate": 80.19409952087793,
+      "avg_max_dd": 20.458704449456434,
+      "best_return": 18266.71958327349,
+      "worst_return": 36.434238860410964,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    },
+    "ml_classifier_v4": {
+      "avg_return": 1420.7683076108317,
+      "avg_sharpe": 17.56647271454178,
+      "avg_win_rate": 74.35896322055771,
+      "avg_max_dd": 22.199078593203772,
+      "best_return": 4089.7859475489704,
+      "worst_return": 32.32454757511905,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    },
+    "ml_classifier_hybrid": {
+      "avg_return": 4333.405970779896,
+      "avg_sharpe": 24.052598734176787,
+      "avg_win_rate": 80.5744820918454,
+      "avg_max_dd": 18.78047742869052,
+      "best_return": 14253.576085999353,
+      "worst_return": 39.872424995401964,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    },
+    "ml_classifier_conservative": {
+      "avg_return": 102.80068497511567,
+      "avg_sharpe": 9.63762431070367,
+      "avg_win_rate": 84.37421039628171,
+      "avg_max_dd": 4.1110838553127635,
+      "best_return": 164.43856343859207,
+      "worst_return": 16.99078281011425,
+      "positive_pct": 100.0,
+      "num_tests": 9
+    }
+  },
+  "head_to_head": {
+    "ml_classifier_v2": {
+      "wins": 1,
+      "losses": 8,
+      "ties": 0,
+      "win_rate_vs_original": 11.11111111111111,
+      "top_improvements": [
+        [
+          "TRXUSDT",
+          3.34408056390667
+        ]
+      ]
+    },
+    "ml_ensemble_voting": {
+      "wins": 9,
+      "losses": 0,
+      "ties": 0,
+      "win_rate_vs_original": 100.0,
+      "top_improvements": [
+        [
+          "DOTUSDT",
+          12.43709616930389
+        ],
+        [
+          "ADAUSDT",
+          10.947259605409846
+        ],
+        [
+          "TRXUSDT",
+          10.856911753331753
+        ]
+      ]
+    },
+    "ml_classifier_v3": {
+      "wins": 7,
+      "losses": 2,
+      "ties": 0,
+      "win_rate_vs_original": 77.77777777777779,
+      "top_improvements": [
+        [
+          "TRXUSDT",
+          11.144706016646431
+        ],
+        [
+          "DOTUSDT",
+          4.643292695430487
+        ],
+        [
+          "ADAUSDT",
+          4.61380611550169
+        ]
+      ]
+    },
+    "ml_classifier_xgb": {
+      "wins": 9,
+      "losses": 0,
+      "ties": 0,
+      "win_rate_vs_original": 100.0,
+      "top_improvements": [
+        [
+          "DOTUSDT",
+          19.418220088582444
+        ],
+        [
+          "XRPUSDT",
+          16.578640349001866
+        ],
+        [
+          "XLMUSDT",
+          15.873392656181885
+        ]
+      ]
+    },
+    "ml_classifier_v4": {
+      "wins": 9,
+      "losses": 0,
+      "ties": 0,
+      "win_rate_vs_original": 100.0,
+      "top_improvements": [
+        [
+          "TRXUSDT",
+          9.971070659057498
+        ],
+        [
+          "DOTUSDT",
+          9.823122172169397
+        ],
+        [
+          "XRPUSDT",
+          7.947906363903302
+        ]
+      ]
+    },
+    "ml_classifier_hybrid": {
+      "wins": 9,
+      "losses": 0,
+      "ties": 0,
+      "win_rate_vs_original": 100.0,
+      "top_improvements": [
+        [
+          "DOTUSDT",
+          18.700563365394707
+        ],
+        [
+          "ADAUSDT",
+          14.465278134480352
+        ],
+        [
+          "XRPUSDT",
+          14.035046181898837
+        ]
+      ]
+    },
+    "ml_classifier_conservative": {
+      "wins": 2,
+      "losses": 5,
+      "ties": 2,
+      "win_rate_vs_original": 22.22222222222222,
+      "top_improvements": [
+        [
+          "TRXUSDT",
+          11.811515443548826
+        ],
+        [
+          "ADAUSDT",
+          0.8415894410991616
+        ]
+      ]
+    }
+  },
+  "rankings": {
+    "by_sharpe": [
+      [
+        "ml_classifier_xgb",
+        25.810066135580204
+      ],
+      [
+        "ml_classifier_hybrid",
+        24.052598734176787
+      ],
+      [
+        "ml_ensemble_voting",
+        19.65708034127188
+      ],
+      [
+        "ml_classifier_v4",
+        17.56647271454178
+      ],
+      [
+        "ml_classifier_v3",
+        13.942391767794286
+      ],
+      [
+        "ml_classifier",
+        10.769054751564035
+      ],
+      [
+        "ml_classifier_conservative",
+        9.63762431070367
+      ],
+      [
+        "ml_classifier_v2",
+        -1.5971219458149255
+      ]
+    ],
+    "by_consistency": [
+      [
+        "ml_ensemble_voting",
+        100.0
+      ],
+      [
+        "ml_classifier_v3",
+        100.0
+      ],
+      [
+        "ml_classifier_xgb",
+        100.0
+      ],
+      [
+        "ml_classifier_v4",
+        100.0
+      ],
+      [
+        "ml_classifier_hybrid",
+        100.0
+      ],
+      [
+        "ml_classifier_conservative",
+        100.0
+      ],
+      [
+        "ml_classifier",
+        88.88888888888889
+      ],
+      [
+        "ml_classifier_v2",
+        33.33333333333333
+      ]
+    ]
+  }
+}

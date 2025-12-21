@@ -19,8 +19,8 @@ trading:
   max_position_size: 0.1         # 10% max position size
   
   # Risk management defaults (can be overridden per-strategy)
-  stop_loss_pct: 0.04            # 2% stop loss
-  take_profit_pct: 0.12          # 4% take profit
+  stop_loss_pct: 0.04            # 4% stop loss
+  take_profit_pct: 0.12          # 12% take profit
   trailing_stop_pct: null        # Trailing stop disabled by default
   
   # Filter defaults for strategy signal filtering

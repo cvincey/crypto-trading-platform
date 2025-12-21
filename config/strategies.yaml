@@ -208,3 +208,128 @@ strategies:
     symbols: [BTCUSDT]
     interval: 1h
     enabled: false  # Disabled by default - requires RL dependencies
+
+  # =============================================================================
+  # ML CLASSIFIER SIBLINGS - Experimental Improvements
+  # =============================================================================
+
+  # ML Classifier V2: Extended features + probability thresholds
+  ml_classifier_v2:
+    type: ml_classifier_v2
+    params:
+      model: gradient_boosting
+      features: [sma_20, sma_50, ema_12, ema_26, rsi_14, macd, adx, atr_ratio, bb_width, obv, volume_momentum, momentum_10, roc_10]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 1
+      buy_threshold: 0.52  # Fixed from 0.6 - was too strict
+      sell_threshold: 0.48  # Fixed from 0.4 - was too strict
+      use_calibration: true
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Ensemble Voting: Multiple models combined
+  ml_ensemble_voting:
+    type: ml_ensemble_voting
+    params:
+      features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, volume_momentum]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 1
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      rf_n_estimators: 100
+      gb_n_estimators: 100
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Classifier V3: Longer horizon + feature engineering
+  ml_classifier_v3:
+    type: ml_classifier_v3
+    params:
+      model: gradient_boosting
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 4
+      lag_periods: [1, 2, 3, 5]
+      rolling_window: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      min_return_threshold: 0.01
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Classifier XGB: XGBoost with class weights
+  ml_classifier_xgb:
+    type: ml_classifier_xgb
+    params:
+      features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, obv, volume_momentum, roc_10]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 1
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.05
+      use_class_weights: true
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Classifier V4: Adaptive thresholds based on market regime
+  ml_classifier_v4:
+    type: ml_classifier_v4
+    params:
+      features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, volume_momentum]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 2
+      trend_buy_threshold: 0.52
+      trend_sell_threshold: 0.48
+      range_buy_threshold: 0.65
+      range_sell_threshold: 0.35
+      adx_trend_threshold: 25
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Classifier Hybrid: Best of XGB + Ensemble + Adaptive
+  ml_classifier_hybrid:
+    type: ml_classifier_hybrid
+    params:
+      features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, obv, volume_momentum, roc_10]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 1
+      xgb_weight: 0.6
+      rf_weight: 0.4
+      trend_buy_threshold: 0.52
+      trend_sell_threshold: 0.48
+      range_buy_threshold: 0.58
+      range_sell_threshold: 0.42
+      adx_trend_threshold: 25
+      n_estimators: 150
+      max_depth: 6
+      use_class_weights: true
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # ML Classifier Conservative: Low Drawdown Focus
+  ml_classifier_conservative:
+    type: ml_classifier_conservative
+    params:
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 4
+      buy_threshold: 0.60
+      sell_threshold: 0.50
+      min_adx: 25
+      n_estimators: 150
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true

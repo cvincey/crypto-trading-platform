@@ -1,0 +1,650 @@
+[
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 241.8635868523915,
+    "sharpe_ratio": 13.454902556537505,
+    "max_drawdown": 16.45659691531622,
+    "win_rate": 76.55677655677655,
+    "total_trades": 547
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 0.0,
+    "sharpe_ratio": 0.0,
+    "max_drawdown": 0.0,
+    "win_rate": 0.0,
+    "total_trades": 0
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 696.5181994083161,
+    "sharpe_ratio": 17.38096083710004,
+    "max_drawdown": 14.342039942324977,
+    "win_rate": 85.81560283687944,
+    "total_trades": 564
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 210.00849677565975,
+    "sharpe_ratio": 15.148469751270978,
+    "max_drawdown": 2.5389974001072146,
+    "win_rate": 86.91588785046729,
+    "total_trades": 214
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 1739.6018504514384,
+    "sharpe_ratio": 26.27684882331051,
+    "max_drawdown": 22.165191907993478,
+    "win_rate": 82.29166666666666,
+    "total_trades": 961
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 590.8437281295069,
+    "sharpe_ratio": 17.41510151459739,
+    "max_drawdown": 24.805023586599997,
+    "win_rate": 70.31700288184439,
+    "total_trades": 695
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 1269.9304227760413,
+    "sharpe_ratio": 23.06902817153792,
+    "max_drawdown": 26.162061018381717,
+    "win_rate": 80.88888888888889,
+    "total_trades": 901
+  },
+  {
+    "symbol": "SHIBUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 100.61010159496821,
+    "sharpe_ratio": 10.947194480268971,
+    "max_drawdown": 3.52708916465634,
+    "win_rate": 94.23076923076923,
+    "total_trades": 104
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 423.64786355695037,
+    "sharpe_ratio": 12.03286971496406,
+    "max_drawdown": 17.8205091012362,
+    "win_rate": 75.08771929824562,
+    "total_trades": 571
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": -12.511684436261895,
+    "sharpe_ratio": -1.4325641047136888,
+    "max_drawdown": 28.40030040272611,
+    "win_rate": 47.368421052631575,
+    "total_trades": 38
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 995.1635608927372,
+    "sharpe_ratio": 16.88730531565828,
+    "max_drawdown": 12.115752342082812,
+    "win_rate": 82.67716535433071,
+    "total_trades": 509
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 425.4105461796112,
+    "sharpe_ratio": 16.61544015946487,
+    "max_drawdown": 4.297728659653523,
+    "win_rate": 85.9375,
+    "total_trades": 256
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 3550.0079903938627,
+    "sharpe_ratio": 27.416449432416698,
+    "max_drawdown": 15.062282706750546,
+    "win_rate": 82.96943231441048,
+    "total_trades": 916
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 1008.4311520503048,
+    "sharpe_ratio": 17.662589326771585,
+    "max_drawdown": 21.900297779955967,
+    "win_rate": 73.19884726224784,
+    "total_trades": 694
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 2699.0773181939276,
+    "sharpe_ratio": 24.41566435674373,
+    "max_drawdown": 18.21108032798478,
+    "win_rate": 82.90816326530613,
+    "total_trades": 784
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 143.93417875520055,
+    "sharpe_ratio": 11.318303002790874,
+    "max_drawdown": 2.4379852300700624,
+    "win_rate": 91.93548387096774,
+    "total_trades": 124
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": -13.481369914861787,
+    "sharpe_ratio": -3.34408056390667,
+    "max_drawdown": 17.25537617433636,
+    "win_rate": 50.482315112540185,
+    "total_trades": 623
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 0.0,
+    "sharpe_ratio": 0.0,
+    "max_drawdown": 0.0,
+    "win_rate": 0.0,
+    "total_trades": 0
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 34.34864988679059,
+    "sharpe_ratio": 7.512831189425082,
+    "max_drawdown": 6.6676219858633745,
+    "win_rate": 64.59016393442623,
+    "total_trades": 610
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 16.204402384139595,
+    "sharpe_ratio": 7.800625452739761,
+    "max_drawdown": 0.9435467676935227,
+    "win_rate": 92.85714285714286,
+    "total_trades": 56
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 36.434238860410964,
+    "sharpe_ratio": 7.477774555163701,
+    "max_drawdown": 17.884003496458522,
+    "win_rate": 60.08403361344538,
+    "total_trades": 953
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 32.32454757511905,
+    "sharpe_ratio": 6.626990095150827,
+    "max_drawdown": 13.911557369241088,
+    "win_rate": 59.54415954415955,
+    "total_trades": 702
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 39.872424995401964,
+    "sharpe_ratio": 8.099959984235975,
+    "max_drawdown": 15.213744047877872,
+    "win_rate": 60.18306636155606,
+    "total_trades": 875
+  },
+  {
+    "symbol": "TRXUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 16.99078281011425,
+    "sharpe_ratio": 8.467434879642155,
+    "max_drawdown": 0.5380216180043681,
+    "win_rate": 92.0,
+    "total_trades": 50
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 243.26499589155867,
+    "sharpe_ratio": 10.156618164661422,
+    "max_drawdown": 15.5107646167887,
+    "win_rate": 69.77491961414792,
+    "total_trades": 623
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 11.145374193300922,
+    "sharpe_ratio": 3.194353643965888,
+    "max_drawdown": 2.8804146675163422,
+    "win_rate": 77.77777777777779,
+    "total_trades": 18
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 819.6131286519302,
+    "sharpe_ratio": 19.92533203522182,
+    "max_drawdown": 16.65736071306535,
+    "win_rate": 83.8487972508591,
+    "total_trades": 582
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 214.30543290152016,
+    "sharpe_ratio": 14.108167501027133,
+    "max_drawdown": 3.164767399101729,
+    "win_rate": 84.61538461538461,
+    "total_trades": 234
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 1871.4709890631968,
+    "sharpe_ratio": 26.735258513663286,
+    "max_drawdown": 23.55636673579152,
+    "win_rate": 77.77777777777779,
+    "total_trades": 972
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 710.0863440246279,
+    "sharpe_ratio": 18.104524528564724,
+    "max_drawdown": 21.703075662521936,
+    "win_rate": 75.0,
+    "total_trades": 673
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 1601.2200338224904,
+    "sharpe_ratio": 24.19166434656026,
+    "max_drawdown": 17.61099986554611,
+    "win_rate": 80.85106382978722,
+    "total_trades": 846
+  },
+  {
+    "symbol": "XRPUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 66.1612664379564,
+    "sharpe_ratio": 8.377652706869858,
+    "max_drawdown": 3.1647673991017276,
+    "win_rate": 86.0,
+    "total_trades": 100
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 273.9911270259241,
+    "sharpe_ratio": 11.032263458872508,
+    "max_drawdown": 19.996076074193237,
+    "win_rate": 70.24221453287197,
+    "total_trades": 579
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 3.611183893468624,
+    "sharpe_ratio": 3.937393579397408,
+    "max_drawdown": 0.8009153318077814,
+    "win_rate": 100.0,
+    "total_trades": 2
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 1228.4565962662602,
+    "sharpe_ratio": 21.979523064282354,
+    "max_drawdown": 12.983333582336831,
+    "win_rate": 82.99319727891157,
+    "total_trades": 588
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 309.6338789308237,
+    "sharpe_ratio": 15.646069574374199,
+    "max_drawdown": 4.176156518154535,
+    "win_rate": 84.21052631578947,
+    "total_trades": 228
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 2929.686912274816,
+    "sharpe_ratio": 26.460875938205216,
+    "max_drawdown": 30.144409018580355,
+    "win_rate": 80.48780487804879,
+    "total_trades": 985
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 1021.7055056710807,
+    "sharpe_ratio": 18.353065998724265,
+    "max_drawdown": 20.389929910868197,
+    "win_rate": 76.29179331306992,
+    "total_trades": 659
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 2337.6081443433504,
+    "sharpe_ratio": 25.49754159335286,
+    "max_drawdown": 23.1514551752699,
+    "win_rate": 81.01545253863135,
+    "total_trades": 906
+  },
+  {
+    "symbol": "ADAUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 135.98879679261603,
+    "sharpe_ratio": 11.87385289997167,
+    "max_drawdown": 3.756516685694036,
+    "win_rate": 81.57894736842105,
+    "total_trades": 152
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 318.77151531367497,
+    "sharpe_ratio": 12.16120884500415,
+    "max_drawdown": 19.135662238157547,
+    "win_rate": 74.32432432432432,
+    "total_trades": 592
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 20.95861961834362,
+    "sharpe_ratio": 4.700523024136153,
+    "max_drawdown": 4.0998409226633,
+    "win_rate": 75.0,
+    "total_trades": 40
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 1146.5534576034977,
+    "sharpe_ratio": 22.869399322758465,
+    "max_drawdown": 7.972128681592798,
+    "win_rate": 89.34426229508196,
+    "total_trades": 489
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 313.2748791978854,
+    "sharpe_ratio": 14.696387833709752,
+    "max_drawdown": 5.809006339406968,
+    "win_rate": 82.75862068965517,
+    "total_trades": 233
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 3177.7271790818704,
+    "sharpe_ratio": 28.034601501186035,
+    "max_drawdown": 15.331055879855576,
+    "win_rate": 84.070796460177,
+    "total_trades": 905
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 1068.1187863099337,
+    "sharpe_ratio": 19.536646256967177,
+    "max_drawdown": 25.335895741600595,
+    "win_rate": 77.37003058103976,
+    "total_trades": 655
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 2489.269877869274,
+    "sharpe_ratio": 25.617625681018943,
+    "max_drawdown": 12.486823825012333,
+    "win_rate": 84.14634146341463,
+    "total_trades": 821
+  },
+  {
+    "symbol": "XLMUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 164.43856343859207,
+    "sharpe_ratio": 12.616031910746417,
+    "max_drawdown": 1.7521506277128496,
+    "win_rate": 92.85714285714286,
+    "total_trades": 140
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 1208.2321082799301,
+    "sharpe_ratio": 16.162347986074064,
+    "max_drawdown": 17.706745510794484,
+    "win_rate": 74.76635514018692,
+    "total_trades": 642
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": -90.57225040212256,
+    "sharpe_ratio": -24.77380365512009,
+    "max_drawdown": 90.66272878790606,
+    "win_rate": 5.839416058394161,
+    "total_trades": 274
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 4121.770139952629,
+    "sharpe_ratio": 26.27745680054308,
+    "max_drawdown": 6.174690856876781,
+    "win_rate": 88.9763779527559,
+    "total_trades": 509
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 374.45622668345715,
+    "sharpe_ratio": 13.168393945926764,
+    "max_drawdown": 7.136267525306448,
+    "win_rate": 74.12587412587412,
+    "total_trades": 286
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 18266.71958327349,
+    "sharpe_ratio": 30.475063246657147,
+    "max_drawdown": 23.81694973973864,
+    "win_rate": 84.24369747899159,
+    "total_trades": 953
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 4089.7859475489704,
+    "sharpe_ratio": 21.6040184548675,
+    "max_drawdown": 22.890868685272142,
+    "win_rate": 79.94011976047905,
+    "total_trades": 669
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 14253.576085999353,
+    "sharpe_ratio": 29.03098964843311,
+    "max_drawdown": 21.537699456709277,
+    "win_rate": 83.49056603773585,
+    "total_trades": 849
+  },
+  {
+    "symbol": "NEARUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 55.76046115616522,
+    "sharpe_ratio": 5.308290440596326,
+    "max_drawdown": 12.283401895785072,
+    "win_rate": 60.0,
+    "total_trades": 110
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 232.18169504638578,
+    "sharpe_ratio": 9.4786668039902,
+    "max_drawdown": 23.6837275559012,
+    "win_rate": 69.46308724832215,
+    "total_trades": 596
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 0.0,
+    "sharpe_ratio": 0.0,
+    "max_drawdown": 0.0,
+    "win_rate": 0.0,
+    "total_trades": 0
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 1826.313536977262,
+    "sharpe_ratio": 21.91576297329409,
+    "max_drawdown": 9.292583424674458,
+    "win_rate": 86.68941979522185,
+    "total_trades": 587
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 416.7632011730495,
+    "sharpe_ratio": 14.121959499420687,
+    "max_drawdown": 7.6565232564547,
+    "win_rate": 79.33333333333333,
+    "total_trades": 300
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 5556.654090511147,
+    "sharpe_ratio": 28.896886892572645,
+    "max_drawdown": 14.466105347824856,
+    "win_rate": 83.46774193548387,
+    "total_trades": 992
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 1728.6348019114844,
+    "sharpe_ratio": 19.301788976159596,
+    "max_drawdown": 20.75437826986025,
+    "win_rate": 79.59770114942529,
+    "total_trades": 697
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 4900.944838100151,
+    "sharpe_ratio": 28.179230169384905,
+    "max_drawdown": 11.18100373853141,
+    "win_rate": 85.87443946188341,
+    "total_trades": 892
+  },
+  {
+    "symbol": "DOTUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 135.75909658510253,
+    "sharpe_ratio": 9.629574620397356,
+    "max_drawdown": 2.786484809947026,
+    "win_rate": 81.81818181818183,
+    "total_trades": 132
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier",
+    "total_return_pct": 894.746921693693,
+    "sharpe_ratio": 15.786695797879085,
+    "max_drawdown": 11.898551008275238,
+    "win_rate": 76.20967741935483,
+    "total_trades": 497
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_v2",
+    "total_return_pct": 0.0,
+    "sharpe_ratio": 0.0,
+    "max_drawdown": 0.0,
+    "win_rate": 0.0,
+    "total_trades": 0
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_ensemble_voting",
+    "total_return_pct": 1935.1540551851265,
+    "sharpe_ratio": 22.165151533163705,
+    "max_drawdown": 20.737448409535737,
+    "win_rate": 87.81512605042016,
+    "total_trades": 477
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_v3",
+    "total_return_pct": 468.4503940796615,
+    "sharpe_ratio": 14.176012192214436,
+    "max_drawdown": 13.720013317285689,
+    "win_rate": 81.20805369127517,
+    "total_trades": 298
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_xgb",
+    "total_return_pct": 12076.030298557842,
+    "sharpe_ratio": 30.516836317046593,
+    "max_drawdown": 21.701975212114437,
+    "win_rate": 86.35394456289978,
+    "total_trades": 939
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_v4",
+    "total_return_pct": 2536.983955276457,
+    "sharpe_ratio": 19.493529279072977,
+    "max_drawdown": 28.100680332913814,
+    "win_rate": 77.97101449275362,
+    "total_trades": 690
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_hybrid",
+    "total_return_pct": 9409.154590919074,
+    "sharpe_ratio": 28.37168465632336,
+    "max_drawdown": 23.469429402901255,
+    "win_rate": 85.81235697940504,
+    "total_trades": 875
+  },
+  {
+    "symbol": "APTUSDT",
+    "strategy": "ml_classifier_conservative",
+    "total_return_pct": 105.56291720532587,
+    "sharpe_ratio": 8.200283855049395,
+    "max_drawdown": 6.753337266843386,
+    "win_rate": 78.94736842105263,
+    "total_trades": 114
+  }
+]
