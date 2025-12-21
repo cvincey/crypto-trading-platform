@@ -12,5 +12,5 @@ COPY . .
 # Install the package
 RUN pip install --no-cache-dir -e .
 
-# Run paper trading
-CMD ["python", "scripts/run_paper_trading.py"]
+# Run all strategies (multi-symbol paper trading)
+CMD ["python", "scripts/run_all_strategies.py"]
