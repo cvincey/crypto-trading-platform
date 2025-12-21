@@ -4,8 +4,15 @@ Populate database with historical market data for backtesting.
 
 This script fetches historical OHLCV data from Binance public API
 and stores it in the database for all symbols/intervals needed by backtests.
+
+Usage:
+    python populate_history.py                    # Fetch all Top 50
+    python populate_history.py --top20            # Fetch only Top 20
+    python populate_history.py --new              # Fetch only new Top 21-50
+    python populate_history.py --symbols BTC ETH  # Fetch specific symbols
 """
 
+import argparse
 import asyncio
 import logging
 from datetime import datetime, timedelta
@@ -26,16 +33,99 @@ logger = logging.getLogger(__name__)
 # Binance public API (no auth required for market data)
 BINANCE_API = "https://api.binance.com"
 
-# Data requirements based on backtests.yaml
-DATA_REQUIREMENTS = [
-    # btc_strategies_2024: BTCUSDT 1h from 2024-01-01 to 2024-12-01
-    {"symbol": "BTCUSDT", "interval": "1h", "start": "2024-01-01", "end": "2024-12-21"},
-    # ml_evaluation: BTCUSDT 1d from 2022-01-01 to 2024-01-01
-    {"symbol": "BTCUSDT", "interval": "1d", "start": "2022-01-01", "end": "2024-12-21"},
-    # multi_asset_momentum: ETHUSDT, SOLUSDT 1d from 2023-06-01 to 2024-06-01
-    {"symbol": "ETHUSDT", "interval": "1d", "start": "2023-06-01", "end": "2024-12-21"},
-    {"symbol": "SOLUSDT", "interval": "1d", "start": "2023-06-01", "end": "2024-12-21"},
+# =============================================================================
+# Top 50 Cryptocurrencies (by market cap, USDT pairs on Binance)
+# =============================================================================
+# Top 20 (existing)
+TOP_20_SYMBOLS = [
+    "BTCUSDT",    # 1. Bitcoin
+    "ETHUSDT",    # 2. Ethereum
+    "BNBUSDT",    # 3. BNB
+    "XRPUSDT",    # 4. XRP
+    "SOLUSDT",    # 5. Solana
+    "ADAUSDT",    # 6. Cardano
+    "DOGEUSDT",   # 7. Dogecoin
+    "TRXUSDT",    # 8. TRON
+    "AVAXUSDT",   # 9. Avalanche
+    "LINKUSDT",   # 10. Chainlink
+    "DOTUSDT",    # 11. Polkadot
+    "XLMUSDT",    # 12. Stellar
+    "SUIUSDT",    # 13. Sui
+    "LTCUSDT",    # 14. Litecoin
+    "BCHUSDT",    # 15. Bitcoin Cash
+    "NEARUSDT",   # 16. NEAR Protocol
+    "APTUSDT",    # 17. Aptos
+    "UNIUSDT",    # 18. Uniswap
+    "ICPUSDT",    # 19. Internet Computer
+    "ETCUSDT",    # 20. Ethereum Classic
 ]
+
+# Extended Top 21-50
+TOP_21_50_SYMBOLS = [
+    "RENDERUSDT", # 21. Render
+    "AAVEUSDT",   # 22. Aave
+    "FILUSDT",    # 23. Filecoin
+    "ATOMUSDT",   # 24. Cosmos
+    "ARBUSDT",    # 25. Arbitrum
+    "OPUSDT",     # 26. Optimism
+    "INJUSDT",    # 27. Injective
+    "IMXUSDT",    # 28. Immutable X
+    "VETUSDT",    # 29. VeChain
+    "GRTUSDT",    # 30. The Graph
+    "ALGOUSDT",   # 31. Algorand
+    "FTMUSDT",    # 32. Fantom
+    "RUNEUSDT",   # 33. THORChain
+    "SEIUSDT",    # 34. Sei
+    "TIAUSDT",    # 35. Celestia
+    "LDOUSDT",    # 36. Lido DAO
+    "MKRUSDT",    # 37. Maker
+    "THETAUSDT",  # 38. Theta Network
+    "FLOKIUSDT",  # 39. FLOKI
+    "BONKUSDT",   # 40. Bonk
+    "JUPUSDT",    # 41. Jupiter
+    "SANDUSDT",   # 42. The Sandbox
+    "AXSUSDT",    # 43. Axie Infinity
+    "WLDUSDT",    # 44. Worldcoin
+    "SNXUSDT",    # 45. Synthetix
+    "FLOWUSDT",   # 46. Flow
+    "EGLDUSDT",   # 47. MultiversX
+    "CHZUSDT",    # 48. Chiliz
+    "APEUSDT",    # 49. ApeCoin
+    "MANAUSDT",   # 50. Decentraland
+]
+
+# Combined Top 50
+TOP_50_SYMBOLS = TOP_20_SYMBOLS + TOP_21_50_SYMBOLS
+
+
+def build_data_requirements(
+    symbols: list[str],
+    intervals: list[str] = ["1h", "1d"],
+    start: str = "2024-01-01",
+    end: str = "2024-12-21",
+) -> list[dict]:
+    """Build data requirements for multiple symbols and intervals."""
+    requirements = []
+    for symbol in symbols:
+        for interval in intervals:
+            requirements.append({
+                "symbol": symbol,
+                "interval": interval,
+                "start": start,
+                "end": end,
+            })
+    return requirements
+
+
+# Default data requirements - Top 50 with 1h and 1d intervals
+# Can be overridden via CLI arguments
+# Note: Binance API will return data from each coin's listing date
+DATA_REQUIREMENTS = build_data_requirements(
+    symbols=TOP_50_SYMBOLS,
+    intervals=["1h", "1d"],
+    start="2017-01-01",  # Early date - API returns from listing date
+    end="2025-12-20",
+)
 
 
 async def fetch_klines(
@@ -142,8 +232,10 @@ async def fetch_historical_data(
     return all_candles
 
 
-async def populate_data():
+async def populate_data(requirements: list[dict] | None = None):
     """Main function to populate historical data."""
+    reqs = requirements if requirements is not None else DATA_REQUIREMENTS
+    
     logger.info("=" * 60)
     logger.info("Populating database with historical market data")
     logger.info("=" * 60)
@@ -154,7 +246,7 @@ async def populate_data():
     
     total_candles = 0
     
-    for req in DATA_REQUIREMENTS:
+    for req in reqs:
         symbol = req["symbol"]
         interval = req["interval"]
         start = req["start"]
@@ -205,5 +297,73 @@ async def populate_data():
     logger.info("=" * 60)
 
 
+def parse_args():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Populate database with historical market data"
+    )
+    parser.add_argument(
+        "--top20", action="store_true",
+        help="Fetch only Top 20 symbols"
+    )
+    parser.add_argument(
+        "--new", action="store_true",
+        help="Fetch only new symbols (Top 21-50)"
+    )
+    parser.add_argument(
+        "--symbols", nargs="+", metavar="SYMBOL",
+        help="Fetch specific symbols (e.g., BTC ETH SOL)"
+    )
+    parser.add_argument(
+        "--interval", choices=["1h", "1d", "both"], default="both",
+        help="Interval to fetch (default: both)"
+    )
+    parser.add_argument(
+        "--start", default="2024-01-01",
+        help="Start date YYYY-MM-DD (default: 2024-01-01)"
+    )
+    parser.add_argument(
+        "--end", default="2024-12-21",
+        help="End date YYYY-MM-DD (default: 2024-12-21)"
+    )
+    return parser.parse_args()
+
+
+def get_symbols_from_args(args) -> list[str]:
+    """Determine which symbols to fetch based on args."""
+    if args.symbols:
+        # Convert shorthand to full pair names (BTC -> BTCUSDT)
+        return [
+            s.upper() if s.upper().endswith("USDT") else f"{s.upper()}USDT"
+            for s in args.symbols
+        ]
+    elif args.top20:
+        return TOP_20_SYMBOLS
+    elif args.new:
+        return TOP_21_50_SYMBOLS
+    else:
+        return TOP_50_SYMBOLS
+
+
 if __name__ == "__main__":
-    asyncio.run(populate_data())
+    args = parse_args()
+    
+    # Build requirements based on args
+    symbols = get_symbols_from_args(args)
+    intervals = ["1h", "1d"] if args.interval == "both" else [args.interval]
+    
+    # Override global DATA_REQUIREMENTS
+    DATA_REQUIREMENTS = build_data_requirements(
+        symbols=symbols,
+        intervals=intervals,
+        start=args.start,
+        end=args.end,
+    )
+    
+    logger.info(f"Symbols to fetch: {len(symbols)}")
+    logger.info(f"Intervals: {intervals}")
+    logger.info(f"Date range: {args.start} to {args.end}")
+    logger.info(f"Total jobs: {len(DATA_REQUIREMENTS)}")
+    
+    # Pass requirements to avoid global variable issues
+    asyncio.run(populate_data(DATA_REQUIREMENTS))

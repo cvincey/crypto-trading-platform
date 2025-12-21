@@ -311,3 +311,293 @@ async def ingest_symbols(
         await service.close()
 
     return results
+
+
+# =============================================================================
+# Alternative Data Ingestion
+# =============================================================================
+
+class AlternativeDataIngestionService:
+    """
+    Service for ingesting alternative data: funding rates, open interest, etc.
+    
+    Uses Binance Futures API endpoints.
+    """
+
+    # Binance Futures API base URL
+    FUTURES_BASE_URL = "https://fapi.binance.com"
+
+    def __init__(self):
+        """Initialize the alternative data ingestion service."""
+        from crypto.data.alternative_data import (
+            FundingRateRepository,
+            OpenInterestRepository,
+            FundingRate,
+            OpenInterest,
+        )
+        self._funding_repo = FundingRateRepository()
+        self._oi_repo = OpenInterestRepository()
+        self._FundingRate = FundingRate
+        self._OpenInterest = OpenInterest
+        self._client = None
+
+    async def _get_client(self):
+        """Get or create HTTP client."""
+        if self._client is None:
+            import httpx
+            self._client = httpx.AsyncClient(timeout=30.0)
+        return self._client
+
+    async def close(self):
+        """Close the HTTP client."""
+        if self._client:
+            await self._client.aclose()
+            self._client = None
+
+    async def ingest_funding_rates(
+        self,
+        symbol: str,
+        start: datetime,
+        end: datetime | None = None,
+        limit: int = 1000,
+    ) -> int:
+        """
+        Ingest historical funding rates from Binance Futures.
+        
+        Binance returns funding rates every 8 hours.
+        
+        Args:
+            symbol: Trading pair (e.g., "BTCUSDT")
+            start: Start time
+            end: End time (defaults to now)
+            limit: Max records per request
+            
+        Returns:
+            Number of funding rates ingested
+        """
+        from decimal import Decimal
+        
+        end = end or datetime.utcnow()
+        client = await self._get_client()
+        
+        logger.info(f"Ingesting funding rates for {symbol} from {start} to {end}")
+        
+        total_saved = 0
+        current_start = start
+        
+        while current_start < end:
+            start_ms = int(current_start.timestamp() * 1000)
+            end_ms = int(end.timestamp() * 1000)
+            
+            url = f"{self.FUTURES_BASE_URL}/fapi/v1/fundingRate"
+            params = {
+                "symbol": symbol,
+                "startTime": start_ms,
+                "endTime": end_ms,
+                "limit": limit,
+            }
+            
+            try:
+                response = await client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+                
+                if not data:
+                    break
+                
+                # Convert to FundingRate objects
+                rates = [
+                    self._FundingRate(
+                        symbol=symbol,
+                        funding_time=datetime.fromtimestamp(d["fundingTime"] / 1000),
+                        funding_rate=Decimal(d["fundingRate"]),
+                        mark_price=Decimal(d.get("markPrice", "0")) if d.get("markPrice") else None,
+                    )
+                    for d in data
+                ]
+                
+                # Save to database
+                saved = await self._funding_repo.save_funding_rates(rates)
+                total_saved += saved
+                
+                # Move to next batch
+                if len(data) < limit:
+                    break
+                
+                last_time = datetime.fromtimestamp(data[-1]["fundingTime"] / 1000)
+                current_start = last_time + timedelta(seconds=1)
+                
+                await asyncio.sleep(0.1)  # Rate limiting
+                
+            except Exception as e:
+                logger.error(f"Error fetching funding rates for {symbol}: {e}")
+                await asyncio.sleep(1)
+                break
+        
+        logger.info(f"Ingested {total_saved} funding rates for {symbol}")
+        return total_saved
+
+    async def ingest_open_interest_history(
+        self,
+        symbol: str,
+        start: datetime,
+        end: datetime | None = None,
+        period: str = "1h",
+        limit: int = 500,
+    ) -> int:
+        """
+        Ingest historical open interest from Binance Futures.
+        
+        Args:
+            symbol: Trading pair (e.g., "BTCUSDT")
+            start: Start time
+            end: End time (defaults to now)
+            period: Interval ("5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d")
+            limit: Max records per request
+            
+        Returns:
+            Number of open interest records ingested
+        """
+        from decimal import Decimal
+        
+        end = end or datetime.utcnow()
+        client = await self._get_client()
+        
+        logger.info(f"Ingesting open interest for {symbol} from {start} to {end}")
+        
+        total_saved = 0
+        current_start = start
+        
+        while current_start < end:
+            start_ms = int(current_start.timestamp() * 1000)
+            end_ms = int(end.timestamp() * 1000)
+            
+            url = f"{self.FUTURES_BASE_URL}/futures/data/openInterestHist"
+            params = {
+                "symbol": symbol,
+                "period": period,
+                "startTime": start_ms,
+                "endTime": end_ms,
+                "limit": limit,
+            }
+            
+            try:
+                response = await client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+                
+                if not data:
+                    break
+                
+                # Convert to OpenInterest objects
+                oi_data = [
+                    self._OpenInterest(
+                        symbol=symbol,
+                        timestamp=datetime.fromtimestamp(d["timestamp"] / 1000),
+                        open_interest=Decimal(d["sumOpenInterest"]),
+                        open_interest_value=Decimal(d["sumOpenInterestValue"]) if d.get("sumOpenInterestValue") else None,
+                    )
+                    for d in data
+                ]
+                
+                # Save to database
+                saved = await self._oi_repo.save_open_interest(oi_data)
+                total_saved += saved
+                
+                # Move to next batch
+                if len(data) < limit:
+                    break
+                
+                last_time = datetime.fromtimestamp(data[-1]["timestamp"] / 1000)
+                current_start = last_time + timedelta(seconds=1)
+                
+                await asyncio.sleep(0.1)  # Rate limiting
+                
+            except Exception as e:
+                logger.error(f"Error fetching open interest for {symbol}: {e}")
+                await asyncio.sleep(1)
+                break
+        
+        logger.info(f"Ingested {total_saved} open interest records for {symbol}")
+        return total_saved
+
+    async def ingest_funding_rates_days(
+        self,
+        symbol: str,
+        days: int,
+    ) -> int:
+        """
+        Convenience method to ingest last N days of funding rates.
+        
+        Args:
+            symbol: Trading pair
+            days: Number of days to ingest
+            
+        Returns:
+            Number of records ingested
+        """
+        end = datetime.utcnow()
+        start = end - timedelta(days=days)
+        return await self.ingest_funding_rates(symbol, start, end)
+
+    async def ingest_open_interest_days(
+        self,
+        symbol: str,
+        days: int,
+        period: str = "1h",
+    ) -> int:
+        """
+        Convenience method to ingest last N days of open interest.
+        
+        Args:
+            symbol: Trading pair
+            days: Number of days to ingest
+            period: Data interval
+            
+        Returns:
+            Number of records ingested
+        """
+        end = datetime.utcnow()
+        start = end - timedelta(days=days)
+        return await self.ingest_open_interest_history(symbol, start, end, period)
+
+
+async def ingest_alternative_data(
+    symbols: list[str],
+    days: int,
+    include_funding: bool = True,
+    include_oi: bool = True,
+) -> dict[str, dict[str, int]]:
+    """
+    Convenience function to ingest alternative data for multiple symbols.
+    
+    Args:
+        symbols: List of trading pairs
+        days: Number of days to ingest
+        include_funding: Include funding rates
+        include_oi: Include open interest
+        
+    Returns:
+        Dict mapping symbol to counts for each data type
+    """
+    service = AlternativeDataIngestionService()
+    results = {}
+
+    try:
+        for symbol in symbols:
+            results[symbol] = {}
+            
+            if include_funding:
+                count = await service.ingest_funding_rates_days(symbol, days)
+                results[symbol]["funding_rates"] = count
+                logger.info(f"Ingested {count} funding rates for {symbol}")
+            
+            if include_oi:
+                count = await service.ingest_open_interest_days(symbol, days)
+                results[symbol]["open_interest"] = count
+                logger.info(f"Ingested {count} OI records for {symbol}")
+                
+    finally:
+        await service.close()
+
+    return results

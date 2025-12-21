@@ -8,26 +8,80 @@ optimization:
   # Proper out-of-sample testing with rolling train/test windows
   walk_forward:
     enabled: true
-    train_window: 720        # 30 days of 1h candles (720 = 30 * 24)
-    test_window: 168         # 7 days of 1h candles (168 = 7 * 24)
+    train_window: 2160       # 90 days of 1h candles (2160 = 90 * 24)
+    test_window: 336         # 14 days of 1h candles (336 = 14 * 24)
     step_size: 168           # Roll forward 7 days at a time
-    min_train_samples: 500   # Minimum samples required for training
+    min_train_samples: 1500  # Minimum samples required for training
     
     strategies:
+      # New robust strategies
+      - ml_classifier_v5
+      - ml_classifier_online
+      - rule_ensemble
+      - ml_cross_asset
+      # Legacy strategies for comparison
       - ml_classifier_xgb
       - ml_classifier_hybrid
       - ml_ensemble_voting
-      - ml_classifier_v4
     
     symbols:
-      - APTUSDT
-      - NEARUSDT
-      - DOTUSDT
-      - XLMUSDT
+      # All available symbols from extended dataset
+      - BTCUSDT
+      - ETHUSDT
+      - BNBUSDT
       - XRPUSDT
+      - SOLUSDT
+      - ADAUSDT
+      - DOGEUSDT
+      - AVAXUSDT
+      - DOTUSDT
+      - LINKUSDT
+      - LTCUSDT
+      - NEARUSDT
+      - APTUSDT
+      - ATOMUSDT
+      - UNIUSDT
+      - AAVEUSDT
+      - XLMUSDT
+      - MATICUSDT
+      - SHIBUSDT
+      - TRXUSDT
     
     interval: 1h
-    days: 180                # 6 months of data for walk-forward
+    days: 365                # Full year of data for walk-forward
+    
+    # Acceptance criteria for strategy validation
+    acceptance:
+      min_oos_sharpe: 0.5
+      max_degradation_pct: 40
+      min_trades_per_fold: 5
+  
+  # =============================================================================
+  # Validation Gates
+  # =============================================================================
+  # Criteria that must be met for a strategy to be considered production-ready
+  validation_gates:
+    enabled: true
+    criteria:
+      - name: positive_oos_sharpe
+        metric: oos_sharpe
+        operator: gt
+        threshold: 0
+      - name: acceptable_degradation
+        metric: sharpe_degradation
+        operator: lt
+        threshold: 50
+      - name: sufficient_trades
+        metric: oos_total_trades
+        operator: gt
+        threshold: 20
+      - name: acceptable_drawdown
+        metric: oos_max_dd
+        operator: lt
+        threshold: 25
+    
+    # Fail-safe: reject if ALL folds show negative OOS
+    reject_all_negative_folds: true
 
   # =============================================================================
   # Hyperparameter Grid Search
@@ -156,3 +210,130 @@ optimization:
     save_json: true
     save_plots: true
     verbose: true
+
+  # =============================================================================
+  # Creative Strategy Testing
+  # =============================================================================
+  # Comprehensive testing of alternative alpha sources on hourly data
+  # Based on research findings: need new alpha sources, not just better ML
+  creative_testing:
+    enabled: true
+    
+    # Phase 1: Quick Validation - rapid filtering
+    quick_validation:
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      train_window: 1440           # 60 days
+      test_window: 336             # 14 days
+      step_size: 336               # Bi-weekly
+      days: 180                    # 6 months
+      
+      strategies:
+        # Category A: Cross-Symbol
+        - btc_lead_alt_follow
+        - eth_btc_ratio_reversion
+        - correlation_breakdown
+        - sector_momentum_rotation
+        - btc_volatility_filter
+        # Category B: Alternative Data
+        - funding_rate_fade
+        - funding_rate_carry
+        - open_interest_divergence
+        # Category C: Calendar
+        - weekend_effect
+        - hour_of_day_filter
+        - month_end_rebalancing
+        # Category D: Frequency Reduction
+        - weekly_momentum
+        - signal_confirmation_delay
+        - signal_strength_filter
+        # Category E: Meta
+        - regime_gate
+        - drawdown_pause
+        - strategy_momentum
+        # Category F: Microstructure
+        - volume_breakout_confirmation
+        - volume_divergence
+        - buy_sell_imbalance
+      
+      # Lenient threshold for quick filter
+      pass_threshold:
+        min_oos_sharpe: -2.0
+        top_n_to_advance: 8
+    
+    # Phase 2: Deep Validation - full walk-forward
+    deep_validation:
+      symbols:
+        - BTCUSDT
+        - ETHUSDT
+        - BNBUSDT
+        - XRPUSDT
+        - SOLUSDT
+        - ADAUSDT
+        - DOGEUSDT
+        - AVAXUSDT
+        - DOTUSDT
+        - LINKUSDT
+        - LTCUSDT
+        - NEARUSDT
+        - APTUSDT
+        - ATOMUSDT
+        - UNIUSDT
+        - AAVEUSDT
+        - XLMUSDT
+        - MATICUSDT
+        - SHIBUSDT
+      
+      train_window: 2160           # 90 days
+      test_window: 336             # 14 days
+      step_size: 168               # Weekly
+      days: 365                    # Full year
+      
+      # Strict acceptance criteria
+      acceptance:
+        min_oos_sharpe: 0.5
+        max_degradation_pct: 50
+        min_trades_per_month: 2
+        max_trades_per_month: 20
+        max_drawdown_pct: 20
+        min_symbol_pass_rate: 0.6
+      
+      # Must beat buy-and-hold
+      compare_to_baseline: true
+      baseline: buy_and_hold
+    
+    # Phase 3: Robustness Testing
+    robustness:
+      # Cost sensitivity
+      commission_rates: [0.0005, 0.001, 0.0015]
+      slippage_rates: [0.0003, 0.0005, 0.001]
+      
+      # Time periods
+      time_periods:
+        - name: "2023_H2"
+          start: "2023-07-01"
+          end: "2023-12-31"
+        - name: "2024_H1"
+          start: "2024-01-01"
+          end: "2024-06-30"
+        - name: "2024_H2"
+          start: "2024-07-01"
+          end: "2024-12-21"
+      
+      # Holdout symbols
+      holdout_symbols:
+        - AVAXUSDT
+        - LINKUSDT
+        - UNIUSDT
+        - AAVEUSDT
+        - ATOMUSDT
+      
+      # Parameter sensitivity
+      parameter_variation_pct: 20
+    
+    # Reference symbols for cross-symbol strategies
+    reference_symbols:
+      - BTCUSDT
+      - ETHUSDT
+    
+    # Output
+    results_dir: notes/creative_testing_results

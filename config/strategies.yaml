@@ -333,3 +333,506 @@ strategies:
     symbols: [BTCUSDT]
     interval: 1h
     enabled: true
+
+  # =============================================================================
+  # ROBUST STRATEGIES - Designed to Avoid Overfitting
+  # =============================================================================
+  # Based on walk-forward validation research findings:
+  # - Fewer features (top 3 from importance analysis)
+  # - Longer prediction horizons (10+ bars)
+  # - Stronger regularization
+  # - Online learning / periodic retraining
+  # - Rule-based approaches that cannot overfit
+
+  # ML Classifier V5: Simplified for Robustness
+  ml_classifier_v5:
+    type: ml_classifier_v5
+    params:
+      features: [volume_momentum, adx, rsi_14]  # Only top 3 features
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 10    # Longer horizon to filter noise
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 50          # Fewer trees
+      max_depth: 3              # Shallower trees
+      min_samples_leaf: 50      # More samples per leaf
+      learning_rate: 0.1
+      min_return_threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT, BNBUSDT, SOLUSDT, XRPUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # ML Classifier Online: Rolling Retraining
+  ml_classifier_online:
+    type: ml_classifier_online
+    params:
+      features: [volume_momentum, adx, rsi_14]
+      train_window: 2160        # 90 days of 1h candles
+      retrain_every: 168        # Retrain weekly
+      prediction_horizon: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 50
+      max_depth: 3
+      min_samples_leaf: 50
+      use_sample_weights: true
+      decay_factor: 0.99        # Recent data weighted higher
+      min_return_threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # ML Classifier Decay: Sample Weight Decay
+  ml_classifier_decay:
+    type: ml_classifier_decay
+    params:
+      features: [volume_momentum, adx, rsi_14]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 50
+      max_depth: 3
+      min_samples_leaf: 50
+      decay_factor: 0.995
+      min_return_threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 1h
+    enabled: true
+
+  # Rule Ensemble: No ML, Cannot Overfit
+  rule_ensemble:
+    type: rule_ensemble
+    params:
+      adx_threshold: 25
+      adx_period: 14
+      rsi_period: 14
+      rsi_overbought: 70
+      rsi_oversold: 30
+      volume_period: 20
+      volume_multiplier: 1.5
+      fast_ema: 12
+      slow_ema: 26
+      sma_period: 20
+      min_buy_agreement: 4      # Need 4 of 6 rules for buy
+      min_sell_agreement: 2     # Need 2 of 3 rules for sell
+    symbols: [BTCUSDT, ETHUSDT, BNBUSDT, SOLUSDT, XRPUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Trend Following Rules: Classic TA
+  trend_following_rules:
+    type: trend_following_rules
+    params:
+      adx_threshold: 25
+      adx_exit_threshold: 20
+      adx_period: 14
+      fast_ema: 20
+      slow_ema: 50
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Mean Reversion Rules: For Ranging Markets
+  mean_reversion_rules:
+    type: mean_reversion_rules
+    params:
+      adx_threshold: 25
+      rsi_period: 14
+      rsi_oversold: 30
+      rsi_neutral: 50
+      bb_period: 20
+      bb_std: 2.0
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.06
+    enabled: true
+
+  # Cross-Asset ML: Trains on All Symbols
+  ml_cross_asset:
+    type: ml_cross_asset
+    params:
+      features: [volume_momentum, adx, rsi_14]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 50
+      max_depth: 3
+      min_samples_leaf: 50
+      min_return_threshold: 0.02
+      training_mode: combined   # Train on all symbols together
+    symbols: [BTCUSDT, ETHUSDT, BNBUSDT, SOLUSDT, XRPUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Cross-Asset Regime: Separate Trend/Range Models
+  ml_cross_asset_regime:
+    type: ml_cross_asset_regime
+    params:
+      features: [volume_momentum, rsi_14]
+      lookback: 100
+      train_size: 0.8
+      prediction_horizon: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      adx_threshold: 25
+      n_estimators: 50
+      max_depth: 3
+      min_samples_leaf: 50
+      min_return_threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category A: Cross-Symbol Signals
+  # =============================================================================
+  # These strategies use signals from one symbol (e.g., BTC) to trade another.
+  # Key insight: Cross-asset patterns generalize well.
+
+  # BTC Lead Alt Follow: BTC breakout triggers alt entry
+  btc_lead_alt_follow:
+    type: btc_lead_alt_follow
+    params:
+      leader_symbol: BTCUSDT
+      breakout_period: 24           # 24-bar (1-day) high breakout
+      entry_delay: 1                # Enter 1 bar after BTC signal
+      hold_period: 48               # Hold for 48 hours
+      use_trailing_exit: false
+    symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, DOTUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # ETH/BTC Ratio Reversion: Trade ETH when ratio is extreme
+  eth_btc_ratio_reversion:
+    type: eth_btc_ratio_reversion
+    params:
+      lookback: 168                 # 7 days for z-score calculation
+      entry_threshold: -2.0         # Enter when z-score < -2
+      exit_threshold: -0.5          # Exit when z-score > -0.5
+      max_hold_hours: 72            # Maximum hold period
+    symbols: [ETHUSDT]
+    interval: 1h
+    stop_loss_pct: 0.05
+    take_profit_pct: 0.10
+    enabled: true
+
+  # Correlation Breakdown: Trade laggard when correlated assets diverge
+  correlation_breakdown:
+    type: correlation_breakdown
+    params:
+      reference_symbol: BTCUSDT
+      correlation_window: 720       # 30 days rolling correlation
+      min_correlation: 0.85         # Must be highly correlated
+      divergence_threshold: 0.03    # 3% return divergence triggers signal
+      max_hold_hours: 48
+    symbols: [ETHUSDT, SOLUSDT, BNBUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.08
+    enabled: true
+
+  # Sector Momentum Rotation: Weekly rebalance to top sector
+  sector_momentum_rotation:
+    type: sector_momentum_rotation
+    params:
+      sectors:
+        L1: [SOLUSDT, AVAXUSDT, NEARUSDT, APTUSDT]
+        DeFi: [UNIUSDT, AAVEUSDT, LINKUSDT]
+        Major: [BTCUSDT, ETHUSDT]
+      momentum_period: 168          # 7-day momentum
+      rebalance_period: 168         # Weekly rebalance
+      top_n_sectors: 1              # Trade top 1 sector
+    symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, APTUSDT, UNIUSDT, AAVEUSDT]
+    interval: 1h
+    stop_loss_pct: 0.05
+    take_profit_pct: 0.15
+    enabled: true
+
+  # BTC Volatility Filter: Only trade alts when BTC is calm
+  btc_volatility_filter:
+    type: btc_volatility_filter
+    params:
+      base_strategy: momentum_breakout
+      btc_atr_period: 24            # ATR lookback
+      btc_atr_percentile_window: 168  # Percentile calculation window
+      max_volatility_percentile: 70   # Block trades above 70th percentile
+    symbols: [SOLUSDT, AVAXUSDT, NEARUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category B: Alternative Data
+  # =============================================================================
+  # These strategies use non-price data: funding rates, open interest, etc.
+
+  # Funding Rate Fade: Avoid/fade when funding is extreme
+  funding_rate_fade:
+    type: funding_rate_fade
+    params:
+      extreme_positive: 0.0005      # 0.05% per 8h = ~70% APY
+      extreme_negative: -0.0005
+      normal_threshold: 0.0002
+      action_mode: avoid_longs      # Options: avoid_longs, short, both
+      lookback_periods: 3           # Average over last 3 funding periods
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    enabled: true
+
+  # Funding Rate Carry: Long spot when funding is positive
+  funding_rate_carry:
+    type: funding_rate_carry
+    params:
+      funding_avg_period: 9         # 3 days of 8h funding (9 periods)
+      min_avg_funding: 0.0003       # 0.03% avg = profitable to be long
+      exit_threshold: 0.0           # Exit when funding turns negative
+      min_hold_hours: 24            # Minimum hold to collect funding
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 1h
+    enabled: true
+
+  # Open Interest Divergence: Price up + OI down = weak rally
+  # DISABLED: Binance OI history API is restricted (returns 400)
+  open_interest_divergence:
+    type: open_interest_divergence
+    params:
+      price_lookback: 24            # 24h price change
+      oi_lookback: 24               # 24h OI change
+      price_threshold: 0.02         # 2% price move
+      oi_threshold: -0.01           # OI flat or declining
+      signal_mode: fade             # Fade the weak move
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.06
+    enabled: false
+
+  # Liquidation Cascade Fade: Mean reversion after large liquidations
+  liquidation_cascade_fade:
+    type: liquidation_cascade_fade
+    params:
+      liquidation_threshold: 10000000  # $10M liquidations in 1h
+      lookback_hours: 1
+      fade_delay: 1                 # Wait 1 bar after cascade
+      hold_period: 24               # Hold for 24 hours
+      min_cascade_size: 5000000     # Minimum $5M to trigger
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.08
+    enabled: false  # Requires external liquidation data
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category C: Calendar/Structural
+  # =============================================================================
+  # These exploit time-based patterns and market structure.
+
+  # Weekend Effect: Exit Friday, re-enter Monday
+  weekend_effect:
+    type: weekend_effect
+    params:
+      exit_day: 4                   # Friday (0=Monday)
+      exit_hour: 20                 # 20:00 UTC
+      reentry_day: 0                # Monday
+      reentry_hour: 8               # 08:00 UTC
+      base_strategy: null           # Apply to any position
+      invert: false                 # True = only trade weekends
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    enabled: true
+
+  # Hour of Day Filter: Only trade during high-liquidity hours
+  hour_of_day_filter:
+    type: hour_of_day_filter
+    params:
+      active_hours: [14, 15, 16, 17, 18, 19, 20, 21, 22]  # UTC hours
+      base_strategy: momentum_breakout
+      block_entries_only: true      # Allow exits anytime
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Month End Rebalancing: Trade anticipating institutional flows
+  month_end_rebalancing:
+    type: month_end_rebalancing
+    params:
+      entry_days_before_eom: 3      # Enter 3 days before month end
+      exit_days_after_eom: 3        # Exit 3 days after month start
+      selection_mode: momentum      # Options: momentum, equal_weight
+      momentum_period: 168          # 7-day momentum for selection
+      top_n: 3                      # Top 3 by momentum
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT]
+    interval: 1h
+    enabled: true
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category D: Frequency Reduction
+  # =============================================================================
+  # Use hourly data but trade less frequently to reduce costs.
+
+  # Weekly Momentum: Rebalance weekly based on 7-day momentum
+  weekly_momentum:
+    type: weekly_momentum
+    params:
+      momentum_period: 168          # 7-day momentum
+      hold_period: 168              # Hold for 7 days
+      top_n: 3                      # Hold top 3 coins
+      rebalance_hour: 0             # Rebalance at midnight UTC
+      rebalance_day: 0              # Monday
+      min_momentum: 0.0             # Must have positive momentum
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT, DOTUSDT]
+    interval: 1h
+    stop_loss_pct: 0.06
+    take_profit_pct: 0.18
+    enabled: true
+
+  # Signal Confirmation Delay: Require signal to persist
+  signal_confirmation_delay:
+    type: signal_confirmation_delay
+    params:
+      base_strategy: rsi_mean_reversion
+      confirmation_delay: 4         # Require same signal 4 hours later
+      require_consistent: true      # Signal must be same direction
+      allow_strengthen: true        # Allow signal to get stronger
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Signal Strength Filter: Only trade extreme signals
+  signal_strength_filter:
+    type: signal_strength_filter
+    params:
+      base_strategy: rsi_mean_reversion
+      rsi_extreme_oversold: 20      # Stricter than default 30
+      rsi_extreme_overbought: 80    # Stricter than default 70
+      volume_confirmation: true     # Require volume spike
+      volume_multiplier: 1.5        # Volume > 1.5x average
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category E: Meta-Strategies
+  # =============================================================================
+  # Strategies that control other strategies or manage risk.
+
+  # Regime Gate: Only trade in clear regimes
+  regime_gate:
+    type: regime_gate
+    params:
+      trend_strategy: momentum_breakout
+      range_strategy: rsi_mean_reversion
+      adx_trend_threshold: 30       # ADX > 30 = strong trend
+      adx_range_threshold: 15       # ADX < 15 = clear range
+      adx_period: 14
+      block_ambiguous: true         # No trades when ADX 15-30
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Drawdown Pause: Pause trading after drawdown
+  drawdown_pause:
+    type: drawdown_pause
+    params:
+      base_strategy: ml_classifier_xgb
+      pause_threshold: 0.05         # Pause after 5% drawdown
+      pause_duration: 48            # Pause for 48 hours
+      recovery_threshold: 0.02      # Resume when recovered 2%
+      max_consecutive_losses: 5     # Also pause after 5 losses
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    enabled: true
+
+  # Strategy Momentum: Use recently winning strategy
+  strategy_momentum:
+    type: strategy_momentum
+    params:
+      strategies:
+        - momentum_breakout
+        - rsi_mean_reversion
+        - sma_crossover_btc
+      evaluation_period: 168        # Evaluate over 7 days
+      selection_count: 1            # Use top 1 strategy
+      min_sharpe: 0.0               # Must have positive Sharpe
+      reeval_period: 24             # Re-evaluate every 24 hours
+    symbols: [BTCUSDT, ETHUSDT]
+    interval: 1h
+    enabled: true
+
+  # =============================================================================
+  # CREATIVE STRATEGIES - Category F: Market Microstructure
+  # =============================================================================
+  # Strategies based on volume and order flow patterns.
+
+  # Volume Breakout Confirmation: Only trade volume-confirmed breakouts
+  volume_breakout_confirmation:
+    type: volume_breakout_confirmation
+    params:
+      breakout_period: 24           # 24-bar high/low breakout
+      volume_multiplier: 2.0        # Volume must be 2x average
+      volume_average_period: 48     # Average over 48 bars
+      require_close_confirmation: true  # Close must be beyond breakout
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  # Volume Divergence: Fade moves with declining volume
+  volume_divergence:
+    type: volume_divergence
+    params:
+      price_lookback: 48            # 48-bar price trend
+      volume_lookback: 48           # 48-bar volume trend
+      price_threshold: 0.05         # 5% price move
+      volume_decline_threshold: 0.3 # Volume down 30%
+      signal_mode: fade             # Fade the divergence
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.06
+    enabled: true
+
+  # Buy/Sell Imbalance: Trade extreme order flow imbalance
+  buy_sell_imbalance:
+    type: buy_sell_imbalance
+    params:
+      imbalance_lookback: 12        # 12-bar lookback
+      buy_threshold: 0.70           # 70% buy volume = bullish
+      sell_threshold: 0.30          # 30% buy volume = bearish
+      smoothing_period: 3           # Smooth over 3 bars
+      min_volume_percentile: 50     # Only trade when volume above median
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.09
+    enabled: true

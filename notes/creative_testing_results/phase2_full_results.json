@@ -1,0 +1,2070 @@
+[
+  {
+    "strategy_name": "eth_btc_ratio_reversion",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 0.0,
+    "oos_sharpe": 0.0,
+    "oos_win_rate": 0.0,
+    "oos_total_trades": 0,
+    "oos_max_dd": 0.0,
+    "is_return_pct": 0.0,
+    "is_sharpe": 0.0,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      }
+    ],
+    "acceptance": {
+      "passed": false,
+      "gates_passed": [
+        "low_degradation",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [
+        "positive_oos",
+        "enough_trades"
+      ],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.0,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": false
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 0,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": false
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 0,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "eth_btc_ratio_reversion",
+    "symbol": "ETHUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 4.034658390738396,
+    "oos_sharpe": 4.176959393628618,
+    "oos_win_rate": 75.0,
+    "oos_total_trades": 40,
+    "oos_max_dd": 12.841892928589784,
+    "is_return_pct": 3.906148836760674,
+    "is_sharpe": 1.1018298175496228,
+    "sharpe_degradation": -279.0929712646391,
+    "return_degradation": -3.289929783737919,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -1.172270639021881,
+        "train_sharpe": -0.4979694388311788,
+        "test_return_pct": 6.825930379984929,
+        "test_sharpe": 7.184793001277753,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.573641363278421,
+        "train_sharpe": 1.9848265528423246,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.573641363278421,
+        "train_sharpe": 1.9848265528423248,
+        "test_return_pct": -0.8291291079733492,
+        "test_sharpe": -0.3761211115271286,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.603740716460761,
+        "train_sharpe": 1.753727277621659,
+        "test_return_pct": 0.09580939658311763,
+        "test_sharpe": 0.2918850512558964,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -1.9599640464057666,
+        "train_sharpe": -0.44951107704197163,
+        "test_return_pct": 13.295156393456345,
+        "test_sharpe": 9.923784456356774,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.9772007290062543,
+        "train_sharpe": 1.0983550976558334,
+        "test_return_pct": -6.912970511964341,
+        "test_sharpe": -3.4113665228338688,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.9746139807464715,
+        "train_sharpe": 0.3480149075838972,
+        "test_return_pct": 10.628786297117895,
+        "test_sharpe": 9.82394891448484,
+        "test_trades": 8
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 12.67858722674271,
+        "train_sharpe": 2.592368667724094,
+        "test_return_pct": 9.173684278702567,
+        "test_sharpe": 9.978751360014677,
+        "test_trades": 2
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 4.176959393628618,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -279.0929712646391,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 40,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 40,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "eth_btc_ratio_reversion",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 3.358448166608221,
+    "oos_sharpe": 3.400913876144477,
+    "oos_win_rate": 54.166666666666664,
+    "oos_total_trades": 30,
+    "oos_max_dd": 15.237908936460679,
+    "is_return_pct": 7.058039183780018,
+    "is_sharpe": 1.9303175852495795,
+    "sharpe_degradation": -76.18416275810685,
+    "return_degradation": 52.41669705764422,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 17.223228251116307,
+        "train_sharpe": 4.637611699387815,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 11.084824211802825,
+        "train_sharpe": 3.422555729199928,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 11.084824211802825,
+        "train_sharpe": 3.422555729199929,
+        "test_return_pct": -9.311313007823482,
+        "test_sharpe": -5.165225680196407,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 1.6129327477807238,
+        "train_sharpe": 0.6373558637147055,
+        "test_return_pct": 3.9973611905721373,
+        "test_sharpe": 2.2321196202588984,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -4.307292607841172,
+        "train_sharpe": -2.0412413372816975,
+        "test_return_pct": 13.686070827564837,
+        "test_sharpe": 11.036019431111933,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 8.789279102664059,
+        "train_sharpe": 2.709234212680139,
+        "test_return_pct": -12.617452315797728,
+        "test_sharpe": -4.986683853843673,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 1.6271971897669029,
+        "train_sharpe": 0.4936146048144194,
+        "test_return_pct": 3.4377744616878774,
+        "test_sharpe": 9.829573670558906,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 9.34932036314767,
+        "train_sharpe": 2.160854180281397,
+        "test_return_pct": 27.675144176662126,
+        "test_sharpe": 14.261507821266159,
+        "test_trades": 8
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 3.400913876144477,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -76.18416275810685,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 30,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 30,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "signal_confirmation_delay",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": -0.1617739667422529,
+    "oos_sharpe": 0.6612348934992149,
+    "oos_win_rate": 43.75,
+    "oos_total_trades": 22,
+    "oos_max_dd": 15.427549872466209,
+    "is_return_pct": -10.226656756348333,
+    "is_sharpe": -3.191932747030073,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -5.965324028940922,
+        "train_sharpe": -1.6699894886541957,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -13.872666333601355,
+        "train_sharpe": -4.296846523730707,
+        "test_return_pct": -0.5374413044771427,
+        "test_sharpe": -3.1193368598122664,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -9.845194273183333,
+        "train_sharpe": -3.8690675153707033,
+        "test_return_pct": 3.486068291323372,
+        "test_sharpe": 8.694526269499791,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -6.664872033104093,
+        "train_sharpe": -2.8315635988357104,
+        "test_return_pct": -11.378583992605073,
+        "test_sharpe": -7.380244072523033,
+        "test_trades": 3
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -13.295756504556758,
+        "train_sharpe": -4.609895656580814,
+        "test_return_pct": 3.007922004580014,
+        "test_sharpe": 3.0113846163323865,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -4.691331243846617,
+        "train_sharpe": -1.2384172763916466,
+        "test_return_pct": -7.914098809663574,
+        "test_sharpe": -4.940819626627659,
+        "test_trades": 5
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -12.471621746505116,
+        "train_sharpe": -3.1947502286529943,
+        "test_return_pct": -0.22815828106788105,
+        "test_sharpe": -0.02728734668066629,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -15.006487887048477,
+        "train_sharpe": -3.8249316880238107,
+        "test_return_pct": 12.270100357972261,
+        "test_sharpe": 9.051656167805167,
+        "test_trades": 7
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.6612348934992149,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 22,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 22,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "signal_confirmation_delay",
+    "symbol": "ETHUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 0.12641260825123263,
+    "oos_sharpe": 0.7370922583102011,
+    "oos_win_rate": 47.916666666666664,
+    "oos_total_trades": 27,
+    "oos_max_dd": 18.581413078445117,
+    "is_return_pct": -4.995389040974974,
+    "is_sharpe": -0.9756491409356864,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 2.2687979005957275,
+        "train_sharpe": 0.6871707413680389,
+        "test_return_pct": 1.5492601749188726,
+        "test_sharpe": 1.3501524288249498,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -2.245301433951081,
+        "train_sharpe": -0.3958659073169744,
+        "test_return_pct": -0.12609094604251367,
+        "test_sharpe": -0.04538643707133361,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -8.251279262487698,
+        "train_sharpe": -1.9314654883782865,
+        "test_return_pct": 3.7696890541947146,
+        "test_sharpe": 4.4754887673308525,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -5.914440598536985,
+        "train_sharpe": -1.3122457069390747,
+        "test_return_pct": -7.329095751197183,
+        "test_sharpe": -2.596201012460453,
+        "test_trades": 5
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -7.762398306861814,
+        "train_sharpe": -1.6907302346908901,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -3.4021590691290475,
+        "train_sharpe": -0.727770612677659,
+        "test_return_pct": -5.519893855318987,
+        "test_sharpe": -1.8620963463255917,
+        "test_trades": 5
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -5.104115468431428,
+        "train_sharpe": -0.8926339025051013,
+        "test_return_pct": 2.0445684354513287,
+        "test_sharpe": 1.287579444523055,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -9.552216088997465,
+        "train_sharpe": -1.541652016345544,
+        "test_return_pct": 6.622863754003629,
+        "test_sharpe": 3.2872012216601294,
+        "test_trades": 6
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.7370922583102011,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 27,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 27,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "signal_confirmation_delay",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 4.87977300930836,
+    "oos_sharpe": 2.7168111607213534,
+    "oos_win_rate": 62.5,
+    "oos_total_trades": 31,
+    "oos_max_dd": 15.595878274328173,
+    "is_return_pct": 0.5431153545351413,
+    "is_sharpe": 0.22302578188690955,
+    "sharpe_degradation": -1118.1601327594385,
+    "return_degradation": -798.478190417764,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 12.606622409610555,
+        "train_sharpe": 2.2962067564811646,
+        "test_return_pct": 1.4193140457437403,
+        "test_sharpe": 0.9322982747172324,
+        "test_trades": 3
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 1.3537078475319322,
+        "train_sharpe": 0.40963484763258023,
+        "test_return_pct": -1.1694176999077535,
+        "test_sharpe": -2.285387901112327,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -8.020385550979281,
+        "train_sharpe": -1.5085460602286016,
+        "test_return_pct": 4.696927665796101,
+        "test_sharpe": 4.945457189346884,
+        "test_trades": 3
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.9319037451656914,
+        "train_sharpe": 0.34281333348295345,
+        "test_return_pct": -7.186040757927076,
+        "test_sharpe": -2.184423996163304,
+        "test_trades": 5
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.8033149457654147,
+        "train_sharpe": 0.8170114194183754,
+        "test_return_pct": 3.9599468911563602,
+        "test_sharpe": 4.728374444300963,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.613542161693549,
+        "train_sharpe": 0.941188987957059,
+        "test_return_pct": -7.08696341453675,
+        "test_sharpe": -3.5752763415430544,
+        "test_trades": 3
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -8.242270099741418,
+        "train_sharpe": -1.3859561480415692,
+        "test_return_pct": 18.072049042412946,
+        "test_sharpe": 7.7865957597435385,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -1.7015126227653128,
+        "train_sharpe": -0.12814688160668503,
+        "test_return_pct": 26.332368301729314,
+        "test_sharpe": 11.386851856480897,
+        "test_trades": 9
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 2.7168111607213534,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -1118.1601327594385,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 31,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 31,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "volume_divergence",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 0.6794243242146081,
+    "oos_sharpe": 1.950379807515091,
+    "oos_win_rate": 25.0,
+    "oos_total_trades": 5,
+    "oos_max_dd": 1.4102616418542675,
+    "is_return_pct": 1.8350094997972997,
+    "is_sharpe": 1.7947606104067395,
+    "sharpe_degradation": -8.67074952536897,
+    "return_degradation": 62.97434295083163,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 3.1883360991971497,
+        "test_sharpe": 7.31952358880307,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.1883360991971497,
+        "train_sharpe": 3.527390180167705,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.1883360991971497,
+        "train_sharpe": 3.527390180167705,
+        "test_return_pct": 0.2924731804700241,
+        "test_sharpe": 2.404005898966223,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.4901343076605555,
+        "train_sharpe": 3.710594876295133,
+        "test_return_pct": 1.9545853140496912,
+        "test_sharpe": 5.879508972351435,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 4.813269492323543,
+        "train_sharpe": 3.592709646623373,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      }
+    ],
+    "acceptance": {
+      "passed": false,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [
+        "enough_trades"
+      ],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 1.950379807515091,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -8.67074952536897,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 5,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": false
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 5,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "volume_divergence",
+    "symbol": "ETHUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": -0.30117619209893065,
+    "oos_sharpe": 0.22621072178339413,
+    "oos_win_rate": 31.25,
+    "oos_total_trades": 15,
+    "oos_max_dd": 17.056861442321516,
+    "is_return_pct": -2.350007930203362,
+    "is_sharpe": -0.1854987755650877,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.284424172273975,
+        "train_sharpe": 3.1787352823074255,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.284424172273975,
+        "train_sharpe": 3.1787352823074255,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.284424172273975,
+        "train_sharpe": 3.1787352823074255,
+        "test_return_pct": -0.5266531928598306,
+        "test_sharpe": -1.4478525121540602,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 2.267227578345319,
+        "train_sharpe": 1.3890996567279532,
+        "test_return_pct": -6.222271909413958,
+        "test_sharpe": -2.712528446895849,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -7.275245953280009,
+        "train_sharpe": -2.7601080805397347,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -7.275245953280009,
+        "train_sharpe": -2.7601080805397347,
+        "test_return_pct": -2.4015051208912883,
+        "test_sharpe": -2.7890565417617457,
+        "test_trades": 3
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -10.93829125589531,
+        "train_sharpe": -3.6285197389360717,
+        "test_return_pct": 3.7432549336595913,
+        "test_sharpe": 3.4490729204432813,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -11.431780374338814,
+        "train_sharpe": -3.2605598081553904,
+        "test_return_pct": 2.9977657527140398,
+        "test_sharpe": 5.310050354635527,
+        "test_trades": 2
+      }
+    ],
+    "acceptance": {
+      "passed": false,
+      "gates_passed": [
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [
+        "positive_oos"
+      ],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.22621072178339413,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "False"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 15,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 15,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "volume_divergence",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 2.087187224335037,
+    "oos_sharpe": 2.807804086857384,
+    "oos_win_rate": 45.83333333333333,
+    "oos_total_trades": 22,
+    "oos_max_dd": 12.978192245762566,
+    "is_return_pct": 5.773460279780065,
+    "is_sharpe": 1.6385433485791214,
+    "sharpe_degradation": -71.35976837550243,
+    "return_degradation": 63.84859125739848,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -1.4674278828380376,
+        "train_sharpe": -0.5985408591707041,
+        "test_return_pct": 9.04194631878776,
+        "test_sharpe": 8.784112734296734,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 7.44183439451659,
+        "train_sharpe": 2.45311260237993,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 7.44183439451659,
+        "train_sharpe": 2.45311260237993,
+        "test_return_pct": -8.766603167828361,
+        "test_sharpe": -5.489829969655279,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.997742191050365,
+        "train_sharpe": 1.3204582898051784,
+        "test_return_pct": 10.35632566601671,
+        "test_sharpe": 6.420164870532889,
+        "test_trades": 7
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 11.356686073245308,
+        "train_sharpe": 2.7304970208436314,
+        "test_return_pct": -1.3211691466193043,
+        "test_sharpe": -2.419025319727276,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 1.7749093825556155,
+        "train_sharpe": 0.5823497643267618,
+        "test_return_pct": 1.658899987591867,
+        "test_sharpe": 7.9628204771708555,
+        "test_trades": 1
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 3.463253341674481,
+        "train_sharpe": 1.0153657798796638,
+        "test_return_pct": 2.0282712787556374,
+        "test_sharpe": 3.53421347569762,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 12.178850343519606,
+        "train_sharpe": 3.1519915881885794,
+        "test_return_pct": 3.699826857975986,
+        "test_sharpe": 3.6699764265435286,
+        "test_trades": 4
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 2.807804086857384,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -71.35976837550243,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 22,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 22,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "eth_btc_ratio_confirmed",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 0.0,
+    "oos_sharpe": 0.0,
+    "oos_win_rate": 0.0,
+    "oos_total_trades": 0,
+    "oos_max_dd": 0.0,
+    "is_return_pct": 0.0,
+    "is_sharpe": 0.0,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.0,
+        "train_sharpe": 0.0,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      }
+    ],
+    "acceptance": {
+      "passed": false,
+      "gates_passed": [
+        "low_degradation",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [
+        "positive_oos",
+        "enough_trades"
+      ],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.0,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": false
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 0,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": false
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 0,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "eth_btc_ratio_confirmed",
+    "symbol": "ETHUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": -0.36773983790023507,
+    "oos_sharpe": 0.9750762952931459,
+    "oos_win_rate": 31.25,
+    "oos_total_trades": 16,
+    "oos_max_dd": 12.602554430588917,
+    "is_return_pct": -6.300516174877538,
+    "is_sharpe": -2.2206343722294593,
+    "sharpe_degradation": 0.0,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -0.600910159207342,
+        "train_sharpe": -0.2321103668212221,
+        "test_return_pct": 3.110848564782136,
+        "test_sharpe": 6.272412505259494,
+        "test_trades": 2
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 2.491245000511481,
+        "train_sharpe": 1.1450191828187746,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 2.491245000511481,
+        "train_sharpe": 1.1450191828187746,
+        "test_return_pct": -3.7907135039422246,
+        "test_sharpe": -2.8315712163987223,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.4062489203781297,
+        "train_sharpe": 0.2442709430933556,
+        "test_return_pct": -2.008459767976183,
+        "test_sharpe": -0.8760425402002249,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -9.533701706141237,
+        "train_sharpe": -3.617077143465395,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -12.263064892710208,
+        "train_sharpe": -5.145256044616579,
+        "test_return_pct": -9.670362890189335,
+        "test_sharpe": -5.0838222777390785,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -19.579702343744827,
+        "train_sharpe": -6.375475084087212,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -13.815489218617785,
+        "train_sharpe": -4.929465647576171,
+        "test_return_pct": 9.416768894123726,
+        "test_sharpe": 10.319633891423699,
+        "test_trades": 2
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 0.9750762952931459,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": 0.0,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": true
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 16,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 16,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  },
+  {
+    "strategy_name": "eth_btc_ratio_confirmed",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "total_folds": 8,
+    "oos_return_pct": 1.0993194864608111,
+    "oos_sharpe": 1.9725201206571599,
+    "oos_win_rate": 52.08333333333333,
+    "oos_total_trades": 20,
+    "oos_max_dd": 14.479598150510572,
+    "is_return_pct": -0.07003023146379733,
+    "is_sharpe": 0.38346392485753034,
+    "sharpe_degradation": -414.3952254152766,
+    "return_degradation": 0.0,
+    "folds": [
+      {
+        "fold_id": 0,
+        "train_start": "2025-06-24T17:00:00+00:00",
+        "train_end": "2025-08-23T16:00:00+00:00",
+        "test_start": "2025-08-23T17:00:00+00:00",
+        "test_end": "2025-09-06T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.250940317088553,
+        "train_sharpe": 3.0220441738439305,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2025-07-08T17:00:00+00:00",
+        "train_end": "2025-09-06T16:00:00+00:00",
+        "test_start": "2025-09-06T17:00:00+00:00",
+        "test_end": "2025-09-20T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 10.37598734854817,
+        "train_sharpe": 4.335182881738682,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2025-07-22T17:00:00+00:00",
+        "train_end": "2025-09-20T16:00:00+00:00",
+        "test_start": "2025-09-20T17:00:00+00:00",
+        "test_end": "2025-10-04T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 5.250940317088553,
+        "train_sharpe": 3.0220441738439305,
+        "test_return_pct": -7.564679665977364,
+        "test_sharpe": -4.15356791493279,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2025-08-05T17:00:00+00:00",
+        "train_end": "2025-10-04T16:00:00+00:00",
+        "test_start": "2025-10-04T17:00:00+00:00",
+        "test_end": "2025-10-18T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -6.967234339017778,
+        "train_sharpe": -3.1472343353154906,
+        "test_return_pct": 8.728661906256658,
+        "test_sharpe": 4.733034453598167,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2025-08-19T17:00:00+00:00",
+        "train_end": "2025-10-18T16:00:00+00:00",
+        "test_start": "2025-10-18T17:00:00+00:00",
+        "test_end": "2025-11-01T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -7.1248330428294135,
+        "train_sharpe": -2.6501807952815595,
+        "test_return_pct": 6.773116188747736,
+        "test_sharpe": 10.218060492996138,
+        "test_trades": 4
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2025-09-02T17:00:00+00:00",
+        "train_end": "2025-11-01T16:00:00+00:00",
+        "test_start": "2025-11-01T17:00:00+00:00",
+        "test_end": "2025-11-15T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -0.8342900743268001,
+        "train_sharpe": -0.1850618956166241,
+        "test_return_pct": -7.591958223194833,
+        "test_sharpe": -3.0612499736857903,
+        "test_trades": 6
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2025-09-16T17:00:00+00:00",
+        "train_end": "2025-11-15T16:00:00+00:00",
+        "test_start": "2025-11-15T17:00:00+00:00",
+        "test_end": "2025-11-29T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": -6.7477133350435,
+        "train_sharpe": -1.5061591513874184,
+        "test_return_pct": 0.0,
+        "test_sharpe": 0.0,
+        "test_trades": 0
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2025-09-30T17:00:00+00:00",
+        "train_end": "2025-11-29T16:00:00+00:00",
+        "test_start": "2025-11-29T17:00:00+00:00",
+        "test_end": "2025-12-13T16:00:00+00:00",
+        "train_samples": 1440,
+        "test_samples": 336,
+        "train_return_pct": 0.23596095678183698,
+        "train_sharpe": 0.1770763470347914,
+        "test_return_pct": 8.449415685854293,
+        "test_sharpe": 8.043883907281554,
+        "test_trades": 2
+      }
+    ],
+    "acceptance": {
+      "passed": true,
+      "gates_passed": [
+        "positive_oos",
+        "low_degradation",
+        "enough_trades",
+        "not_too_many_trades"
+      ],
+      "gates_failed": [],
+      "details": {
+        "positive_oos": {
+          "metric": "oos_sharpe",
+          "value": 1.9725201206571599,
+          "threshold": 0.5,
+          "operator": "gt",
+          "passed": "True"
+        },
+        "low_degradation": {
+          "metric": "sharpe_degradation",
+          "value": -414.3952254152766,
+          "threshold": 50,
+          "operator": "lt",
+          "passed": "True"
+        },
+        "enough_trades": {
+          "metric": "oos_total_trades",
+          "value": 20,
+          "threshold": 5,
+          "operator": "gt",
+          "passed": true
+        },
+        "not_too_many_trades": {
+          "metric": "oos_total_trades",
+          "value": 20,
+          "threshold": 600,
+          "operator": "lt",
+          "passed": true
+        }
+      }
+    }
+  }
+]

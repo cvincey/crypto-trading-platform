@@ -1434,3 +1434,176 @@ class MLClassifierConservativeStrategy(BaseStrategy):
                 in_position = False
 
         return signals
+
+
+# =============================================================================
+# ML Classifier V5: Simplified for Robustness
+# =============================================================================
+
+
+@strategy_registry.register(
+    "ml_classifier_v5",
+    description="Simplified ML Classifier - fewer features, stronger regularization, longer horizon",
+)
+class MLClassifierV5Strategy(BaseStrategy):
+    """
+    Simplified ML Classifier designed to avoid overfitting:
+    
+    Based on research findings from walk-forward validation:
+    - Only top 3 features: volume_momentum, adx, rsi_14
+    - Longer prediction horizon (10 bars) to filter noise
+    - Stronger regularization (max_depth=3, min_samples_leaf=50)
+    - Fewer trees (n_estimators=50)
+    - Larger train window (90 days)
+    
+    Key principle: Simpler models generalize better to unseen time periods.
+    """
+
+    name = "ml_classifier_v5"
+
+    def _setup(
+        self,
+        features: list[str] | None = None,
+        lookback: int = 100,
+        train_size: float = 0.8,
+        prediction_horizon: int = 10,  # Longer horizon to filter noise
+        buy_threshold: float = 0.55,
+        sell_threshold: float = 0.45,
+        n_estimators: int = 50,        # Fewer trees
+        max_depth: int = 3,            # Shallower trees
+        min_samples_leaf: int = 50,    # More samples per leaf
+        learning_rate: float = 0.1,
+        min_return_threshold: float = 0.02,  # Only predict moves > 2%
+        **kwargs,
+    ) -> None:
+        # Only use top 3 features from feature importance analysis
+        self.features = features or ["volume_momentum", "adx", "rsi_14"]
+        self.lookback = lookback
+        self.train_size = train_size
+        self.prediction_horizon = prediction_horizon
+        self.buy_threshold = buy_threshold
+        self.sell_threshold = sell_threshold
+        self.min_return_threshold = min_return_threshold
+
+        # Use GradientBoosting with strong regularization
+        self._model = GradientBoostingClassifier(
+            n_estimators=n_estimators,
+            max_depth=max_depth,
+            min_samples_leaf=min_samples_leaf,
+            learning_rate=learning_rate,
+            subsample=0.8,  # Additional regularization
+            random_state=42,
+        )
+        self._scaler = StandardScaler()
+        self._is_trained = False
+        self._feature_importance = None
+
+    def _compute_features(self, candles: pd.DataFrame) -> pd.DataFrame:
+        """Compute minimal feature set."""
+        features_df = pd.DataFrame(index=candles.index)
+
+        for feature in self.features:
+            try:
+                if feature == "volume_momentum":
+                    features_df[feature] = indicator_registry.compute("volume_momentum", candles)
+                elif feature == "adx":
+                    features_df[feature] = indicator_registry.compute("adx", candles)
+                elif feature.startswith("rsi_"):
+                    period = int(feature.split("_")[1])
+                    features_df[feature] = indicator_registry.compute("rsi", candles, period=period)
+                elif feature.startswith("sma_"):
+                    period = int(feature.split("_")[1])
+                    raw = indicator_registry.compute("sma", candles, period=period)
+                    features_df[feature] = (candles["close"] - raw) / raw * 100
+                elif feature.startswith("ema_"):
+                    period = int(feature.split("_")[1])
+                    raw = indicator_registry.compute("ema", candles, period=period)
+                    features_df[feature] = (candles["close"] - raw) / raw * 100
+                elif feature == "macd":
+                    macd_df = indicator_registry.compute("macd", candles)
+                    features_df["macd_hist"] = macd_df["histogram"]
+                elif feature == "atr_ratio":
+                    features_df[feature] = indicator_registry.compute("atr_ratio", candles)
+                elif feature == "bb_width":
+                    features_df[feature] = indicator_registry.compute("bb_width", candles)
+                else:
+                    features_df[feature] = indicator_registry.compute(feature, candles)
+            except Exception as e:
+                logger.warning(f"Could not compute feature {feature}: {e}")
+
+        return features_df
+
+    def _compute_target(self, candles: pd.DataFrame) -> pd.Series:
+        """Compute target with minimum return threshold."""
+        future_returns = candles["close"].pct_change(self.prediction_horizon).shift(
+            -self.prediction_horizon
+        )
+        # Only count as positive if return > threshold (filters noise)
+        return (future_returns > self.min_return_threshold).astype(int)
+
+    def _train(self, candles: pd.DataFrame) -> None:
+        """Train the simplified model."""
+        features_df = self._compute_features(candles)
+        target = self._compute_target(candles)
+
+        valid_idx = features_df.dropna().index.intersection(target.dropna().index)
+        X = features_df.loc[valid_idx]
+        y = target.loc[valid_idx]
+
+        split_idx = int(len(X) * self.train_size)
+        X_train = X.iloc[:split_idx]
+        y_train = y.iloc[:split_idx]
+
+        X_train_scaled = self._scaler.fit_transform(X_train)
+        
+        # Use balanced class weights
+        from sklearn.utils.class_weight import compute_sample_weight
+        sample_weights = compute_sample_weight("balanced", y_train)
+        self._model.fit(X_train_scaled, y_train, sample_weight=sample_weights)
+        
+        self._is_trained = True
+
+        # Store feature importance
+        if hasattr(self._model, "feature_importances_"):
+            self._feature_importance = dict(zip(X.columns, self._model.feature_importances_))
+
+        logger.info(
+            f"ML v5 (simplified) trained on {len(X_train)} samples, "
+            f"features: {self.features}, horizon: {self.prediction_horizon}"
+        )
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        self.validate_candles(candles)
+
+        if not self._is_trained:
+            self._train(candles)
+
+        features_df = self._compute_features(candles)
+        valid_idx = features_df.dropna().index
+
+        signals = self.create_signal_series(candles.index)
+
+        if len(valid_idx) == 0:
+            return signals
+
+        X = features_df.loc[valid_idx]
+        X_scaled = self._scaler.transform(X)
+
+        probas = self._model.predict_proba(X_scaled)[:, 1]
+
+        in_position = False
+        for i, idx in enumerate(valid_idx):
+            prob_up = probas[i]
+
+            if not in_position and prob_up > self.buy_threshold:
+                signals.loc[idx] = Signal.BUY
+                in_position = True
+            elif in_position and prob_up < self.sell_threshold:
+                signals.loc[idx] = Signal.SELL
+                in_position = False
+
+        return signals
+
+    def get_feature_importance(self) -> dict[str, float] | None:
+        """Get feature importance after training."""
+        return self._feature_importance

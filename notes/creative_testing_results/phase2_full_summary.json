@@ -1,0 +1,369 @@
+{
+  "phase": "phase2_full",
+  "timestamp": "2025-12-21T17:08:39.902631",
+  "bh_metrics": {
+    "BTCUSDT": {
+      "sharpe": -0.742711615651054,
+      "return_pct": -16.42673796578842,
+      "max_dd": 34.76147116470153
+    },
+    "ETHUSDT": {
+      "sharpe": 0.9189405592077374,
+      "return_pct": 21.062803898032676,
+      "max_dd": 45.66524822695043
+    },
+    "SOLUSDT": {
+      "sharpe": -0.0003509992716852668,
+      "return_pct": -13.135359116022105,
+      "max_dd": 53.37337894820572
+    }
+  },
+  "strategy_summary": {
+    "eth_btc_ratio_reversion": {
+      "avg_oos_sharpe": 2.5259577565910316,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 23.333333333333332,
+      "pass_rate": 66.66666666666666,
+      "n_validations": 3,
+      "status": "promising"
+    },
+    "signal_confirmation_delay": {
+      "avg_oos_sharpe": 1.3717127708435897,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 26.666666666666668,
+      "pass_rate": 100.0,
+      "n_validations": 3,
+      "status": "promising"
+    },
+    "volume_divergence": {
+      "avg_oos_sharpe": 1.6614648720519565,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 14.0,
+      "pass_rate": 33.33333333333333,
+      "n_validations": 3,
+      "status": "potential"
+    },
+    "eth_btc_ratio_confirmed": {
+      "avg_oos_sharpe": 0.9825321386501019,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 12.0,
+      "pass_rate": 66.66666666666666,
+      "n_validations": 3,
+      "status": "promising"
+    }
+  },
+  "optimization_results": {
+    "eth_btc_ratio_reversion": {
+      "best_params": {
+        "lookback": 168,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72
+      },
+      "best_sharpe": 4.8264861418849785,
+      "all_results": [
+        {
+          "params": {
+            "lookback": 168,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 72
+          },
+          "avg_oos_sharpe": 4.8264861418849785,
+          "sharpes": [
+            0.0,
+            8.961158867181071,
+            5.518299558473865
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 48
+          },
+          "avg_oos_sharpe": 4.769846853064581,
+          "sharpes": [
+            0.0,
+            8.888199507360381,
+            5.421341051833361
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 72
+          },
+          "avg_oos_sharpe": 4.750926601364931,
+          "sharpes": [
+            0.0,
+            8.752224750434356,
+            5.500555053660437
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 96
+          },
+          "avg_oos_sharpe": 4.738091032259721,
+          "sharpes": [
+            0.0,
+            8.78403312601161,
+            5.430239970767554
+          ]
+        },
+        {
+          "params": {
+            "lookback": 168,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 96
+          },
+          "avg_oos_sharpe": 4.660678162424667,
+          "sharpes": [
+            0.0,
+            8.670853479513074,
+            5.311181007760927
+          ]
+        }
+      ]
+    },
+    "signal_confirmation_delay": {
+      "best_params": {
+        "confirmation_delay": 4,
+        "base_strategy": "rsi_mean_reversion"
+      },
+      "best_sharpe": 1.3717127708435897,
+      "all_results": [
+        {
+          "params": {
+            "confirmation_delay": 4,
+            "base_strategy": "rsi_mean_reversion"
+          },
+          "avg_oos_sharpe": 1.3717127708435897,
+          "sharpes": [
+            0.6612348934992149,
+            0.7370922583102011,
+            2.7168111607213534
+          ]
+        },
+        {
+          "params": {
+            "confirmation_delay": 6,
+            "base_strategy": "rsi_mean_reversion"
+          },
+          "avg_oos_sharpe": 1.0113036410204022,
+          "sharpes": [
+            0.8472012062664003,
+            1.0770649310657765,
+            1.1096447857290295
+          ]
+        },
+        {
+          "params": {
+            "confirmation_delay": 5,
+            "base_strategy": "rsi_mean_reversion"
+          },
+          "avg_oos_sharpe": 0.987475136372519,
+          "sharpes": [
+            0.10295110645734051,
+            0.5552029828875109,
+            2.304271319772706
+          ]
+        },
+        {
+          "params": {
+            "confirmation_delay": 2,
+            "base_strategy": "rsi_mean_reversion"
+          },
+          "avg_oos_sharpe": 0.7645844667187408,
+          "sharpes": [
+            0.49418808423386074,
+            -0.031240379581816274,
+            1.830805695504178
+          ]
+        },
+        {
+          "params": {
+            "confirmation_delay": 3,
+            "base_strategy": "rsi_mean_reversion"
+          },
+          "avg_oos_sharpe": 0.14394901945923536,
+          "sharpes": [
+            -0.7375655360319018,
+            -0.3618962991388009,
+            1.5313088935484087
+          ]
+        }
+      ]
+    },
+    "volume_divergence": {
+      "best_params": {
+        "price_lookback": 48,
+        "volume_lookback": 48,
+        "divergence_threshold": 0.2
+      },
+      "best_sharpe": 1.6614648720519565,
+      "all_results": [
+        {
+          "params": {
+            "price_lookback": 48,
+            "volume_lookback": 48,
+            "divergence_threshold": 0.2
+          },
+          "avg_oos_sharpe": 1.6614648720519565,
+          "sharpes": [
+            1.950379807515091,
+            0.22621072178339413,
+            2.807804086857384
+          ]
+        },
+        {
+          "params": {
+            "price_lookback": 48,
+            "volume_lookback": 48,
+            "divergence_threshold": 0.3
+          },
+          "avg_oos_sharpe": 1.6614648720519565,
+          "sharpes": [
+            1.950379807515091,
+            0.22621072178339413,
+            2.807804086857384
+          ]
+        },
+        {
+          "params": {
+            "price_lookback": 48,
+            "volume_lookback": 48,
+            "divergence_threshold": 0.4
+          },
+          "avg_oos_sharpe": 1.6614648720519565,
+          "sharpes": [
+            1.950379807515091,
+            0.22621072178339413,
+            2.807804086857384
+          ]
+        },
+        {
+          "params": {
+            "price_lookback": 48,
+            "volume_lookback": 24,
+            "divergence_threshold": 0.2
+          },
+          "avg_oos_sharpe": 1.5349463510001318,
+          "sharpes": [
+            2.0173128760250583,
+            1.292346132787265,
+            1.2951800441880725
+          ]
+        },
+        {
+          "params": {
+            "price_lookback": 48,
+            "volume_lookback": 24,
+            "divergence_threshold": 0.3
+          },
+          "avg_oos_sharpe": 1.5349463510001318,
+          "sharpes": [
+            2.0173128760250583,
+            1.292346132787265,
+            1.2951800441880725
+          ]
+        }
+      ]
+    },
+    "eth_btc_ratio_confirmed": {
+      "best_params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2
+      },
+      "best_sharpe": 4.099067106857935,
+      "all_results": [
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 72,
+            "confirmation_delay": 2
+          },
+          "avg_oos_sharpe": 4.099067106857935,
+          "sharpes": [
+            0.0,
+            6.78264909359059,
+            5.5145522269832155
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 96,
+            "confirmation_delay": 2
+          },
+          "avg_oos_sharpe": 4.083993064895711,
+          "sharpes": [
+            0.0,
+            6.666581688218297,
+            5.585397506468835
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.7,
+            "max_hold_hours": 48,
+            "confirmation_delay": 2
+          },
+          "avg_oos_sharpe": 4.048598498353783,
+          "sharpes": [
+            0.0,
+            6.7356104074730725,
+            5.410185087588276
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.5,
+            "max_hold_hours": 72,
+            "confirmation_delay": 2
+          },
+          "avg_oos_sharpe": 3.751524239519266,
+          "sharpes": [
+            0.0,
+            6.180057255241097,
+            5.0745154633167004
+          ]
+        },
+        {
+          "params": {
+            "lookback": 120,
+            "entry_threshold": -1.5,
+            "exit_threshold": -0.5,
+            "max_hold_hours": 96,
+            "confirmation_delay": 2
+          },
+          "avg_oos_sharpe": 3.7331830180865055,
+          "sharpes": [
+            0.0,
+            6.087281555930077,
+            5.112267498329441
+          ]
+        }
+      ]
+    }
+  }
+}

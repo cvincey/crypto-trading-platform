@@ -1,0 +1,156 @@
+{
+  "phase": "phase1_quick",
+  "timestamp": "2025-12-21T15:32:42.403100",
+  "bh_metrics": {
+    "BTCUSDT": {
+      "sharpe": -0.7622650796299593,
+      "return_pct": -16.744728194722526,
+      "max_dd": 34.76147116470153
+    },
+    "ETHUSDT": {
+      "sharpe": 0.9430956311709447,
+      "return_pct": 22.033550715721262,
+      "max_dd": 45.6652482269504
+    },
+    "SOLUSDT": {
+      "sharpe": 0.009231259505460988,
+      "return_pct": -12.840412999792116,
+      "max_dd": 53.373378948205755
+    }
+  },
+  "strategy_summary": {
+    "eth_btc_ratio_reversion": {
+      "avg_oos_sharpe": 2.5259577565910316,
+      "beats_bh_rate": 100.0,
+      "trades_per_month": 3.888888888888889,
+      "pass_rate": 66.66666666666666,
+      "status": "promising"
+    },
+    "volume_divergence": {
+      "avg_oos_sharpe": 1.512201034537901,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 2.2777777777777777,
+      "pass_rate": 33.33333333333333,
+      "status": "potential"
+    },
+    "signal_confirmation_delay": {
+      "avg_oos_sharpe": 1.3428752410708569,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 4.444444444444445,
+      "pass_rate": 100.0,
+      "status": "promising"
+    },
+    "strategy_momentum": {
+      "avg_oos_sharpe": 0.5577051917188798,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 11.055555555555555,
+      "pass_rate": 66.66666666666666,
+      "status": "potential"
+    },
+    "buy_sell_imbalance": {
+      "avg_oos_sharpe": 0.19930989294139956,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.2777777777777778,
+      "pass_rate": 0.0,
+      "status": "potential"
+    },
+    "correlation_breakdown": {
+      "avg_oos_sharpe": 0.0,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.0,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "funding_rate_carry": {
+      "avg_oos_sharpe": 0.0,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.0,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "weekend_effect": {
+      "avg_oos_sharpe": 0.0,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.0,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "funding_rate_fade": {
+      "avg_oos_sharpe": -0.00315434617986131,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.05555555555555555,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "volume_breakout_confirmation": {
+      "avg_oos_sharpe": -0.024954118196049386,
+      "beats_bh_rate": 66.66666666666666,
+      "trades_per_month": 4.5,
+      "pass_rate": 33.33333333333333,
+      "status": "fails"
+    },
+    "regime_gate": {
+      "avg_oos_sharpe": -0.1531594145938496,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.2777777777777778,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "btc_volatility_filter": {
+      "avg_oos_sharpe": -0.4676276620461414,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.3333333333333333,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "weekly_momentum": {
+      "avg_oos_sharpe": -0.48446093734900647,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.8333333333333334,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "month_end_rebalancing": {
+      "avg_oos_sharpe": -0.8248317393819752,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.9444444444444445,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "hour_of_day_filter": {
+      "avg_oos_sharpe": -0.8795185279776799,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 0.611111111111111,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "btc_lead_alt_follow": {
+      "avg_oos_sharpe": -1.045921430556784,
+      "beats_bh_rate": 33.33333333333333,
+      "trades_per_month": 10.0,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "signal_strength_filter": {
+      "avg_oos_sharpe": -1.189423363355389,
+      "beats_bh_rate": 0.0,
+      "trades_per_month": 4.444444444444445,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "sector_momentum_rotation": {
+      "avg_oos_sharpe": -1.8387137401763844,
+      "beats_bh_rate": 0.0,
+      "trades_per_month": 1.3333333333333333,
+      "pass_rate": 0.0,
+      "status": "fails"
+    },
+    "drawdown_pause": {
+      "avg_oos_sharpe": -7.7185825848536,
+      "beats_bh_rate": 0.0,
+      "trades_per_month": 50.888888888888886,
+      "pass_rate": 0.0,
+      "status": "fails"
+    }
+  }
+}

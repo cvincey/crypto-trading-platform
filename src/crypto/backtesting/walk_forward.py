@@ -1,10 +1,11 @@
 """Walk-forward validation engine for realistic backtesting."""
 
 import logging
+import operator
 from dataclasses import dataclass, field
 from datetime import datetime
 from decimal import Decimal
-from typing import Any
+from typing import Any, Callable
 
 import numpy as np
 import pandas as pd
@@ -12,12 +13,154 @@ import pandas as pd
 from crypto.backtesting.engine import BacktestEngine, BacktestResult
 from crypto.backtesting.metrics import PerformanceMetrics, calculate_metrics
 from crypto.backtesting.portfolio import Portfolio
-from crypto.config.schemas import WalkForwardConfig
+from crypto.config.schemas import WalkForwardConfig, ValidationGateCriterion
 from crypto.core.types import Signal
 from crypto.strategies.base import Strategy
 from crypto.strategies.registry import strategy_registry
 
 logger = logging.getLogger(__name__)
+
+
+# =============================================================================
+# Acceptance Gate Logic
+# =============================================================================
+
+
+OPERATORS: dict[str, Callable[[float, float], bool]] = {
+    "gt": operator.gt,
+    "lt": operator.lt,
+    "eq": operator.eq,
+    "gte": operator.ge,
+    "lte": operator.le,
+}
+
+
+@dataclass
+class AcceptanceGate:
+    """Single acceptance gate criterion."""
+    
+    name: str
+    metric: str
+    operator: str  # 'gt', 'lt', 'eq', 'gte', 'lte'
+    threshold: float
+    
+    def check(self, value: float) -> bool:
+        """Check if the value passes this gate."""
+        op_func = OPERATORS.get(self.operator)
+        if op_func is None:
+            raise ValueError(f"Unknown operator: {self.operator}")
+        return op_func(value, self.threshold)
+    
+    @classmethod
+    def from_config(cls, config: ValidationGateCriterion) -> "AcceptanceGate":
+        """Create from config object."""
+        return cls(
+            name=config.name,
+            metric=config.metric,
+            operator=config.operator,
+            threshold=config.threshold,
+        )
+
+
+@dataclass
+class AcceptanceResult:
+    """Result of checking acceptance gates."""
+    
+    passed: bool
+    gates_passed: list[str] = field(default_factory=list)
+    gates_failed: list[str] = field(default_factory=list)
+    details: dict[str, dict[str, Any]] = field(default_factory=dict)
+    
+    def to_dict(self) -> dict[str, Any]:
+        """Convert to dictionary."""
+        return {
+            "passed": self.passed,
+            "gates_passed": self.gates_passed,
+            "gates_failed": self.gates_failed,
+            "details": self.details,
+        }
+
+
+def check_acceptance_gates(
+    result: "WalkForwardResult",
+    gates: list[AcceptanceGate],
+    reject_all_negative_folds: bool = True,
+) -> AcceptanceResult:
+    """
+    Check if a walk-forward result passes all acceptance gates.
+    
+    Args:
+        result: WalkForwardResult to check
+        gates: List of AcceptanceGate criteria
+        reject_all_negative_folds: If True, reject if ALL folds have negative OOS Sharpe
+        
+    Returns:
+        AcceptanceResult with pass/fail status and details
+    """
+    gates_passed = []
+    gates_failed = []
+    details = {}
+    
+    # Get metrics from result
+    metrics = {
+        "oos_sharpe": result.oos_sharpe,
+        "oos_return_pct": result.oos_return_pct,
+        "oos_win_rate": result.oos_win_rate,
+        "oos_total_trades": result.oos_total_trades,
+        "oos_max_dd": result.oos_max_dd,
+        "is_sharpe": result.is_sharpe,
+        "sharpe_degradation": result.sharpe_degradation,
+        "return_degradation": result.return_degradation,
+    }
+    
+    for gate in gates:
+        value = metrics.get(gate.metric)
+        if value is None:
+            logger.warning(f"Metric '{gate.metric}' not found in result")
+            gates_failed.append(gate.name)
+            details[gate.name] = {
+                "metric": gate.metric,
+                "value": None,
+                "threshold": gate.threshold,
+                "operator": gate.operator,
+                "passed": False,
+                "reason": "metric not found",
+            }
+            continue
+        
+        passed = gate.check(value)
+        if passed:
+            gates_passed.append(gate.name)
+        else:
+            gates_failed.append(gate.name)
+        
+        details[gate.name] = {
+            "metric": gate.metric,
+            "value": value,
+            "threshold": gate.threshold,
+            "operator": gate.operator,
+            "passed": passed,
+        }
+    
+    # Check fail-safe: all folds negative
+    all_folds_negative = all(f.test_sharpe < 0 for f in result.folds) if result.folds else True
+    if reject_all_negative_folds and all_folds_negative:
+        gates_failed.append("all_folds_positive")
+        details["all_folds_positive"] = {
+            "metric": "fold_sharpe",
+            "value": "all negative",
+            "threshold": "> 0 for at least one fold",
+            "passed": False,
+        }
+    
+    overall_passed = len(gates_failed) == 0
+    
+    return AcceptanceResult(
+        passed=overall_passed,
+        gates_passed=gates_passed,
+        gates_failed=gates_failed,
+        details=details,
+    )
 
 
 @dataclass
@@ -77,9 +220,30 @@ class WalkForwardResult:
     sharpe_degradation: float = 0.0  # How much Sharpe drops OOS
     return_degradation: float = 0.0  # How much return drops OOS
     
+    # Acceptance gate result (populated after checking)
+    acceptance_result: AcceptanceResult | None = None
+    
+    def check_acceptance(
+        self,
+        gates: list[AcceptanceGate],
+        reject_all_negative_folds: bool = True,
+    ) -> AcceptanceResult:
+        """Check if this result passes acceptance gates."""
+        self.acceptance_result = check_acceptance_gates(
+            self, gates, reject_all_negative_folds
+        )
+        return self.acceptance_result
+    
+    @property
+    def passed_validation(self) -> bool:
+        """Return True if passed acceptance gates (or not yet checked)."""
+        if self.acceptance_result is None:
+            return True  # Not checked yet
+        return self.acceptance_result.passed
+    
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
-        return {
+        result = {
             "strategy_name": self.strategy_name,
             "symbol": self.symbol,
             "interval": self.interval,
@@ -114,6 +278,11 @@ class WalkForwardResult:
                 for f in self.folds
             ],
         }
+        
+        if self.acceptance_result is not None:
+            result["acceptance"] = self.acceptance_result.to_dict()
+        
+        return result
 
 
 class WalkForwardEngine:
@@ -176,6 +345,8 @@ class WalkForwardEngine:
         symbol: str = "UNKNOWN",
         interval: str = "1h",
         strategy_params: dict[str, Any] | None = None,
+        reference_data: dict[str, pd.DataFrame] | None = None,
+        funding_data: dict[str, pd.Series] | None = None,
     ) -> WalkForwardResult:
         """
         Run walk-forward validation on a strategy.
@@ -186,10 +357,15 @@ class WalkForwardEngine:
             symbol: Trading pair symbol
             interval: Candle interval
             strategy_params: Optional parameter overrides
+            reference_data: Dict of reference symbol candles for cross-symbol strategies
+            funding_data: Dict of funding rate series for alternative data strategies
             
         Returns:
             WalkForwardResult with aggregated metrics
         """
+        self._reference_data = reference_data or {}
+        self._funding_data = funding_data or {}
+        self._current_symbol = symbol
         if len(candles) < self.train_window + self.test_window:
             raise ValueError(
                 f"Insufficient data: {len(candles)} bars, "
@@ -241,6 +417,9 @@ class WalkForwardEngine:
             try:
                 # Create fresh strategy for this fold
                 strategy = strategy_registry.create(strategy_name, **(strategy_params or {}))
+                
+                # Set up reference data for cross-symbol strategies
+                self._setup_reference_data(strategy)
 
                 # Train on train data (strategy trains internally)
                 # Run backtest on train data to get in-sample metrics
@@ -268,6 +447,10 @@ class WalkForwardEngine:
                 
                 # Get signals for combined data (strategy trains on first portion)
                 test_strategy = strategy_registry.create(strategy_name, **(strategy_params or {}))
+                
+                # Set up reference data for cross-symbol strategies
+                self._setup_reference_data(test_strategy)
+                
                 all_signals = test_strategy.generate_signals(combined)
                 
                 # Extract only test period signals
@@ -335,6 +518,34 @@ class WalkForwardEngine:
         )
 
         return result
+
+    def _setup_reference_data(self, strategy: Strategy) -> None:
+        """
+        Set up reference data for cross-symbol and alternative data strategies.
+        
+        Args:
+            strategy: Strategy instance to set up
+        """
+        # Check if strategy is a cross-symbol strategy
+        try:
+            from crypto.strategies.cross_symbol_base import CrossSymbolBaseStrategy
+            
+            if isinstance(strategy, CrossSymbolBaseStrategy) and self._reference_data:
+                for symbol, candles in self._reference_data.items():
+                    strategy.set_reference_data(symbol, candles)
+        except ImportError:
+            pass  # Cross-symbol base not available
+        
+        # Check if strategy is an alternative data strategy
+        try:
+            from crypto.strategies.alternative_data_strategies import AlternativeDataBaseStrategy
+            
+            if isinstance(strategy, AlternativeDataBaseStrategy) and self._funding_data:
+                # Get funding data for the current symbol being tested
+                if hasattr(self, '_current_symbol') and self._current_symbol in self._funding_data:
+                    strategy.set_funding_data(self._funding_data[self._current_symbol])
+        except ImportError:
+            pass  # Alternative data strategies not available
 
     def _run_with_signals(
         self,

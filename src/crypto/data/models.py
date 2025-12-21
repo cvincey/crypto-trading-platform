@@ -222,6 +222,96 @@ class BacktestResultModel(Base):
     )
 
 
+class FundingRateModel(Base):
+    """
+    Funding rate data for perpetual futures.
+    
+    Binance funding rates are paid every 8 hours.
+    Positive rate = longs pay shorts.
+    Negative rate = shorts pay longs.
+    """
+
+    __tablename__ = "funding_rates"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+
+    # Identification
+    symbol: Mapped[str] = mapped_column(String(20), nullable=False)
+    funding_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    # Funding rate data
+    funding_rate: Mapped[Decimal] = mapped_column(Numeric(20, 10), nullable=False)
+    
+    # Optional: mark price at funding time
+    mark_price: Mapped[Decimal | None] = mapped_column(Numeric(20, 8))
+
+    # Metadata
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=text("CURRENT_TIMESTAMP"),
+    )
+
+    __table_args__ = (
+        UniqueConstraint("symbol", "funding_time", name="uq_funding_rate"),
+        Index("ix_funding_rates_symbol_time", "symbol", "funding_time"),
+        Index("ix_funding_rates_time", "funding_time"),
+    )
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert to dictionary."""
+        return {
+            "id": self.id,
+            "symbol": self.symbol,
+            "funding_time": self.funding_time,
+            "funding_rate": self.funding_rate,
+            "mark_price": self.mark_price,
+        }
+
+
+class OpenInterestModel(Base):
+    """
+    Open interest data for futures contracts.
+    
+    Open interest = total number of outstanding derivative contracts.
+    Increasing OI with rising price = bullish confirmation.
+    Decreasing OI with rising price = weak rally (distribution).
+    """
+
+    __tablename__ = "open_interest"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+
+    # Identification
+    symbol: Mapped[str] = mapped_column(String(20), nullable=False)
+    timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    # Open interest data
+    open_interest: Mapped[Decimal] = mapped_column(Numeric(30, 8), nullable=False)
+    open_interest_value: Mapped[Decimal | None] = mapped_column(Numeric(30, 8))  # In quote currency
+
+    # Metadata
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=text("CURRENT_TIMESTAMP"),
+    )
+
+    __table_args__ = (
+        UniqueConstraint("symbol", "timestamp", name="uq_open_interest"),
+        Index("ix_open_interest_symbol_time", "symbol", "timestamp"),
+        Index("ix_open_interest_time", "timestamp"),
+    )
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert to dictionary."""
+        return {
+            "id": self.id,
+            "symbol": self.symbol,
+            "timestamp": self.timestamp,
+            "open_interest": self.open_interest,
+            "open_interest_value": self.open_interest_value,
+        }
+
+
 # SQL to convert candles table to TimescaleDB hypertable
 HYPERTABLE_SQL = """
 -- Create hypertable (run this after table creation)
@@ -240,4 +330,35 @@ SELECT add_compression_policy('candles', INTERVAL '1 month', if_not_exists => TR
 
 -- Add retention policy (optional - keep data for 2 years)
 -- SELECT add_retention_policy('candles', INTERVAL '2 years', if_not_exists => TRUE);
+"""
+
+# SQL to convert funding_rates and open_interest tables to TimescaleDB hypertables
+ALTERNATIVE_DATA_HYPERTABLE_SQL = """
+-- Create hypertable for funding rates
+SELECT create_hypertable('funding_rates', 'funding_time', 
+    chunk_time_interval => INTERVAL '1 month',
+    if_not_exists => TRUE
+);
+
+-- Compress funding rates (rarely updated)
+ALTER TABLE funding_rates SET (
+    timescaledb.compress,
+    timescaledb.compress_segmentby = 'symbol'
+);
+
+SELECT add_compression_policy('funding_rates', INTERVAL '1 week', if_not_exists => TRUE);
+
+-- Create hypertable for open interest
+SELECT create_hypertable('open_interest', 'timestamp', 
+    chunk_time_interval => INTERVAL '1 week',
+    if_not_exists => TRUE
+);
+
+-- Compress open interest
+ALTER TABLE open_interest SET (
+    timescaledb.compress,
+    timescaledb.compress_segmentby = 'symbol'
+);
+
+SELECT add_compression_policy('open_interest', INTERVAL '1 month', if_not_exists => TRUE);
 """

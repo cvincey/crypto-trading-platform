@@ -241,18 +241,44 @@ class LiveTradingsConfig(BaseModel):
 # =============================================================================
 
 
+class AcceptanceCriteria(BaseModel):
+    """Acceptance criteria for walk-forward validation."""
+
+    min_oos_sharpe: float = 0.5
+    max_degradation_pct: float = 40.0
+    min_trades_per_fold: int = 5
+
+
+class ValidationGateCriterion(BaseModel):
+    """Single validation gate criterion."""
+
+    name: str
+    metric: str
+    operator: str  # 'gt', 'lt', 'eq', 'gte', 'lte'
+    threshold: float
+
+
+class ValidationGatesConfig(BaseModel):
+    """Validation gates configuration."""
+
+    enabled: bool = True
+    criteria: list[ValidationGateCriterion] = Field(default_factory=list)
+    reject_all_negative_folds: bool = True
+
+
 class WalkForwardConfig(BaseModel):
     """Walk-forward validation configuration."""
 
     enabled: bool = True
-    train_window: int = 720  # 30 days of 1h candles
-    test_window: int = 168   # 7 days of 1h candles
-    step_size: int = 168     # Roll forward 7 days at a time
-    min_train_samples: int = 500
+    train_window: int = 2160  # 90 days of 1h candles
+    test_window: int = 336    # 14 days of 1h candles
+    step_size: int = 168      # Roll forward 7 days at a time
+    min_train_samples: int = 1500
     strategies: list[str] = Field(default_factory=list)
     symbols: list[str] = Field(default_factory=list)
     interval: str = "1h"
-    days: int = 180
+    days: int = 365
+    acceptance: AcceptanceCriteria = Field(default_factory=AcceptanceCriteria)
 
 
 class HyperparamGridConfig(BaseModel):
@@ -327,6 +353,7 @@ class OptimizationSettings(BaseModel):
     """Root optimization settings."""
 
     walk_forward: WalkForwardConfig = Field(default_factory=WalkForwardConfig)
+    validation_gates: ValidationGatesConfig = Field(default_factory=ValidationGatesConfig)
     hyperparameters: dict[str, dict[str, Any]] = Field(default_factory=dict)
     risk_params: RiskParamsConfig = Field(default_factory=RiskParamsConfig)
     out_of_sample: OutOfSampleConfig | None = None

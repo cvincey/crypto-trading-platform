@@ -18,6 +18,10 @@ from crypto.strategies.registry import strategy_registry
 logger = logging.getLogger(__name__)
 
 
+# Default reference symbols for cross-symbol strategies
+DEFAULT_REFERENCE_SYMBOLS = ["BTCUSDT", "ETHUSDT"]
+
+
 class BacktestRunner:
     """
     Run backtests from YAML configuration.
@@ -29,15 +33,19 @@ class BacktestRunner:
     def __init__(
         self,
         repository: CandleRepository | None = None,
+        reference_symbols: list[str] | None = None,
     ):
         """
         Initialize the backtest runner.
         
         Args:
             repository: Optional candle repository
+            reference_symbols: Symbols to load for cross-symbol strategies
         """
         self._repository = repository or CandleRepository()
         self._settings = get_settings()
+        self._reference_symbols = reference_symbols or DEFAULT_REFERENCE_SYMBOLS
+        self._reference_data_cache: dict[str, pd.DataFrame] = {}
 
     async def run(self, backtest_name: str) -> list[BacktestResult]:
         """
@@ -87,11 +95,13 @@ class BacktestRunner:
             slippage=config.slippage,
         )
 
+        # Preload reference data for cross-symbol strategies
+        start_dt = datetime.combine(config.start, datetime.min.time())
+        end_dt = datetime.combine(config.end, datetime.max.time())
+        await self._load_reference_data(config.interval, start_dt, end_dt)
+
         for symbol in symbols:
             # Fetch data
-            start_dt = datetime.combine(config.start, datetime.min.time())
-            end_dt = datetime.combine(config.end, datetime.max.time())
-
             candles = await self._repository.get_candles_df(
                 symbol=symbol,
                 interval=config.interval,
@@ -116,6 +126,9 @@ class BacktestRunner:
                     # Create strategy from config
                     strategy = strategy_registry.create_from_config(strategy_name)
 
+                    # Set reference data for cross-symbol strategies
+                    self._setup_cross_symbol_strategy(strategy)
+
                     # Run backtest
                     result = engine.run(
                         strategy=strategy,
@@ -132,6 +145,76 @@ class BacktestRunner:
                     )
 
         return results
+
+    async def _load_reference_data(
+        self,
+        interval: str,
+        start: datetime,
+        end: datetime,
+    ) -> None:
+        """
+        Load reference data for cross-symbol strategies.
+        
+        Args:
+            interval: Candle interval
+            start: Start datetime
+            end: End datetime
+        """
+        for symbol in self._reference_symbols:
+            if symbol in self._reference_data_cache:
+                # Check if cached data covers the requested range
+                cached = self._reference_data_cache[symbol]
+                if not cached.empty:
+                    cached_start = cached.index.min()
+                    cached_end = cached.index.max()
+                    if cached_start <= start and cached_end >= end:
+                        continue  # Cache is valid
+
+            # Load data
+            candles = await self._repository.get_candles_df(
+                symbol=symbol,
+                interval=interval,
+                start=start,
+                end=end,
+            )
+            
+            if not candles.empty:
+                self._reference_data_cache[symbol] = candles
+                logger.debug(f"Loaded {len(candles)} reference candles for {symbol}")
+            else:
+                logger.warning(f"No reference data available for {symbol}")
+
+    def _setup_cross_symbol_strategy(self, strategy: Any) -> None:
+        """
+        Set up reference data for cross-symbol strategies.
+        
+        Args:
+            strategy: Strategy instance to set up
+        """
+        # Check if strategy is a cross-symbol strategy
+        from crypto.strategies.cross_symbol_base import CrossSymbolBaseStrategy
+        
+        if isinstance(strategy, CrossSymbolBaseStrategy):
+            # Get required reference symbols
+            ref_symbols = strategy.get_reference_symbols()
+            
+            # If no specific symbols requested, use all available
+            if not ref_symbols:
+                ref_symbols = list(self._reference_data_cache.keys())
+            
+            # Set reference data
+            for symbol in ref_symbols:
+                if symbol in self._reference_data_cache:
+                    strategy.set_reference_data(symbol, self._reference_data_cache[symbol])
+                else:
+                    logger.warning(
+                        f"Reference symbol {symbol} requested by {strategy.name} "
+                        f"but not available in cache"
+                    )
+
+    def clear_reference_cache(self) -> None:
+        """Clear the reference data cache."""
+        self._reference_data_cache.clear()
 
     def compare(
         self,
