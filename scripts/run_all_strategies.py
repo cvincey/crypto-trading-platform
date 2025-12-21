@@ -10,12 +10,14 @@ Usage:
 """
 
 import asyncio
+import json
 import logging
 import signal
 import sys
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import yaml
 from rich.console import Console
@@ -38,6 +40,25 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 console = Console()
+
+# State file for dashboard
+STATE_FILE = Path("notes/test_logs/trading_state.json")
+
+# Global state shared between strategies
+GLOBAL_STATE: dict[str, Any] = {
+    "start_time": None,
+    "last_update": None,
+    "strategies": {},
+    "trades": [],
+}
+
+
+def save_state() -> None:
+    """Save current state to file for dashboard."""
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    GLOBAL_STATE["last_update"] = datetime.now(timezone.utc).isoformat()
+    with open(STATE_FILE, "w") as f:
+        json.dump(GLOBAL_STATE, f, indent=2, default=str)
 
 
 def load_config() -> dict:
@@ -108,6 +129,16 @@ async def run_strategy(
                     f"[bold green][{name}] TRADE:[/bold green] {event.get('side')} "
                     f"{event.get('quantity'):.4f} @ {event.get('price'):.2f}"
                 )
+                # Save trade to global state
+                GLOBAL_STATE["trades"].append({
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "strategy": name,
+                    "symbol": symbol,
+                    "side": event.get("side"),
+                    "price": event.get("price"),
+                    "quantity": event.get("quantity"),
+                })
+                save_state()
             elif event_type == "signal":
                 logger.info(f"[{name}] Signal: {event.get('signal')} @ {event.get('price')}")
         
@@ -119,6 +150,16 @@ async def run_strategy(
         # Wait for shutdown
         while not shutdown_event.is_set():
             status = trader.get_status()
+            
+            # Update global state
+            GLOBAL_STATE["strategies"][name] = {
+                "symbol": symbol,
+                "signal": status.get("last_signal", "HOLD"),
+                "buffer_size": status.get("candle_buffer_size", 0),
+                "running": status.get("running", False),
+            }
+            save_state()
+            
             logger.info(
                 f"[{name}] {symbol} | Signal: {status.get('last_signal', 'N/A')} | "
                 f"Buffer: {status.get('candle_buffer_size', 0)} candles"
@@ -172,6 +213,12 @@ async def main():
     console.print(f"[green]✓ Initial capital: ${initial_capital}[/green]")
     console.print(f"[green]✓ Max positions: {risk_limits.max_open_positions}[/green]")
     console.print()
+    
+    # Initialize global state
+    GLOBAL_STATE["start_time"] = datetime.now(timezone.utc).isoformat()
+    GLOBAL_STATE["strategies"] = {}
+    GLOBAL_STATE["trades"] = []
+    save_state()
     
     # Shutdown handling
     shutdown_event = asyncio.Event()
