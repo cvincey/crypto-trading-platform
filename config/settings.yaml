@@ -17,5 +17,12 @@ trading:
   default_commission: 0.001      # 0.1% Binance fee
   default_slippage: 0.0005       # 0.05% slippage assumption
   max_position_size: 0.1         # 10% max position size
-  stop_loss_pct: 0.02            # 2% stop loss
-  take_profit_pct: 0.04          # 4% take profit
+  
+  # Risk management defaults (can be overridden per-strategy)
+  stop_loss_pct: 0.04            # 2% stop loss
+  take_profit_pct: 0.12          # 4% take profit
+  trailing_stop_pct: null        # Trailing stop disabled by default
+  
+  # Filter defaults for strategy signal filtering
+  adx_filter_threshold: 25       # ADX must be > 25 for trend strategies
+  volume_filter_multiplier: 1.5  # Volume must be > 1.5x average

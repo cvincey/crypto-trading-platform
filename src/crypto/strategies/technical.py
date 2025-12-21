@@ -53,7 +53,8 @@ class SMACrossoverStrategy(BaseStrategy):
         sell_signals = fast_below & fast_above.shift(1)
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        # Apply config-driven filters (ADX, volume)
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -95,7 +96,8 @@ class EMACrossoverStrategy(BaseStrategy):
         sell_signals = fast_below & fast_above.shift(1)
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        # Apply config-driven filters (ADX, volume)
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -192,7 +194,8 @@ class MACDCrossoverStrategy(BaseStrategy):
         sell_signals = macd_below & macd_above.shift(1)
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        # Apply config-driven filters (ADX, volume)
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -247,7 +250,8 @@ class BollingerBreakoutStrategy(BaseStrategy):
         signals.loc[buy_signals] = Signal.BUY
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        # Apply config-driven filters (ADX, volume)
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -289,12 +293,94 @@ class TripleMAStrategy(BaseStrategy):
 
         # Strong uptrend
         uptrend = (fast > medium) & (medium > slow)
-        uptrend_start = uptrend & ~uptrend.shift(1).fillna(False)
+        uptrend_shifted = uptrend.shift(1)
+        uptrend_shifted = uptrend_shifted.where(pd.notna(uptrend_shifted), False)
+        uptrend_start = uptrend & ~uptrend_shifted
         signals.loc[uptrend_start] = Signal.BUY
 
         # Strong downtrend
         downtrend = (fast < medium) & (medium < slow)
-        downtrend_start = downtrend & ~downtrend.shift(1).fillna(False)
+        downtrend_shifted = downtrend.shift(1)
+        downtrend_shifted = downtrend_shifted.where(pd.notna(downtrend_shifted), False)
+        downtrend_start = downtrend & ~downtrend_shifted
         signals.loc[downtrend_start] = Signal.SELL
 
-        return signals
+        return self.apply_filters(signals, candles)
+
+
+@strategy_registry.register(
+    "volatility_squeeze",
+    description="Volatility Squeeze Strategy (Bollinger inside Keltner)",
+)
+class VolatilitySqueezeStrategy(BaseStrategy):
+    """
+    Volatility Squeeze Strategy.
+    
+    Detects when Bollinger Bands are inside Keltner Channels (squeeze).
+    When the squeeze releases, trades in the direction of momentum.
+    
+    Config params:
+        bb_period: Bollinger Bands period
+        bb_std: Bollinger Bands standard deviation
+        kc_period: Keltner Channel period  
+        kc_atr_mult: Keltner Channel ATR multiplier
+        momentum_period: Momentum indicator period
+    """
+
+    name = "volatility_squeeze"
+
+    def _setup(
+        self,
+        bb_period: int = 20,
+        bb_std: float = 2.0,
+        kc_period: int = 20,
+        kc_atr_mult: float = 1.5,
+        momentum_period: int = 12,
+        **kwargs,
+    ) -> None:
+        self.bb_period = bb_period
+        self.bb_std = bb_std
+        self.kc_period = kc_period
+        self.kc_atr_mult = kc_atr_mult
+        self.momentum_period = momentum_period
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        self.validate_candles(candles)
+
+        # Calculate Bollinger Bands
+        bb = indicator_registry.compute(
+            "bollinger",
+            candles,
+            period=self.bb_period,
+            std_dev=self.bb_std,
+        )
+
+        # Calculate Keltner Channels
+        kc = indicator_registry.compute(
+            "keltner",
+            candles,
+            ema_period=self.kc_period,
+            atr_multiplier=self.kc_atr_mult,
+        )
+
+        # Calculate momentum
+        momentum = indicator_registry.compute("momentum", candles, period=self.momentum_period)
+
+        signals = self.create_signal_series(candles.index)
+
+        # Squeeze: BB is inside KC
+        squeeze_on = (bb["lower"] > kc["lower"]) & (bb["upper"] < kc["upper"])
+        
+        # Squeeze release: was in squeeze, now not
+        squeeze_on_shifted = squeeze_on.shift(1)
+        squeeze_on_shifted = squeeze_on_shifted.where(pd.notna(squeeze_on_shifted), False)
+        squeeze_off = ~squeeze_on & squeeze_on_shifted
+
+        # Trade in direction of momentum on squeeze release
+        buy_signals = squeeze_off & (momentum > 0)
+        sell_signals = squeeze_off & (momentum < 0)
+
+        signals.loc[buy_signals] = Signal.BUY
+        signals.loc[sell_signals] = Signal.SELL
+
+        return self.apply_filters(signals, candles)

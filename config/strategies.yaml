@@ -74,3 +74,137 @@ strategies:
     symbols: [BTCUSDT]
     interval: 1d
     enabled: true
+
+  # =============================================================================
+  # NEW STRATEGIES - With config-driven risk management and filters
+  # =============================================================================
+
+  # SMA Crossover with ADX Filter
+  sma_crossover_filtered:
+    type: sma_crossover
+    params:
+      fast_period: 10
+      slow_period: 30
+      use_adx_filter: true
+      adx_threshold: 25
+    symbols: [BTCUSDT]
+    interval: 1h
+    stop_loss_pct: 0.02
+    take_profit_pct: 0.04
+    enabled: true
+
+  # Volatility Squeeze Strategy
+  squeeze_breakout_btc:
+    type: volatility_squeeze
+    params:
+      bb_period: 20
+      bb_std: 2.0
+      kc_period: 20
+      kc_atr_mult: 1.5
+      momentum_period: 12
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # VWAP Reversion Strategy
+  vwap_reversion_btc:
+    type: vwap_reversion
+    params:
+      vwap_period: 20
+      entry_deviation: 0.02
+      exit_deviation: 0.005
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Ensemble Voting Strategy
+  ensemble_consensus:
+    type: ensemble_voting
+    params:
+      strategies: [sma_crossover_btc, rsi_mean_reversion, macd_crossover]
+      min_agreement: 2
+      mode: threshold
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Regime Adaptive Strategy
+  regime_adaptive_btc:
+    type: regime_adaptive
+    params:
+      adx_trending_threshold: 25
+      volatility_lookback: 20
+      trending_strategy: momentum_breakout
+      ranging_strategy: rsi_mean_reversion
+      adx_period: 14
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Enhanced ML Strategy with Walk-Forward
+  ml_enhanced_btc:
+    type: ml_enhanced
+    params:
+      model: gradient_boosting
+      features: [sma_20, rsi_14, macd, obv, atr_ratio, bb_width, volume_momentum]
+      walk_forward: true
+      train_window: 500
+      test_window: 100
+      retrain_frequency: 100
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Multi-Timeframe Strategy
+  mtf_trend_btc:
+    type: multi_timeframe
+    params:
+      base_interval: 1h
+      higher_intervals: [4h, 1d]
+      signal_strategy: sma_crossover
+      require_alignment: true
+      fast_period: 10
+      slow_period: 30
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: true
+
+  # Relative Strength Strategy
+  relative_strength_btc:
+    type: relative_strength
+    params:
+      lookback_period: 20
+      top_n: 5
+      momentum_type: roc
+      momentum_threshold: 0.0
+      weak_threshold: -0.05
+    symbols: [BTCUSDT]
+    interval: 1d
+    enabled: true
+
+  # Momentum Ranking Strategy
+  momentum_ranking_btc:
+    type: momentum_ranking
+    params:
+      lookback_period: 20
+      ranking_window: 100
+      buy_percentile: 80
+      sell_percentile: 20
+    symbols: [BTCUSDT]
+    interval: 1d
+    enabled: true
+
+  # Reinforcement Learning DQN Strategy
+  rl_dqn_btc:
+    type: rl_dqn
+    params:
+      algorithm: DQN
+      learning_rate: 0.0001
+      gamma: 0.99
+      buffer_size: 100000
+      train_episodes: 100
+      features: [sma_20, rsi_14, macd, atr]
+      reward_type: returns
+    symbols: [BTCUSDT]
+    interval: 1h
+    enabled: false  # Disabled by default - requires RL dependencies

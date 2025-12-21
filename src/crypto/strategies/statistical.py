@@ -51,7 +51,8 @@ class RSIMeanReversionStrategy(BaseStrategy):
         sell_signals = rsi > self.overbought
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        # Apply config-driven filters
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -99,7 +100,7 @@ class ZScoreMeanReversionStrategy(BaseStrategy):
         sell_signals = z_score > self.entry_threshold
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -146,7 +147,7 @@ class BollingerMeanReversionStrategy(BaseStrategy):
         sell_signals = (close > bb["upper"]) & (close.shift(1) <= bb["upper"].shift(1))
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -197,7 +198,7 @@ class PairsRatioStrategy(BaseStrategy):
         sell_signals = z_ratio > self.entry_std
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        return self.apply_filters(signals, candles)
 
 
 @strategy_registry.register(
@@ -246,4 +247,57 @@ class KeltnerMeanReversionStrategy(BaseStrategy):
         sell_signals = close > upper
         signals.loc[sell_signals] = Signal.SELL
 
-        return signals
+        return self.apply_filters(signals, candles)
+
+
+@strategy_registry.register(
+    "vwap_reversion",
+    description="VWAP Reversion Strategy",
+)
+class VWAPReversionStrategy(BaseStrategy):
+    """
+    VWAP Reversion Strategy.
+    
+    Trades reversion to Volume Weighted Average Price.
+    BUY when price is significantly below VWAP.
+    SELL when price is significantly above VWAP.
+    
+    Config params:
+        vwap_period: VWAP calculation period
+        entry_deviation: Percentage deviation from VWAP to enter (e.g., 0.02 = 2%)
+        exit_deviation: Percentage deviation from VWAP to exit
+    """
+
+    name = "vwap_reversion"
+
+    def _setup(
+        self,
+        vwap_period: int = 20,
+        entry_deviation: float = 0.02,
+        exit_deviation: float = 0.005,
+        **kwargs,
+    ) -> None:
+        self.vwap_period = vwap_period
+        self.entry_deviation = entry_deviation
+        self.exit_deviation = exit_deviation
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        self.validate_candles(candles)
+
+        vwap = indicator_registry.compute("vwap", candles, period=self.vwap_period)
+        close = candles["close"]
+
+        signals = self.create_signal_series(candles.index)
+
+        # Calculate deviation from VWAP
+        deviation = (close - vwap) / vwap
+
+        # BUY when price is significantly below VWAP
+        buy_signals = deviation < -self.entry_deviation
+        signals.loc[buy_signals] = Signal.BUY
+
+        # SELL when price is significantly above VWAP
+        sell_signals = deviation > self.entry_deviation
+        signals.loc[sell_signals] = Signal.SELL
+
+        return self.apply_filters(signals, candles)

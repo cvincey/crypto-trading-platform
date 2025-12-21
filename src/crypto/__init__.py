@@ -8,6 +8,12 @@ __version__ = "0.1.0"
 
 # Import registries to trigger strategy/exchange registration
 from crypto.strategies import technical, statistical, momentum, ml
+from crypto.strategies import ensemble, regime, multi_timeframe, rotation
+# RL strategies require optional dependencies
+try:
+    from crypto.strategies import rl
+except ImportError:
+    pass  # RL dependencies not installed
 from crypto.exchanges import binance
 
 # Public API

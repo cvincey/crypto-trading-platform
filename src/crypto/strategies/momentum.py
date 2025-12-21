@@ -112,11 +112,15 @@ class TrendFollowingStrategy(BaseStrategy):
         signals = self.create_signal_series(candles.index)
 
         # BUY on trend confirmation with positive momentum
-        buy_signals = uptrend & (momentum > 0) & ~uptrend.shift(1).fillna(False)
+        uptrend_shifted = uptrend.shift(1)
+        uptrend_shifted = uptrend_shifted.where(pd.notna(uptrend_shifted), False)
+        buy_signals = uptrend & (momentum > 0) & ~uptrend_shifted
         signals.loc[buy_signals] = Signal.BUY
 
         # SELL on downtrend with negative momentum
-        sell_signals = downtrend & (momentum < 0) & ~downtrend.shift(1).fillna(False)
+        downtrend_shifted = downtrend.shift(1)
+        downtrend_shifted = downtrend_shifted.where(pd.notna(downtrend_shifted), False)
+        sell_signals = downtrend & (momentum < 0) & ~downtrend_shifted
         signals.loc[sell_signals] = Signal.SELL
 
         return signals

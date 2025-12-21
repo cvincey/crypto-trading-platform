@@ -175,8 +175,11 @@ def calculate_metrics(
     in_drawdown = drawdown < 0
     if in_drawdown.any():
         # Find consecutive drawdown periods
-        drawdown_starts = in_drawdown & ~in_drawdown.shift(1).fillna(False)
-        drawdown_ends = ~in_drawdown & in_drawdown.shift(1).fillna(False)
+        # Use pd.isna to handle NaN without triggering deprecation warning
+        shifted = in_drawdown.shift(1)
+        shifted = shifted.where(pd.notna(shifted), False)
+        drawdown_starts = in_drawdown & ~shifted
+        drawdown_ends = ~in_drawdown & shifted
         
         max_duration = 0
         current_duration = 0

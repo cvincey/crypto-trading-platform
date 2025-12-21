@@ -9,6 +9,7 @@ from typing import Any, Protocol, runtime_checkable
 import pandas as pd
 
 from crypto.core.types import Signal
+from crypto.indicators.base import indicator_registry
 
 
 @dataclass
@@ -64,6 +65,15 @@ class BaseStrategy(ABC):
     
     Provides common functionality and enforces the Strategy protocol.
     Subclass this and implement generate_signals().
+    
+    Config-driven parameters (from strategies.yaml):
+    - stop_loss_pct: Optional stop loss override
+    - take_profit_pct: Optional take profit override
+    - trailing_stop_pct: Optional trailing stop override
+    - use_adx_filter: Enable ADX trend filter
+    - adx_threshold: ADX threshold for trend filter
+    - use_volume_filter: Enable volume confirmation
+    - volume_multiplier: Volume must be > avg * multiplier
     """
 
     name: str = "base_strategy"
@@ -78,7 +88,28 @@ class BaseStrategy(ABC):
             **params: Strategy-specific parameters
         """
         self._params = params
+        
+        # Extract risk management params (used by BacktestEngine)
+        self.stop_loss_pct: Decimal | None = self._parse_decimal(params.get("stop_loss_pct"))
+        self.take_profit_pct: Decimal | None = self._parse_decimal(params.get("take_profit_pct"))
+        self.trailing_stop_pct: Decimal | None = self._parse_decimal(params.get("trailing_stop_pct"))
+        
+        # Extract filter params (used by strategies)
+        self.use_adx_filter: bool = params.get("use_adx_filter", False)
+        self.adx_threshold: int = params.get("adx_threshold", 25)
+        self.use_volume_filter: bool = params.get("use_volume_filter", False)
+        self.volume_multiplier: float = params.get("volume_multiplier", 1.5)
+        
         self._setup(**params)
+    
+    @staticmethod
+    def _parse_decimal(value: Any) -> Decimal | None:
+        """Parse a value to Decimal, returning None if not provided."""
+        if value is None:
+            return None
+        if isinstance(value, Decimal):
+            return value
+        return Decimal(str(value))
 
     def _setup(self, **params: Any) -> None:
         """
@@ -138,6 +169,71 @@ class BaseStrategy(ABC):
             Series filled with default signal
         """
         return pd.Series(default, index=index)
+
+    def compute_adx(self, candles: pd.DataFrame, period: int = 14) -> pd.Series:
+        """
+        Compute ADX indicator for trend strength filtering.
+        
+        Args:
+            candles: OHLCV DataFrame
+            period: ADX period
+            
+        Returns:
+            Series with ADX values
+        """
+        return indicator_registry.compute("adx", candles, period=period)
+
+    def compute_volume_filter(self, candles: pd.DataFrame, period: int = 20) -> pd.Series:
+        """
+        Compute volume filter (volume > avg * multiplier).
+        
+        Args:
+            candles: OHLCV DataFrame
+            period: Lookback period for average
+            
+        Returns:
+            Boolean Series (True where volume condition is met)
+        """
+        volume = candles["volume"]
+        volume_avg = volume.rolling(window=period).mean()
+        return volume > (volume_avg * self.volume_multiplier)
+
+    def apply_filters(
+        self,
+        signals: pd.Series,
+        candles: pd.DataFrame,
+    ) -> pd.Series:
+        """
+        Apply ADX and volume filters to signals.
+        
+        Filters out signals where conditions are not met.
+        
+        Args:
+            signals: Original signal series
+            candles: OHLCV DataFrame
+            
+        Returns:
+            Filtered signal series
+        """
+        filtered = signals.copy()
+        
+        # Apply ADX filter (only allow signals when trend is strong)
+        if self.use_adx_filter:
+            try:
+                adx = self.compute_adx(candles)
+                weak_trend = adx < self.adx_threshold
+                # Reset signals to HOLD where trend is weak
+                filtered.loc[weak_trend] = Signal.HOLD
+            except Exception:
+                pass  # ADX computation failed, skip filter
+        
+        # Apply volume filter
+        if self.use_volume_filter:
+            volume_ok = self.compute_volume_filter(candles)
+            # Reset signals to HOLD where volume is low
+            filtered.loc[~volume_ok] = Signal.HOLD
+        
+        return filtered
 
     def __repr__(self) -> str:
         params_str = ", ".join(f"{k}={v}" for k, v in self._params.items())

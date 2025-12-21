@@ -62,8 +62,15 @@ class TradingConfig(BaseModel):
     default_commission: Decimal = Decimal("0.001")
     default_slippage: Decimal = Decimal("0.0005")
     max_position_size: Decimal = Decimal("0.1")
+    
+    # Risk management defaults (can be overridden per-strategy)
     stop_loss_pct: Decimal = Decimal("0.02")
     take_profit_pct: Decimal = Decimal("0.04")
+    trailing_stop_pct: Decimal | None = None  # Disabled by default
+    
+    # Filter defaults for strategy signal filtering
+    adx_filter_threshold: int = 25  # ADX must be > this for trend strategies
+    volume_filter_multiplier: Decimal = Decimal("1.5")  # Volume > avg * this
 
 
 # =============================================================================
@@ -117,9 +124,22 @@ class StrategyConfig(BaseModel):
     symbols: list[str] = Field(default_factory=list)
     interval: str = "1h"
     enabled: bool = True
+    
+    # Optional per-strategy risk management overrides
+    stop_loss_pct: Decimal | None = None
+    take_profit_pct: Decimal | None = None
+    trailing_stop_pct: Decimal | None = None
 
     class Config:
         extra = "allow"
+    
+    def get_risk_params(self) -> dict[str, Decimal | None]:
+        """Get risk management parameters for this strategy."""
+        return {
+            "stop_loss_pct": self.stop_loss_pct,
+            "take_profit_pct": self.take_profit_pct,
+            "trailing_stop_pct": self.trailing_stop_pct,
+        }
 
 
 class StrategiesConfig(BaseModel):

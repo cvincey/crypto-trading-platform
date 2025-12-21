@@ -73,6 +73,7 @@ class BacktestEngine:
     - Multiple strategies
     - Performance metrics calculation
     - Trade simulation with commission and slippage
+    - Stop-loss, take-profit, and trailing stop (from config)
     """
 
     def __init__(
@@ -80,6 +81,9 @@ class BacktestEngine:
         initial_capital: Decimal = Decimal("10000"),
         commission: Decimal = Decimal("0.001"),
         slippage: Decimal = Decimal("0.0005"),
+        stop_loss_pct: Decimal | None = None,
+        take_profit_pct: Decimal | None = None,
+        trailing_stop_pct: Decimal | None = None,
     ):
         """
         Initialize the backtest engine.
@@ -88,10 +92,21 @@ class BacktestEngine:
             initial_capital: Starting capital
             commission: Commission rate (e.g., 0.001 = 0.1%)
             slippage: Slippage rate
+            stop_loss_pct: Stop loss percentage (None = use config default)
+            take_profit_pct: Take profit percentage (None = use config default)
+            trailing_stop_pct: Trailing stop percentage (None = disabled)
         """
         self.initial_capital = initial_capital
         self.commission = commission
         self.slippage = slippage
+        
+        # Load risk management defaults from config if not specified
+        from crypto.config.settings import get_settings
+        trading_config = get_settings().trading
+        
+        self.stop_loss_pct = stop_loss_pct if stop_loss_pct is not None else trading_config.stop_loss_pct
+        self.take_profit_pct = take_profit_pct if take_profit_pct is not None else trading_config.take_profit_pct
+        self.trailing_stop_pct = trailing_stop_pct if trailing_stop_pct is not None else trading_config.trailing_stop_pct
 
     def run(
         self,
@@ -99,6 +114,9 @@ class BacktestEngine:
         candles: pd.DataFrame,
         symbol: str = "UNKNOWN",
         interval: str = "1h",
+        stop_loss_pct: Decimal | None = None,
+        take_profit_pct: Decimal | None = None,
+        trailing_stop_pct: Decimal | None = None,
     ) -> BacktestResult:
         """
         Run a backtest on a strategy with historical data.
@@ -108,6 +126,9 @@ class BacktestEngine:
             candles: DataFrame with OHLCV data (index should be datetime)
             symbol: Trading pair symbol
             interval: Candle interval
+            stop_loss_pct: Override stop loss for this run
+            take_profit_pct: Override take profit for this run
+            trailing_stop_pct: Override trailing stop for this run
             
         Returns:
             BacktestResult with metrics and trades
@@ -115,9 +136,15 @@ class BacktestEngine:
         import time
         start_time = time.time()
 
+        # Use per-run overrides, then strategy params, then engine defaults
+        strategy_params = strategy.get_parameters()
+        effective_sl = stop_loss_pct or strategy_params.get("stop_loss_pct") or self.stop_loss_pct
+        effective_tp = take_profit_pct or strategy_params.get("take_profit_pct") or self.take_profit_pct
+        effective_ts = trailing_stop_pct or strategy_params.get("trailing_stop_pct") or self.trailing_stop_pct
+
         logger.info(
             f"Running backtest: {strategy.name} on {symbol} "
-            f"({len(candles)} candles)"
+            f"({len(candles)} candles, SL={effective_sl}, TP={effective_tp}, TS={effective_ts})"
         )
 
         # Validate input
@@ -139,18 +166,60 @@ class BacktestEngine:
         # Generate signals
         signals = strategy.generate_signals(candles)
 
+        # Risk management tracking
+        entry_price: Decimal | None = None
+        highest_price_since_entry: Decimal | None = None
+
         # Run simulation
         for i, (timestamp, row) in enumerate(candles.iterrows()):
             price = Decimal(str(row["close"]))
+            high_price = Decimal(str(row["high"]))
+            low_price = Decimal(str(row["low"]))
             signal = signals.iloc[i] if i < len(signals) else Signal.HOLD
+            
+            position = portfolio.get_position(symbol)
+            
+            # Check for stop-loss, take-profit, trailing stop exits
+            if position.is_open and entry_price is not None:
+                # Update highest price for trailing stop
+                if highest_price_since_entry is None:
+                    highest_price_since_entry = high_price
+                else:
+                    highest_price_since_entry = max(highest_price_since_entry, high_price)
+                
+                # Check stop-loss (use low price for worst-case)
+                if effective_sl and low_price <= entry_price * (Decimal("1") - effective_sl):
+                    logger.debug(f"Stop-loss hit at {timestamp}: entry={entry_price}, low={low_price}")
+                    signal = Signal.SELL
+                
+                # Check take-profit (use high price for best-case)
+                elif effective_tp and high_price >= entry_price * (Decimal("1") + effective_tp):
+                    logger.debug(f"Take-profit hit at {timestamp}: entry={entry_price}, high={high_price}")
+                    signal = Signal.SELL
+                
+                # Check trailing stop
+                elif effective_ts and highest_price_since_entry is not None:
+                    trailing_stop_price = highest_price_since_entry * (Decimal("1") - effective_ts)
+                    if low_price <= trailing_stop_price:
+                        logger.debug(f"Trailing stop hit at {timestamp}: highest={highest_price_since_entry}, low={low_price}")
+                        signal = Signal.SELL
 
             # Execute signal
-            portfolio.execute_signal(
+            trade = portfolio.execute_signal(
                 signal=signal,
                 symbol=symbol,
                 price=price,
                 timestamp=timestamp,
             )
+            
+            # Track entry/exit for risk management
+            if trade is not None:
+                if signal == Signal.BUY:
+                    entry_price = trade.price
+                    highest_price_since_entry = high_price
+                elif signal == Signal.SELL:
+                    entry_price = None
+                    highest_price_since_entry = None
 
             # Update equity curve
             portfolio.update_equity(

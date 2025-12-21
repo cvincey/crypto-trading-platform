@@ -239,6 +239,203 @@ class ROC(Indicator):
         return df["close"].pct_change(self.period) * 100
 
 
+@indicator_registry.register("adx", description="Average Directional Index")
+class ADX(Indicator):
+    """
+    Average Directional Index indicator.
+    
+    Measures trend strength regardless of direction.
+    ADX > 25 typically indicates a strong trend.
+    """
+
+    name = "adx"
+
+    def __init__(self, period: int = 14):
+        self.period = period
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        high = df["high"]
+        low = df["low"]
+        close = df["close"]
+
+        # Calculate True Range
+        tr1 = high - low
+        tr2 = abs(high - close.shift())
+        tr3 = abs(low - close.shift())
+        tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+
+        # Calculate +DM and -DM
+        plus_dm = high.diff()
+        minus_dm = -low.diff()
+        
+        plus_dm = plus_dm.where((plus_dm > minus_dm) & (plus_dm > 0), 0)
+        minus_dm = minus_dm.where((minus_dm > plus_dm) & (minus_dm > 0), 0)
+
+        # Smooth with Wilder's smoothing (EMA)
+        atr = tr.ewm(span=self.period, adjust=False).mean()
+        plus_di = 100 * (plus_dm.ewm(span=self.period, adjust=False).mean() / atr)
+        minus_di = 100 * (minus_dm.ewm(span=self.period, adjust=False).mean() / atr)
+
+        # Calculate DX and ADX
+        dx = 100 * abs(plus_di - minus_di) / (plus_di + minus_di)
+        adx = dx.ewm(span=self.period, adjust=False).mean()
+
+        return adx
+
+
+@indicator_registry.register("obv", description="On Balance Volume")
+class OBV(Indicator):
+    """
+    On Balance Volume indicator.
+    
+    Cumulative volume that adds volume on up days and subtracts on down days.
+    Used to confirm price trends with volume.
+    """
+
+    name = "obv"
+
+    def __init__(self):
+        pass
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        close = df["close"]
+        volume = df["volume"]
+        
+        # Calculate direction: 1 for up, -1 for down, 0 for unchanged
+        direction = np.sign(close.diff())
+        
+        # OBV is cumulative sum of signed volume
+        obv = (direction * volume).cumsum()
+        
+        return obv
+
+
+@indicator_registry.register("keltner", description="Keltner Channels")
+class KeltnerChannels(Indicator):
+    """
+    Keltner Channels indicator.
+    
+    Uses EMA and ATR to create bands. Often used with Bollinger Bands
+    to detect "squeeze" setups (BB inside KC = low volatility squeeze).
+    """
+
+    name = "keltner"
+
+    def __init__(self, ema_period: int = 20, atr_period: int = 14, atr_multiplier: float = 2.0):
+        self.ema_period = ema_period
+        self.atr_period = atr_period
+        self.atr_multiplier = atr_multiplier
+
+    def compute(self, df: pd.DataFrame) -> pd.DataFrame:
+        # Calculate EMA (middle line)
+        middle = df["close"].ewm(span=self.ema_period, adjust=False).mean()
+        
+        # Calculate ATR
+        high = df["high"]
+        low = df["low"]
+        close = df["close"]
+        
+        tr1 = high - low
+        tr2 = abs(high - close.shift())
+        tr3 = abs(low - close.shift())
+        tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+        atr = tr.rolling(window=self.atr_period).mean()
+        
+        # Calculate bands
+        upper = middle + (atr * self.atr_multiplier)
+        lower = middle - (atr * self.atr_multiplier)
+        
+        return pd.DataFrame({
+            "upper": upper,
+            "middle": middle,
+            "lower": lower,
+        })
+
+
+@indicator_registry.register("vwap", description="Volume Weighted Average Price")
+class VWAP(Indicator):
+    """
+    Volume Weighted Average Price indicator.
+    
+    Calculates the average price weighted by volume over a period.
+    Commonly used for intraday trading as support/resistance.
+    """
+
+    name = "vwap"
+
+    def __init__(self, period: int = 20):
+        self.period = period
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        # Typical price
+        typical_price = (df["high"] + df["low"] + df["close"]) / 3
+        
+        # Volume-weighted typical price
+        vwtp = typical_price * df["volume"]
+        
+        # Rolling VWAP
+        vwap = vwtp.rolling(window=self.period).sum() / df["volume"].rolling(window=self.period).sum()
+        
+        return vwap
+
+
+@indicator_registry.register("bb_width", description="Bollinger Band Width")
+class BollingerBandWidth(Indicator):
+    """Bollinger Band Width indicator - measures volatility."""
+
+    name = "bb_width"
+
+    def __init__(self, period: int = 20, std_dev: float = 2.0):
+        self.period = period
+        self.std_dev = std_dev
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        middle = df["close"].rolling(window=self.period).mean()
+        std = df["close"].rolling(window=self.period).std()
+        
+        upper = middle + (std * self.std_dev)
+        lower = middle - (std * self.std_dev)
+        
+        # Width as percentage of middle band
+        return (upper - lower) / middle * 100
+
+
+@indicator_registry.register("volume_momentum", description="Volume Momentum")
+class VolumeMomentum(Indicator):
+    """Volume momentum - rate of change in volume."""
+
+    name = "volume_momentum"
+
+    def __init__(self, period: int = 10):
+        self.period = period
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        return df["volume"].pct_change(self.period) * 100
+
+
+@indicator_registry.register("atr_ratio", description="ATR Ratio")
+class ATRRatio(Indicator):
+    """ATR as a ratio of close price - normalized volatility."""
+
+    name = "atr_ratio"
+
+    def __init__(self, period: int = 14):
+        self.period = period
+
+    def compute(self, df: pd.DataFrame) -> pd.Series:
+        high = df["high"]
+        low = df["low"]
+        close = df["close"]
+        
+        tr1 = high - low
+        tr2 = abs(high - close.shift())
+        tr3 = abs(low - close.shift())
+        tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+        atr = tr.rolling(window=self.period).mean()
+        
+        return atr / close * 100
+
+
 def add_indicators(
     df: pd.DataFrame,
     indicators: list[tuple[str, dict[str, Any]]],
