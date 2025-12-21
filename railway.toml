@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "pip install -e . && python scripts/run_paper_trading.py"
+restartPolicyType = "always"
+healthcheckPath = "/"
+healthcheckTimeout = 300
