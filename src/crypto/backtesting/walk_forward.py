@@ -546,6 +546,39 @@ class WalkForwardEngine:
                     strategy.set_funding_data(self._funding_data[self._current_symbol])
         except ImportError:
             pass  # Alternative data strategies not available
+        
+        # Set up alternative data for sentiment, positioning, and macro strategies
+        if self._reference_data:
+            # Fear & Greed data
+            if hasattr(strategy, 'set_fear_greed_data') and 'fear_greed' in self._reference_data:
+                strategy.set_fear_greed_data(self._reference_data['fear_greed'])
+            
+            # Long/Short ratio data
+            if hasattr(strategy, 'set_long_short_data'):
+                # Try symbol-specific first, then generic
+                symbol = getattr(self, '_current_symbol', None)
+                ls_key = f'long_short_{symbol}' if symbol else 'long_short'
+                if ls_key in self._reference_data:
+                    strategy.set_long_short_data(self._reference_data[ls_key])
+                elif 'long_short' in self._reference_data:
+                    strategy.set_long_short_data(self._reference_data['long_short'])
+            
+            # BTC Dominance data
+            if hasattr(strategy, 'set_btc_dominance_data') and 'btc_dominance' in self._reference_data:
+                strategy.set_btc_dominance_data(self._reference_data['btc_dominance'])
+            if hasattr(strategy, 'set_dominance_data') and 'btc_dominance' in self._reference_data:
+                strategy.set_dominance_data(self._reference_data['btc_dominance'])
+            
+            # DXY data (macro)
+            if hasattr(strategy, 'set_dxy_data') and 'dxy' in self._reference_data:
+                strategy.set_dxy_data(self._reference_data['dxy'])
+            
+            # Macro data (DXY + VIX)
+            if hasattr(strategy, 'set_macro_data'):
+                dxy = self._reference_data.get('dxy')
+                vix = self._reference_data.get('vix')
+                if dxy is not None:
+                    strategy.set_macro_data(dxy, vix)
 
     def _run_with_signals(
         self,

@@ -1,0 +1,393 @@
+{
+  "config": {
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336,
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "SOLUSDT"
+    ],
+    "days": 180
+  },
+  "timestamp": "2025-12-22T09:58:33.308654",
+  "results": {
+    "crash_only_trend_filter": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.2703686107407641,
+        "is_sharpe": 0.16156396333773307,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 14,
+        "passed": true
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.10167797015863718,
+        "is_sharpe": -1.2148069015916159,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 34,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": -0.5917111792550205,
+        "is_sharpe": -2.3031925335824086,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 33,
+        "passed": false
+      }
+    ],
+    "gamma_mimic_breakout": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      }
+    ],
+    "volatility_targeting_overlay": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -1.1540257278626633,
+        "is_sharpe": -0.7608211368149533,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 21,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.6828407042445711,
+        "is_sharpe": 0.978784577589129,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 21,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 1.2326173120993826,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      }
+    ],
+    "market_breadth_alt_participation": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -3.932252526689415,
+        "is_sharpe": -1.8636058858596258,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 118,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -3.1756294678557837,
+        "is_sharpe": -1.6770192248060098,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 115,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": -2.127978026021245,
+        "is_sharpe": -0.09938240412983211,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 136,
+        "passed": false
+      }
+    ],
+    "cross_sectional_momentum": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.5857794916234691,
+        "is_sharpe": 0.8814833586967902,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 10,
+        "passed": true
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.37458137143674347,
+        "is_sharpe": 2.287806949257159,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 10,
+        "passed": true
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.8124935215487212,
+        "is_sharpe": 2.131293141715388,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 11,
+        "passed": true
+      }
+    ],
+    "gap_reversion": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -0.15628206336610723,
+        "is_sharpe": -0.21937626911780983,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 8,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.3292447403124432,
+        "is_sharpe": 1.4020953854292046,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 39,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": -0.8145621208188916,
+        "is_sharpe": -1.1230068905785735,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 59,
+        "passed": false
+      }
+    ],
+    "liquidity_vacuum_detector": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      }
+    ],
+    "correlation_regime_switch": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": -1.1742135405677252,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": -0.6052698296355855,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": -0.9713498815842311,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      }
+    ],
+    "funding_term_structure": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 1.0179969438407095,
+        "is_sharpe": 0.7478489660402732,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 33,
+        "passed": true
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.2555144028627752,
+        "is_sharpe": -1.9309848450392646,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 65,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": -0.01911471316844917,
+        "is_sharpe": -0.7267127769592976,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 77,
+        "passed": false
+      }
+    ],
+    "funding_vol_interaction": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -0.4529435711619027,
+        "is_sharpe": -0.7508919038177033,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 73,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.313835640958811,
+        "is_sharpe": 0.8618264753435956,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 106,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": -1.1457666087442644,
+        "is_sharpe": 0.12246060625283461,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 114,
+        "passed": false
+      }
+    ],
+    "liquidation_cluster_fade": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.0,
+        "is_sharpe": 0.0,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 0,
+        "passed": false
+      }
+    ],
+    "stablecoin_liquidity_pulse": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -1.604548770591953,
+        "is_sharpe": -0.616077779508376,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 26,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": -0.30198525405351156,
+        "is_sharpe": 0.9154012599341573,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 28,
+        "passed": false
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 1.255393027353109,
+        "is_sharpe": 2.0759505400445697,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 29,
+        "passed": true
+      }
+    ],
+    "btc_dominance_rotation": [
+      {
+        "symbol": "BTCUSDT",
+        "oos_sharpe": -0.8412116363743716,
+        "is_sharpe": -0.43460032003927906,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 16,
+        "passed": false
+      },
+      {
+        "symbol": "ETHUSDT",
+        "oos_sharpe": 0.5829032927753854,
+        "is_sharpe": 1.067685966245369,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 30,
+        "passed": true
+      },
+      {
+        "symbol": "SOLUSDT",
+        "oos_sharpe": 0.5682551324216323,
+        "is_sharpe": -2.1299274533630097,
+        "oos_return": null,
+        "oos_max_drawdown": null,
+        "total_trades": 37,
+        "passed": true
+      }
+    ]
+  }
+}

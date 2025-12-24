@@ -12,6 +12,9 @@ Usage:
     python populate_history.py --symbols BTC ETH  # Fetch specific symbols
 """
 
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
 import argparse
 import asyncio
 import logging

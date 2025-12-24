@@ -1,0 +1,160 @@
+[
+  {
+    "pair_name": "xrp_btc",
+    "pair": "XRP/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.8,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 48
+    },
+    "best_result": {
+      "total_return": 1359.89,
+      "sharpe_ratio": 16.1,
+      "win_rate": 82.6,
+      "max_drawdown": -14.51,
+      "num_trades": 253,
+      "trades_per_month": 20.8,
+      "avg_bars_held": 5.8,
+      "avg_return_per_trade": 1.1,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 225,
+        "stop_loss": 24,
+        "take_profit": 4
+      }
+    }
+  },
+  {
+    "pair_name": "ada_btc",
+    "pair": "ADA/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.8,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 48
+    },
+    "best_result": {
+      "total_return": 2832.15,
+      "sharpe_ratio": 19.74,
+      "win_rate": 85.8,
+      "max_drawdown": -18.76,
+      "num_trades": 247,
+      "trades_per_month": 20.3,
+      "avg_bars_held": 6.2,
+      "avg_return_per_trade": 1.413,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 218,
+        "stop_loss": 22,
+        "take_profit": 7
+      }
+    }
+  },
+  {
+    "pair_name": "bnb_btc",
+    "pair": "BNB/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.8,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 48
+    },
+    "best_result": {
+      "total_return": 439.24,
+      "sharpe_ratio": 23.94,
+      "win_rate": 85.9,
+      "max_drawdown": -4.02,
+      "num_trades": 184,
+      "trades_per_month": 15.1,
+      "avg_bars_held": 7.0,
+      "avg_return_per_trade": 0.929,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 180,
+        "stop_loss": 3,
+        "take_profit": 1
+      }
+    }
+  },
+  {
+    "pair_name": "link_btc",
+    "pair": "LINK/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.5,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 24
+    },
+    "best_result": {
+      "total_return": 1510.3,
+      "sharpe_ratio": 12.65,
+      "win_rate": 77.0,
+      "max_drawdown": -16.82,
+      "num_trades": 317,
+      "trades_per_month": 26.1,
+      "avg_bars_held": 5.8,
+      "avg_return_per_trade": 0.92,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 264,
+        "stop_loss": 45,
+        "take_profit": 6,
+        "max_hold": 2
+      }
+    }
+  },
+  {
+    "pair_name": "dot_btc",
+    "pair": "DOT/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.8,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 24
+    },
+    "best_result": {
+      "total_return": 992.4,
+      "sharpe_ratio": 14.74,
+      "win_rate": 79.0,
+      "max_drawdown": -12.79,
+      "num_trades": 229,
+      "trades_per_month": 18.8,
+      "avg_bars_held": 7.1,
+      "avg_return_per_trade": 1.082,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 189,
+        "stop_loss": 30,
+        "take_profit": 6,
+        "max_hold": 4
+      }
+    }
+  },
+  {
+    "pair_name": "near_btc",
+    "pair": "NEAR/BTC",
+    "best_params": {
+      "lookback": 48,
+      "entry_threshold": -1.8,
+      "exit_threshold": -0.9,
+      "max_hold_hours": 48
+    },
+    "best_result": {
+      "total_return": 456.1,
+      "sharpe_ratio": 8.69,
+      "win_rate": 71.1,
+      "max_drawdown": -21.86,
+      "num_trades": 218,
+      "trades_per_month": 17.9,
+      "avg_bars_held": 7.4,
+      "avg_return_per_trade": 0.846,
+      "data_points": 8744,
+      "exit_reasons": {
+        "z_exit": 162,
+        "stop_loss": 52,
+        "take_profit": 4
+      }
+    }
+  }
+]

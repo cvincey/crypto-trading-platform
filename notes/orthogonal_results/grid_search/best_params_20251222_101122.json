@@ -1,0 +1,11 @@
+{
+  "funding_term_structure": {
+    "params": {
+      "lookback_periods": 2,
+      "extreme_funding": 0.0005,
+      "hold_period": 12
+    },
+    "avg_oos_sharpe": 0.4160124945179095,
+    "total_trades": 297
+  }
+}

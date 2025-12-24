@@ -1,0 +1,1681 @@
+{
+  "timestamp": "2025-12-24T14:49:29.125178+00:00",
+  "config": {
+    "total_days": 730,
+    "train_days": 180,
+    "test_days": 30,
+    "step_days": 30
+  },
+  "results": [
+    {
+      "pair_name": "bnb_btc",
+      "pair": "BNB/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 32.35,
+      "avg_oos_return": 18.91,
+      "avg_oos_trades": 15.9,
+      "avg_win_rate": 87.1,
+      "sharpe_std": 15.06,
+      "positive_folds": 18,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:27.890785+00:00",
+          "test_end": "2024-07-22T14:49:27.890785+00:00",
+          "test_return": 36.84466011632994,
+          "test_sharpe": 45.76139110217214,
+          "test_trades": 18,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:27.890785+00:00",
+          "test_end": "2024-08-21T14:49:27.890785+00:00",
+          "test_return": 43.361679090103536,
+          "test_sharpe": 37.32405047754012,
+          "test_trades": 19,
+          "test_win_rate": 94.73684210526315
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:27.890785+00:00",
+          "test_end": "2024-09-20T14:49:27.890785+00:00",
+          "test_return": 16.33184573672559,
+          "test_sharpe": 29.429752913625425,
+          "test_trades": 18,
+          "test_win_rate": 77.77777777777779
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:27.890785+00:00",
+          "test_end": "2024-10-20T14:49:27.890785+00:00",
+          "test_return": 24.564046478894475,
+          "test_sharpe": 62.64018187631884,
+          "test_trades": 26,
+          "test_win_rate": 96.15384615384616
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:27.890785+00:00",
+          "test_end": "2024-11-19T14:49:27.890785+00:00",
+          "test_return": 33.157856919851184,
+          "test_sharpe": 23.3003364118196,
+          "test_trades": 24,
+          "test_win_rate": 91.66666666666666
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:27.890785+00:00",
+          "test_end": "2024-12-19T14:49:27.890785+00:00",
+          "test_return": 25.672673755403498,
+          "test_sharpe": 52.970544413842575,
+          "test_trades": 18,
+          "test_win_rate": 94.44444444444444
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:27.890785+00:00",
+          "test_end": "2025-01-18T14:49:27.890785+00:00",
+          "test_return": 8.653380995087744,
+          "test_sharpe": 14.449152263392207,
+          "test_trades": 15,
+          "test_win_rate": 86.66666666666667
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:27.890785+00:00",
+          "test_end": "2025-02-17T14:49:27.890785+00:00",
+          "test_return": 9.655291841359182,
+          "test_sharpe": 12.818048433324023,
+          "test_trades": 9,
+          "test_win_rate": 77.77777777777779
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:27.890785+00:00",
+          "test_end": "2025-03-19T14:49:27.890785+00:00",
+          "test_return": 15.800472990027782,
+          "test_sharpe": 32.5807010946604,
+          "test_trades": 11,
+          "test_win_rate": 81.81818181818183
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:27.890785+00:00",
+          "test_end": "2025-04-18T14:49:27.890785+00:00",
+          "test_return": 19.654398734712508,
+          "test_sharpe": 23.458212545874442,
+          "test_trades": 14,
+          "test_win_rate": 85.71428571428571
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:27.890785+00:00",
+          "test_end": "2025-05-18T14:49:27.890785+00:00",
+          "test_return": 12.596639038358525,
+          "test_sharpe": 26.968121747561753,
+          "test_trades": 18,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:27.890785+00:00",
+          "test_end": "2025-06-17T14:49:27.890785+00:00",
+          "test_return": 11.611204776327643,
+          "test_sharpe": 40.382836811931654,
+          "test_trades": 11,
+          "test_win_rate": 90.9090909090909
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:27.890785+00:00",
+          "test_end": "2025-07-17T14:49:27.890785+00:00",
+          "test_return": 17.441249159056206,
+          "test_sharpe": 36.40410860734137,
+          "test_trades": 21,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:27.890785+00:00",
+          "test_end": "2025-08-16T14:49:27.890785+00:00",
+          "test_return": 7.105448191696873,
+          "test_sharpe": 17.06645215826067,
+          "test_trades": 7,
+          "test_win_rate": 71.42857142857143
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:27.890785+00:00",
+          "test_end": "2025-09-15T14:49:27.890785+00:00",
+          "test_return": 10.720517010121998,
+          "test_sharpe": 40.19895996269703,
+          "test_trades": 12,
+          "test_win_rate": 91.66666666666666
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:27.890785+00:00",
+          "test_end": "2025-10-15T14:49:27.890785+00:00",
+          "test_return": 7.772134089094296,
+          "test_sharpe": 11.42226612673656,
+          "test_trades": 12,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:27.890785+00:00",
+          "test_end": "2025-11-14T14:49:27.890785+00:00",
+          "test_return": 16.430658704735812,
+          "test_sharpe": 17.975434230852194,
+          "test_trades": 19,
+          "test_win_rate": 84.21052631578947
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:27.890785+00:00",
+          "test_end": "2025-12-14T14:49:27.890785+00:00",
+          "test_return": 23.092915159118267,
+          "test_sharpe": 57.146975468811924,
+          "test_trades": 15,
+          "test_win_rate": 93.33333333333333
+        }
+      ]
+    },
+    {
+      "pair_name": "ada_btc",
+      "pair": "ADA/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 24.51,
+      "avg_oos_return": 29.2,
+      "avg_oos_trades": 18.4,
+      "avg_win_rate": 84.0,
+      "sharpe_std": 13.29,
+      "positive_folds": 18,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:28.392872+00:00",
+          "test_end": "2024-07-22T14:49:28.392872+00:00",
+          "test_return": 27.520487794289505,
+          "test_sharpe": 14.612712843616228,
+          "test_trades": 15,
+          "test_win_rate": 73.33333333333333
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:28.392872+00:00",
+          "test_end": "2024-08-21T14:49:28.392872+00:00",
+          "test_return": 66.30098074543565,
+          "test_sharpe": 48.6855776812632,
+          "test_trades": 20,
+          "test_win_rate": 90.0
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:28.392872+00:00",
+          "test_end": "2024-09-20T14:49:28.392872+00:00",
+          "test_return": 16.369017965189457,
+          "test_sharpe": 15.735230793337166,
+          "test_trades": 17,
+          "test_win_rate": 70.58823529411765
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:28.392872+00:00",
+          "test_end": "2024-10-20T14:49:28.392872+00:00",
+          "test_return": 26.941029953780603,
+          "test_sharpe": 31.438528493056904,
+          "test_trades": 25,
+          "test_win_rate": 92.0
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:28.392872+00:00",
+          "test_end": "2024-11-19T14:49:28.392872+00:00",
+          "test_return": 54.43958043720269,
+          "test_sharpe": 24.886547222575363,
+          "test_trades": 17,
+          "test_win_rate": 94.11764705882352
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:28.392872+00:00",
+          "test_end": "2024-12-19T14:49:28.392872+00:00",
+          "test_return": 17.840161927115773,
+          "test_sharpe": 10.397649620400252,
+          "test_trades": 16,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:28.392872+00:00",
+          "test_end": "2025-01-18T14:49:28.392872+00:00",
+          "test_return": 17.51270205608413,
+          "test_sharpe": 17.826715693955602,
+          "test_trades": 11,
+          "test_win_rate": 81.81818181818183
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:28.392872+00:00",
+          "test_end": "2025-02-17T14:49:28.392872+00:00",
+          "test_return": 38.7950945831611,
+          "test_sharpe": 17.609270628552032,
+          "test_trades": 21,
+          "test_win_rate": 76.19047619047619
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:28.392872+00:00",
+          "test_end": "2025-03-19T14:49:28.392872+00:00",
+          "test_return": 16.098052692752972,
+          "test_sharpe": 9.04287633484144,
+          "test_trades": 21,
+          "test_win_rate": 76.19047619047619
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:28.392872+00:00",
+          "test_end": "2025-04-18T14:49:28.392872+00:00",
+          "test_return": 16.887264805628277,
+          "test_sharpe": 7.462589836131591,
+          "test_trades": 24,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:28.392872+00:00",
+          "test_end": "2025-05-18T14:49:28.392872+00:00",
+          "test_return": 42.99566728255837,
+          "test_sharpe": 51.78675033633313,
+          "test_trades": 19,
+          "test_win_rate": 94.73684210526315
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:28.392872+00:00",
+          "test_end": "2025-06-17T14:49:28.392872+00:00",
+          "test_return": 22.847590666107,
+          "test_sharpe": 29.345854008099106,
+          "test_trades": 19,
+          "test_win_rate": 89.47368421052632
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:28.392872+00:00",
+          "test_end": "2025-07-17T14:49:28.392872+00:00",
+          "test_return": 19.36019595688665,
+          "test_sharpe": 41.47855573111965,
+          "test_trades": 13,
+          "test_win_rate": 84.61538461538461
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:28.392872+00:00",
+          "test_end": "2025-08-16T14:49:28.392872+00:00",
+          "test_return": 20.086210714423625,
+          "test_sharpe": 18.309233793756405,
+          "test_trades": 16,
+          "test_win_rate": 87.5
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:28.392872+00:00",
+          "test_end": "2025-09-15T14:49:28.392872+00:00",
+          "test_return": 35.48996551144752,
+          "test_sharpe": 33.90082017309219,
+          "test_trades": 16,
+          "test_win_rate": 93.75
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:28.392872+00:00",
+          "test_end": "2025-10-15T14:49:28.392872+00:00",
+          "test_return": 15.912823130120945,
+          "test_sharpe": 7.413010375374571,
+          "test_trades": 20,
+          "test_win_rate": 85.0
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:28.392872+00:00",
+          "test_end": "2025-11-14T14:49:28.392872+00:00",
+          "test_return": 29.874466567516244,
+          "test_sharpe": 31.189582062322927,
+          "test_trades": 17,
+          "test_win_rate": 94.11764705882352
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:28.392872+00:00",
+          "test_end": "2025-12-14T14:49:28.392872+00:00",
+          "test_return": 40.33070698250383,
+          "test_sharpe": 30.060983392061445,
+          "test_trades": 24,
+          "test_win_rate": 87.5
+        }
+      ]
+    },
+    {
+      "pair_name": "eth_btc",
+      "pair": "ETH/BTC",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 21.01,
+      "avg_oos_return": 30.7,
+      "avg_oos_trades": 26.2,
+      "avg_win_rate": 85.3,
+      "sharpe_std": 13.91,
+      "positive_folds": 17,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:27.890154+00:00",
+          "test_end": "2024-07-22T14:49:27.890154+00:00",
+          "test_return": 49.49122460672004,
+          "test_sharpe": 42.673795296260806,
+          "test_trades": 31,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:27.890154+00:00",
+          "test_end": "2024-08-21T14:49:27.890154+00:00",
+          "test_return": 41.02762042196848,
+          "test_sharpe": 13.90821512811112,
+          "test_trades": 31,
+          "test_win_rate": 77.41935483870968
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:27.890154+00:00",
+          "test_end": "2024-09-20T14:49:27.890154+00:00",
+          "test_return": 41.90823146068845,
+          "test_sharpe": 26.25173454510201,
+          "test_trades": 40,
+          "test_win_rate": 82.5
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:27.890154+00:00",
+          "test_end": "2024-10-20T14:49:27.890154+00:00",
+          "test_return": 25.635467380360446,
+          "test_sharpe": 28.711313064218828,
+          "test_trades": 27,
+          "test_win_rate": 88.88888888888889
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:27.890154+00:00",
+          "test_end": "2024-11-19T14:49:27.890154+00:00",
+          "test_return": 50.00302297202448,
+          "test_sharpe": 18.41386752808299,
+          "test_trades": 36,
+          "test_win_rate": 94.44444444444444
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:27.890154+00:00",
+          "test_end": "2024-12-19T14:49:27.890154+00:00",
+          "test_return": 11.877990670671368,
+          "test_sharpe": 8.815237668956895,
+          "test_trades": 15,
+          "test_win_rate": 80.0
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:27.890154+00:00",
+          "test_end": "2025-01-18T14:49:27.890154+00:00",
+          "test_return": 17.551461430389104,
+          "test_sharpe": 10.671905243159571,
+          "test_trades": 25,
+          "test_win_rate": 72.0
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:27.890154+00:00",
+          "test_end": "2025-02-17T14:49:27.890154+00:00",
+          "test_return": 19.50976367318338,
+          "test_sharpe": 7.602883982286565,
+          "test_trades": 28,
+          "test_win_rate": 82.14285714285714
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:27.890154+00:00",
+          "test_end": "2025-03-19T14:49:27.890154+00:00",
+          "test_return": 38.98350130639532,
+          "test_sharpe": 13.926139055284931,
+          "test_trades": 31,
+          "test_win_rate": 83.87096774193549
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:27.890154+00:00",
+          "test_end": "2025-04-18T14:49:27.890154+00:00",
+          "test_return": 33.21332497263039,
+          "test_sharpe": 8.777430203520876,
+          "test_trades": 40,
+          "test_win_rate": 70.0
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:27.890154+00:00",
+          "test_end": "2025-05-18T14:49:27.890154+00:00",
+          "test_return": 30.582164867614292,
+          "test_sharpe": 52.638622737921644,
+          "test_trades": 13,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:27.890154+00:00",
+          "test_end": "2025-06-17T14:49:27.890154+00:00",
+          "test_return": 28.62510583726845,
+          "test_sharpe": 30.119499045602335,
+          "test_trades": 17,
+          "test_win_rate": 94.11764705882352
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:27.890154+00:00",
+          "test_end": "2025-07-17T14:49:27.890154+00:00",
+          "test_return": 11.563183643400098,
+          "test_sharpe": 15.230823445438306,
+          "test_trades": 12,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:27.890154+00:00",
+          "test_end": "2025-08-16T14:49:27.890154+00:00",
+          "test_return": 3.8312144414488936,
+          "test_sharpe": 5.643702306764112,
+          "test_trades": 12,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:27.890154+00:00",
+          "test_end": "2025-09-15T14:49:27.890154+00:00",
+          "test_return": 40.05813144177763,
+          "test_sharpe": 31.60586761777054,
+          "test_trades": 25,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:27.890154+00:00",
+          "test_end": "2025-10-15T14:49:27.890154+00:00",
+          "test_return": -1.5313173739184949,
+          "test_sharpe": -0.39833349606312324,
+          "test_trades": 28,
+          "test_win_rate": 67.85714285714286
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:27.890154+00:00",
+          "test_end": "2025-11-14T14:49:27.890154+00:00",
+          "test_return": 45.78360237329273,
+          "test_sharpe": 25.440074723458928,
+          "test_trades": 29,
+          "test_win_rate": 89.65517241379311
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:27.890154+00:00",
+          "test_end": "2025-12-14T14:49:27.890154+00:00",
+          "test_return": 64.46087734874394,
+          "test_sharpe": 38.13158168628833,
+          "test_trades": 32,
+          "test_win_rate": 93.75
+        }
+      ]
+    },
+    {
+      "pair_name": "xrp_btc",
+      "pair": "XRP/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 20.86,
+      "avg_oos_return": 20.73,
+      "avg_oos_trades": 17.8,
+      "avg_win_rate": 82.4,
+      "sharpe_std": 15.14,
+      "positive_folds": 18,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:28.385942+00:00",
+          "test_end": "2024-07-22T14:49:28.385942+00:00",
+          "test_return": 25.30670332741991,
+          "test_sharpe": 29.796822659567788,
+          "test_trades": 12,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:28.385942+00:00",
+          "test_end": "2024-08-21T14:49:28.385942+00:00",
+          "test_return": 15.126165949712123,
+          "test_sharpe": 20.83388835739455,
+          "test_trades": 11,
+          "test_win_rate": 90.9090909090909
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:28.385942+00:00",
+          "test_end": "2024-09-20T14:49:28.385942+00:00",
+          "test_return": 23.088056194501515,
+          "test_sharpe": 52.74830112616747,
+          "test_trades": 22,
+          "test_win_rate": 95.45454545454545
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:28.385942+00:00",
+          "test_end": "2024-10-20T14:49:28.385942+00:00",
+          "test_return": 2.7574949518665015,
+          "test_sharpe": 2.7281334905788763,
+          "test_trades": 19,
+          "test_win_rate": 78.94736842105263
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:28.385942+00:00",
+          "test_end": "2024-11-19T14:49:28.385942+00:00",
+          "test_return": 36.95146671737668,
+          "test_sharpe": 15.934463668544993,
+          "test_trades": 14,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:28.385942+00:00",
+          "test_end": "2024-12-19T14:49:28.385942+00:00",
+          "test_return": 12.532656746657512,
+          "test_sharpe": 6.599568726902222,
+          "test_trades": 13,
+          "test_win_rate": 61.53846153846154
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:28.385942+00:00",
+          "test_end": "2025-01-18T14:49:28.385942+00:00",
+          "test_return": 7.863097525639207,
+          "test_sharpe": 7.021958581552318,
+          "test_trades": 11,
+          "test_win_rate": 72.72727272727273
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:28.385942+00:00",
+          "test_end": "2025-02-17T14:49:28.385942+00:00",
+          "test_return": 24.571467474952268,
+          "test_sharpe": 11.054760383082229,
+          "test_trades": 20,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:28.385942+00:00",
+          "test_end": "2025-03-19T14:49:28.385942+00:00",
+          "test_return": 25.445886684056006,
+          "test_sharpe": 13.235701777153823,
+          "test_trades": 24,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:28.385942+00:00",
+          "test_end": "2025-04-18T14:49:28.385942+00:00",
+          "test_return": 27.096958584220143,
+          "test_sharpe": 9.147175015240974,
+          "test_trades": 28,
+          "test_win_rate": 71.42857142857143
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:28.385942+00:00",
+          "test_end": "2025-05-18T14:49:28.385942+00:00",
+          "test_return": 27.85949108556609,
+          "test_sharpe": 22.263538363218455,
+          "test_trades": 26,
+          "test_win_rate": 88.46153846153845
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:28.385942+00:00",
+          "test_end": "2025-06-17T14:49:28.385942+00:00",
+          "test_return": 27.251602294260536,
+          "test_sharpe": 50.31381258727869,
+          "test_trades": 22,
+          "test_win_rate": 95.45454545454545
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:28.385942+00:00",
+          "test_end": "2025-07-17T14:49:28.385942+00:00",
+          "test_return": 7.637125301396042,
+          "test_sharpe": 13.015537449700378,
+          "test_trades": 11,
+          "test_win_rate": 63.63636363636363
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:28.385942+00:00",
+          "test_end": "2025-08-16T14:49:28.385942+00:00",
+          "test_return": 6.960551929142689,
+          "test_sharpe": 4.710339520427529,
+          "test_trades": 16,
+          "test_win_rate": 68.75
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:28.385942+00:00",
+          "test_end": "2025-09-15T14:49:28.385942+00:00",
+          "test_return": 34.296399577448746,
+          "test_sharpe": 44.28302586312179,
+          "test_trades": 20,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:28.385942+00:00",
+          "test_end": "2025-10-15T14:49:28.385942+00:00",
+          "test_return": 14.973641796392311,
+          "test_sharpe": 12.186372380415492,
+          "test_trades": 18,
+          "test_win_rate": 88.88888888888889
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:28.385942+00:00",
+          "test_end": "2025-11-14T14:49:28.385942+00:00",
+          "test_return": 18.477990298159376,
+          "test_sharpe": 32.75965197318577,
+          "test_trades": 13,
+          "test_win_rate": 92.3076923076923
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:28.385942+00:00",
+          "test_end": "2025-12-14T14:49:28.385942+00:00",
+          "test_return": 34.937368344730245,
+          "test_sharpe": 26.760104415556764,
+          "test_trades": 21,
+          "test_win_rate": 80.95238095238095
+        }
+      ]
+    },
+    {
+      "pair_name": "dot_btc",
+      "pair": "DOT/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 17.49,
+      "avg_oos_return": 18.78,
+      "avg_oos_trades": 18.2,
+      "avg_win_rate": 78.1,
+      "sharpe_std": 11.58,
+      "positive_folds": 17,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:28.599292+00:00",
+          "test_end": "2024-07-22T14:49:28.599292+00:00",
+          "test_return": 31.913879138216373,
+          "test_sharpe": 17.013407570715128,
+          "test_trades": 23,
+          "test_win_rate": 95.65217391304348
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:28.599292+00:00",
+          "test_end": "2024-08-21T14:49:28.599292+00:00",
+          "test_return": 37.06056025154032,
+          "test_sharpe": 25.057649616847986,
+          "test_trades": 25,
+          "test_win_rate": 76.0
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:28.599292+00:00",
+          "test_end": "2024-09-20T14:49:28.599292+00:00",
+          "test_return": 24.440979050973468,
+          "test_sharpe": 22.954204275150243,
+          "test_trades": 21,
+          "test_win_rate": 80.95238095238095
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:28.599292+00:00",
+          "test_end": "2024-10-20T14:49:28.599292+00:00",
+          "test_return": 14.83233640924011,
+          "test_sharpe": 19.60631437478789,
+          "test_trades": 21,
+          "test_win_rate": 85.71428571428571
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:28.599292+00:00",
+          "test_end": "2024-11-19T14:49:28.599292+00:00",
+          "test_return": 16.241747885245104,
+          "test_sharpe": 15.946031073669392,
+          "test_trades": 20,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:28.599292+00:00",
+          "test_end": "2024-12-19T14:49:28.599292+00:00",
+          "test_return": 0.9933778568528728,
+          "test_sharpe": 1.2204304083603144,
+          "test_trades": 15,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:28.599292+00:00",
+          "test_end": "2025-01-18T14:49:28.599292+00:00",
+          "test_return": -2.61476718402488,
+          "test_sharpe": -1.3004951358262014,
+          "test_trades": 15,
+          "test_win_rate": 60.0
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:28.599292+00:00",
+          "test_end": "2025-02-17T14:49:28.599292+00:00",
+          "test_return": 9.810858966138692,
+          "test_sharpe": 5.828540118221633,
+          "test_trades": 17,
+          "test_win_rate": 70.58823529411765
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:28.599292+00:00",
+          "test_end": "2025-03-19T14:49:28.599292+00:00",
+          "test_return": 21.597880539406077,
+          "test_sharpe": 12.971666991872532,
+          "test_trades": 15,
+          "test_win_rate": 60.0
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:28.599292+00:00",
+          "test_end": "2025-04-18T14:49:28.599292+00:00",
+          "test_return": 18.110877103713374,
+          "test_sharpe": 10.063413831312294,
+          "test_trades": 20,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:28.599292+00:00",
+          "test_end": "2025-05-18T14:49:28.599292+00:00",
+          "test_return": 17.215849535602267,
+          "test_sharpe": 16.416237929827865,
+          "test_trades": 17,
+          "test_win_rate": 82.35294117647058
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:28.599292+00:00",
+          "test_end": "2025-06-17T14:49:28.599292+00:00",
+          "test_return": 12.918558400807001,
+          "test_sharpe": 10.758501110966687,
+          "test_trades": 16,
+          "test_win_rate": 81.25
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:28.599292+00:00",
+          "test_end": "2025-07-17T14:49:28.599292+00:00",
+          "test_return": 16.70674528337621,
+          "test_sharpe": 22.293811781982402,
+          "test_trades": 14,
+          "test_win_rate": 71.42857142857143
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:28.599292+00:00",
+          "test_end": "2025-08-16T14:49:28.599292+00:00",
+          "test_return": 15.69479721353515,
+          "test_sharpe": 12.40236765365986,
+          "test_trades": 18,
+          "test_win_rate": 72.22222222222221
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:28.599292+00:00",
+          "test_end": "2025-09-15T14:49:28.599292+00:00",
+          "test_return": 22.22621700227243,
+          "test_sharpe": 35.58445953839758,
+          "test_trades": 13,
+          "test_win_rate": 92.3076923076923
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:28.599292+00:00",
+          "test_end": "2025-10-15T14:49:28.599292+00:00",
+          "test_return": 30.092639511261375,
+          "test_sharpe": 21.221155049807447,
+          "test_trades": 19,
+          "test_win_rate": 84.21052631578947
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:28.599292+00:00",
+          "test_end": "2025-11-14T14:49:28.599292+00:00",
+          "test_return": 27.17691225287764,
+          "test_sharpe": 49.95981382865358,
+          "test_trades": 16,
+          "test_win_rate": 93.75
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:28.599292+00:00",
+          "test_end": "2025-12-14T14:49:28.599292+00:00",
+          "test_return": 23.56753026628493,
+          "test_sharpe": 16.813500678235243,
+          "test_trades": 23,
+          "test_win_rate": 82.6086956521739
+        }
+      ]
+    },
+    {
+      "pair_name": "link_btc",
+      "pair": "LINK/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 14.87,
+      "avg_oos_return": 22.19,
+      "avg_oos_trades": 23.1,
+      "avg_win_rate": 75.5,
+      "sharpe_std": 10.47,
+      "positive_folds": 16,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:28.597206+00:00",
+          "test_end": "2024-07-22T14:49:28.597206+00:00",
+          "test_return": 18.692345569575842,
+          "test_sharpe": 10.591327943555516,
+          "test_trades": 21,
+          "test_win_rate": 76.19047619047619
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:28.597206+00:00",
+          "test_end": "2024-08-21T14:49:28.597206+00:00",
+          "test_return": 23.686454556756665,
+          "test_sharpe": 12.75769665192519,
+          "test_trades": 23,
+          "test_win_rate": 60.86956521739131
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:28.597206+00:00",
+          "test_end": "2024-09-20T14:49:28.597206+00:00",
+          "test_return": 32.74633796423534,
+          "test_sharpe": 26.766071707674712,
+          "test_trades": 26,
+          "test_win_rate": 80.76923076923077
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:28.597206+00:00",
+          "test_end": "2024-10-20T14:49:28.597206+00:00",
+          "test_return": 29.275404141014082,
+          "test_sharpe": 22.834286463564563,
+          "test_trades": 29,
+          "test_win_rate": 89.65517241379311
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:28.597206+00:00",
+          "test_end": "2024-11-19T14:49:28.597206+00:00",
+          "test_return": 29.59190013154709,
+          "test_sharpe": 15.36178413152768,
+          "test_trades": 20,
+          "test_win_rate": 80.0
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:28.597206+00:00",
+          "test_end": "2024-12-19T14:49:28.597206+00:00",
+          "test_return": -2.6058458265172946,
+          "test_sharpe": -1.0888202836268628,
+          "test_trades": 12,
+          "test_win_rate": 58.333333333333336
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:28.597206+00:00",
+          "test_end": "2025-01-18T14:49:28.597206+00:00",
+          "test_return": -7.236511536004365,
+          "test_sharpe": -3.447128667624988,
+          "test_trades": 22,
+          "test_win_rate": 54.54545454545454
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:28.597206+00:00",
+          "test_end": "2025-02-17T14:49:28.597206+00:00",
+          "test_return": 38.02907324386451,
+          "test_sharpe": 16.219005669930493,
+          "test_trades": 23,
+          "test_win_rate": 73.91304347826086
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:28.597206+00:00",
+          "test_end": "2025-03-19T14:49:28.597206+00:00",
+          "test_return": 11.67748615364248,
+          "test_sharpe": 4.419033452655039,
+          "test_trades": 26,
+          "test_win_rate": 61.53846153846154
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:28.597206+00:00",
+          "test_end": "2025-04-18T14:49:28.597206+00:00",
+          "test_return": 36.781385533685665,
+          "test_sharpe": 14.136038364666229,
+          "test_trades": 26,
+          "test_win_rate": 69.23076923076923
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:28.597206+00:00",
+          "test_end": "2025-05-18T14:49:28.597206+00:00",
+          "test_return": 13.331277793583872,
+          "test_sharpe": 11.02601577210022,
+          "test_trades": 24,
+          "test_win_rate": 79.16666666666666
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:28.597206+00:00",
+          "test_end": "2025-06-17T14:49:28.597206+00:00",
+          "test_return": 13.238433684628138,
+          "test_sharpe": 8.028560522428933,
+          "test_trades": 26,
+          "test_win_rate": 80.76923076923077
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:28.597206+00:00",
+          "test_end": "2025-07-17T14:49:28.597206+00:00",
+          "test_return": 20.336104149672018,
+          "test_sharpe": 27.03654409991285,
+          "test_trades": 23,
+          "test_win_rate": 78.26086956521739
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:28.597206+00:00",
+          "test_end": "2025-08-16T14:49:28.597206+00:00",
+          "test_return": 22.88477877039583,
+          "test_sharpe": 18.91963236525948,
+          "test_trades": 25,
+          "test_win_rate": 84.0
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:28.597206+00:00",
+          "test_end": "2025-09-15T14:49:28.597206+00:00",
+          "test_return": 33.358825232403966,
+          "test_sharpe": 24.368701072885028,
+          "test_trades": 18,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:28.597206+00:00",
+          "test_end": "2025-10-15T14:49:28.597206+00:00",
+          "test_return": 13.574572324143187,
+          "test_sharpe": 6.150921706242139,
+          "test_trades": 25,
+          "test_win_rate": 76.0
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:28.597206+00:00",
+          "test_end": "2025-11-14T14:49:28.597206+00:00",
+          "test_return": 14.302125875895255,
+          "test_sharpe": 13.269718324843508,
+          "test_trades": 19,
+          "test_win_rate": 78.94736842105263
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:28.597206+00:00",
+          "test_end": "2025-12-14T14:49:28.597206+00:00",
+          "test_return": 57.72963296788887,
+          "test_sharpe": 40.335432187055154,
+          "test_trades": 28,
+          "test_win_rate": 92.85714285714286
+        }
+      ]
+    },
+    {
+      "pair_name": "ltc_btc",
+      "pair": "LTC/BTC",
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 14.56,
+      "avg_oos_return": 16.8,
+      "avg_oos_trades": 16.2,
+      "avg_win_rate": 74.3,
+      "sharpe_std": 12.81,
+      "positive_folds": 17,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:27.890696+00:00",
+          "test_end": "2024-07-22T14:49:27.890696+00:00",
+          "test_return": 10.776536584906115,
+          "test_sharpe": 5.394906144891816,
+          "test_trades": 11,
+          "test_win_rate": 63.63636363636363
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:27.890696+00:00",
+          "test_end": "2024-08-21T14:49:27.890696+00:00",
+          "test_return": 20.35443589215824,
+          "test_sharpe": 10.769448191313696,
+          "test_trades": 22,
+          "test_win_rate": 63.63636363636363
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:27.890696+00:00",
+          "test_end": "2024-09-20T14:49:27.890696+00:00",
+          "test_return": 10.94976499304292,
+          "test_sharpe": 11.558378723025196,
+          "test_trades": 10,
+          "test_win_rate": 70.0
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:27.890696+00:00",
+          "test_end": "2024-10-20T14:49:27.890696+00:00",
+          "test_return": 18.13670074771383,
+          "test_sharpe": 25.531725127329807,
+          "test_trades": 18,
+          "test_win_rate": 88.88888888888889
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:27.890696+00:00",
+          "test_end": "2024-11-19T14:49:27.890696+00:00",
+          "test_return": 37.003864131517616,
+          "test_sharpe": 9.287019417408269,
+          "test_trades": 16,
+          "test_win_rate": 68.75
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:27.890696+00:00",
+          "test_end": "2024-12-19T14:49:27.890696+00:00",
+          "test_return": 4.256479988574036,
+          "test_sharpe": 2.9527298318861117,
+          "test_trades": 9,
+          "test_win_rate": 55.55555555555556
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:27.890696+00:00",
+          "test_end": "2025-01-18T14:49:27.890696+00:00",
+          "test_return": 3.253800556537545,
+          "test_sharpe": 2.8731686266889476,
+          "test_trades": 9,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:27.890696+00:00",
+          "test_end": "2025-02-17T14:49:27.890696+00:00",
+          "test_return": 18.668454299437087,
+          "test_sharpe": 8.396881499368025,
+          "test_trades": 12,
+          "test_win_rate": 75.0
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:27.890696+00:00",
+          "test_end": "2025-03-19T14:49:27.890696+00:00",
+          "test_return": -3.6260720814885405,
+          "test_sharpe": -0.4901906147971086,
+          "test_trades": 24,
+          "test_win_rate": 54.166666666666664
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:27.890696+00:00",
+          "test_end": "2025-04-18T14:49:27.890696+00:00",
+          "test_return": 0.44046519956499885,
+          "test_sharpe": 0.6436526951332537,
+          "test_trades": 25,
+          "test_win_rate": 60.0
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:27.890696+00:00",
+          "test_end": "2025-05-18T14:49:27.890696+00:00",
+          "test_return": 19.715231200813378,
+          "test_sharpe": 22.986956947505956,
+          "test_trades": 13,
+          "test_win_rate": 84.61538461538461
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:27.890696+00:00",
+          "test_end": "2025-06-17T14:49:27.890696+00:00",
+          "test_return": 25.193246805946366,
+          "test_sharpe": 15.241880778807808,
+          "test_trades": 16,
+          "test_win_rate": 81.25
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:27.890696+00:00",
+          "test_end": "2025-07-17T14:49:27.890696+00:00",
+          "test_return": 33.82937550423855,
+          "test_sharpe": 43.90462571828532,
+          "test_trades": 25,
+          "test_win_rate": 92.0
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:27.890696+00:00",
+          "test_end": "2025-08-16T14:49:27.890696+00:00",
+          "test_return": 17.9432008432717,
+          "test_sharpe": 21.16986786374522,
+          "test_trades": 12,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:27.890696+00:00",
+          "test_end": "2025-09-15T14:49:27.890696+00:00",
+          "test_return": 25.050209942808266,
+          "test_sharpe": 23.966465598165804,
+          "test_trades": 21,
+          "test_win_rate": 95.23809523809523
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:27.890696+00:00",
+          "test_end": "2025-10-15T14:49:27.890696+00:00",
+          "test_return": 4.205034736714475,
+          "test_sharpe": 2.5164495303467,
+          "test_trades": 17,
+          "test_win_rate": 58.82352941176471
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:27.890696+00:00",
+          "test_end": "2025-11-14T14:49:27.890696+00:00",
+          "test_return": 25.631972426421477,
+          "test_sharpe": 42.115674897343254,
+          "test_trades": 11,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:27.890696+00:00",
+          "test_end": "2025-12-14T14:49:27.890696+00:00",
+          "test_return": 30.541615427031378,
+          "test_sharpe": 13.301748862547981,
+          "test_trades": 21,
+          "test_win_rate": 76.19047619047619
+        }
+      ]
+    },
+    {
+      "pair_name": "sol_btc",
+      "pair": "SOL/BTC",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "avg_oos_sharpe": 12.64,
+      "avg_oos_return": 18.36,
+      "avg_oos_trades": 23.4,
+      "avg_win_rate": 74.5,
+      "sharpe_std": 12.19,
+      "positive_folds": 17,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:27.890501+00:00",
+          "test_end": "2024-07-22T14:49:27.890501+00:00",
+          "test_return": 22.87791984665237,
+          "test_sharpe": 25.547641782866325,
+          "test_trades": 13,
+          "test_win_rate": 76.92307692307693
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:27.890501+00:00",
+          "test_end": "2024-08-21T14:49:27.890501+00:00",
+          "test_return": 7.574705141894911,
+          "test_sharpe": 3.405566826776004,
+          "test_trades": 26,
+          "test_win_rate": 65.38461538461539
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:27.890501+00:00",
+          "test_end": "2024-09-20T14:49:27.890501+00:00",
+          "test_return": 23.90146811169025,
+          "test_sharpe": 12.430510508058651,
+          "test_trades": 23,
+          "test_win_rate": 78.26086956521739
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:27.890501+00:00",
+          "test_end": "2024-10-20T14:49:27.890501+00:00",
+          "test_return": 17.591828494129125,
+          "test_sharpe": 19.72318717801094,
+          "test_trades": 21,
+          "test_win_rate": 90.47619047619048
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:27.890501+00:00",
+          "test_end": "2024-11-19T14:49:27.890501+00:00",
+          "test_return": 36.43779647763159,
+          "test_sharpe": 16.516414331324423,
+          "test_trades": 26,
+          "test_win_rate": 76.92307692307693
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:27.890501+00:00",
+          "test_end": "2024-12-19T14:49:27.890501+00:00",
+          "test_return": -0.4840036498142575,
+          "test_sharpe": 0.2565057187667172,
+          "test_trades": 30,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:27.890501+00:00",
+          "test_end": "2025-01-18T14:49:27.890501+00:00",
+          "test_return": 1.9389913933292258,
+          "test_sharpe": 1.392107162395526,
+          "test_trades": 21,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:27.890501+00:00",
+          "test_end": "2025-02-17T14:49:27.890501+00:00",
+          "test_return": 9.079871485522961,
+          "test_sharpe": 3.0950639774665047,
+          "test_trades": 27,
+          "test_win_rate": 62.96296296296296
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:27.890501+00:00",
+          "test_end": "2025-03-19T14:49:27.890501+00:00",
+          "test_return": 25.37193063742822,
+          "test_sharpe": 8.645033195804356,
+          "test_trades": 28,
+          "test_win_rate": 71.42857142857143
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:27.890501+00:00",
+          "test_end": "2025-04-18T14:49:27.890501+00:00",
+          "test_return": 32.94036470614196,
+          "test_sharpe": 10.349540015504022,
+          "test_trades": 22,
+          "test_win_rate": 72.72727272727273
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:27.890501+00:00",
+          "test_end": "2025-05-18T14:49:27.890501+00:00",
+          "test_return": 32.62394312866501,
+          "test_sharpe": 22.970674385478116,
+          "test_trades": 27,
+          "test_win_rate": 85.18518518518519
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:27.890501+00:00",
+          "test_end": "2025-06-17T14:49:27.890501+00:00",
+          "test_return": 17.14208333532965,
+          "test_sharpe": 12.416481598225849,
+          "test_trades": 23,
+          "test_win_rate": 78.26086956521739
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:27.890501+00:00",
+          "test_end": "2025-07-17T14:49:27.890501+00:00",
+          "test_return": 20.988876627815365,
+          "test_sharpe": 12.392307005141308,
+          "test_trades": 26,
+          "test_win_rate": 73.07692307692307
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:27.890501+00:00",
+          "test_end": "2025-08-16T14:49:27.890501+00:00",
+          "test_return": -9.55817130288109,
+          "test_sharpe": -4.8535329697094385,
+          "test_trades": 17,
+          "test_win_rate": 58.82352941176471
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:27.890501+00:00",
+          "test_end": "2025-09-15T14:49:27.890501+00:00",
+          "test_return": 36.847357151573526,
+          "test_sharpe": 45.38902726462311,
+          "test_trades": 16,
+          "test_win_rate": 100.0
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:27.890501+00:00",
+          "test_end": "2025-10-15T14:49:27.890501+00:00",
+          "test_return": 1.8224881420458638,
+          "test_sharpe": 1.179354634318382,
+          "test_trades": 24,
+          "test_win_rate": 58.333333333333336
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:27.890501+00:00",
+          "test_end": "2025-11-14T14:49:27.890501+00:00",
+          "test_return": 13.29575441554416,
+          "test_sharpe": 6.432208062880519,
+          "test_trades": 29,
+          "test_win_rate": 72.41379310344827
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:27.890501+00:00",
+          "test_end": "2025-12-14T14:49:27.890501+00:00",
+          "test_return": 40.06870238456648,
+          "test_sharpe": 30.27742667484578,
+          "test_trades": 23,
+          "test_win_rate": 86.95652173913044
+        }
+      ]
+    },
+    {
+      "pair_name": "near_btc",
+      "pair": "NEAR/BTC",
+      "params": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "avg_oos_sharpe": 10.51,
+      "avg_oos_return": 16.74,
+      "avg_oos_trades": 16.3,
+      "avg_win_rate": 76.1,
+      "sharpe_std": 8.13,
+      "positive_folds": 16,
+      "total_folds": 18,
+      "passed": true,
+      "folds": [
+        {
+          "fold_num": 1,
+          "test_start": "2024-06-22T14:49:28.734838+00:00",
+          "test_end": "2024-07-22T14:49:28.734838+00:00",
+          "test_return": 28.161547539935803,
+          "test_sharpe": 14.076852671714663,
+          "test_trades": 14,
+          "test_win_rate": 92.85714285714286
+        },
+        {
+          "fold_num": 2,
+          "test_start": "2024-07-22T14:49:28.734838+00:00",
+          "test_end": "2024-08-21T14:49:28.734838+00:00",
+          "test_return": 32.54967459438263,
+          "test_sharpe": 16.96689495795669,
+          "test_trades": 23,
+          "test_win_rate": 86.95652173913044
+        },
+        {
+          "fold_num": 3,
+          "test_start": "2024-08-21T14:49:28.734838+00:00",
+          "test_end": "2024-09-20T14:49:28.734838+00:00",
+          "test_return": 38.47266762553983,
+          "test_sharpe": 30.652466667190065,
+          "test_trades": 19,
+          "test_win_rate": 84.21052631578947
+        },
+        {
+          "fold_num": 4,
+          "test_start": "2024-09-20T14:49:28.734838+00:00",
+          "test_end": "2024-10-20T14:49:28.734838+00:00",
+          "test_return": 10.593128874259406,
+          "test_sharpe": 10.034427128554288,
+          "test_trades": 13,
+          "test_win_rate": 84.61538461538461
+        },
+        {
+          "fold_num": 5,
+          "test_start": "2024-10-20T14:49:28.734838+00:00",
+          "test_end": "2024-11-19T14:49:28.734838+00:00",
+          "test_return": 14.939780123788204,
+          "test_sharpe": 8.285431394721483,
+          "test_trades": 18,
+          "test_win_rate": 83.33333333333334
+        },
+        {
+          "fold_num": 6,
+          "test_start": "2024-11-19T14:49:28.734838+00:00",
+          "test_end": "2024-12-19T14:49:28.734838+00:00",
+          "test_return": 23.403147279214043,
+          "test_sharpe": 10.947902496944632,
+          "test_trades": 20,
+          "test_win_rate": 80.0
+        },
+        {
+          "fold_num": 7,
+          "test_start": "2024-12-19T14:49:28.734838+00:00",
+          "test_end": "2025-01-18T14:49:28.734838+00:00",
+          "test_return": -1.580841305420888,
+          "test_sharpe": -0.33187412950111705,
+          "test_trades": 15,
+          "test_win_rate": 66.66666666666666
+        },
+        {
+          "fold_num": 8,
+          "test_start": "2025-01-18T14:49:28.734838+00:00",
+          "test_end": "2025-02-17T14:49:28.734838+00:00",
+          "test_return": 11.082253576655066,
+          "test_sharpe": 6.04645581260662,
+          "test_trades": 16,
+          "test_win_rate": 68.75
+        },
+        {
+          "fold_num": 9,
+          "test_start": "2025-02-17T14:49:28.734838+00:00",
+          "test_end": "2025-03-19T14:49:28.734838+00:00",
+          "test_return": -8.862305589662533,
+          "test_sharpe": -5.076241486427109,
+          "test_trades": 13,
+          "test_win_rate": 53.84615384615385
+        },
+        {
+          "fold_num": 10,
+          "test_start": "2025-03-19T14:49:28.734838+00:00",
+          "test_end": "2025-04-18T14:49:28.734838+00:00",
+          "test_return": 44.954077596978316,
+          "test_sharpe": 16.48827459388686,
+          "test_trades": 21,
+          "test_win_rate": 71.42857142857143
+        },
+        {
+          "fold_num": 11,
+          "test_start": "2025-04-18T14:49:28.734838+00:00",
+          "test_end": "2025-05-18T14:49:28.734838+00:00",
+          "test_return": 12.16372907313692,
+          "test_sharpe": 9.07787257843135,
+          "test_trades": 14,
+          "test_win_rate": 78.57142857142857
+        },
+        {
+          "fold_num": 12,
+          "test_start": "2025-05-18T14:49:28.734838+00:00",
+          "test_end": "2025-06-17T14:49:28.734838+00:00",
+          "test_return": 0.03700979558867168,
+          "test_sharpe": 0.48921115891944983,
+          "test_trades": 14,
+          "test_win_rate": 57.14285714285714
+        },
+        {
+          "fold_num": 13,
+          "test_start": "2025-06-17T14:49:28.734838+00:00",
+          "test_end": "2025-07-17T14:49:28.734838+00:00",
+          "test_return": 2.114342725244134,
+          "test_sharpe": 2.865496742089215,
+          "test_trades": 10,
+          "test_win_rate": 60.0
+        },
+        {
+          "fold_num": 14,
+          "test_start": "2025-07-17T14:49:28.734838+00:00",
+          "test_end": "2025-08-16T14:49:28.734838+00:00",
+          "test_return": 19.753485005713767,
+          "test_sharpe": 10.977838258936275,
+          "test_trades": 19,
+          "test_win_rate": 73.68421052631578
+        },
+        {
+          "fold_num": 15,
+          "test_start": "2025-08-16T14:49:28.734838+00:00",
+          "test_end": "2025-09-15T14:49:28.734838+00:00",
+          "test_return": 21.32169527135117,
+          "test_sharpe": 18.80241259847193,
+          "test_trades": 14,
+          "test_win_rate": 92.85714285714286
+        },
+        {
+          "fold_num": 16,
+          "test_start": "2025-09-15T14:49:28.734838+00:00",
+          "test_end": "2025-10-15T14:49:28.734838+00:00",
+          "test_return": 21.12535552493464,
+          "test_sharpe": 15.528939377471604,
+          "test_trades": 15,
+          "test_win_rate": 80.0
+        },
+        {
+          "fold_num": 17,
+          "test_start": "2025-10-15T14:49:28.734838+00:00",
+          "test_end": "2025-11-14T14:49:28.734838+00:00",
+          "test_return": 18.402736117323705,
+          "test_sharpe": 16.664085343978172,
+          "test_trades": 13,
+          "test_win_rate": 76.92307692307693
+        },
+        {
+          "fold_num": 18,
+          "test_start": "2025-11-14T14:49:28.734838+00:00",
+          "test_end": "2025-12-14T14:49:28.734838+00:00",
+          "test_return": 12.615689863598067,
+          "test_sharpe": 6.68984830434702,
+          "test_trades": 22,
+          "test_win_rate": 77.27272727272727
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "passed": [
+      "bnb_btc",
+      "ada_btc",
+      "eth_btc",
+      "xrp_btc",
+      "dot_btc",
+      "link_btc",
+      "ltc_btc",
+      "sol_btc",
+      "near_btc"
+    ],
+    "failed": []
+  }
+}

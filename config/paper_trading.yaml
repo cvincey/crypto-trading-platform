@@ -9,136 +9,473 @@ paper_trading:
   exchange: binance_testnet
   
   # =============================================================================
-  # Strategies to Paper Trade
+  # Strategy Lifecycle Tags
   # =============================================================================
   #
-  # STATUS:
-  #   ★ PREFERRED  - Primary, validated, currently running
-  #   ◐ BACKUP     - Validated, available as alternative
-  #   ◇ EXPERIMENTAL - Not yet validated
+  # STAGE (validation/deployment state - mutually exclusive):
+  #   deployed     - Passed validation, currently running in paper/live
+  #   validated    - Passed validation, ready to deploy but not yet running  
+  #   experimental - Not yet validated through walk-forward testing
+  #   retired      - Failed validation or deprecated
+  #
+  # ROLE (portfolio function - optional):
+  #   primary      - Core strategy, gets priority allocation
+  #   backup       - Ready to replace primary if it underperforms
+  #   diversifier  - Provides uncorrelated returns to core strategies
+  #
+  # ENABLED (actual on/off switch):
+  #   true/false   - Controls whether strategy runs
   #
   # =============================================================================
   
   strategies:
     
     # =========================================================================
-    # ★ PREFERRED - Currently Running
+    # DEPLOYED - Currently Running
     # =========================================================================
     
     eth_btc_ratio_optimized:
-      status: preferred             # ★ PRIMARY STRATEGY
+      stage: deployed
+      role: primary
       type: eth_btc_ratio_reversion
       description: "ETH/BTC ratio mean reversion - buys ETH when underperforming BTC"
       validation:
-        sharpe_2024: 7.98
-        sharpe_2025: 5.93
-        win_rate: 90.2%
-        params_stable: true         # 2024 optimal = 2025 optimal
+        sharpe_note11: 9.54         # Note 11 comprehensive grid search
+        sharpe_reopt: 22.35         # Re-optimized Dec 24 (+53% improvement)
+        wf_sharpe: 21.01            # Walk-forward validated Dec 24
+        wf_positive_folds: "17/18"
+        oos_return: 6.0%
+        trades_365d: 530
+        grid_optimized: true
+        reoptimized_date: "2024-12-24"
       params:
-        lookback: 120               # 5 days (optimal)
-        entry_threshold: -1.5       # Buy when z-score < -1.5
-        exit_threshold: -0.7        # Sell when z-score > -0.7
-        max_hold_hours: 48          # Max 2 days hold
+        lookback: 48                # REOPTIMIZED: was 72
+        entry_threshold: -2.0       # REOPTIMIZED: was -1.2
+        exit_threshold: -0.9        # REOPTIMIZED: was -0.7
+        max_hold_hours: 24          # REOPTIMIZED: was 72 (grid optimal)
       symbol: ETHUSDT
       interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
       enabled: true                 # ✓ ACTIVE
     
     # =========================================================================
-    # ◐ BACKUP - Ready to Enable
+    # VALIDATED - Ready to Deploy
     # =========================================================================
     
     eth_btc_ratio_confirmed_optimized:
-      status: backup                # ◐ Alternative strategy
+      stage: deployed
+      role: backup
       type: eth_btc_ratio_confirmed
-      description: "Same as preferred but requires 2-hour signal confirmation"
+      description: "Same as primary but requires 2-hour signal confirmation"
+      validation:
+        sharpe_note11: 7.29         # Note 11 comprehensive grid search
+        oos_return: 3.7%
+        trades_365d: 308
+        grid_optimized: true
       params:
-        lookback: 120
-        entry_threshold: -1.5
+        lookback: 72                # FINAL: 3 days
+        entry_threshold: -1.2       # FINAL
         exit_threshold: -0.7
-        max_hold_hours: 48
-        confirmation_delay: 2       # Wait 2 bars to confirm
+        max_hold_hours: 72
+        confirmation_delay: 2       # FINAL
       symbol: ETHUSDT
       interval: 1h
-      enabled: false                # Enable if preferred underperforms
+      stop_loss_pct: 0.03           # FINAL
+      take_profit_pct: 0.08         # FINAL
+      enabled: true                 # ✓ DEPLOYED
     
     # =========================================================================
-    # ★ VALIDATED - Stable params across 2024-2025
+    # DEPLOYED - Ratio Mean Reversion Strategies
     # =========================================================================
     
     sol_btc_ratio:
-      status: validated             # ★ Params stable 2024=2025
+      stage: deployed
       type: ratio_reversion
       description: "SOL/BTC ratio reversion"
       validation:
-        sharpe_2024: 4.07
-        sharpe_2025: 4.25
-        params_stable: true
+        sharpe_note11: 6.54         # Note 11 comprehensive grid search
+        sharpe_reopt: 14.4          # Re-optimized Dec 24 (+64% improvement)
+        wf_sharpe: 12.64            # Walk-forward validated Dec 24
+        wf_positive_folds: "17/18"
+        oos_return: 4.7%
+        trades_365d: 479
+        grid_optimized: true
+        reoptimized_date: "2024-12-24"
       params:
         reference_symbol: BTCUSDT
         target_symbol: SOLUSDT
-        lookback: 120
-        entry_threshold: -1.5
-        exit_threshold: -0.7
+        lookback: 48                # REOPTIMIZED: was 72
+        entry_threshold: -1.2       # Kept same - optimal for SOL
+        exit_threshold: -0.9        # REOPTIMIZED: was -0.7
         max_hold_hours: 48
       symbol: SOLUSDT
       interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
       enabled: true                 # ✓ ACTIVE
     
     ltc_btc_ratio:
-      status: validated             # ★ Params stable 2024=2025
+      stage: deployed
       type: ratio_reversion
       description: "LTC/BTC ratio reversion"
       validation:
-        sharpe_2024: 4.98
-        sharpe_2025: 5.31
-        params_stable: true
+        sharpe_note11: 8.31         # Note 11 comprehensive grid search
+        sharpe_reopt: 16.29         # Re-optimized Dec 24 (+67% improvement)
+        wf_sharpe: 14.56            # Walk-forward validated Dec 24
+        wf_positive_folds: "17/18"
+        oos_return: 4.8%
+        trades_365d: 388
+        grid_optimized: true
+        reoptimized_date: "2024-12-24"
       params:
         reference_symbol: BTCUSDT
         target_symbol: LTCUSDT
-        lookback: 120
-        entry_threshold: -1.5
-        exit_threshold: -0.7
-        max_hold_hours: 72          # Note: 72 optimal for LTC (not 48)
+        lookback: 48                # REOPTIMIZED: was 120
+        entry_threshold: -1.5       # REOPTIMIZED: was -1.2
+        exit_threshold: -0.9        # REOPTIMIZED: was -0.7
+        max_hold_hours: 24          # REOPTIMIZED: grid optimal
       symbol: LTCUSDT
       interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
       enabled: true                 # ✓ ACTIVE
     
     avax_btc_ratio:
-      status: validated             # ★ Params stable 2024=2025
+      stage: retired
       type: ratio_reversion
       description: "AVAX/BTC ratio reversion"
       validation:
         sharpe_2024: 3.10
         sharpe_2025: 2.38
         params_stable: true
+        retirement_reason: "Weakest ratio strategy at +19% return vs 160%+ for ETH/SOL/LTC"
       params:
         reference_symbol: BTCUSDT
         target_symbol: AVAXUSDT
-        lookback: 120
+        lookback: 96
         entry_threshold: -1.5
         exit_threshold: -0.7
-        max_hold_hours: 48
+        max_hold_hours: 72
       symbol: AVAXUSDT
       interval: 1h
+      stop_loss_pct: 0.04
+      take_profit_pct: 0.10
+      enabled: false                # RETIRED
+    
+    bnb_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "BNB/BTC ratio reversion - best performer from universe expansion"
+      validation:
+        sharpe_note16: 23.94        # Research Note 16 grid search
+        wf_sharpe: 32.35            # Walk-forward validated Dec 24
+        wf_positive_folds: "18/18"  # Perfect pass rate!
+        oos_return: 439.2%
+        win_rate: 85.9%
+        trades_per_month: 15.1
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: BNBUSDT
+        lookback: 48                # OPTIMIZED: shorter than default
+        entry_threshold: -1.8       # OPTIMIZED: more conservative
+        exit_threshold: -0.9        # OPTIMIZED: tighter exit
+        max_hold_hours: 48
+      symbol: BNBUSDT
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    ada_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "ADA/BTC ratio reversion - excellent return profile"
+      validation:
+        sharpe_note16: 19.74        # Research Note 16 grid search
+        wf_sharpe: 24.51            # Walk-forward validated Dec 24
+        wf_positive_folds: "18/18"  # Perfect pass rate!
+        oos_return: 2832.2%
+        win_rate: 85.8%
+        trades_per_month: 20.3
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: ADAUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+      symbol: ADAUSDT
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    xrp_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "XRP/BTC ratio reversion - strong Sharpe, high liquidity"
+      validation:
+        sharpe_note16: 16.10        # Research Note 16 grid search
+        wf_sharpe: 20.86            # Walk-forward validated
+        wf_positive_folds: "18/18"
+        oos_return: 1359.9%
+        win_rate: 82.6%
+        trades_per_month: 20.8
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: XRPUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+      symbol: XRPUSDT
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    dot_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "DOT/BTC ratio reversion - walk-forward validated"
+      validation:
+        sharpe_note16: 14.74        # Research Note 16 grid search
+        wf_sharpe: 17.49            # Walk-forward validated
+        wf_positive_folds: "17/18"
+        oos_return: 992.4%
+        win_rate: 79.0%
+        trades_per_month: 18.8
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: DOTUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 24          # OPTIMIZED - shorter hold
+      symbol: DOTUSDT
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    link_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "LINK/BTC ratio reversion - walk-forward validated"
+      validation:
+        sharpe_note16: 12.65        # Research Note 16 grid search
+        wf_sharpe: 14.87            # Walk-forward validated
+        wf_positive_folds: "16/18"
+        oos_return: 1510.3%
+        win_rate: 77.0%
+        trades_per_month: 26.1
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: LINKUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.5       # OPTIMIZED - slightly less conservative
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 24          # OPTIMIZED - shorter hold
+      symbol: LINKUSDT
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.08
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    near_btc_ratio:
+      stage: deployed
+      type: ratio_reversion
+      description: "NEAR/BTC ratio reversion - walk-forward validated"
+      validation:
+        sharpe_note16: 8.69         # Research Note 16 grid search
+        wf_sharpe: 10.51            # Walk-forward validated
+        wf_positive_folds: "16/18"
+        oos_return: 456.1%
+        win_rate: 71.1%
+        trades_per_month: 17.9
+        grid_optimized: true
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: NEARUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+      symbol: NEARUSDT
+      interval: 1h
+      stop_loss_pct: 0.04           # Slightly wider for smaller cap
+      take_profit_pct: 0.10
+      enabled: true                 # ✓ ACTIVE - Paper trading
+    
+    # =========================================================================
+    # RETIRED - Failed Validation
+    # =========================================================================
+    
+    volume_divergence:
+      stage: retired
+      type: volume_divergence
+      description: "Fade price moves with declining volume"
+      validation:
+        oos_sharpe: 1.47
+        grid_optimized: true
+        retirement_reason: "Only 2 trades in 180 days - too infrequent"
+      params:
+        price_lookback: 24
+        volume_lookback: 48
+        price_threshold: 0.03
+        volume_decline_threshold: 0.35
+        signal_mode: fade
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      interval: 1h
+      stop_loss_pct: 0.02
+      take_profit_pct: 0.05
+      enabled: false                # RETIRED
+    
+    # =========================================================================
+    # DEPLOYED - Diversifier Strategies
+    # =========================================================================
+    
+    basis_proxy:
+      stage: deployed
+      role: diversifier
+      type: basis_proxy
+      description: "Trade contrarian to funding rate extremes - diversifies from ratio strategies"
+      validation:
+        sharpe_note11: 1.05         # Note 11 comprehensive grid search
+        oos_return: 0.6%
+        trades_365d: 36
+        grid_optimized: true
+        role: "Trades on funding rates, independent of BTC/alt ratios"
+      params:
+        funding_lookback: 4         # FINAL: shorter
+        entry_threshold: -0.0004    # FINAL
+        exit_threshold: 0.0002      # FINAL
+        extreme_positive: 0.0005
+        max_hold_hours: 72
+        use_funding_data: false     # Uses price-based estimation
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      interval: 1h
+      stop_loss_pct: 0.02           # FINAL
+      take_profit_pct: 0.06         # FINAL
+      enabled: true                 # ✓ ACTIVE - diversifier
+    
+    liquidity_vacuum_detector:
+      stage: deployed
+      role: diversifier
+      type: liquidity_vacuum_detector
+      description: "Fade thin-book vacuum moves - microstructure signal"
+      validation:
+        sharpe_grid: 0.78           # Research Note 14 grid search
+        trades_180d: 18
+        grid_optimized: true
+        role: "Microstructure alpha - orthogonal to ratio MR"
+      params:
+        range_percentile: 85        # FINAL from grid search
+        volume_percentile: 50       # FINAL from grid search
+        percentile_window: 168
+        stall_threshold: 0.6        # FINAL from grid search
+        hold_period: 12             # FINAL from grid search
+        max_hold_period: 24
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      interval: 1h
+      stop_loss_pct: 0.02
+      take_profit_pct: 0.04
+      enabled: true                 # ✓ ACTIVE
+    
+    btc_dominance_rotation:
+      stage: deployed
+      role: diversifier
+      type: btc_dominance_rotation
+      description: "Risk-on/off rotation based on BTC dominance trends"
+      validation:
+        sharpe_grid: 0.58           # Research Note 14 grid search
+        trades_180d: 111
+        grid_optimized: true
+        role: "Regime rotation - orthogonal to ratio MR"
+      params:
+        dominance_trend_period: 168
+        dominance_momentum_period: 24
+        risk_on_threshold: -0.01    # FINAL from grid search
+        risk_off_threshold: 0.005   # FINAL from grid search
+        hold_period: 48             # FINAL from grid search
+      symbols: [ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT]
+      interval: 1h
+      stop_loss_pct: 0.04
+      take_profit_pct: 0.12
+      enabled: true                 # ✓ ACTIVE
+    
+    funding_term_structure:
+      stage: deployed
+      role: diversifier
+      type: funding_term_structure
+      description: "Contrarian trades on crowded funding positions"
+      validation:
+        sharpe_grid: 0.42           # Research Note 14 grid search
+        trades_180d: 297
+        grid_optimized: true
+        role: "Positioning alpha - orthogonal to ratio MR"
+      params:
+        lookback_periods: 2         # FINAL from grid search
+        dispersion_threshold: 0.0003
+        extreme_funding: 0.0005     # FINAL from grid search
+        hold_period: 12             # FINAL from grid search
+        use_contrarian: true
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      interval: 1h
+      stop_loss_pct: 0.03
+      take_profit_pct: 0.06
+      enabled: true                 # ✓ ACTIVE
+    
+    cross_sectional_momentum:
+      stage: deployed
+      role: diversifier
+      type: cross_sectional_momentum
+      description: "Rank-based momentum factor - long winners, avoid losers"
+      validation:
+        sharpe_oos: 0.57            # Research Note 13
+        pass_rate: 67%
+        role: "Cross-sectional factor - orthogonal to ratio MR"
+      params:
+        ranking_period: 168         # 7-day momentum for ranking
+        hold_period: 168            # Hold 1 week
+        top_percentile: 0.20        # Long top 20%
+        bottom_percentile: 0.20     # Avoid bottom 20%
+        min_momentum: 0.0
+      symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT, DOTUSDT, APTUSDT]
+      interval: 1h
+      stop_loss_pct: 0.05
+      take_profit_pct: 0.15
       enabled: true                 # ✓ ACTIVE
   
   # =============================================================================
   # Risk Management
   # =============================================================================
   risk_limits:
-    # Position sizing
-    max_position_pct: 0.25            # Max 25% of capital per position
-    min_position_usd: 100             # Minimum position size
-    max_positions: 3                  # Max concurrent positions
+    # Position sizing - NO LIMITS on number of strategies
+    max_position_pct: 0.10            # Max 10% of capital per position (13+ strategies)
+    min_position_usd: 50              # Minimum position size (lowered for diversification)
+    max_positions: 20                 # Increased - allow all strategies to trade
     
     # Loss limits
-    max_drawdown_pct: 0.15            # Stop trading if down 15%
-    daily_loss_limit_pct: 0.05        # Stop trading if down 5% in a day
-    max_consecutive_losses: 5         # Pause after 5 losing trades
+    max_drawdown_pct: 0.20            # Stop trading if down 20% (higher for more strategies)
+    daily_loss_limit_pct: 0.08        # Stop trading if down 8% in a day
+    max_consecutive_losses: 8         # Pause after 8 losing trades (higher for portfolio)
     
     # Trade limits
-    max_trades_per_day: 10            # Prevent overtrading
-    min_time_between_trades: 3600     # 1 hour between trades (seconds)
+    max_trades_per_day: 50            # Increased - more strategies mean more trades
+    min_time_between_trades: 300      # 5 minutes between trades per strategy
   
   # =============================================================================
   # Capital & Fees

@@ -1,0 +1,5493 @@
+{
+  "funding_term_structure": [
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0005,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4160124945179095,
+      "avg_is_sharpe": -0.3059231471651612,
+      "total_trades": 297,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0005,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4160124945179095,
+      "avg_is_sharpe": -0.3059231471651612,
+      "total_trades": 297,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0005,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4160124945179095,
+      "avg_is_sharpe": -0.3059231471651612,
+      "total_trades": 297,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0005,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4160124945179095,
+      "avg_is_sharpe": -0.3059231471651612,
+      "total_trades": 297,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0004,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.38401207226842743,
+      "avg_is_sharpe": -0.4152953793305562,
+      "total_trades": 233,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0004,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.38401207226842743,
+      "avg_is_sharpe": -0.4152953793305562,
+      "total_trades": 233,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0004,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.38401207226842743,
+      "avg_is_sharpe": -0.4152953793305562,
+      "total_trades": 233,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0004,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.38401207226842743,
+      "avg_is_sharpe": -0.4152953793305562,
+      "total_trades": 233,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0005,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.24593794291928542,
+      "avg_is_sharpe": -0.5705345184163257,
+      "total_trades": 175,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0005,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.24593794291928542,
+      "avg_is_sharpe": -0.5705345184163257,
+      "total_trades": 175,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0005,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.24593794291928542,
+      "avg_is_sharpe": -0.5705345184163257,
+      "total_trades": 175,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0005,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": 0.24593794291928542,
+      "avg_is_sharpe": -0.5705345184163257,
+      "total_trades": 175,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0004,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.18944913043389042,
+      "avg_is_sharpe": 0.09451650226509763,
+      "total_trades": 137,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0004,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.18944913043389042,
+      "avg_is_sharpe": 0.09451650226509763,
+      "total_trades": 137,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0004,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.18944913043389042,
+      "avg_is_sharpe": 0.09451650226509763,
+      "total_trades": 137,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0004,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.18944913043389042,
+      "avg_is_sharpe": 0.09451650226509763,
+      "total_trades": 137,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.060322431372130635,
+      "avg_is_sharpe": -0.1191159090474098,
+      "total_trades": 105,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.060322431372130635,
+      "avg_is_sharpe": -0.1191159090474098,
+      "total_trades": 105,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.060322431372130635,
+      "avg_is_sharpe": -0.1191159090474098,
+      "total_trades": 105,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.060322431372130635,
+      "avg_is_sharpe": -0.1191159090474098,
+      "total_trades": 105,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0006,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.02106671755893567,
+      "avg_is_sharpe": -0.8737008419116817,
+      "total_trades": 137,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0006,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.02106671755893567,
+      "avg_is_sharpe": -0.8737008419116817,
+      "total_trades": 137,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0006,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.02106671755893567,
+      "avg_is_sharpe": -0.8737008419116817,
+      "total_trades": 137,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0006,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.02106671755893567,
+      "avg_is_sharpe": -0.8737008419116817,
+      "total_trades": 137,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0006,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.06522684665967966,
+      "avg_is_sharpe": -0.5570435844272906,
+      "total_trades": 79,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0006,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.06522684665967966,
+      "avg_is_sharpe": -0.5570435844272906,
+      "total_trades": 79,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0006,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.06522684665967966,
+      "avg_is_sharpe": -0.5570435844272906,
+      "total_trades": 79,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0006,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.06522684665967966,
+      "avg_is_sharpe": -0.5570435844272906,
+      "total_trades": 79,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0006,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.10334004100787748,
+      "avg_is_sharpe": -0.8555173437301725,
+      "total_trades": 235,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0006,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.10334004100787748,
+      "avg_is_sharpe": -0.8555173437301725,
+      "total_trades": 235,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0006,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.10334004100787748,
+      "avg_is_sharpe": -0.8555173437301725,
+      "total_trades": 235,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0006,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.10334004100787748,
+      "avg_is_sharpe": -0.8555173437301725,
+      "total_trades": 235,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0003,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.1799860913082402,
+      "avg_is_sharpe": -0.3097034334574762,
+      "total_trades": 299,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0003,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.1799860913082402,
+      "avg_is_sharpe": -0.3097034334574762,
+      "total_trades": 299,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0003,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.1799860913082402,
+      "avg_is_sharpe": -0.3097034334574762,
+      "total_trades": 299,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0003,
+        "hold_period": 24
+      },
+      "avg_oos_sharpe": -0.1799860913082402,
+      "avg_is_sharpe": -0.3097034334574762,
+      "total_trades": 299,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0004,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.18779588375209252,
+      "avg_is_sharpe": -0.19630491108343104,
+      "total_trades": 386,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0004,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.18779588375209252,
+      "avg_is_sharpe": -0.19630491108343104,
+      "total_trades": 386,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0004,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.18779588375209252,
+      "avg_is_sharpe": -0.19630491108343104,
+      "total_trades": 386,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0004,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.18779588375209252,
+      "avg_is_sharpe": -0.19630491108343104,
+      "total_trades": 386,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0003,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.3843077367365885,
+      "avg_is_sharpe": -0.7734955990955178,
+      "total_trades": 167,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0003,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.3843077367365885,
+      "avg_is_sharpe": -0.7734955990955178,
+      "total_trades": 167,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0003,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.3843077367365885,
+      "avg_is_sharpe": -0.7734955990955178,
+      "total_trades": 167,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0003,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.3843077367365885,
+      "avg_is_sharpe": -0.7734955990955178,
+      "total_trades": 167,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 2,
+        "extreme_funding": 0.0003,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.8673630441220483,
+      "avg_is_sharpe": -1.3754351219627292,
+      "total_trades": 511,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 3,
+        "extreme_funding": 0.0003,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.8673630441220483,
+      "avg_is_sharpe": -1.3754351219627292,
+      "total_trades": 511,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 4,
+        "extreme_funding": 0.0003,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.8673630441220483,
+      "avg_is_sharpe": -1.3754351219627292,
+      "total_trades": 511,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "lookback_periods": 5,
+        "extreme_funding": 0.0003,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": -0.8673630441220483,
+      "avg_is_sharpe": -1.3754351219627292,
+      "total_trades": 511,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    }
+  ],
+  "btc_dominance_rotation": [
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.5762535130307157,
+      "avg_is_sharpe": -0.13865997059244842,
+      "total_trades": 111,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.01,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.5762535130307157,
+      "avg_is_sharpe": -0.13865997059244842,
+      "total_trades": 111,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.015,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.5762535130307157,
+      "avg_is_sharpe": -0.13865997059244842,
+      "total_trades": 111,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.02,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.5762535130307157,
+      "avg_is_sharpe": -0.13865997059244842,
+      "total_trades": 111,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.005,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.36954736385951037,
+      "avg_is_sharpe": 0.6113601784504862,
+      "total_trades": 29,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.005,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.3688879626164656,
+      "avg_is_sharpe": 0.48307454667348965,
+      "total_trades": 23,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.01,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.3688879626164656,
+      "avg_is_sharpe": 0.48307454667348965,
+      "total_trades": 23,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.015,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.3688879626164656,
+      "avg_is_sharpe": 0.48307454667348965,
+      "total_trades": 23,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.02,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.3688879626164656,
+      "avg_is_sharpe": 0.48307454667348965,
+      "total_trades": 23,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.01,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.3678594448903485,
+      "avg_is_sharpe": 0.6293467616701526,
+      "total_trades": 29,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.015,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.3678594448903485,
+      "avg_is_sharpe": 0.6293467616701526,
+      "total_trades": 29,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.02,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.3678594448903485,
+      "avg_is_sharpe": 0.6293467616701526,
+      "total_trades": 29,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.3088154577960239,
+      "avg_is_sharpe": 0.37358450306273605,
+      "total_trades": 35,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.01,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.3088154577960239,
+      "avg_is_sharpe": 0.37358450306273605,
+      "total_trades": 35,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.015,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.3088154577960239,
+      "avg_is_sharpe": 0.37358450306273605,
+      "total_trades": 35,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.02,
+        "risk_off_threshold": 0.02,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.3088154577960239,
+      "avg_is_sharpe": 0.37358450306273605,
+      "total_trades": 35,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.005,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.2461828123950408,
+      "avg_is_sharpe": 0.2799890421460833,
+      "total_trades": 99,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.015,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.21403407096602145,
+      "avg_is_sharpe": 0.5779579881384157,
+      "total_trades": 97,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.02,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.2114560651811842,
+      "avg_is_sharpe": 0.6131917102817349,
+      "total_trades": 97,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.015,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.17266161083445594,
+      "avg_is_sharpe": -0.5471782527638381,
+      "total_trades": 83,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.02,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.17266161083445594,
+      "avg_is_sharpe": -0.5471782527638381,
+      "total_trades": 83,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.01,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.15815778858361212,
+      "avg_is_sharpe": 0.4521412169934795,
+      "total_trades": 97,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.005,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.11687746112652608,
+      "avg_is_sharpe": -0.5471782527638381,
+      "total_trades": 83,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.01,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.11258213193818523,
+      "avg_is_sharpe": -0.5471782527638381,
+      "total_trades": 83,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.01,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.07569750540893974,
+      "avg_is_sharpe": -0.060189342842270364,
+      "total_trades": 176,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.015,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.07569750540893974,
+      "avg_is_sharpe": -0.060189342842270364,
+      "total_trades": 176,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.02,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.07569750540893974,
+      "avg_is_sharpe": -0.060189342842270364,
+      "total_trades": 176,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.01,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.11504700218464424,
+      "avg_is_sharpe": 0.1511417144442245,
+      "total_trades": 63,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.015,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.11504700218464424,
+      "avg_is_sharpe": 0.15115704246288184,
+      "total_trades": 63,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.02,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.11504700218464424,
+      "avg_is_sharpe": 0.15072354798826193,
+      "total_trades": 63,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.01,
+        "risk_off_threshold": 0.005,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.11945019148681256,
+      "avg_is_sharpe": 0.12050420047265602,
+      "total_trades": 64,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.17104251741621068,
+      "avg_is_sharpe": -0.0775176342958341,
+      "total_trades": 176,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.005,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.18346003467684882,
+      "avg_is_sharpe": -0.38715842953415547,
+      "total_trades": 122,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.01,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.24221942464252436,
+      "avg_is_sharpe": -0.3552347702707302,
+      "total_trades": 121,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.015,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.24221942464252436,
+      "avg_is_sharpe": -0.33415695031661746,
+      "total_trades": 121,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.005,
+        "risk_off_threshold": 0.02,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.24221942464252436,
+      "avg_is_sharpe": -0.3600966342850927,
+      "total_trades": 121,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.005,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.6146125307954438,
+      "avg_is_sharpe": -0.7111299562597738,
+      "total_trades": 55,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.02,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.622805457468666,
+      "avg_is_sharpe": -0.025212597535047884,
+      "total_trades": 39,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.015,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.6256836390310253,
+      "avg_is_sharpe": -0.057333036810070716,
+      "total_trades": 39,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.01,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.6608100776177067,
+      "avg_is_sharpe": -0.6755388866039063,
+      "total_trades": 55,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.015,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.6608100776177067,
+      "avg_is_sharpe": -0.6755388866039063,
+      "total_trades": 55,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.02,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.6608100776177067,
+      "avg_is_sharpe": -0.6755388866039063,
+      "total_trades": 55,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.005,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.6828125265864521,
+      "avg_is_sharpe": -0.19406366486592055,
+      "total_trades": 39,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.01,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.6892437596419704,
+      "avg_is_sharpe": -0.19751739795556586,
+      "total_trades": 39,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.005,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.7948647139468101,
+      "avg_is_sharpe": -0.7434577532536517,
+      "total_trades": 71,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.01,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.7948647139468101,
+      "avg_is_sharpe": -0.7434577532536517,
+      "total_trades": 71,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.015,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.7948647139468101,
+      "avg_is_sharpe": -0.7434577532536517,
+      "total_trades": 71,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "risk_on_threshold": -0.015,
+        "risk_off_threshold": 0.02,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.7948647139468101,
+      "avg_is_sharpe": -0.7434577532536517,
+      "total_trades": 71,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    }
+  ],
+  "gamma_mimic_breakout": [
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.03218086070935592,
+      "avg_is_sharpe": -0.05928508005692845,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.03218086070935592,
+      "avg_is_sharpe": -0.05928508005692845,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0108025327601493,
+      "avg_is_sharpe": -0.001033658767350493,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0108025327601493,
+      "avg_is_sharpe": -0.001033658767350493,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.10591786528341646,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.016688009726830273,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0753728720451288,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.10591786528341646,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.016688009726830273,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0753728720451288,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.10591786528341646,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.016688009726830273,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0753728720451288,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 72,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 96,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 15,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.5,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 120,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 3.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 20,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.063145830265073,
+      "avg_is_sharpe": -0.004386307078762262,
+      "total_trades": 2,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 25,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.063145830265073,
+      "avg_is_sharpe": -0.004386307078762262,
+      "total_trades": 2,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 48
+      },
+      "avg_oos_sharpe": -0.20808288822682441,
+      "avg_is_sharpe": -0.21038579992298043,
+      "total_trades": 6,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 72
+      },
+      "avg_oos_sharpe": -0.22094986805785877,
+      "avg_is_sharpe": -0.30950634789932024,
+      "total_trades": 6,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "min_compression_bars": 48,
+        "compression_percentile": 30,
+        "breakout_atr_mult": 2.0,
+        "hold_period": 96
+      },
+      "avg_oos_sharpe": -0.4216247866878778,
+      "avg_is_sharpe": -0.5428073183715895,
+      "total_trades": 6,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    }
+  ],
+  "liquidity_vacuum_detector": [
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.780977109444083,
+      "avg_is_sharpe": 1.4364681920295752,
+      "total_trades": 18,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.6733073312542786,
+      "avg_is_sharpe": 1.4797366980777502,
+      "total_trades": 18,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.6517694367153329,
+      "avg_is_sharpe": 1.6589302049580825,
+      "total_trades": 18,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.46546693999670974,
+      "avg_is_sharpe": 0.5892615181216324,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.46546693999670974,
+      "avg_is_sharpe": 0.7837317513673168,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.46403690905749656,
+      "avg_is_sharpe": 0.3945549807241077,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.46403690905749656,
+      "avg_is_sharpe": 0.42475452950937204,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.458807551946316,
+      "avg_is_sharpe": 0.7047010463899196,
+      "total_trades": 12,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.451283436011779,
+      "avg_is_sharpe": 0.6373677090823237,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.451283436011779,
+      "avg_is_sharpe": 0.6373677090823237,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.4368554092771418,
+      "avg_is_sharpe": 0.5687456923707123,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.4368554092771418,
+      "avg_is_sharpe": 0.6684672085896937,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.4359345249302315,
+      "avg_is_sharpe": 1.378959978670011,
+      "total_trades": 10,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.43091401443898625,
+      "avg_is_sharpe": 0.6006046475483214,
+      "total_trades": 21,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.43011465404241855,
+      "avg_is_sharpe": 1.9878324616547751,
+      "total_trades": 42,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4262760282702069,
+      "avg_is_sharpe": 0.4270081981255336,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4262760282702069,
+      "avg_is_sharpe": 0.4270081981255336,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.42503413205651275,
+      "avg_is_sharpe": 0.7888125902251936,
+      "total_trades": 13,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.4124409714850425,
+      "avg_is_sharpe": 1.2349462431688327,
+      "total_trades": 20,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.4115856703976967,
+      "avg_is_sharpe": 0.4648365032335213,
+      "total_trades": 22,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.40115516180171534,
+      "avg_is_sharpe": 1.1400138148964827,
+      "total_trades": 10,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.39499423857170474,
+      "avg_is_sharpe": 0.4139802074546434,
+      "total_trades": 7,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.39072491057484227,
+      "avg_is_sharpe": 0.2761207413654045,
+      "total_trades": 11,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.38141842629709016,
+      "avg_is_sharpe": 0.7612719540113037,
+      "total_trades": 7,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.3465023653420391,
+      "avg_is_sharpe": 0.3532720191972018,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.3465023653420391,
+      "avg_is_sharpe": 0.3532720191972018,
+      "total_trades": 4,
+      "pass_rate": 1.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.345205879399708,
+      "avg_is_sharpe": 0.3044928494959636,
+      "total_trades": 27,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.34008073051507126,
+      "avg_is_sharpe": 1.3367660797108272,
+      "total_trades": 41,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.33848490639724343,
+      "avg_is_sharpe": 0.33657891276954244,
+      "total_trades": 17,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.3226886341591499,
+      "avg_is_sharpe": 0.6877625552445307,
+      "total_trades": 11,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.3012491326416021,
+      "avg_is_sharpe": 0.35857775373073336,
+      "total_trades": 7,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.25002654526704615,
+      "avg_is_sharpe": 0.37467884484823544,
+      "total_trades": 8,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.23647155318883328,
+      "avg_is_sharpe": 1.3978450400681035,
+      "total_trades": 21,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.23004844628436824,
+      "avg_is_sharpe": 0.6787463037989808,
+      "total_trades": 11,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.22562577695530642,
+      "avg_is_sharpe": 0.8579805279938911,
+      "total_trades": 10,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.19956745607312584,
+      "avg_is_sharpe": 0.11882014748327589,
+      "total_trades": 8,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.1983665131132423,
+      "avg_is_sharpe": 0.3512945214812511,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.18311733237664649,
+      "avg_is_sharpe": 0.43523186397559566,
+      "total_trades": 12,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.1684521492146036,
+      "avg_is_sharpe": 1.3971044845221778,
+      "total_trades": 47,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.14927410427193363,
+      "avg_is_sharpe": 0.22403775475176724,
+      "total_trades": 4,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.14456440020050207,
+      "avg_is_sharpe": 0.12313215597015637,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.1298306269522391,
+      "avg_is_sharpe": 0.2506906814595143,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.11692179014643023,
+      "avg_is_sharpe": 0.223942294206691,
+      "total_trades": 11,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.11194156316218923,
+      "avg_is_sharpe": 0.15204836234599575,
+      "total_trades": 4,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0974646689072135,
+      "avg_is_sharpe": 0.1689003283234651,
+      "total_trades": 3,
+      "pass_rate": 0.6666666666666666,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.08890980140774658,
+      "avg_is_sharpe": 0.17173712599986124,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.08631950818749634,
+      "avg_is_sharpe": -0.10976588208466713,
+      "total_trades": 11,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.04293158668748139,
+      "avg_is_sharpe": 0.08294601287259246,
+      "total_trades": 2,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0376104920021869,
+      "avg_is_sharpe": 0.16675392857523053,
+      "total_trades": 4,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.026438130058508855,
+      "avg_is_sharpe": -0.002776825316698391,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.026438130058508855,
+      "avg_is_sharpe": -0.04341009149524206,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.026438130058508855,
+      "avg_is_sharpe": -0.04341009149524206,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.013880504623798967,
+      "avg_is_sharpe": -0.020837677616013073,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.013880504623798967,
+      "avg_is_sharpe": -0.07381109182780708,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.013880504623798967,
+      "avg_is_sharpe": -0.07381109182780708,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.006157115695061528,
+      "avg_is_sharpe": -0.22624876985673847,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.006157115695061528,
+      "avg_is_sharpe": -0.2689136135633861,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 85,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.006157115695061528,
+      "avg_is_sharpe": -0.2689136135633861,
+      "total_trades": 1,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 30,
+        "stall_threshold": 0.6,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 40,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.0,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": 0.12100218565740074,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 12
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.10785525038754477,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 90,
+        "volume_percentile": 50,
+        "stall_threshold": 0.5,
+        "hold_period": 18
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.11472453244107668,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 50,
+        "stall_threshold": 0.4,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": -0.016882279776103976,
+      "avg_is_sharpe": 0.26604749266203104,
+      "total_trades": 15,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "range_percentile": 80,
+        "volume_percentile": 40,
+        "stall_threshold": 0.6,
+        "hold_period": 6
+      },
+      "avg_oos_sharpe": -0.39290422274361525,
+      "avg_is_sharpe": 0.2412491134628508,
+      "total_trades": 25,
+      "pass_rate": 0.3333333333333333,
+      "symbols_tested": 3
+    }
+  ],
+  "correlation_regime_switch": [
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.65,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.7,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.75,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.4,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.5,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.08,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.8392037996582348,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.1,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 24
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 48
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    },
+    {
+      "params": {
+        "high_correlation": 0.8,
+        "low_correlation": 0.6,
+        "stability_threshold": 0.12,
+        "min_hold_period": 72
+      },
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "total_trades": 0,
+      "pass_rate": 0.0,
+      "symbols_tested": 3
+    }
+  ]
+}

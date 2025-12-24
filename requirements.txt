@@ -11,6 +11,7 @@ alembic>=1.13.0
 # Data processing
 pandas>=2.0.0
 numpy>=1.26.0
+yfinance>=0.2.36
 
 # Machine learning
 scikit-learn>=1.4.0

@@ -4,7 +4,7 @@ import logging
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
-from sqlalchemy import text
+from sqlalchemy import create_engine, Engine, text
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
     AsyncSession,
@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 # Global engine and session factory
 _engine: AsyncEngine | None = None
+_sync_engine: Engine | None = None
 _session_factory: async_sessionmaker[AsyncSession] | None = None
 
 
@@ -43,6 +44,29 @@ def get_engine() -> AsyncEngine:
         )
         logger.info(f"Database engine created: {settings.database.host}")
     return _engine
+
+
+def get_sync_engine() -> Engine:
+    """
+    Get a synchronous database engine for use in multiprocessing.
+    
+    Creates the engine on first call using settings.
+    
+    Returns:
+        Synchronous Engine instance
+    """
+    global _sync_engine
+    if _sync_engine is None:
+        settings = get_settings()
+        _sync_engine = create_engine(
+            settings.database.sync_url,
+            echo=settings.logging_config.level == "DEBUG",
+            pool_size=5,
+            max_overflow=10,
+            pool_pre_ping=True,
+        )
+        logger.info(f"Sync database engine created: {settings.database.host}")
+    return _sync_engine
 
 
 def get_session_factory() -> async_sessionmaker[AsyncSession]:

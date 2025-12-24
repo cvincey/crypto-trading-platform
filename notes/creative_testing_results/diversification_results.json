@@ -1,0 +1,190 @@
+{
+  "ml_classifier_online": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "LINKUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    }
+  ],
+  "correlation_breakdown": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "LINKUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    }
+  ],
+  "regime_volatility_switch": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -2.6793220914837947,
+      "is_sharpe": -2.488519622405014,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 270,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -0.8215613552223754,
+      "is_sharpe": -0.410608462208932,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 285,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -0.7750588022258489,
+      "is_sharpe": 0.4654794651674758,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 311,
+      "passed": true
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "oos_sharpe": -1.5707968619251917,
+      "is_sharpe": -1.0614543384451294,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 337,
+      "passed": false
+    },
+    {
+      "symbol": "LINKUSDT",
+      "oos_sharpe": -0.6699457556965459,
+      "is_sharpe": -1.3740624867191684,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 317,
+      "passed": true
+    }
+  ],
+  "eth_btc_ratio_reversion": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": 0.0,
+      "is_sharpe": 0.0,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 0,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 2.93393156693266,
+      "is_sharpe": 1.4044433230727993,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 98,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 2.6682874251843773,
+      "is_sharpe": 1.9165683512393368,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 81,
+      "passed": true
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "oos_sharpe": 1.9750276657419255,
+      "is_sharpe": -0.7908525772928513,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 74,
+      "passed": true
+    },
+    {
+      "symbol": "LINKUSDT",
+      "oos_sharpe": 2.3600095996612698,
+      "is_sharpe": 0.7588515029328542,
+      "oos_return": null,
+      "oos_max_drawdown": null,
+      "total_trades": 92,
+      "passed": true
+    }
+  ]
+}

@@ -28,6 +28,24 @@ from crypto.strategies import (
     microstructure,
     # Hybrid strategies combining Phase 1 winners
     hybrid,
+    # Unexplored creative strategies - Tier 1
+    volatility_trading,
+    structural,
+    # Hyper-creative diversification strategies - Research Note 13
+    # Tier 1: OHLCV only
+    information_theoretic,
+    microstructure_v2,
+    multi_timeframe_v2,
+    volatility_v2,
+    calendar_v2,
+    # Tier 2: Alternative data
+    sentiment,
+    positioning,
+    macro,
+    funding_v2,
+    # Hyper-creative orthogonal strategies (diversify from ratio MR)
+    hyper_creative,
+    hyper_creative_tier2,
 )
 
 __all__ = [

@@ -9,7 +9,7 @@ Runs the full validation suite:
 4. Expanded ratio pairs testing
 5. Generates comprehensive research note
 
-Configuration: config/creative_testing.yaml
+Configuration: config/research/creative_testing.yaml
 
 Usage:
     python scripts/run_full_validation.py                  # Run everything
@@ -71,8 +71,8 @@ RESEARCH_DIR = Path("notes/research_notes")
 
 
 def load_config() -> dict:
-    """Load configuration from creative_testing.yaml."""
-    config_path = Path("config/creative_testing.yaml")
+    """Load configuration from research/creative_testing.yaml."""
+    config_path = Path("config/research/creative_testing.yaml")
     with open(config_path) as f:
         return yaml.safe_load(f)["creative_testing"]
 

@@ -1,0 +1,101 @@
+{
+  "mode": "Full",
+  "tier": "Tier 1 Only",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "AVAXUSDT",
+    "LINKUSDT",
+    "NEARUSDT",
+    "DOTUSDT",
+    "APTUSDT"
+  ],
+  "config": {
+    "train_window": 2160,
+    "test_window": 336,
+    "step_size": 168
+  },
+  "summary": [
+    {
+      "strategy": "crash_only_trend_filter",
+      "avg_oos_sharpe": 0.7783451977672982,
+      "avg_is_sharpe": -0.8394630853924112,
+      "degradation_pct": 192.7194073582708,
+      "avg_trades": 186.875,
+      "pass_rate": 0.75,
+      "n_symbols": 8,
+      "n_passed": 6
+    },
+    {
+      "strategy": "volatility_targeting_overlay",
+      "avg_oos_sharpe": 0.12500369635928946,
+      "avg_is_sharpe": 0.1984630506190782,
+      "degradation_pct": -37.01412128385732,
+      "avg_trades": 34.333333333333336,
+      "pass_rate": 0.125,
+      "n_symbols": 8,
+      "n_passed": 1
+    },
+    {
+      "strategy": "cross_sectional_momentum",
+      "avg_oos_sharpe": 0.05376116303715861,
+      "avg_is_sharpe": 0.4972858007981609,
+      "degradation_pct": -89.18908141940307,
+      "avg_trades": 56.25,
+      "pass_rate": 0.375,
+      "n_symbols": 8,
+      "n_passed": 3
+    },
+    {
+      "strategy": "liquidity_vacuum_detector",
+      "avg_oos_sharpe": 0.019746337223113114,
+      "avg_is_sharpe": -0.901726428529936,
+      "degradation_pct": 102.18983680619245,
+      "avg_trades": 16.125,
+      "pass_rate": 0.125,
+      "n_symbols": 8,
+      "n_passed": 1
+    },
+    {
+      "strategy": "correlation_regime_switch",
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.9399523088172113,
+      "degradation_pct": 100.0,
+      "avg_trades": 0.0,
+      "pass_rate": 0.0,
+      "n_symbols": 8,
+      "n_passed": 0
+    },
+    {
+      "strategy": "gamma_mimic_breakout",
+      "avg_oos_sharpe": -0.003012882924399399,
+      "avg_is_sharpe": -0.00653557730889949,
+      "degradation_pct": 53.90027870534468,
+      "avg_trades": 4.0,
+      "pass_rate": 0.0,
+      "n_symbols": 8,
+      "n_passed": 0
+    },
+    {
+      "strategy": "gap_reversion",
+      "avg_oos_sharpe": -0.27394705592959484,
+      "avg_is_sharpe": -1.0012463329828543,
+      "degradation_pct": 72.63939483169263,
+      "avg_trades": 255.375,
+      "pass_rate": 0.125,
+      "n_symbols": 8,
+      "n_passed": 1
+    },
+    {
+      "strategy": "market_breadth_alt_participation",
+      "avg_oos_sharpe": -2.4445260808417446,
+      "avg_is_sharpe": -1.0619494071956257,
+      "degradation_pct": -130.1923297172131,
+      "avg_trades": 502.875,
+      "pass_rate": 0.0,
+      "n_symbols": 8,
+      "n_passed": 0
+    }
+  ]
+}

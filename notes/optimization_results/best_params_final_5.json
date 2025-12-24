@@ -1,0 +1,73 @@
+{
+  "eth_btc_ratio_optimized": {
+    "params": {
+      "lookback": 72,
+      "entry_threshold": -1.2,
+      "exit_threshold": -0.7,
+      "max_hold_hours": 72,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 9.535661507653082,
+    "oos_return": 5.9577748220996956,
+    "oos_trades": 530,
+    "symbol": "ETHUSDT"
+  },
+  "sol_btc_ratio": {
+    "params": {
+      "lookback": 72,
+      "entry_threshold": -1.2,
+      "exit_threshold": -0.7,
+      "max_hold_hours": 48,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 6.536495833897636,
+    "oos_return": 4.723252441769391,
+    "oos_trades": 479,
+    "symbol": "SOLUSDT"
+  },
+  "ltc_btc_ratio": {
+    "params": {
+      "lookback": 120,
+      "entry_threshold": -1.2,
+      "exit_threshold": -0.7,
+      "max_hold_hours": 48,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 8.310775889740846,
+    "oos_return": 4.764792508909171,
+    "oos_trades": 388,
+    "symbol": "LTCUSDT"
+  },
+  "eth_btc_ratio_confirmed": {
+    "params": {
+      "lookback": 72,
+      "entry_threshold": -1.2,
+      "exit_threshold": -0.7,
+      "max_hold_hours": 72,
+      "confirmation_delay": 2,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 7.291328717661004,
+    "oos_return": 3.6620553971407053,
+    "oos_trades": 308,
+    "symbol": "ETHUSDT"
+  },
+  "basis_proxy": {
+    "params": {
+      "funding_lookback": 4,
+      "entry_threshold": -0.0004,
+      "exit_threshold": 0.0002,
+      "max_hold_hours": 72,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0.06
+    },
+    "oos_sharpe": 1.0501964004354072,
+    "oos_return": 0.5870057165863418,
+    "oos_trades": 36,
+    "symbol": "BTCUSDT"
+  }
+}

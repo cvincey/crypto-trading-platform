@@ -12,6 +12,9 @@ Usage:
     python scripts/ingest_alternative_data.py --oi-only --days 90
 """
 
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
 import argparse
 import asyncio
 import logging

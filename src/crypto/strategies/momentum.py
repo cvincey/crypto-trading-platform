@@ -281,3 +281,233 @@ class ROCMomentumStrategy(BaseStrategy):
         signals.loc[sell_signals] = Signal.SELL
 
         return signals
+
+
+@strategy_registry.register(
+    "momentum_quality",
+    description="Quality-filtered momentum: only trade high-quality momentum signals",
+)
+class MomentumQualityStrategy(BaseStrategy):
+    """
+    Momentum Quality Strategy.
+    
+    Not all momentum is created equal. This strategy filters momentum signals
+    by quality indicators:
+    
+    1. Volume confirmation: Momentum must be accompanied by above-average volume
+    2. Trend alignment: Short-term momentum should align with longer-term trend
+    3. Volatility normalization: Momentum should be significant relative to ATR
+    
+    This filters out false breakouts and noise-driven moves.
+    """
+
+    name = "momentum_quality"
+
+    def _setup(
+        self,
+        momentum_period: int = 12,
+        trend_period: int = 48,
+        atr_period: int = 14,
+        volume_period: int = 24,
+        min_momentum_atr: float = 1.0,  # Momentum must be > 1x ATR
+        min_volume_ratio: float = 1.2,  # Volume must be > 1.2x average
+        hold_period: int = 24,
+        require_trend_alignment: bool = True,
+        **kwargs,
+    ) -> None:
+        self.momentum_period = momentum_period
+        self.trend_period = trend_period
+        self.atr_period = atr_period
+        self.volume_period = volume_period
+        self.min_momentum_atr = min_momentum_atr
+        self.min_volume_ratio = min_volume_ratio
+        self.hold_period = hold_period
+        self.require_trend_alignment = require_trend_alignment
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        self.validate_candles(candles)
+        signals = self.create_signal_series(candles.index)
+
+        close = candles["close"]
+        volume = candles["volume"]
+
+        # Calculate momentum (price change over period)
+        momentum = close.diff(self.momentum_period)
+        
+        # Calculate trend direction
+        trend_ma = close.rolling(self.trend_period, min_periods=10).mean()
+        uptrend = close > trend_ma
+        
+        # Calculate ATR for volatility normalization
+        atr = indicator_registry.compute("atr", candles, period=self.atr_period)
+        
+        # Normalize momentum by ATR
+        momentum_atr = momentum / atr
+        
+        # Volume quality
+        volume_avg = volume.rolling(self.volume_period, min_periods=5).mean()
+        volume_ratio = volume / volume_avg
+        
+        # Generate signals
+        in_position = False
+        entry_bar = 0
+
+        for i, idx in enumerate(candles.index):
+            mom_atr = momentum_atr.get(idx, 0)
+            vol_ratio = volume_ratio.get(idx, 1)
+            is_uptrend = uptrend.get(idx, False)
+            
+            if pd.isna(mom_atr) or pd.isna(vol_ratio):
+                continue
+
+            if not in_position:
+                # Quality momentum signal
+                is_quality_momentum = (
+                    mom_atr > self.min_momentum_atr and
+                    vol_ratio > self.min_volume_ratio
+                )
+                
+                # Trend alignment check
+                trend_ok = not self.require_trend_alignment or is_uptrend
+                
+                if is_quality_momentum and trend_ok:
+                    signals.loc[idx] = Signal.BUY
+                    in_position = True
+                    entry_bar = i
+            else:
+                bars_held = i - entry_bar
+                
+                # Exit after hold period or on quality sell signal
+                if bars_held >= self.hold_period:
+                    signals.loc[idx] = Signal.SELL
+                    in_position = False
+                elif mom_atr < -self.min_momentum_atr and vol_ratio > self.min_volume_ratio:
+                    signals.loc[idx] = Signal.SELL
+                    in_position = False
+
+        return self.apply_filters(signals, candles)
+
+
+@strategy_registry.register(
+    "trend_strength_filter",
+    description="Meta-strategy: only trade when trend is strong (ADX filter)",
+)
+class TrendStrengthFilterStrategy(BaseStrategy):
+    """
+    Trend Strength Filter Strategy.
+    
+    A meta-strategy that filters trading signals based on ADX trend strength.
+    
+    Logic:
+    - When ADX > strong_threshold: Strong trend, use momentum signals
+    - When ADX < weak_threshold: Ranging market, use mean reversion signals
+    - When ADX between thresholds: Ambiguous, don't trade
+    
+    This exploits the observation that different strategies work in
+    different market regimes.
+    """
+
+    name = "trend_strength_filter"
+
+    def _setup(
+        self,
+        adx_period: int = 14,
+        strong_threshold: int = 30,
+        weak_threshold: int = 20,
+        # Momentum params (for trending markets)
+        momentum_lookback: int = 20,
+        momentum_threshold: float = 0.02,
+        # Mean reversion params (for ranging markets)
+        rsi_period: int = 14,
+        rsi_oversold: float = 30,
+        rsi_overbought: float = 70,
+        hold_period: int = 24,
+        **kwargs,
+    ) -> None:
+        self.adx_period = adx_period
+        self.strong_threshold = strong_threshold
+        self.weak_threshold = weak_threshold
+        self.momentum_lookback = momentum_lookback
+        self.momentum_threshold = momentum_threshold
+        self.rsi_period = rsi_period
+        self.rsi_oversold = rsi_oversold
+        self.rsi_overbought = rsi_overbought
+        self.hold_period = hold_period
+
+    def generate_signals(self, candles: pd.DataFrame) -> pd.Series:
+        self.validate_candles(candles)
+        signals = self.create_signal_series(candles.index)
+
+        close = candles["close"]
+        
+        # Calculate ADX
+        adx = indicator_registry.compute("adx", candles, period=self.adx_period)
+        
+        # Calculate momentum
+        momentum = close.pct_change(self.momentum_lookback)
+        
+        # Calculate RSI
+        rsi = indicator_registry.compute("rsi", candles, period=self.rsi_period)
+        
+        # Generate signals based on regime
+        in_position = False
+        entry_bar = 0
+        entry_regime = None
+
+        for i, idx in enumerate(candles.index):
+            adx_val = adx.get(idx, 25)  # Default to middle range
+            mom = momentum.get(idx, 0)
+            rsi_val = rsi.get(idx, 50)
+            
+            if pd.isna(adx_val) or pd.isna(mom) or pd.isna(rsi_val):
+                continue
+
+            if not in_position:
+                # Strong trend regime: Use momentum
+                if adx_val > self.strong_threshold:
+                    if mom > self.momentum_threshold:
+                        signals.loc[idx] = Signal.BUY
+                        in_position = True
+                        entry_bar = i
+                        entry_regime = "trend"
+                
+                # Weak trend regime: Use mean reversion
+                elif adx_val < self.weak_threshold:
+                    if rsi_val < self.rsi_oversold:
+                        signals.loc[idx] = Signal.BUY
+                        in_position = True
+                        entry_bar = i
+                        entry_regime = "range"
+                
+                # Ambiguous regime: Don't trade
+                # (no signal generated)
+            
+            else:
+                bars_held = i - entry_bar
+                should_exit = False
+                
+                # Exit after hold period
+                if bars_held >= self.hold_period:
+                    should_exit = True
+                
+                # Regime-specific exits
+                if entry_regime == "trend":
+                    # Exit if momentum reverses or regime changes
+                    if mom < -self.momentum_threshold / 2:
+                        should_exit = True
+                    if adx_val < self.weak_threshold:
+                        should_exit = True
+                
+                elif entry_regime == "range":
+                    # Exit if RSI recovers or regime changes
+                    if rsi_val > self.rsi_overbought:
+                        should_exit = True
+                    if adx_val > self.strong_threshold:
+                        should_exit = True
+                
+                if should_exit:
+                    signals.loc[idx] = Signal.SELL
+                    in_position = False
+                    entry_regime = None
+
+        return self.apply_filters(signals, candles)

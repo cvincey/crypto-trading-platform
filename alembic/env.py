@@ -1,5 +1,8 @@
 """Alembic environment configuration."""
 
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
 import asyncio
 from logging.config import fileConfig
 

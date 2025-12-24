@@ -1,0 +1,50 @@
+{
+  "funding_term_structure": {
+    "params": {
+      "lookback_periods": 2,
+      "extreme_funding": 0.0005,
+      "hold_period": 12
+    },
+    "avg_oos_sharpe": 0.4160124945179095,
+    "total_trades": 297
+  },
+  "btc_dominance_rotation": {
+    "params": {
+      "risk_on_threshold": -0.01,
+      "risk_off_threshold": 0.005,
+      "hold_period": 48
+    },
+    "avg_oos_sharpe": 0.5762535130307157,
+    "total_trades": 111
+  },
+  "gamma_mimic_breakout": {
+    "params": {
+      "min_compression_bars": 48,
+      "compression_percentile": 20,
+      "breakout_atr_mult": 2.0,
+      "hold_period": 48
+    },
+    "avg_oos_sharpe": 0.03218086070935592,
+    "total_trades": 2
+  },
+  "liquidity_vacuum_detector": {
+    "params": {
+      "range_percentile": 85,
+      "volume_percentile": 50,
+      "stall_threshold": 0.6,
+      "hold_period": 12
+    },
+    "avg_oos_sharpe": 0.780977109444083,
+    "total_trades": 18
+  },
+  "correlation_regime_switch": {
+    "params": {
+      "high_correlation": 0.65,
+      "low_correlation": 0.4,
+      "stability_threshold": 0.08,
+      "min_hold_period": 48
+    },
+    "avg_oos_sharpe": 0.0,
+    "total_trades": 0
+  }
+}

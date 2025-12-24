@@ -1,0 +1,195 @@
+{
+  "timestamp": "2025-12-24T15:38:07.831071+00:00",
+  "comparisons": [
+    {
+      "pair": "eth_btc",
+      "current": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 14.58,
+        "return_pct": 4327.0,
+        "win_rate": 84.1,
+        "max_dd": -16.7,
+        "trades": 383,
+        "trades_per_month": 27.0
+      },
+      "new": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 20.95,
+        "return_pct": 2790.0,
+        "win_rate": 88.0,
+        "max_dd": -16.7,
+        "trades": 274,
+        "trades_per_month": 19.3
+      }
+    },
+    {
+      "pair": "sol_btc",
+      "current": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 8.76,
+        "return_pct": 1562.6,
+        "win_rate": 75.1,
+        "max_dd": -28.0,
+        "trades": 385,
+        "trades_per_month": 27.2
+      },
+      "new": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 13.73,
+        "return_pct": 1321.8,
+        "win_rate": 79.9,
+        "max_dd": -28.4,
+        "trades": 264,
+        "trades_per_month": 18.6
+      }
+    },
+    {
+      "pair": "ltc_btc",
+      "current": {
+        "lookback": 120,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 9.77,
+        "return_pct": 1647.6,
+        "win_rate": 76.3,
+        "max_dd": -24.0,
+        "trades": 283,
+        "trades_per_month": 20.0
+      },
+      "new": {
+        "lookback": 48,
+        "entry_threshold": -1.8,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08,
+        "sharpe": 13.76,
+        "return_pct": 1154.9,
+        "win_rate": 81.2,
+        "max_dd": -21.0,
+        "trades": 234,
+        "trades_per_month": 16.5
+      }
+    }
+  ],
+  "grid_search": {
+    "eth_btc": {
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -2.0,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "best_result": {
+        "sharpe": 22.35,
+        "return_pct": 1888.0,
+        "win_rate": 86.5,
+        "max_dd": -16.7,
+        "trades": 215,
+        "trades_per_month": 15.2
+      }
+    },
+    "sol_btc": {
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "best_result": {
+        "sharpe": 14.4,
+        "return_pct": 4364.8,
+        "win_rate": 79.7,
+        "max_dd": -26.4,
+        "trades": 551,
+        "trades_per_month": 38.9
+      }
+    },
+    "ltc_btc": {
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "best_result": {
+        "sharpe": 16.29,
+        "return_pct": 2786.1,
+        "win_rate": 81.3,
+        "max_dd": -22.3,
+        "trades": 363,
+        "trades_per_month": 25.6
+      }
+    }
+  },
+  "recommendations": {
+    "eth_btc": {
+      "current_sharpe": 14.58,
+      "best_sharpe": 22.35,
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -2.0,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "action": "\u2705 UPDATE"
+    },
+    "sol_btc": {
+      "current_sharpe": 8.76,
+      "best_sharpe": 14.4,
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "action": "\u2705 UPDATE"
+    },
+    "ltc_btc": {
+      "current_sharpe": 9.77,
+      "best_sharpe": 16.29,
+      "best_params": {
+        "lookback": 48,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.9,
+        "max_hold_hours": 24,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "action": "\u2705 UPDATE"
+    }
+  }
+}

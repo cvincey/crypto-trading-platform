@@ -1,0 +1,1576 @@
+# Creative Strategy Testing Configuration
+# Comprehensive testing of alternative alpha sources on hourly data
+#
+# =============================================================================
+# Strategy Lifecycle Tags
+# =============================================================================
+#
+# STAGE (validation/deployment state):
+#   deployed     - Passed validation, currently running in paper/live
+#   validated    - Passed validation, ready to deploy but not yet running  
+#   experimental - Not yet validated through walk-forward testing
+#   retired      - Failed validation or deprecated
+#
+# TIER (for testing categorization):
+#   tier1, tier2, tier3 - Testing priority tiers
+#
+# =============================================================================
+
+creative_testing:
+  # =============================================================================
+  # Phase 1: Quick Validation
+  # =============================================================================
+  quick_validation:
+    enabled: true
+    description: "Rapid filtering to identify promising candidates"
+    
+    symbols:
+      - BTCUSDT
+      - ETHUSDT  
+      - SOLUSDT
+    
+    train_window: 1440           # 60 days of 1h candles
+    test_window: 336             # 14 days of 1h candles
+    step_size: 336               # Bi-weekly rolls
+    days: 180                    # 6 months of data
+    
+    strategies:
+      # Category A: Cross-Symbol Signals
+      cross_symbol:
+        - btc_lead_alt_follow
+        - eth_btc_ratio_reversion
+        - correlation_breakdown
+        - sector_momentum_rotation
+        - btc_volatility_filter
+      
+      # Category B: Alternative Data
+      alternative_data:
+        - funding_rate_fade
+        - funding_rate_carry
+        - open_interest_divergence
+        # - liquidation_cascade_fade  # Requires external data
+      
+      # Category C: Structural/Calendar
+      structural:
+        - weekend_effect
+        - hour_of_day_filter
+        - month_end_rebalancing
+      
+      # Category D: Frequency Reduction
+      frequency_reduction:
+        - weekly_momentum
+        - signal_confirmation_delay
+        - signal_strength_filter
+      
+      # Category E: Meta-Strategies
+      meta:
+        - regime_gate
+        - drawdown_pause
+        - strategy_momentum
+      
+      # Category F: Market Microstructure
+      microstructure:
+        - volume_breakout_confirmation
+        - volume_divergence
+        - buy_sell_imbalance
+    
+    # Pass threshold for Phase 2
+    pass_threshold:
+      min_oos_sharpe: -2.0       # Lenient for quick filter
+      top_n_to_advance: 8        # Take top 8 strategies
+
+  # =============================================================================
+  # Phase 2: Deep Validation
+  # =============================================================================
+  deep_validation:
+    enabled: true
+    description: "Rigorous walk-forward on promising candidates"
+    
+    symbols:
+      - BTCUSDT
+      - ETHUSDT
+      - BNBUSDT
+      - XRPUSDT
+      - SOLUSDT
+      - ADAUSDT
+      - DOGEUSDT
+      - AVAXUSDT
+      - DOTUSDT
+      - LINKUSDT
+      - LTCUSDT
+      - NEARUSDT
+      - APTUSDT
+      - ATOMUSDT
+      - UNIUSDT
+      - AAVEUSDT
+      - XLMUSDT
+      - MATICUSDT
+      - SHIBUSDT
+    
+    train_window: 2160           # 90 days
+    test_window: 336             # 14 days
+    step_size: 168               # Weekly rolls
+    days: 365                    # Full year
+    
+    acceptance:
+      min_oos_sharpe: 0.5
+      max_degradation_pct: 50
+      min_trades_per_month: 2
+      max_trades_per_month: 20
+      max_drawdown_pct: 20
+      min_symbol_pass_rate: 0.6  # Must pass on 60%+ of symbols
+    
+    # Buy-and-hold comparison
+    compare_to_baseline: true
+    baseline: buy_and_hold
+
+  # =============================================================================
+  # Phase 3: Robustness Testing
+  # =============================================================================
+  robustness_testing:
+    enabled: true
+    description: "Stress test surviving strategies"
+    
+    # Cost sensitivity
+    cost_sensitivity:
+      commission_rates: [0.0005, 0.001, 0.0015]  # 0.05%, 0.1%, 0.15%
+      slippage_rates: [0.0003, 0.0005, 0.001]    # 0.03%, 0.05%, 0.1%
+    
+    # Time period stability
+    time_periods:
+      - name: "2023_H2"
+        start: "2023-07-01"
+        end: "2023-12-31"
+      - name: "2024_H1"
+        start: "2024-01-01"
+        end: "2024-06-30"
+      - name: "2024_H2"
+        start: "2024-07-01"
+        end: "2024-12-21"
+    
+    # Symbol holdout
+    holdout_symbols:
+      - AVAXUSDT
+      - LINKUSDT
+      - UNIUSDT
+      - AAVEUSDT
+      - ATOMUSDT
+    
+    # Parameter sensitivity
+    parameter_sensitivity:
+      variation_pct: 20          # Test ±20% of optimal params
+
+  # =============================================================================
+  # Phase 2 Winners - Deep Validation & Optimization
+  # =============================================================================
+  phase2_winners:
+    enabled: true
+    description: "Deep validation of Phase 1 winning strategies"
+    
+    # Strategies that passed Phase 1
+    strategies:
+      - eth_btc_ratio_reversion     # Top performer: 2.53 Sharpe, 100% beats B&H
+      - signal_confirmation_delay   # Most consistent: 100% pass rate
+      - volume_divergence           # Potential: 1.51 Sharpe
+      - eth_btc_ratio_confirmed     # Hybrid combining top 2
+    
+    # Expanded ratio strategies (test on other pairs)
+    expanded_ratio_strategies:
+      - sol_btc_ratio_reversion
+      - bnb_btc_ratio_reversion
+      - link_btc_ratio_reversion
+    
+    # Extended validation settings
+    train_window: 2880              # 120 days (longer for robustness)
+    test_window: 336                # 14 days
+    step_size: 168                  # Weekly rolls
+    days: 365                       # Full year
+    
+    # Stricter acceptance gates
+    acceptance:
+      min_oos_sharpe: 0.5
+      max_degradation_pct: 50
+      min_trades_per_month: 1
+      max_trades_per_month: 20
+      max_drawdown_pct: 25
+      min_symbol_pass_rate: 0.5
+    
+    # Parameter optimization grids
+    parameter_optimization:
+      eth_btc_ratio_reversion:
+        lookback: [120, 168, 240]           # 5d, 7d, 10d
+        entry_threshold: [-1.5, -2.0, -2.5] # z-score entry
+        exit_threshold: [-0.3, -0.5, -0.7]  # z-score exit
+        max_hold_hours: [48, 72, 96]        # 2d, 3d, 4d
+      
+      signal_confirmation_delay:
+        confirmation_delay: [2, 3, 4, 5, 6] # bars to confirm
+        base_strategy: [rsi_mean_reversion, momentum_breakout]
+      
+      volume_divergence:
+        price_lookback: [24, 48, 72]
+        volume_lookback: [24, 48, 72]
+        divergence_threshold: [0.2, 0.3, 0.4]
+      
+      eth_btc_ratio_confirmed:
+        lookback: [120, 168, 240]
+        entry_threshold: [-1.5, -2.0, -2.5]
+        exit_threshold: [-0.3, -0.5, -0.7]
+        max_hold_hours: [48, 72, 96]
+        confirmation_delay: [2, 3, 4]
+
+  # =============================================================================
+  # Strategy Configurations
+  # =============================================================================
+  # 
+  # STATUS LEGEND:
+  #   ★ PREFERRED  - Primary strategy, validated & deployed
+  #   ◐ BACKUP     - Validated, ready as alternative
+  #   ◇ EXPERIMENTAL - Promising, needs more validation
+  #   ✗ RETIRED    - Failed validation, do not use
+  #
+  # =============================================================================
+  
+  strategy_configs:
+    
+    # =========================================================================
+    # ★ PREFERRED - Primary Production Strategy
+    # =========================================================================
+    
+    eth_btc_ratio_reversion:
+      stage: deployed
+      role: primary
+      type: eth_btc_ratio_reversion
+      validated: true
+      validation_results:
+        sharpe_2024: 7.98
+        sharpe_2025: 5.93
+        params_stable: true         # 2024 optimal = 2025 optimal
+        win_rate: 90.2%
+      params:
+        lookback: 120               # Optimal (5 days)
+        entry_threshold: -1.5       # Optimal
+        exit_threshold: -0.7        # Optimal
+        max_hold_hours: 48          # Optimal (2 days)
+    
+    # =========================================================================
+    # ◐ BACKUP - Validated Alternatives
+    # =========================================================================
+    
+    eth_btc_ratio_confirmed:
+      stage: deployed
+      role: backup
+      type: eth_btc_ratio_confirmed
+      validated: true
+      description: "Same as preferred but with confirmation delay - fewer trades, more conservative"
+      params:
+        lookback: 120
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        confirmation_delay: 2
+    
+    # =========================================================================
+    # ★ VALIDATED - Dec 24, 2024 (Research Note 14)
+    # Originally experimental, now fully validated via walk-forward testing
+    # =========================================================================
+    
+    sol_btc_ratio_reversion:
+      stage: deployed
+      type: ratio_reversion
+      validated: true
+      description: "SOL/BTC ratio reversion - same concept, different pair"
+      validation_results:
+        wf_sharpe: 12.64
+        wf_positive_folds: "17/18"
+        oos_return: 4.7%
+        win_rate: 74.5%
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: SOLUSDT
+        lookback: 72                # OPTIMIZED
+        entry_threshold: -1.2       # OPTIMIZED
+        exit_threshold: -0.7
+        max_hold_hours: 48
+    
+    bnb_btc_ratio_reversion:
+      stage: deployed - BEST NEW PAIR
+      type: ratio_reversion
+      validated: true
+      description: "BNB/BTC ratio reversion - best performer from universe expansion"
+      validation_results:
+        wf_sharpe: 32.35            # Highest of all ratio pairs!
+        wf_positive_folds: "18/18"  # Perfect pass rate
+        oos_return: 439.2%
+        win_rate: 87.1%
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: BNBUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+    
+    link_btc_ratio_reversion:
+      stage: deployed
+      type: ratio_reversion
+      validated: true
+      description: "LINK/BTC ratio reversion - walk-forward validated"
+      validation_results:
+        wf_sharpe: 14.87
+        wf_positive_folds: "16/18"
+        oos_return: 1510.3%
+        win_rate: 75.5%
+        validated_date: "2024-12-24"
+      params:
+        reference_symbol: BTCUSDT
+        target_symbol: LINKUSDT
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.5       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 24          # OPTIMIZED - shorter hold
+    
+    # =========================================================================
+    # ✗ RETIRED - Failed Validation (Do Not Use)
+    # =========================================================================
+    
+    # ----- Cross-Symbol (Failed) -----
+    
+    btc_lead_alt_follow:
+      stage: retired               # ✗ Failed: Inconsistent performance
+      type: btc_lead_alt_follow
+      retired_reason: "Failed Phase 1 validation - inconsistent across symbols"
+      params:
+        leader_symbol: BTCUSDT
+        breakout_period: 24
+        entry_delay: 1
+        hold_period: 48
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.12
+    
+    correlation_breakdown:
+      stage: retired               # ✗ Failed: Negative Sharpe
+      type: correlation_breakdown
+      retired_reason: "Negative OOS Sharpe ratio"
+      params:
+        reference_symbol: BTCUSDT
+        correlation_window: 720
+        min_correlation: 0.85
+        divergence_threshold: 0.03
+        max_hold_hours: 48
+    
+    sector_momentum_rotation:
+      stage: retired               # ✗ Failed: Too few trades
+      type: sector_momentum_rotation
+      retired_reason: "Insufficient trade frequency for validation"
+      params:
+        sectors:
+          L1: [SOLUSDT, AVAXUSDT, NEARUSDT, APTUSDT]
+          DeFi: [UNIUSDT, AAVEUSDT, LINKUSDT]
+          Major: [BTCUSDT, ETHUSDT]
+        momentum_period: 168
+        rebalance_period: 168
+        top_n_sectors: 1
+    
+    btc_volatility_filter:
+      stage: retired               # ✗ Failed: No edge over base strategy
+      type: btc_volatility_filter
+      retired_reason: "No improvement over unfiltered base strategy"
+      params:
+        base_strategy: momentum_breakout
+        btc_atr_period: 24
+        btc_atr_percentile_window: 168
+        max_volatility_percentile: 70
+    
+    # ----- Alternative Data (Failed) -----
+    
+    funding_rate_fade:
+      stage: retired               # ✗ Failed: Negative returns
+      type: funding_rate_fade
+      retired_reason: "Negative OOS returns"
+      params:
+        extreme_positive: 0.0005
+        extreme_negative: -0.0005
+        normal_threshold: 0.0002
+        action_mode: avoid_longs
+    
+    funding_rate_carry:
+      stage: retired               # ✗ Failed: Strategy logic incomplete
+      type: funding_rate_carry
+      retired_reason: "Requires perpetual futures data not available"
+      params:
+        funding_avg_period: 9
+        min_avg_funding: 0.0003
+        exit_threshold: 0
+    
+    open_interest_divergence:
+      stage: retired               # ✗ Failed: Data unavailable
+      type: open_interest_divergence
+      retired_reason: "Open interest data feed not implemented"
+      params:
+        price_lookback: 24
+        oi_lookback: 24
+        divergence_threshold: 0.02
+    
+    # ----- Structural/Calendar (Failed) -----
+    
+    weekend_effect:
+      stage: retired               # ✗ Failed: No statistical edge
+      type: weekend_effect
+      retired_reason: "Weekend effect not significant in crypto (24/7 market)"
+      params:
+        exit_day: friday
+        exit_hour: 20
+        reentry_day: monday
+        reentry_hour: 8
+        base_strategy: buy_and_hold
+    
+    hour_of_day_filter:
+      stage: retired               # ✗ Failed: Inconsistent
+      type: hour_of_day_filter
+      retired_reason: "Hour patterns not stable across time periods"
+      params:
+        active_hours: [14, 15, 16, 17, 18, 19, 20, 21, 22]
+        base_strategy: momentum_breakout
+    
+    month_end_rebalancing:
+      stage: retired               # ✗ Failed: Too few trades
+      type: month_end_rebalancing
+      retired_reason: "Only 12 trades/year - insufficient for validation"
+      params:
+        entry_days_before_eom: 3
+        exit_days_after_eom: 3
+        selection: momentum_leaders
+        momentum_period: 168
+    
+    # ----- Frequency Reduction (Mixed) -----
+    
+    weekly_momentum:
+      stage: retired               # ✗ Failed: Underperforms B&H
+      type: weekly_momentum
+      retired_reason: "Underperforms buy-and-hold on most symbols"
+      params:
+        momentum_period: 168
+        hold_period: 168
+        top_n: 3
+        rebalance_at_hour: 0
+    
+    signal_confirmation_delay:
+      stage: retired               # ✗ Marginal: Low Sharpe in full validation
+      type: signal_confirmation_delay
+      retired_reason: "0.16 Sharpe in full validation - below threshold"
+      params:
+        base_strategy: rsi_mean_reversion
+        confirmation_delay: 4
+        require_consistent: true
+    
+    signal_strength_filter:
+      stage: retired               # ✗ Failed: No improvement
+      type: signal_strength_filter
+      retired_reason: "No improvement over base RSI strategy"
+      params:
+        base_strategy: rsi_mean_reversion
+        rsi_extreme_oversold: 20
+        rsi_extreme_overbought: 80
+    
+    # ----- Meta-Strategies (Failed) -----
+    
+    regime_gate:
+      stage: retired               # ✗ Failed: Regime detection unreliable
+      type: regime_gate
+      retired_reason: "ADX-based regime detection too slow to be useful"
+      params:
+        trend_strategy: momentum_breakout
+        range_strategy: rsi_mean_reversion
+        adx_trend_threshold: 30
+        adx_range_threshold: 15
+    
+    drawdown_pause:
+      stage: retired               # ✗ Failed: Hurts performance
+      type: drawdown_pause
+      retired_reason: "Pausing after drawdown misses recovery rallies"
+      params:
+        base_strategy: ml_classifier_xgb
+        pause_threshold: 0.05
+        pause_duration: 48
+    
+    strategy_momentum:
+      stage: retired               # ✗ Failed: Chases past performance
+      type: strategy_momentum
+      retired_reason: "Strategy selection based on past performance doesn't predict future"
+      params:
+        strategies:
+          - momentum_breakout
+          - rsi_mean_reversion
+          - ml_classifier_xgb
+        evaluation_period: 168
+        selection_count: 1
+    
+    # ----- Microstructure (Mixed) -----
+    
+    volume_breakout_confirmation:
+      stage: retired               # ✗ Failed: Negative Sharpe
+      type: volume_breakout_confirmation
+      retired_reason: "Volume confirmation adds noise, not signal"
+      params:
+        breakout_period: 24
+        volume_multiplier: 2.0
+        volume_average_period: 48
+    
+    volume_divergence:
+      stage: retired               # ✗ Marginal: Inconsistent
+      type: volume_divergence
+      retired_reason: "0.94 Sharpe but 72% pass rate - too inconsistent"
+      params:
+        price_lookback: 48
+        volume_lookback: 48
+        divergence_threshold: 0.3
+    
+    buy_sell_imbalance:
+      stage: retired               # ✗ Failed: Data quality issues
+      type: buy_sell_imbalance
+      retired_reason: "Buy/sell classification unreliable on hourly data"
+      params:
+        imbalance_lookback: 12
+        buy_threshold: 0.7
+        sell_threshold: 0.3
+
+  # =============================================================================
+  # UNEXPLORED STRATEGIES - New Research (Note 09)
+  # =============================================================================
+  # 
+  # STATUS LEGEND:
+  #   ★ TIER 1  - No external data needed, backtest ready
+  #   ◐ TIER 2  - Free API data available, fetch before backtest
+  #   ◇ TIER 3  - Requires paid API keys (stubs only)
+  #
+  # =============================================================================
+  
+  unexplored_strategies:
+    
+    # =========================================================================
+    # ★ TIER 1 - No External Data Needed (Backtest Ready)
+    # =========================================================================
+    
+    volatility_mean_reversion:
+      status: tier1
+      type: volatility_mean_reversion
+      description: "Trade when ATR is at extreme low, expecting volatility expansion"
+      params:
+        atr_period: 14
+        percentile_window: 168
+        high_threshold: 90
+        low_threshold: 20
+        hold_period: 24
+        use_momentum_direction: true
+        momentum_period: 24
+    
+    volatility_breakout:
+      status: tier1
+      type: volatility_breakout
+      description: "Enter on Bollinger Band expansion, exit on contraction"
+      params:
+        bb_period: 20
+        bb_std: 2.0
+        width_expansion_threshold: 1.5
+        width_lookback: 12
+        min_hold_period: 4
+        max_hold_period: 72
+    
+    basis_proxy:
+      status: tier1
+      type: basis_proxy
+      description: "Trade based on funding rate as spot-perp basis proxy"
+      params:
+        funding_lookback: 9
+        entry_threshold: -0.0003
+        exit_threshold: 0.0003
+        extreme_positive: 0.0005
+        max_hold_hours: 72
+        use_funding_data: false  # Use price-based estimation
+    
+    multi_asset_pair_trade:
+      status: tier1
+      type: multi_asset_pair_trade
+      description: "Mean reversion on relative strength vs historical"
+      params:
+        lookback: 168
+        entry_zscore: -2.0
+        exit_zscore: -0.5
+        max_hold_hours: 72
+        use_returns: true
+    
+    dxy_correlation_proxy:
+      status: tier1
+      type: dxy_correlation_proxy
+      description: "Trade based on BTC strength as inverse DXY proxy"
+      params:
+        trend_period: 168
+        momentum_period: 24
+        strength_threshold: 0.02
+        weakness_threshold: -0.02
+        hold_period: 48
+        require_positive_momentum: true
+    
+    regime_volatility_switch:
+      status: tier1
+      type: regime_volatility_switch
+      description: "Switch between mean reversion and momentum based on vol regime"
+      params:
+        atr_period: 14
+        regime_window: 168
+        high_vol_threshold: 70
+        low_vol_threshold: 30
+        rsi_period: 14
+        rsi_oversold: 30
+        rsi_overbought: 70
+        momentum_period: 24
+        momentum_threshold: 0.02
+        hold_period: 24
+    
+    momentum_quality:
+      status: tier1
+      type: momentum_quality
+      description: "Quality-filtered momentum with volume and trend confirmation"
+      params:
+        momentum_period: 12
+        trend_period: 48
+        atr_period: 14
+        volume_period: 24
+        min_momentum_atr: 1.0
+        min_volume_ratio: 1.2
+        hold_period: 24
+        require_trend_alignment: true
+    
+    trend_strength_filter:
+      status: tier1
+      type: trend_strength_filter
+      description: "ADX-based regime filter: momentum in trends, reversion in ranges"
+      params:
+        adx_period: 14
+        strong_threshold: 30
+        weak_threshold: 20
+        momentum_lookback: 20
+        momentum_threshold: 0.02
+        rsi_period: 14
+        rsi_oversold: 30
+        rsi_overbought: 70
+        hold_period: 24
+    
+    # =========================================================================
+    # ◐ TIER 2 - Free API Data (Fetch Before Backtest)
+    # =========================================================================
+    
+    fear_greed_contrarian:
+      status: tier2
+      type: fear_greed_contrarian
+      description: "Buy on extreme fear, avoid extreme greed"
+      data_source: alternative.me (free)
+      params:
+        extreme_fear_threshold: 20
+        extreme_greed_threshold: 80
+        hold_period: 168
+        contrarian_mode: true
+    
+    btc_dominance_rotation:
+      status: tier2
+      type: btc_dominance_rotation
+      description: "Rotate to alts when BTC dominance falls"
+      data_source: CoinGecko (free tier)
+      params:
+        dominance_falling_threshold: -2.0  # -2% week-over-week
+        dominance_rising_threshold: 2.0
+        lookback_days: 7
+        hold_period: 168
+    
+    long_short_ratio_fade:
+      status: tier2
+      type: long_short_ratio_fade
+      description: "Fade extreme long/short positioning"
+      data_source: Binance Futures (free)
+      params:
+        extreme_long_ratio: 0.70
+        extreme_short_ratio: 0.30
+        lookback_periods: 24
+        hold_period: 48
+    
+    # =========================================================================
+    # ◇ TIER 3 - Requires Paid API Keys (Stubs Only)
+    # =========================================================================
+    
+    exchange_flow_signal:
+      status: tier3_stub
+      type: exchange_flow_signal
+      description: "Trade based on exchange inflow/outflow"
+      api_required: "CryptoQuant or Glassnode"
+      api_pricing: "$49-99/month"
+      params:
+        large_inflow_threshold: 10000  # BTC
+        large_outflow_threshold: 10000
+        lookback_hours: 24
+    
+    whale_tracking:
+      status: tier3_stub
+      type: whale_tracking
+      description: "Follow large wallet movements"
+      api_required: "CryptoQuant"
+      api_pricing: "$49/month"
+      params:
+        min_whale_size_btc: 100
+        follow_delay_hours: 4
+    
+    options_max_pain:
+      status: tier3_stub
+      type: options_max_pain
+      description: "Trade towards options max pain at expiry"
+      api_required: "Deribit or Laevitas"
+      api_pricing: "Free (Deribit) or $99/month (Laevitas)"
+      params:
+        days_before_expiry: 3
+        max_pain_band_pct: 0.02
+    
+    put_call_extremes:
+      status: tier3_stub
+      type: put_call_extremes
+      description: "Contrarian signals from extreme put/call ratios"
+      api_required: "Deribit or Laevitas"
+      api_pricing: "Free (Deribit) or $99/month (Laevitas)"
+      params:
+        extreme_put_ratio: 1.5
+        extreme_call_ratio: 0.5
+        lookback_periods: 24
+  
+  # =============================================================================
+  # Unexplored Strategy Testing Configuration
+  # =============================================================================
+  
+  unexplored_testing:
+    quick_validation:
+      enabled: true
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      train_window: 1440
+      test_window: 336
+      step_size: 336
+      days: 180
+      
+      tier1_strategies:
+        - volatility_mean_reversion
+        - volatility_breakout
+        - basis_proxy
+        - multi_asset_pair_trade
+        - dxy_correlation_proxy
+        - regime_volatility_switch
+        - momentum_quality
+        - trend_strength_filter
+      
+      tier2_strategies:
+        - fear_greed_contrarian
+        - btc_dominance_rotation
+        - long_short_ratio_fade
+    
+    full_validation:
+      enabled: true
+      symbols:
+        - BTCUSDT
+        - ETHUSDT
+        - SOLUSDT
+        - AVAXUSDT
+        - LINKUSDT
+        - UNIUSDT
+        - AAVEUSDT
+        - NEARUSDT
+        - APTUSDT
+      train_window: 2160
+      test_window: 336
+      step_size: 168
+      days: 365
+      
+      # Compare against existing winner
+      baseline_strategy: eth_btc_ratio_reversion
+      
+      acceptance:
+        min_oos_sharpe: 0.5
+        max_degradation_pct: 50
+        min_trades_per_month: 1
+        max_trades_per_month: 30
+        max_drawdown_pct: 25
+        min_symbol_pass_rate: 0.5
+
+  # =============================================================================
+  # Data Sources Configuration
+  # =============================================================================
+  data_sources:
+    binance_funding_rates:
+      type: binance_futures
+      endpoint: /fapi/v1/fundingRate
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT]
+      interval: 8h
+      history_days: 365
+    
+    binance_open_interest:
+      type: binance_futures
+      endpoint: /fapi/v1/openInterest
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      interval: 1h
+      history_days: 180
+    
+    # Optional external sources
+    coinglass_liquidations:
+      type: coinglass
+      enabled: false             # Enable when API key available
+      endpoint: /api/liquidation/history
+      symbols: [BTC, ETH]
+
+  # =============================================================================
+  # DIVERSIFICATION STRATEGIES - Research Note 12
+  # =============================================================================
+  # New strategies designed to be active when ratio strategies are quiet.
+  # Focus: Trending markets, sector rotations, volatility regimes.
+  #
+  # These strategies provide diversification from the main ratio reversion portfolio:
+  # - ml_classifier_online_v1: Adaptive ML with rolling retraining
+  # - liquidation_cascade_fade_v1: Trades leverage flushes (mock data)
+  # - correlation_breakdown_sol_avax: Alt vs Alt relative strength
+  # - regime_volatility_switch_v1: Momentum in trends, reversion in ranges
+  
+  diversification_testing:
+    enabled: true
+    description: "Walk-forward validation of diversification strategies for Note 12"
+    
+    symbols:
+      - BTCUSDT
+      - ETHUSDT
+      - SOLUSDT
+      - AVAXUSDT
+      - LINKUSDT
+    
+    # Walk-forward settings
+    train_window: 720           # 30 days of 1h candles
+    test_window: 168            # 7 days of 1h candles
+    step_size: 168              # Weekly rolls
+    days: 365                   # Full year of data
+    
+    # Strategies to test
+    strategies:
+      - ml_classifier_online_v1
+      - liquidation_cascade_fade_v1
+      - correlation_breakdown_sol_avax
+      - regime_volatility_switch_v1
+    
+    # Acceptance gates
+    acceptance:
+      min_oos_sharpe: 0.5
+      max_degradation_pct: 50
+      min_trades_per_month: 2
+      max_trades_per_month: 15
+      max_drawdown_pct: 25
+      min_symbol_pass_rate: 0.4   # Must pass on 40%+ of symbols
+    
+    # Success criteria for diversification
+    diversification_criteria:
+      max_correlation_with_ratio: 0.3   # Must have low correlation with ratio strategies
+      min_active_during_quiet: 0.2      # At least 20% of trades when ratios are quiet
+    
+    # Compare to existing production strategies
+    baseline_strategies:
+      - eth_btc_ratio_reversion
+      - sol_btc_ratio
+      - ltc_btc_ratio
+      - basis_proxy
+    
+    # Mock data settings for liquidation strategy
+    mock_liquidation_settings:
+      enabled: true
+      atr_spike_percentile: 95          # ATR > 95th percentile = liquidation event
+      price_drop_threshold: 0.03        # 3% drop = long liquidations
+      price_spike_threshold: 0.03       # 3% spike = short liquidations
+      base_liquidation_amount: 5000000  # $5M base amount
+      volatility_multiplier: 2.0        # Scale with volatility
+
+  # =============================================================================
+  # HYPER-CREATIVE DIVERSIFICATION STRATEGIES - Research Note 13
+  # =============================================================================
+  # Out-of-the-box strategies orthogonal to ratio strategies
+  # Goal: Active when ratio strategies are quiet, different market dynamics
+  #
+  # TIER 1: OHLCV only (no external data)
+  # TIER 2: Free API data (alternative.me, CoinGecko, Coinglass)
+  
+  hypercreative_strategies:
+    
+    # =========================================================================
+    # Category A: Information-Theoretic / Statistical Physics
+    # =========================================================================
+    
+    entropy_collapse:
+      status: tier1
+      type: entropy_collapse
+      description: "Shannon entropy of 24h returns drops below 10th percentile - regime change detector"
+      params:
+        entropy_window: 24           # 24h returns for entropy calculation
+        percentile_window: 168       # 7d for percentile calculation
+        low_threshold: 10            # 10th percentile
+        high_threshold: 90           # Exit when entropy > 90th
+        hold_period: 12
+        use_momentum_direction: true
+    
+    hurst_regime:
+      status: tier1
+      type: hurst_regime
+      description: "Hurst exponent < 0.4 = mean-reverting, > 0.6 = trending"
+      params:
+        hurst_window: 168            # 7d for Hurst calculation
+        mean_revert_threshold: 0.4   # Use mean reversion below this
+        trending_threshold: 0.6      # Use momentum above this
+        recompute_every: 24          # Recompute daily
+        rsi_period: 14
+        rsi_oversold: 30
+        rsi_overbought: 70
+        momentum_period: 20
+        momentum_threshold: 0.02
+    
+    fractal_breakout:
+      status: tier1
+      type: fractal_breakout
+      description: "Fractal dimension drops + price breaks range = regime shift"
+      params:
+        fractal_window: 48           # 2d for fractal calculation
+        dimension_threshold: 1.2     # Low = consolidation
+        breakout_period: 24          # 1d high/low breakout
+        min_hold_period: 6
+        max_hold_period: 48
+    
+    # =========================================================================
+    # Category B: Microstructure / Volume Dynamics
+    # =========================================================================
+    
+    volume_clock_momentum:
+      status: tier1
+      type: volume_clock_momentum
+      description: "Momentum in volume-time not clock-time; adapts to liquidity"
+      params:
+        volume_bar_size: 1000000     # 1M volume = 1 bar
+        momentum_bars: 10            # 10 volume bars
+        momentum_threshold: 0.02
+        max_clock_hours: 48          # Max 48h to accumulate volume
+    
+    liquidity_vacuum:
+      status: tier1
+      type: liquidity_vacuum
+      description: "Volume drops 60%+ after spike, then range breakout"
+      params:
+        volume_spike_threshold: 2.0  # 2x average = spike
+        volume_drop_threshold: 0.4   # Drop to 40% of spike
+        lookback: 24
+        breakout_period: 12
+        hold_period: 24
+    
+    body_ratio_sequence:
+      status: tier1
+      type: body_ratio_sequence
+      description: "5+ indecision candles then strong decision candle"
+      params:
+        indecision_threshold: 0.3    # body/range < 0.3
+        decision_threshold: 0.7      # body/range > 0.7
+        min_indecision_bars: 5
+        hold_period: 12
+    
+    taker_imbalance_momentum:
+      status: tier1
+      type: taker_imbalance_momentum
+      description: "Estimate taker buy/sell from (close-low)/(high-low)"
+      params:
+        imbalance_window: 12
+        buy_threshold: 0.65          # 65%+ buying pressure
+        sell_threshold: 0.35         # 35%- (65%+ selling)
+        smoothing_period: 3
+        hold_period: 24
+    
+    # =========================================================================
+    # Category C: Multi-Timeframe / Cross-Asset Dynamics
+    # =========================================================================
+    
+    mtf_momentum_divergence:
+      status: tier1
+      type: mtf_momentum_divergence
+      description: "1h momentum positive but 4h negative = short; reverse for long"
+      params:
+        fast_interval: 1h
+        slow_interval: 4h
+        fast_momentum_period: 12
+        slow_momentum_period: 12
+        divergence_threshold: 0.01
+        hold_period: 24
+    
+    leader_follower_rotation:
+      status: tier1
+      type: leader_follower_rotation
+      description: "Detect when ETH leads BTC vs BTC leads ETH; trade follower"
+      params:
+        leader_symbols: [BTCUSDT, ETHUSDT]
+        correlation_window: 168      # 7d
+        lead_lag_window: 24          # 1d to detect lead
+        min_correlation: 0.80
+        hold_period: 48
+    
+    sector_dispersion_trade:
+      status: tier1
+      type: sector_dispersion_trade
+      description: "High dispersion among L1s = sector rotation opportunity"
+      params:
+        sectors:
+          L1: [SOLUSDT, AVAXUSDT, NEARUSDT, APTUSDT]
+          DeFi: [UNIUSDT, AAVEUSDT, LINKUSDT]
+        dispersion_window: 168       # 7d
+        high_dispersion_threshold: 0.15  # 15% std dev
+        trade_mode: convergence      # Or divergence
+        hold_period: 168
+    
+    # =========================================================================
+    # Category D: Volatility Regimes
+    # =========================================================================
+    
+    vol_term_structure:
+      status: tier1
+      type: vol_term_structure
+      description: "24h ATR / 7d ATR ratio as volatility curve signal"
+      params:
+        short_atr_period: 24
+        long_atr_period: 168
+        high_ratio_threshold: 1.5    # Vol spike coming
+        low_ratio_threshold: 0.7     # Calm before storm
+        hold_period: 24
+        trade_direction: with_spike  # Or fade_spike
+    
+    squeeze_cascade:
+      status: tier1
+      type: squeeze_cascade
+      description: "ATR < 20th percentile + BB width < 20th = imminent breakout"
+      params:
+        atr_period: 14
+        bb_period: 20
+        bb_std: 2.0
+        percentile_window: 168
+        squeeze_threshold: 20        # Both < 20th percentile
+        breakout_confirmation: true
+        hold_period: 48
+    
+    vol_of_vol_breakout:
+      status: tier1
+      type: vol_of_vol_breakout
+      description: "Volatility of volatility spikes = regime change"
+      params:
+        atr_period: 14
+        vol_of_vol_window: 24
+        spike_threshold: 2.0         # 2 std dev spike
+        momentum_period: 12
+        hold_period: 24
+    
+    # =========================================================================
+    # Category E: Calendar / Structural
+    # =========================================================================
+    
+    asian_session_reversal:
+      status: tier1
+      type: asian_session_reversal
+      description: "Fade overnight (00:00-08:00 UTC) moves at European open"
+      params:
+        asian_start_hour: 0
+        asian_end_hour: 8
+        european_open_hour: 8
+        min_move_threshold: 0.01     # 1% overnight move
+        hold_period: 12
+        fade_mode: true
+    
+    weekend_gap_fade:
+      status: tier1
+      type: weekend_gap_fade
+      description: "Gap from Friday 20:00 to Sunday 20:00 > 2% tends to fill"
+      params:
+        friday_hour: 20
+        sunday_hour: 20
+        min_gap_threshold: 0.02      # 2% gap
+        hold_period: 48              # Give it 2d to fill
+        entry_delay: 4               # Wait 4h after Sunday open
+    
+    funding_hour_momentum:
+      status: tier1
+      type: funding_hour_momentum
+      description: "1h before/after funding (00:00, 08:00, 16:00 UTC) patterns"
+      params:
+        funding_hours: [0, 8, 16]
+        pre_funding_bars: 1
+        post_funding_bars: 1
+        momentum_threshold: 0.005    # 0.5% move
+        hold_period: 8               # Until next funding
+    
+    # =========================================================================
+    # TIER 2: Alternative Data Strategies
+    # =========================================================================
+    # Category F: Sentiment / Positioning
+    # =========================================================================
+    
+    fear_greed_divergence:
+      status: tier2
+      type: fear_greed_divergence
+      description: "Price up but F&G down (or vice versa) = divergence trade"
+      data_source: alternative.me
+      params:
+        divergence_window: 7         # 7d to detect divergence
+        min_price_change: 0.05       # 5% price move
+        min_fg_change: 10            # 10 point F&G move
+        divergence_direction: opposite
+        hold_period: 168
+    
+    fear_greed_extreme_fade:
+      status: tier2
+      type: fear_greed_extreme_fade
+      description: "F&G < 20 = buy, F&G > 80 = sell - classic contrarian"
+      data_source: alternative.me
+      params:
+        extreme_fear: 20
+        extreme_greed: 80
+        neutral_zone: [40, 60]
+        hold_period: 168
+        confirmation_bars: 2
+    
+    long_short_ratio_fade:
+      status: tier2
+      type: long_short_ratio_fade
+      description: "L/S ratio > 2.0 = too many longs, fade; < 0.5 = fade shorts"
+      data_source: coinglass
+      params:
+        extreme_long_ratio: 2.0
+        extreme_short_ratio: 0.5
+        neutral_ratio: 1.0
+        lookback_periods: 24
+        hold_period: 48
+    
+    # =========================================================================
+    # Category G: Market Structure
+    # =========================================================================
+    
+    btc_dominance_rotation:
+      status: tier2
+      type: btc_dominance_rotation
+      description: "Dominance rising = long BTC, falling = long alts"
+      data_source: coingecko
+      params:
+        dominance_window: 168        # 7d trend
+        rising_threshold: 0.5        # 0.5% increase
+        falling_threshold: -0.5      # 0.5% decrease
+        hold_period: 168
+        trade_mode: rotation         # BTC vs alts
+    
+    dominance_momentum:
+      status: tier2
+      type: dominance_momentum
+      description: "Dominance 7d change > 2% = regime shift"
+      data_source: coingecko
+      params:
+        momentum_period: 168
+        strong_move_threshold: 2.0   # 2% change
+        hold_period: 168
+        confirmation_bars: 2
+    
+    liquidation_cluster_magnet:
+      status: tier2
+      type: liquidation_cluster_magnet
+      description: "Price gravitates toward large liquidation clusters"
+      data_source: coinglass
+      params:
+        cluster_threshold: 10000000  # $10M liquidations
+        distance_threshold: 0.03     # 3% from current price
+        magnet_direction: towards    # Price moves toward cluster
+        hold_period: 24
+    
+    # =========================================================================
+    # Category H: Funding-Based (Enhanced)
+    # =========================================================================
+    
+    funding_arbitrage_proxy:
+      status: tier2
+      type: funding_arbitrage_proxy
+      description: "Funding divergence across exchanges = arb opportunity"
+      data_source: multiple_exchanges
+      params:
+        exchanges: [binance, bybit, okx]
+        divergence_threshold: 0.0002 # 0.02% divergence
+        lookback_periods: 3
+        hold_period: 24
+    
+    funding_momentum:
+      status: tier2
+      type: funding_momentum
+      description: "Funding rate increasing for 3+ periods = momentum continuation"
+      data_source: binance
+      params:
+        momentum_periods: 3          # 3 consecutive increases
+        min_rate_change: 0.0001      # 0.01% change
+        extreme_threshold: 0.0005    # 0.05% = too extreme
+        hold_period: 24
+  
+  # =============================================================================
+  # Hyper-Creative Testing Configuration
+  # =============================================================================
+  
+  hypercreative_testing:
+    quick_validation:
+      enabled: true
+      description: "Rapid filter on 3 symbols, 6 months"
+      symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+      train_window: 1440           # 60 days
+      test_window: 336             # 14 days
+      step_size: 336               # Bi-weekly
+      days: 180
+      
+      tier1_strategies:
+        # Information-Theoretic
+        - entropy_collapse
+        - hurst_regime
+        - fractal_breakout
+        # Microstructure
+        - volume_clock_momentum
+        - liquidity_vacuum
+        - body_ratio_sequence
+        - taker_imbalance_momentum
+        # Multi-Timeframe
+        - mtf_momentum_divergence
+        - leader_follower_rotation
+        - sector_dispersion_trade
+        # Volatility
+        - vol_term_structure
+        - squeeze_cascade
+        - vol_of_vol_breakout
+        # Calendar
+        - asian_session_reversal
+        - weekend_gap_fade
+        - funding_hour_momentum
+      
+      tier2_strategies:
+        # Sentiment
+        - fear_greed_divergence
+        - fear_greed_extreme_fade
+        - long_short_ratio_fade
+        # Market Structure
+        - btc_dominance_rotation
+        - dominance_momentum
+        - liquidation_cluster_magnet
+        # Funding
+        - funding_arbitrage_proxy
+        - funding_momentum
+    
+    full_validation:
+      enabled: true
+      description: "Deep validation on all 50 symbols, 12 months"
+      symbols: all_50
+      train_window: 2160           # 90 days
+      test_window: 336             # 14 days
+      step_size: 168               # Weekly
+      days: 365
+      
+      acceptance:
+        min_oos_sharpe: 0.5
+        max_degradation_pct: 50
+        min_trades_per_month: 2
+        max_trades_per_month: 30
+        max_drawdown_pct: 25
+        min_symbol_pass_rate: 0.4  # Must pass on 40%+ of symbols
+      
+      # Correlation analysis with ratio strategies
+      correlation_analysis:
+        baseline_strategies:
+          - eth_btc_ratio_reversion
+          - sol_btc_ratio
+          - ltc_btc_ratio
+        max_correlation: 0.3       # Must be < 0.3 for true diversification
+
+  # =============================================================================
+  # HYPER-CREATIVE ORTHOGONAL STRATEGIES
+  # =============================================================================
+  # Research Note 13: Strategies designed to be orthogonal to ratio mean reversion
+  # These exploit different state variables than "alt underperformed BTC -> mean revert"
+  
+  orthogonal_strategies:
+    description: "Diversification from ratio MR via orthogonal signal sources"
+    
+    # -------------------------------------------------------------------------
+    # TIER 1: OHLCV Only (No External Data Required)
+    # -------------------------------------------------------------------------
+    tier1:
+      # Crash Protection / Regime Filter
+      # RETIRED: Negative Sharpe (-0.16), not viable
+      crash_only_trend_filter:
+        type: crash_only_trend_filter
+        stage: retired
+        params:
+          return_lookback: 120
+          crash_threshold: -0.08
+          range_percentile: 80
+          range_lookback: 168
+          defensive_duration: 48
+          recovery_threshold: 0.03
+        symbols: [BTCUSDT]
+        interval: 1h
+        stop_loss_pct: 0.05
+        take_profit_pct: 0.15
+        enabled: false                # RETIRED
+      
+      # Tail Capture / Trend Following
+      # RETIRED: Sharpe 0.03, only 2 trades - too infrequent to be useful
+      gamma_mimic_breakout:
+        type: gamma_mimic_breakout
+        stage: retired
+        params:
+          compression_period: 336
+          compression_percentile: 20  # Best from grid search
+          breakout_atr_mult: 2.0
+          atr_period: 14
+          hold_period: 48             # Best from grid search
+          min_compression_bars: 48    # Best from grid search
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        interval: 1h
+        stop_loss_pct: 0.06
+        take_profit_pct: 0.18
+        enabled: false                # RETIRED
+      
+      # Vol Targeting / Risk Overlay
+      # RETIRED: Negative Sharpe (-0.63), poor standalone alpha
+      volatility_targeting_overlay:
+        type: volatility_targeting_overlay
+        stage: retired
+        params:
+          vol_target: 0.15
+          vol_lookback: 168
+          max_leverage: 2.0
+          min_leverage: 0.25
+          kill_switch_vol: 0.50
+          rebalance_threshold: 0.25
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, LINKUSDT]
+        interval: 1h
+        enabled: false                # RETIRED - better as overlay than strategy
+      
+      # Cross-Sectional Health Gating
+      # RETIRED: Strongly negative Sharpe (-3.0), fundamental issue
+      market_breadth_alt_participation:
+        type: market_breadth_alt_participation
+        stage: retired
+        params:
+          ma_period: 168
+          breadth_threshold: 0.60
+          collapse_threshold: 0.30
+          momentum_period: 168
+          hold_period: 48
+        symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT, DOTUSDT]
+        interval: 1h
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.12
+        enabled: false                # RETIRED
+      
+      # Rank-Based Momentum
+      # VALIDATED: Sharpe 0.57, 67% pass rate - DEPLOYED to strategies.yaml
+      cross_sectional_momentum:
+        type: cross_sectional_momentum
+        stage: deployed
+        params:
+          ranking_period: 168
+          hold_period: 168
+          top_percentile: 0.20
+          bottom_percentile: 0.20
+          min_momentum: 0.0
+        symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT, DOTUSDT, APTUSDT]
+        interval: 1h
+        stop_loss_pct: 0.05
+        take_profit_pct: 0.15
+        enabled: true
+      
+      # Idiosyncratic Jump Fade
+      # RETIRED: Negative Sharpe (-0.41), fading gaps not profitable
+      gap_reversion:
+        type: gap_reversion
+        stage: retired
+        params:
+          jump_lookback: 3
+          jump_threshold: 0.04
+          btc_quiet_threshold: 0.015
+          fade_hold_period: 12
+          max_hold_period: 24
+        symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT]
+        interval: 1h
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.06
+        enabled: false                # RETIRED
+      
+      # Microstructure Thin-Book Fade
+      # GRID OPTIMIZED: Sharpe 0.78, 18 trades (best performer!)
+      liquidity_vacuum_detector:
+        type: liquidity_vacuum_detector
+        stage: deployed
+        params:
+          range_percentile: 85        # OPTIMIZED - confirmed
+          volume_percentile: 50       # OPTIMIZED from 40
+          percentile_window: 168
+          stall_threshold: 0.6        # OPTIMIZED - confirmed
+          hold_period: 12             # OPTIMIZED - confirmed
+          max_hold_period: 24
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        interval: 1h
+        stop_loss_pct: 0.02
+        take_profit_pct: 0.04
+        enabled: true
+      
+      # Correlation Stability Filter
+      # RETIRED: 0 trades even after grid search - fundamental design issue
+      correlation_regime_switch:
+        type: correlation_regime_switch
+        stage: retired
+        params:
+          correlation_window: 720
+          high_correlation: 0.65      # Best from grid search
+          low_correlation: 0.40       # Best from grid search
+          stability_window: 168
+          stability_threshold: 0.08   # Best from grid search
+          min_hold_period: 48
+        symbols: [ETHUSDT, SOLUSDT, BNBUSDT, AVAXUSDT]
+        interval: 1h
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.12
+        enabled: false                # RETIRED - needs redesign
+    
+    # -------------------------------------------------------------------------
+    # TIER 2: External Data Required
+    # -------------------------------------------------------------------------
+    tier2:
+      # Funding Term Structure (Carry Curve)
+      # GRID OPTIMIZED: Sharpe 0.42, 297 trades
+      funding_term_structure:
+        type: funding_term_structure
+        stage: deployed
+        params:
+          lookback_periods: 2         # OPTIMIZED from 3
+          dispersion_threshold: 0.0003
+          extreme_funding: 0.0005     # OPTIMIZED - confirmed
+          hold_period: 12             # OPTIMIZED from 24
+          use_contrarian: true
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        interval: 1h
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.06
+        enabled: true
+      
+      # Funding + Volatility Interaction
+      funding_vol_interaction:
+        type: funding_vol_interaction
+        params:
+          funding_lookback: 3
+          extreme_funding: 0.0005
+          vol_lookback: 168           # 7-day realized vol
+          vol_spike_threshold: 0.30   # 30% annualized = spike
+          fragility_mode: reduce      # Reduce exposure when fragile
+          hold_period: 24
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        interval: 1h
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.06
+        enabled: true
+      
+      # Liquidation Cascade Fade
+      liquidation_cluster_fade:
+        type: liquidation_cluster_fade
+        params:
+          liquidation_threshold: 5000000  # $5M
+          lookback_hours: 1
+          fade_delay: 2                   # Wait 2 bars
+          hold_period: 24
+          min_cascade_size: 3000000       # $3M minimum
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        interval: 1h
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.08
+        enabled: true
+      
+      # Stablecoin Liquidity Pulse
+      stablecoin_liquidity_pulse:
+        type: stablecoin_liquidity_pulse
+        params:
+          supply_change_threshold: 0.01  # 1% supply change
+          lookback_days: 7               # Weekly granularity
+          risk_on_mode: expand           # Risk on when liquidity expands
+          hold_period: 168               # Hold 1 week (slow signal)
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, LINKUSDT]
+        interval: 1h
+        stop_loss_pct: 0.05
+        take_profit_pct: 0.15
+        enabled: true
+      
+      # BTC Dominance Risk Budget
+      # GRID OPTIMIZED: Sharpe 0.58, 111 trades
+      btc_dominance_rotation:
+        type: btc_dominance_rotation
+        stage: deployed
+        params:
+          dominance_trend_period: 168
+          dominance_momentum_period: 24
+          risk_on_threshold: -0.01       # OPTIMIZED - confirmed
+          risk_off_threshold: 0.005      # OPTIMIZED from 0.01
+          hold_period: 48                # OPTIMIZED from 72
+        symbols: [ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT]
+        interval: 1h
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.12
+        enabled: true
+    
+    # -------------------------------------------------------------------------
+    # Testing Configuration
+    # -------------------------------------------------------------------------
+    testing:
+      quick_validation:
+        symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+        train_window: 1440            # 60 days
+        test_window: 336              # 14 days
+        step_size: 336                # Bi-weekly
+        days: 180                     # 6 months
+      
+      full_validation:
+        symbols:
+          - BTCUSDT
+          - ETHUSDT
+          - SOLUSDT
+          - AVAXUSDT
+          - LINKUSDT
+          - NEARUSDT
+          - DOTUSDT
+          - APTUSDT
+        train_window: 2160            # 90 days
+        test_window: 336              # 14 days
+        step_size: 168                # Weekly
+        days: 365                     # 12 months
+      
+      acceptance:
+        min_oos_sharpe: 0.3           # Slightly lower bar for orthogonal
+        max_degradation_pct: 60
+        min_trades_per_month: 1       # Allow low-frequency strategies
+        max_correlation_with_ratio: 0.3  # Must be orthogonal
+    
+    # Baseline ratio strategies for correlation analysis
+    baseline_strategies:
+      - eth_btc_ratio_reversion
+      - sol_btc_ratio
+      - ltc_btc_ratio
+
+  # =============================================================================
+  # Output Settings
+  # =============================================================================
+  output:
+    results_dir: notes/creative_testing_results
+    save_json: true
+    save_csv: true
+    save_plots: true
+    
+    reports:
+      - phase1_quick_validation.md
+      - phase2_deep_validation.md
+      - phase3_robustness.md
+      - final_conclusions.md

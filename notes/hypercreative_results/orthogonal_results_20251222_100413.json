@@ -1,0 +1,15 @@
+{
+  "mode": "Quick",
+  "tier": "Tier 1 Only",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT"
+  ],
+  "config": {
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336
+  },
+  "summary": []
+}

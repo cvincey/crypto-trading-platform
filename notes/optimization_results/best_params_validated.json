@@ -1,0 +1,71 @@
+{
+  "eth_btc_ratio_reversion": {
+    "best_params": {
+      "lookback": 96,
+      "entry_threshold": -1.5,
+      "exit_threshold": -0.7,
+      "max_hold_hours": 72,
+      "stop_loss_pct": 0.04,
+      "take_profit_pct": 0.1
+    },
+    "oos_sharpe": 5.219625554537103,
+    "oos_return_pct": 3.0723450830080807,
+    "quick_sharpe": 4.919624328289597,
+    "sharpe_degradation": -18.047323742093905
+  },
+  "eth_btc_ratio_confirmed": {
+    "best_params": {
+      "lookback": 96,
+      "entry_threshold": -1.5,
+      "exit_threshold": -0.5,
+      "max_hold_hours": 72,
+      "confirmation_delay": 2,
+      "stop_loss_pct": 0.04,
+      "take_profit_pct": 0.1
+    },
+    "oos_sharpe": 4.051210593750539,
+    "oos_return_pct": 1.8887737098910005,
+    "quick_sharpe": 3.4132970673867136,
+    "sharpe_degradation": -29.960962055435505
+  },
+  "volume_divergence": {
+    "best_params": {
+      "price_lookback": 24,
+      "volume_lookback": 48,
+      "price_threshold": 0.03,
+      "volume_decline_threshold": 0.35,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0.05
+    },
+    "oos_sharpe": 1.4739944083584702,
+    "oos_return_pct": 0.6914860059725089,
+    "quick_sharpe": 2.489792200410697,
+    "sharpe_degradation": 22.042787880670897
+  },
+  "signal_confirmation_delay": {
+    "best_params": {
+      "confirmation_delay": 2,
+      "require_consistent": true,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 0.9273045484125912,
+    "oos_return_pct": -0.10843589947291231,
+    "quick_sharpe": -0.7368208024930407,
+    "sharpe_degradation": -58.59075224072448
+  },
+  "basis_proxy": {
+    "best_params": {
+      "funding_lookback": 6,
+      "entry_threshold": -0.0004,
+      "exit_threshold": 0.0003,
+      "max_hold_hours": 72,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0.08
+    },
+    "oos_sharpe": 1.4216703888890307,
+    "oos_return_pct": 0.16836998140927206,
+    "quick_sharpe": -0.19368192595377084,
+    "sharpe_degradation": -262.4343015450451
+  }
+}

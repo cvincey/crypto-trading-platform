@@ -116,6 +116,59 @@ optimization:
       gb_n_estimators: [50, 100, 150]
       buy_threshold: [0.52, 0.55, 0.58]
       sell_threshold: [0.42, 0.45, 0.48]
+    
+    # =========================================================================
+    # Validated Strategies (Note 08-09 Winners)
+    # Reduced grid sizes for practical runtime (~100-200 combos each)
+    # =========================================================================
+    eth_btc_ratio_reversion:
+      # Strategy params (key ones only)
+      lookback: [96, 120, 168]
+      entry_threshold: [-2.0, -1.5]
+      exit_threshold: [-0.5, -0.7]
+      max_hold_hours: [48, 72]
+      # Risk params
+      stop_loss_pct: [0.04, 0.06]
+      take_profit_pct: [0.10, 0.15]
+    
+    eth_btc_ratio_confirmed:
+      # Strategy params
+      lookback: [96, 120, 168]
+      entry_threshold: [-2.0, -1.5]
+      exit_threshold: [-0.5, -0.7]
+      max_hold_hours: [48, 72]
+      confirmation_delay: [2, 3]
+      # Risk params
+      stop_loss_pct: [0.04, 0.06]
+      take_profit_pct: [0.10, 0.15]
+    
+    volume_divergence:
+      # Strategy params
+      price_lookback: [24, 48]
+      volume_lookback: [24, 48]
+      price_threshold: [0.03, 0.05]
+      volume_decline_threshold: [0.25, 0.35]
+      # Risk params
+      stop_loss_pct: [0.02, 0.03]
+      take_profit_pct: [0.05, 0.07]
+    
+    signal_confirmation_delay:
+      # Strategy params
+      confirmation_delay: [2, 3, 4]
+      require_consistent: [true]
+      # Risk params
+      stop_loss_pct: [0.03, 0.04]
+      take_profit_pct: [0.08, 0.10]
+    
+    basis_proxy:
+      # Strategy params
+      funding_lookback: [6, 9, 12]
+      entry_threshold: [-0.0004, -0.0003]
+      exit_threshold: [0.0002, 0.0003]
+      max_hold_hours: [48, 72]
+      # Risk params
+      stop_loss_pct: [0.03, 0.04]
+      take_profit_pct: [0.08, 0.10]
 
   # =============================================================================
   # Risk Parameter Grid Search

@@ -1,0 +1,186 @@
+{
+  "volatility_mean_reversion": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -0.4001263580697142,
+      "is_sharpe": -0.0028594403644568085,
+      "total_trades": 78,
+      "passed": true
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 0.8959745318098606,
+      "is_sharpe": 1.5194208301955425,
+      "total_trades": 86,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -0.49590794931857707,
+      "is_sharpe": 1.6848251371729464,
+      "total_trades": 73,
+      "passed": true
+    }
+  ],
+  "volatility_breakout": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -0.22495690863992773,
+      "is_sharpe": -1.7771884241979001,
+      "total_trades": 48,
+      "passed": true
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -1.1975763530204915,
+      "is_sharpe": -0.3519821249326915,
+      "total_trades": 55,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 0.3746621533963169,
+      "is_sharpe": 0.664690258446036,
+      "total_trades": 50,
+      "passed": true
+    }
+  ],
+  "basis_proxy": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": 0.6697669399195544,
+      "is_sharpe": 0.5309750740639535,
+      "total_trades": 30,
+      "passed": true
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 0.5050228484096069,
+      "is_sharpe": -0.9225750312373371,
+      "total_trades": 36,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 0.7022929448237581,
+      "is_sharpe": -0.49841271641727103,
+      "total_trades": 42,
+      "passed": true
+    }
+  ],
+  "multi_asset_pair_trade": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -1.517541106072155,
+      "is_sharpe": -0.6672671067280562,
+      "total_trades": 39,
+      "passed": true
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -1.025640364629441,
+      "is_sharpe": -0.5701355027069115,
+      "total_trades": 28,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -0.9853648474722654,
+      "is_sharpe": -1.235017389065757,
+      "total_trades": 33,
+      "passed": true
+    }
+  ],
+  "dxy_correlation_proxy": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -1.7916692966186745,
+      "is_sharpe": -0.8003581307652989,
+      "total_trades": 37,
+      "passed": true
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -0.821229752778998,
+      "is_sharpe": 0.9651510196461756,
+      "total_trades": 57,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -2.1327519438955505,
+      "is_sharpe": 0.0027243350394928977,
+      "total_trades": 61,
+      "passed": false
+    }
+  ],
+  "regime_volatility_switch": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -3.7893265016961295,
+      "is_sharpe": -2.782001594767263,
+      "total_trades": 101,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": 1.2577551816449741,
+      "is_sharpe": 2.289052543855473,
+      "total_trades": 96,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": 1.7721518306511765,
+      "is_sharpe": 1.9828031430432227,
+      "total_trades": 110,
+      "passed": true
+    }
+  ],
+  "momentum_quality": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -3.263571192178607,
+      "is_sharpe": -2.4075233810940935,
+      "total_trades": 128,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -2.4088853489749167,
+      "is_sharpe": -0.13082555747350383,
+      "total_trades": 136,
+      "passed": false
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -1.2126005875293828,
+      "is_sharpe": 0.4600238370349487,
+      "total_trades": 131,
+      "passed": true
+    }
+  ],
+  "trend_strength_filter": [
+    {
+      "symbol": "BTCUSDT",
+      "oos_sharpe": -3.9475057739217916,
+      "is_sharpe": -1.8388389086998465,
+      "total_trades": 80,
+      "passed": false
+    },
+    {
+      "symbol": "ETHUSDT",
+      "oos_sharpe": -1.7797004688096876,
+      "is_sharpe": 1.700214551169672,
+      "total_trades": 120,
+      "passed": true
+    },
+    {
+      "symbol": "SOLUSDT",
+      "oos_sharpe": -2.236162765383503,
+      "is_sharpe": 0.876035060453457,
+      "total_trades": 112,
+      "passed": false
+    }
+  ]
+}

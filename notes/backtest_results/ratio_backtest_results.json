@@ -1,0 +1,631 @@
+{
+  "timestamp": "2025-12-24T14:38:40.589219+00:00",
+  "days_analyzed": 365,
+  "results": [
+    {
+      "pair_name": "xrp_btc",
+      "pair": "XRP/BTC",
+      "target": "XRPUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": 788.3,
+        "sharpe_ratio": 9.48,
+        "win_rate": 77.3,
+        "max_drawdown": -25.77,
+        "num_trades": 260,
+        "trades_per_month": 24.7,
+        "avg_bars_held": 7.7,
+        "avg_return_per_trade": 0.893,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 208,
+          "stop_loss": 41,
+          "take_profit": 8,
+          "max_hold": 3
+        }
+      },
+      "out_of_sample": {
+        "total_return": 174.72,
+        "sharpe_ratio": 17.34,
+        "win_rate": 83.0,
+        "max_drawdown": -7.11,
+        "num_trades": 106,
+        "trades_per_month": 29.2,
+        "avg_bars_held": 7.5,
+        "avg_return_per_trade": 0.976,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 100,
+          "stop_loss": 6
+        }
+      },
+      "timestamp": "2025-12-24T14:38:12.982120+00:00"
+    },
+    {
+      "pair_name": "bnb_btc",
+      "pair": "BNB/BTC",
+      "target": "BNBUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": 531.16,
+        "sharpe_ratio": 14.34,
+        "win_rate": 83.3,
+        "max_drawdown": -11.75,
+        "num_trades": 240,
+        "trades_per_month": 22.8,
+        "avg_bars_held": 8.6,
+        "avg_return_per_trade": 0.786,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 226,
+          "max_hold": 7,
+          "stop_loss": 6,
+          "take_profit": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": 104.34,
+        "sharpe_ratio": 17.18,
+        "win_rate": 85.2,
+        "max_drawdown": -15.22,
+        "num_trades": 88,
+        "trades_per_month": 24.2,
+        "avg_bars_held": 6.2,
+        "avg_return_per_trade": 0.832,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 81,
+          "stop_loss": 7
+        }
+      },
+      "timestamp": "2025-12-24T14:38:12.982728+00:00"
+    },
+    {
+      "pair_name": "link_btc",
+      "pair": "LINK/BTC",
+      "target": "LINKUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": 554.52,
+        "sharpe_ratio": 7.33,
+        "win_rate": 70.2,
+        "max_drawdown": -33.97,
+        "num_trades": 248,
+        "trades_per_month": 23.5,
+        "avg_bars_held": 8.2,
+        "avg_return_per_trade": 0.827,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 170,
+          "stop_loss": 64,
+          "take_profit": 13,
+          "max_hold": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": 166.7,
+        "sharpe_ratio": 11.67,
+        "win_rate": 77.5,
+        "max_drawdown": -13.01,
+        "num_trades": 89,
+        "trades_per_month": 24.5,
+        "avg_bars_held": 9.1,
+        "avg_return_per_trade": 1.155,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 76,
+          "stop_loss": 11,
+          "take_profit": 2
+        }
+      },
+      "timestamp": "2025-12-24T14:38:12.984310+00:00"
+    },
+    {
+      "pair_name": "ada_btc",
+      "pair": "ADA/BTC",
+      "target": "ADAUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": 1233.44,
+        "sharpe_ratio": 8.76,
+        "win_rate": 73.9,
+        "max_drawdown": -20.91,
+        "num_trades": 287,
+        "trades_per_month": 27.2,
+        "avg_bars_held": 7.5,
+        "avg_return_per_trade": 0.975,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 213,
+          "stop_loss": 61,
+          "take_profit": 12,
+          "max_hold": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": 169.13,
+        "sharpe_ratio": 10.79,
+        "win_rate": 80.2,
+        "max_drawdown": -13.84,
+        "num_trades": 111,
+        "trades_per_month": 30.6,
+        "avg_bars_held": 8.9,
+        "avg_return_per_trade": 0.933,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 97,
+          "stop_loss": 12,
+          "take_profit": 2
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.243942+00:00"
+    },
+    {
+      "pair_name": "dot_btc",
+      "pair": "DOT/BTC",
+      "target": "DOTUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": 332.95,
+        "sharpe_ratio": 5.69,
+        "win_rate": 71.9,
+        "max_drawdown": -36.73,
+        "num_trades": 285,
+        "trades_per_month": 27.1,
+        "avg_bars_held": 8.7,
+        "avg_return_per_trade": 0.565,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 210,
+          "stop_loss": 65,
+          "take_profit": 8,
+          "max_hold": 2
+        }
+      },
+      "out_of_sample": {
+        "total_return": 134.63,
+        "sharpe_ratio": 8.47,
+        "win_rate": 81.4,
+        "max_drawdown": -22.26,
+        "num_trades": 97,
+        "trades_per_month": 26.7,
+        "avg_bars_held": 9.8,
+        "avg_return_per_trade": 0.943,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 83,
+          "stop_loss": 11,
+          "take_profit": 2,
+          "max_hold": 1
+        }
+      },
+      "timestamp": "2025-12-24T14:38:12.982337+00:00"
+    },
+    {
+      "pair_name": "near_btc",
+      "pair": "NEAR/BTC",
+      "target": "NEARUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "in_sample": {
+        "total_return": 184.24,
+        "sharpe_ratio": 3.82,
+        "win_rate": 69.8,
+        "max_drawdown": -34.37,
+        "num_trades": 242,
+        "trades_per_month": 23.0,
+        "avg_bars_held": 9.8,
+        "avg_return_per_trade": 0.513,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 172,
+          "stop_loss": 65,
+          "take_profit": 5
+        }
+      },
+      "out_of_sample": {
+        "total_return": 97.92,
+        "sharpe_ratio": 7.94,
+        "win_rate": 76.7,
+        "max_drawdown": -16.62,
+        "num_trades": 86,
+        "trades_per_month": 23.7,
+        "avg_bars_held": 10.2,
+        "avg_return_per_trade": 0.845,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 70,
+          "stop_loss": 15,
+          "max_hold": 1
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.239873+00:00"
+    },
+    {
+      "pair_name": "link_eth",
+      "pair": "LINK/ETH",
+      "target": "LINKUSDT",
+      "reference": "ETHUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": -53.43,
+        "sharpe_ratio": -2.36,
+        "win_rate": 51.2,
+        "max_drawdown": -70.16,
+        "num_trades": 205,
+        "trades_per_month": 19.5,
+        "avg_bars_held": 11.4,
+        "avg_return_per_trade": -0.308,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 117,
+          "stop_loss": 81,
+          "max_hold": 4,
+          "take_profit": 3
+        }
+      },
+      "out_of_sample": {
+        "total_return": 1.2,
+        "sharpe_ratio": 0.56,
+        "win_rate": 58.9,
+        "max_drawdown": -16.58,
+        "num_trades": 73,
+        "trades_per_month": 20.1,
+        "avg_bars_held": 11.5,
+        "avg_return_per_trade": 0.06,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 54,
+          "stop_loss": 17,
+          "max_hold": 1,
+          "take_profit": 1
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.478880+00:00"
+    },
+    {
+      "pair_name": "apt_btc",
+      "pair": "APT/BTC",
+      "target": "APTUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "in_sample": {
+        "total_return": 242.78,
+        "sharpe_ratio": 4.55,
+        "win_rate": 71.1,
+        "max_drawdown": -26.59,
+        "num_trades": 253,
+        "trades_per_month": 24.0,
+        "avg_bars_held": 9.2,
+        "avg_return_per_trade": 0.56,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 191,
+          "stop_loss": 58,
+          "take_profit": 4
+        }
+      },
+      "out_of_sample": {
+        "total_return": -1.36,
+        "sharpe_ratio": 0.48,
+        "win_rate": 67.5,
+        "max_drawdown": -30.82,
+        "num_trades": 80,
+        "trades_per_month": 22.0,
+        "avg_bars_held": 10.6,
+        "avg_return_per_trade": 0.068,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 61,
+          "stop_loss": 19
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.241698+00:00"
+    },
+    {
+      "pair_name": "arb_btc",
+      "pair": "ARB/BTC",
+      "target": "ARBUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "in_sample": {
+        "total_return": -65.19,
+        "sharpe_ratio": -2.59,
+        "win_rate": 52.2,
+        "max_drawdown": -76.28,
+        "num_trades": 186,
+        "trades_per_month": 17.7,
+        "avg_bars_held": 13.0,
+        "avg_return_per_trade": -0.461,
+        "data_points": 7583,
+        "exit_reasons": {
+          "z_exit": 102,
+          "stop_loss": 78,
+          "take_profit": 5,
+          "max_hold": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": -21.27,
+        "sharpe_ratio": -1.55,
+        "win_rate": 64.8,
+        "max_drawdown": -36.79,
+        "num_trades": 71,
+        "trades_per_month": 19.5,
+        "avg_bars_held": 13.3,
+        "avg_return_per_trade": -0.251,
+        "data_points": 2599,
+        "exit_reasons": {
+          "z_exit": 46,
+          "stop_loss": 22,
+          "max_hold": 2,
+          "take_profit": 1
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.479361+00:00"
+    },
+    {
+      "pair_name": "sui_btc",
+      "pair": "SUI/BTC",
+      "target": "SUIUSDT",
+      "reference": "BTCUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "in_sample": {
+        "total_return": -10.27,
+        "sharpe_ratio": 0.3,
+        "win_rate": 62.4,
+        "max_drawdown": -42.08,
+        "num_trades": 194,
+        "trades_per_month": 18.4,
+        "avg_bars_held": 11.9,
+        "avg_return_per_trade": 0.052,
+        "data_points": 7583,
+        "exit_reasons": {
+          "z_exit": 123,
+          "stop_loss": 64,
+          "take_profit": 6,
+          "max_hold": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": -29.63,
+        "sharpe_ratio": -2.51,
+        "win_rate": 55.6,
+        "max_drawdown": -36.04,
+        "num_trades": 72,
+        "trades_per_month": 19.8,
+        "avg_bars_held": 12.8,
+        "avg_return_per_trade": -0.4,
+        "data_points": 2599,
+        "exit_reasons": {
+          "z_exit": 46,
+          "stop_loss": 26
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.244765+00:00"
+    },
+    {
+      "pair_name": "bnb_eth",
+      "pair": "BNB/ETH",
+      "target": "BNBUSDT",
+      "reference": "ETHUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": -10.1,
+        "sharpe_ratio": -0.62,
+        "win_rate": 40.3,
+        "max_drawdown": -38.05,
+        "num_trades": 124,
+        "trades_per_month": 11.8,
+        "avg_bars_held": 17.3,
+        "avg_return_per_trade": -0.062,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 102,
+          "max_hold": 11,
+          "stop_loss": 10,
+          "take_profit": 1
+        }
+      },
+      "out_of_sample": {
+        "total_return": -21.06,
+        "sharpe_ratio": -5.21,
+        "win_rate": 44.7,
+        "max_drawdown": -30.11,
+        "num_trades": 47,
+        "trades_per_month": 12.9,
+        "avg_bars_held": 13.3,
+        "avg_return_per_trade": -0.475,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 36,
+          "stop_loss": 8,
+          "max_hold": 3
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.480616+00:00"
+    },
+    {
+      "pair_name": "sol_eth",
+      "pair": "SOL/ETH",
+      "target": "SOLUSDT",
+      "reference": "ETHUSDT",
+      "params": {
+        "lookback": 72,
+        "entry_threshold": -1.2,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "in_sample": {
+        "total_return": -29.36,
+        "sharpe_ratio": -1.08,
+        "win_rate": 50.9,
+        "max_drawdown": -54.46,
+        "num_trades": 175,
+        "trades_per_month": 16.6,
+        "avg_bars_held": 14.5,
+        "avg_return_per_trade": -0.145,
+        "data_points": 7584,
+        "exit_reasons": {
+          "z_exit": 115,
+          "stop_loss": 53,
+          "take_profit": 4,
+          "max_hold": 3
+        }
+      },
+      "out_of_sample": {
+        "total_return": -36.35,
+        "sharpe_ratio": -5.22,
+        "win_rate": 45.5,
+        "max_drawdown": -42.17,
+        "num_trades": 66,
+        "trades_per_month": 18.2,
+        "avg_bars_held": 13.0,
+        "avg_return_per_trade": -0.634,
+        "data_points": 2600,
+        "exit_reasons": {
+          "z_exit": 42,
+          "stop_loss": 21,
+          "take_profit": 2,
+          "max_hold": 1
+        }
+      },
+      "timestamp": "2025-12-24T14:38:13.481243+00:00"
+    },
+    {
+      "optimization_results": [
+        {
+          "pair_name": "link_eth",
+          "pair": "LINK/ETH",
+          "best_params": {
+            "lookback": 96,
+            "entry_threshold": -1.8,
+            "exit_threshold": -0.9,
+            "max_hold_hours": 72
+          },
+          "best_result": {
+            "total_return": -13.32,
+            "sharpe_ratio": -0.33,
+            "win_rate": 52.1,
+            "max_drawdown": -50.06,
+            "num_trades": 117,
+            "trades_per_month": 9.6,
+            "avg_bars_held": 14.9,
+            "avg_return_per_trade": -0.052,
+            "data_points": 8744,
+            "exit_reasons": {
+              "z_exit": 72,
+              "stop_loss": 42,
+              "take_profit": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "deploy": [
+      "xrp_btc",
+      "bnb_btc",
+      "link_btc",
+      "ada_btc",
+      "dot_btc",
+      "near_btc"
+    ],
+    "validate": [],
+    "optimize": [
+      "link_eth"
+    ],
+    "retire": [
+      "apt_btc",
+      "arb_btc",
+      "sui_btc",
+      "bnb_eth",
+      "sol_eth"
+    ]
+  }
+}

@@ -1,9 +1,31 @@
 # Strategy configurations
 # Each strategy references a registered strategy type and provides parameters
+#
+# =============================================================================
+# Strategy Lifecycle Tags
+# =============================================================================
+#
+# STAGE (validation/deployment state):
+#   deployed     - Passed validation, currently running in paper/live
+#   validated    - Passed validation, ready to deploy but not yet running  
+#   experimental - Not yet validated through walk-forward testing
+#   retired      - Failed validation or deprecated
+#
+# ROLE (portfolio function - optional):
+#   primary      - Core strategy, gets priority allocation
+#   backup       - Ready to replace primary if it underperforms
+#   diversifier  - Provides uncorrelated returns to core strategies
+#
+# =============================================================================
 
 strategies:
+  # =============================================================================
+  # EXPERIMENTAL - Technical Strategies (Not Validated)
+  # =============================================================================
+
   # Simple Moving Average Crossover
   sma_crossover_btc:
+    stage: experimental
     type: sma_crossover
     params:
       fast_period: 10
@@ -13,6 +35,7 @@ strategies:
     enabled: true
 
   sma_crossover_eth:
+    stage: experimental
     type: sma_crossover
     params:
       fast_period: 12
@@ -21,8 +44,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # RSI Mean Reversion
   rsi_mean_reversion:
+    stage: experimental
     type: rsi_mean_reversion
     params:
       period: 14
@@ -32,8 +55,8 @@ strategies:
     interval: 4h
     enabled: true
 
-  # MACD Strategy
   macd_crossover:
+    stage: experimental
     type: macd_crossover
     params:
       fast_period: 12
@@ -43,8 +66,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Bollinger Band Breakout
   bollinger_breakout:
+    stage: experimental
     type: bollinger_breakout
     params:
       period: 20
@@ -53,8 +76,8 @@ strategies:
     interval: 4h
     enabled: true
 
-  # Momentum Breakout
   momentum_breakout:
+    stage: experimental
     type: momentum_breakout
     params:
       lookback: 20
@@ -63,8 +86,12 @@ strategies:
     interval: 1d
     enabled: true
 
-  # Machine Learning Classifier
+  # =============================================================================
+  # RETIRED - ML Classifiers (All Overfit)
+  # =============================================================================
+
   ml_classifier_btc:
+    stage: retired
     type: ml_classifier
     params:
       model: gradient_boosting
@@ -81,6 +108,7 @@ strategies:
 
   # SMA Crossover with ADX Filter
   sma_crossover_filtered:
+    stage: experimental
     type: sma_crossover
     params:
       fast_period: 10
@@ -95,6 +123,7 @@ strategies:
 
   # Volatility Squeeze Strategy
   squeeze_breakout_btc:
+    stage: experimental
     type: volatility_squeeze
     params:
       bb_period: 20
@@ -108,6 +137,7 @@ strategies:
 
   # VWAP Reversion Strategy
   vwap_reversion_btc:
+    stage: experimental
     type: vwap_reversion
     params:
       vwap_period: 20
@@ -119,6 +149,7 @@ strategies:
 
   # Ensemble Voting Strategy
   ensemble_consensus:
+    stage: experimental
     type: ensemble_voting
     params:
       strategies: [sma_crossover_btc, rsi_mean_reversion, macd_crossover]
@@ -130,6 +161,7 @@ strategies:
 
   # Regime Adaptive Strategy
   regime_adaptive_btc:
+    stage: experimental
     type: regime_adaptive
     params:
       adx_trending_threshold: 25
@@ -143,6 +175,7 @@ strategies:
 
   # Enhanced ML Strategy with Walk-Forward
   ml_enhanced_btc:
+    stage: retired
     type: ml_enhanced
     params:
       model: gradient_boosting
@@ -157,6 +190,7 @@ strategies:
 
   # Multi-Timeframe Strategy
   mtf_trend_btc:
+    stage: experimental
     type: multi_timeframe
     params:
       base_interval: 1h
@@ -171,6 +205,7 @@ strategies:
 
   # Relative Strength Strategy
   relative_strength_btc:
+    stage: experimental
     type: relative_strength
     params:
       lookback_period: 20
@@ -184,6 +219,7 @@ strategies:
 
   # Momentum Ranking Strategy
   momentum_ranking_btc:
+    stage: experimental
     type: momentum_ranking
     params:
       lookback_period: 20
@@ -196,6 +232,7 @@ strategies:
 
   # Reinforcement Learning DQN Strategy
   rl_dqn_btc:
+    stage: experimental
     type: rl_dqn
     params:
       algorithm: DQN
@@ -210,11 +247,11 @@ strategies:
     enabled: false  # Disabled by default - requires RL dependencies
 
   # =============================================================================
-  # ML CLASSIFIER SIBLINGS - Experimental Improvements
+  # RETIRED - ML Classifier Siblings (All Overfit in Walk-Forward)
   # =============================================================================
 
-  # ML Classifier V2: Extended features + probability thresholds
   ml_classifier_v2:
+    stage: retired
     type: ml_classifier_v2
     params:
       model: gradient_boosting
@@ -229,8 +266,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Ensemble Voting: Multiple models combined
   ml_ensemble_voting:
+    stage: retired
     type: ml_ensemble_voting
     params:
       features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, volume_momentum]
@@ -245,8 +282,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Classifier V3: Longer horizon + feature engineering
   ml_classifier_v3:
+    stage: retired
     type: ml_classifier_v3
     params:
       model: gradient_boosting
@@ -262,8 +299,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Classifier XGB: XGBoost with class weights
   ml_classifier_xgb:
+    stage: retired
     type: ml_classifier_xgb
     params:
       features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, obv, volume_momentum, roc_10]
@@ -280,8 +317,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Classifier V4: Adaptive thresholds based on market regime
   ml_classifier_v4:
+    stage: retired
     type: ml_classifier_v4
     params:
       features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, volume_momentum]
@@ -297,8 +334,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Classifier Hybrid: Best of XGB + Ensemble + Adaptive
   ml_classifier_hybrid:
+    stage: retired
     type: ml_classifier_hybrid
     params:
       features: [sma_20, ema_12, rsi_14, macd, adx, atr_ratio, bb_width, obv, volume_momentum, roc_10]
@@ -319,8 +356,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # ML Classifier Conservative: Low Drawdown Focus
   ml_classifier_conservative:
+    stage: retired
     type: ml_classifier_conservative
     params:
       lookback: 100
@@ -335,17 +372,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # ROBUST STRATEGIES - Designed to Avoid Overfitting
+  # EXPERIMENTAL - Robust ML Strategies (Designed to Avoid Overfitting)
   # =============================================================================
-  # Based on walk-forward validation research findings:
-  # - Fewer features (top 3 from importance analysis)
-  # - Longer prediction horizons (10+ bars)
-  # - Stronger regularization
-  # - Online learning / periodic retraining
-  # - Rule-based approaches that cannot overfit
 
-  # ML Classifier V5: Simplified for Robustness
   ml_classifier_v5:
+    stage: experimental
     type: ml_classifier_v5
     params:
       features: [volume_momentum, adx, rsi_14]  # Only top 3 features
@@ -365,8 +396,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # ML Classifier Online: Rolling Retraining
   ml_classifier_online:
+    stage: experimental
     type: ml_classifier_online
     params:
       features: [volume_momentum, adx, rsi_14]
@@ -387,8 +418,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # ML Classifier Decay: Sample Weight Decay
   ml_classifier_decay:
+    stage: experimental
     type: ml_classifier_decay
     params:
       features: [volume_momentum, adx, rsi_14]
@@ -406,8 +437,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Rule Ensemble: No ML, Cannot Overfit
   rule_ensemble:
+    stage: experimental
     type: rule_ensemble
     params:
       adx_threshold: 25
@@ -428,8 +459,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Trend Following Rules: Classic TA
   trend_following_rules:
+    stage: experimental
     type: trend_following_rules
     params:
       adx_threshold: 25
@@ -443,8 +474,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Mean Reversion Rules: For Ranging Markets
   mean_reversion_rules:
+    stage: experimental
     type: mean_reversion_rules
     params:
       adx_threshold: 25
@@ -459,8 +490,8 @@ strategies:
     take_profit_pct: 0.06
     enabled: true
 
-  # Cross-Asset ML: Trains on All Symbols
   ml_cross_asset:
+    stage: experimental
     type: ml_cross_asset
     params:
       features: [volume_momentum, adx, rsi_14]
@@ -480,8 +511,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Cross-Asset Regime: Separate Trend/Range Models
   ml_cross_asset_regime:
+    stage: experimental
     type: ml_cross_asset_regime
     params:
       features: [volume_momentum, rsi_14]
@@ -502,13 +533,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category A: Cross-Symbol Signals
+  # EXPERIMENTAL - Cross-Symbol Strategies
   # =============================================================================
-  # These strategies use signals from one symbol (e.g., BTC) to trade another.
-  # Key insight: Cross-asset patterns generalize well.
 
-  # BTC Lead Alt Follow: BTC breakout triggers alt entry
   btc_lead_alt_follow:
+    stage: experimental
     type: btc_lead_alt_follow
     params:
       leader_symbol: BTCUSDT
@@ -522,22 +551,43 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # ETH/BTC Ratio Reversion: Trade ETH when ratio is extreme
+  # =============================================================================
+  # DEPLOYED - Ratio Mean Reversion (See paper_trading.yaml for active configs)
+  # =============================================================================
+
   eth_btc_ratio_reversion:
+    stage: deployed
+    role: primary
     type: eth_btc_ratio_reversion
     params:
-      lookback: 168                 # 7 days for z-score calculation
-      entry_threshold: -2.0         # Enter when z-score < -2
-      exit_threshold: -0.5          # Exit when z-score > -0.5
-      max_hold_hours: 72            # Maximum hold period
+      lookback: 72                  # FINAL: Note 11 grid search
+      entry_threshold: -1.2         # FINAL: more sensitive
+      exit_threshold: -0.7
+      max_hold_hours: 72
     symbols: [ETHUSDT]
     interval: 1h
-    stop_loss_pct: 0.05
-    take_profit_pct: 0.10
+    stop_loss_pct: 0.03             # FINAL
+    take_profit_pct: 0.08           # FINAL
     enabled: true
 
-  # Correlation Breakdown: Trade laggard when correlated assets diverge
+  eth_btc_ratio_confirmed:
+    stage: deployed
+    role: backup
+    type: eth_btc_ratio_confirmed
+    params:
+      lookback: 72                  # FINAL: Note 11 grid search
+      entry_threshold: -1.2         # FINAL
+      exit_threshold: -0.7
+      max_hold_hours: 72
+      confirmation_delay: 2         # FINAL
+    symbols: [ETHUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03             # FINAL
+    take_profit_pct: 0.08           # FINAL
+    enabled: true
+
   correlation_breakdown:
+    stage: experimental
     type: correlation_breakdown
     params:
       reference_symbol: BTCUSDT
@@ -551,8 +601,8 @@ strategies:
     take_profit_pct: 0.08
     enabled: true
 
-  # Sector Momentum Rotation: Weekly rebalance to top sector
   sector_momentum_rotation:
+    stage: experimental
     type: sector_momentum_rotation
     params:
       sectors:
@@ -568,8 +618,8 @@ strategies:
     take_profit_pct: 0.15
     enabled: true
 
-  # BTC Volatility Filter: Only trade alts when BTC is calm
   btc_volatility_filter:
+    stage: experimental
     type: btc_volatility_filter
     params:
       base_strategy: momentum_breakout
@@ -583,12 +633,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category B: Alternative Data
+  # EXPERIMENTAL - Alternative Data Strategies
   # =============================================================================
-  # These strategies use non-price data: funding rates, open interest, etc.
 
-  # Funding Rate Fade: Avoid/fade when funding is extreme
   funding_rate_fade:
+    stage: experimental
     type: funding_rate_fade
     params:
       extreme_positive: 0.0005      # 0.05% per 8h = ~70% APY
@@ -600,8 +649,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Funding Rate Carry: Long spot when funding is positive
   funding_rate_carry:
+    stage: experimental
     type: funding_rate_carry
     params:
       funding_avg_period: 9         # 3 days of 8h funding (9 periods)
@@ -612,9 +661,9 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Open Interest Divergence: Price up + OI down = weak rally
   # DISABLED: Binance OI history API is restricted (returns 400)
   open_interest_divergence:
+    stage: retired
     type: open_interest_divergence
     params:
       price_lookback: 24            # 24h price change
@@ -628,8 +677,9 @@ strategies:
     take_profit_pct: 0.06
     enabled: false
 
-  # Liquidation Cascade Fade: Mean reversion after large liquidations
+  # Requires external liquidation data
   liquidation_cascade_fade:
+    stage: retired
     type: liquidation_cascade_fade
     params:
       liquidation_threshold: 10000000  # $10M liquidations in 1h
@@ -644,12 +694,11 @@ strategies:
     enabled: false  # Requires external liquidation data
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category C: Calendar/Structural
+  # EXPERIMENTAL - Calendar/Structural Strategies
   # =============================================================================
-  # These exploit time-based patterns and market structure.
 
-  # Weekend Effect: Exit Friday, re-enter Monday
   weekend_effect:
+    stage: experimental
     type: weekend_effect
     params:
       exit_day: 4                   # Friday (0=Monday)
@@ -662,8 +711,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Hour of Day Filter: Only trade during high-liquidity hours
   hour_of_day_filter:
+    stage: experimental
     type: hour_of_day_filter
     params:
       active_hours: [14, 15, 16, 17, 18, 19, 20, 21, 22]  # UTC hours
@@ -675,8 +724,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Month End Rebalancing: Trade anticipating institutional flows
   month_end_rebalancing:
+    stage: experimental
     type: month_end_rebalancing
     params:
       entry_days_before_eom: 3      # Enter 3 days before month end
@@ -689,12 +738,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category D: Frequency Reduction
+  # EXPERIMENTAL - Frequency Reduction Strategies
   # =============================================================================
-  # Use hourly data but trade less frequently to reduce costs.
 
-  # Weekly Momentum: Rebalance weekly based on 7-day momentum
   weekly_momentum:
+    stage: experimental
     type: weekly_momentum
     params:
       momentum_period: 168          # 7-day momentum
@@ -709,22 +757,22 @@ strategies:
     take_profit_pct: 0.18
     enabled: true
 
-  # Signal Confirmation Delay: Require signal to persist
   signal_confirmation_delay:
+    stage: retired  # Positive Sharpe but negative return (-0.1%)
     type: signal_confirmation_delay
     params:
       base_strategy: rsi_mean_reversion
-      confirmation_delay: 4         # Require same signal 4 hours later
+      confirmation_delay: 2         # OPTIMIZED: faster (was 4)
       require_consistent: true      # Signal must be same direction
       allow_strengthen: true        # Allow signal to get stronger
     symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
     interval: 1h
-    stop_loss_pct: 0.04
-    take_profit_pct: 0.12
-    enabled: true
+    stop_loss_pct: 0.03             # OPTIMIZED: tighter (was 0.04)
+    take_profit_pct: 0.08           # OPTIMIZED: tighter (was 0.12)
+    enabled: false  # RETIRED: Note 10 - positive Sharpe but negative return (-0.1%)
 
-  # Signal Strength Filter: Only trade extreme signals
   signal_strength_filter:
+    stage: experimental
     type: signal_strength_filter
     params:
       base_strategy: rsi_mean_reversion
@@ -739,12 +787,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category E: Meta-Strategies
+  # EXPERIMENTAL - Meta Strategies
   # =============================================================================
-  # Strategies that control other strategies or manage risk.
 
-  # Regime Gate: Only trade in clear regimes
   regime_gate:
+    stage: experimental
     type: regime_gate
     params:
       trend_strategy: momentum_breakout
@@ -759,8 +806,8 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Drawdown Pause: Pause trading after drawdown
   drawdown_pause:
+    stage: experimental
     type: drawdown_pause
     params:
       base_strategy: ml_classifier_xgb
@@ -772,8 +819,8 @@ strategies:
     interval: 1h
     enabled: true
 
-  # Strategy Momentum: Use recently winning strategy
   strategy_momentum:
+    stage: experimental
     type: strategy_momentum
     params:
       strategies:
@@ -789,12 +836,11 @@ strategies:
     enabled: true
 
   # =============================================================================
-  # CREATIVE STRATEGIES - Category F: Market Microstructure
+  # EXPERIMENTAL - Microstructure Strategies
   # =============================================================================
-  # Strategies based on volume and order flow patterns.
 
-  # Volume Breakout Confirmation: Only trade volume-confirmed breakouts
   volume_breakout_confirmation:
+    stage: experimental
     type: volume_breakout_confirmation
     params:
       breakout_period: 24           # 24-bar high/low breakout
@@ -807,23 +853,23 @@ strategies:
     take_profit_pct: 0.12
     enabled: true
 
-  # Volume Divergence: Fade moves with declining volume
   volume_divergence:
+    stage: retired  # Only 2 trades in 180 days - too infrequent
     type: volume_divergence
     params:
-      price_lookback: 48            # 48-bar price trend
+      price_lookback: 24            # OPTIMIZED: 24-bar (was 48)
       volume_lookback: 48           # 48-bar volume trend
-      price_threshold: 0.05         # 5% price move
-      volume_decline_threshold: 0.3 # Volume down 30%
+      price_threshold: 0.03         # OPTIMIZED: 3% (was 5%)
+      volume_decline_threshold: 0.35 # OPTIMIZED: 35% (was 30%)
       signal_mode: fade             # Fade the divergence
     symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
     interval: 1h
-    stop_loss_pct: 0.03
-    take_profit_pct: 0.06
-    enabled: true
+    stop_loss_pct: 0.02             # OPTIMIZED: tighter (was 0.03)
+    take_profit_pct: 0.05           # OPTIMIZED: tighter (was 0.06)
+    enabled: false  # RETIRED: Only 2 trades in 180 days - too infrequent
 
-  # Buy/Sell Imbalance: Trade extreme order flow imbalance
   buy_sell_imbalance:
+    stage: experimental
     type: buy_sell_imbalance
     params:
       imbalance_lookback: 12        # 12-bar lookback
@@ -835,4 +881,293 @@ strategies:
     interval: 1h
     stop_loss_pct: 0.03
     take_profit_pct: 0.09
+    enabled: true
+
+  # =============================================================================
+  # RETIRED - Unexplored Tier 1 (Failed Validation)
+  # =============================================================================
+
+  volatility_mean_reversion:
+    stage: retired  # OOS Sharpe -0.00
+    type: volatility_mean_reversion
+    params:
+      atr_period: 14
+      percentile_window: 168        # 7-day percentile window
+      high_threshold: 90            # Exit when vol > 90th percentile
+      low_threshold: 20             # Enter when vol < 20th percentile
+      hold_period: 24
+      use_momentum_direction: true
+      momentum_period: 24
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -0.00
+
+  volatility_breakout:
+    stage: retired  # OOS Sharpe -0.35
+    type: volatility_breakout
+    params:
+      bb_period: 20
+      bb_std: 2.0
+      width_expansion_threshold: 1.5  # 50% width expansion
+      width_lookback: 12
+      min_hold_period: 4
+      max_hold_period: 72
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -0.35
+
+  basis_proxy:
+    stage: deployed
+    role: diversifier
+    type: basis_proxy
+    params:
+      funding_lookback: 4           # FINAL: Note 11 grid search
+      entry_threshold: -0.0004      # FINAL
+      exit_threshold: 0.0002        # FINAL
+      extreme_positive: 0.0005
+      max_hold_hours: 72
+      use_funding_data: false       # Use price-based estimation
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.02             # FINAL
+    take_profit_pct: 0.06           # FINAL
+    enabled: true
+
+  multi_asset_pair_trade:
+    stage: retired  # OOS Sharpe -1.18
+    type: multi_asset_pair_trade
+    params:
+      lookback: 168                 # 7-day lookback
+      entry_zscore: -2.0            # Enter when z-score < -2
+      exit_zscore: -0.5             # Exit when z-score > -0.5
+      max_hold_hours: 72
+      use_returns: true             # Compare returns vs levels
+    symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT]
+    interval: 1h
+    stop_loss_pct: 0.05
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -1.18
+
+  dxy_correlation_proxy:
+    stage: retired  # OOS Sharpe -1.58
+    type: dxy_correlation_proxy
+    params:
+      trend_period: 168             # 7-day trend line
+      momentum_period: 24           # 24h momentum
+      strength_threshold: 0.02      # Above trend = risk-on
+      weakness_threshold: -0.02     # Below trend = risk-off
+      hold_period: 48
+      require_positive_momentum: true
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -1.58
+
+  regime_volatility_switch:
+    stage: retired  # OOS Sharpe -0.25
+    type: regime_volatility_switch
+    params:
+      atr_period: 14
+      regime_window: 168            # 7-day regime detection
+      high_vol_threshold: 70        # Use momentum above this
+      low_vol_threshold: 30         # Use mean reversion below this
+      rsi_period: 14
+      rsi_oversold: 30
+      rsi_overbought: 70
+      momentum_period: 24
+      momentum_threshold: 0.02
+      hold_period: 24
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -0.25
+    take_profit_pct: 0.12
+    enabled: true
+
+  momentum_quality:
+    stage: retired  # OOS Sharpe -2.30
+    type: momentum_quality
+    params:
+      momentum_period: 12
+      trend_period: 48              # Trend alignment check
+      atr_period: 14
+      volume_period: 24
+      min_momentum_atr: 1.0         # Momentum > 1x ATR
+      min_volume_ratio: 1.2         # Volume > 1.2x average
+      hold_period: 24
+      require_trend_alignment: true
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -2.30
+
+  trend_strength_filter:
+    stage: retired  # OOS Sharpe -2.65
+    type: trend_strength_filter
+    params:
+      adx_period: 14
+      strong_threshold: 30          # Use momentum when ADX > 30
+      weak_threshold: 20            # Use mean reversion when ADX < 20
+      momentum_lookback: 20
+      momentum_threshold: 0.02
+      rsi_period: 14
+      rsi_oversold: 30
+      rsi_overbought: 70
+      hold_period: 24
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: false  # RETIRED: Note 09 - OOS Sharpe -2.65
+
+  # =============================================================================
+  # EXPERIMENTAL - Diversification Strategies
+  # =============================================================================
+
+  ml_classifier_online_v1:
+    stage: experimental
+    type: ml_classifier_online
+    params:
+      features: [volume_momentum, adx, rsi_14]
+      train_window: 2160          # 90 days
+      retrain_every: 168          # Weekly retraining
+      prediction_horizon: 10
+      buy_threshold: 0.55
+      sell_threshold: 0.45
+      n_estimators: 50
+      max_depth: 3
+      min_samples_leaf: 50
+      use_sample_weights: true
+      decay_factor: 0.99          # Recent data weighted higher
+      min_return_threshold: 0.02
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, LINKUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  liquidation_cascade_fade_v1:
+    stage: experimental
+    type: liquidation_cascade_fade
+    params:
+      liquidation_threshold: 5000000   # $5M threshold
+      lookback_hours: 1
+      fade_delay: 2                    # Wait 2 bars after cascade
+      hold_period: 24
+      min_cascade_size: 3000000        # $3M minimum
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.08
+    enabled: true
+
+  correlation_breakdown_sol_avax:
+    stage: experimental
+    type: correlation_breakdown
+    params:
+      reference_symbol: AVAXUSDT
+      correlation_window: 720          # 30 days rolling correlation
+      min_correlation: 0.80            # Must be highly correlated
+      divergence_threshold: 0.025      # 2.5% divergence triggers signal
+      max_hold_hours: 48
+    symbols: [SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.08
+    enabled: true
+
+  regime_volatility_switch_v1:
+    stage: experimental
+    type: regime_volatility_switch
+    params:
+      atr_period: 14
+      regime_window: 168               # 7-day regime detection
+      high_vol_threshold: 65           # Lower than original (was 70)
+      low_vol_threshold: 35            # Higher than original (was 30)
+      rsi_period: 14
+      rsi_oversold: 25                 # More extreme (was 30)
+      rsi_overbought: 75               # More extreme (was 70)
+      momentum_period: 24
+      momentum_threshold: 0.025        # 2.5% move
+      hold_period: 36                  # Slightly longer hold
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT, AVAXUSDT, LINKUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.10
+    enabled: true
+
+  # =============================================================================
+  # DEPLOYED - Orthogonal Strategies (Diversifiers)
+  # =============================================================================
+
+  cross_sectional_momentum_v1:
+    stage: deployed
+    role: diversifier
+    type: cross_sectional_momentum
+    params:
+      ranking_period: 168             # 7-day momentum for ranking
+      hold_period: 168                # Hold 1 week
+      top_percentile: 0.20            # Long top 20%
+      bottom_percentile: 0.20         # Avoid bottom 20%
+      min_momentum: 0.0               # Must have positive momentum
+    symbols: [SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT, DOTUSDT, APTUSDT]
+    interval: 1h
+    stop_loss_pct: 0.05
+    take_profit_pct: 0.15
+    enabled: true
+
+  liquidity_vacuum_detector_v1:
+    stage: deployed
+    role: diversifier
+    type: liquidity_vacuum_detector
+    params:
+      range_percentile: 85            # GRID OPTIMIZED
+      volume_percentile: 50           # GRID OPTIMIZED
+      percentile_window: 168
+      stall_threshold: 0.6            # GRID OPTIMIZED
+      hold_period: 12                 # GRID OPTIMIZED
+      max_hold_period: 24
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.02
+    take_profit_pct: 0.04
+    enabled: true
+
+  btc_dominance_rotation_v1:
+    stage: deployed
+    role: diversifier
+    type: btc_dominance_rotation
+    params:
+      dominance_trend_period: 168
+      dominance_momentum_period: 24
+      risk_on_threshold: -0.01        # GRID OPTIMIZED
+      risk_off_threshold: 0.005       # GRID OPTIMIZED
+      hold_period: 48                 # GRID OPTIMIZED
+    symbols: [ETHUSDT, SOLUSDT, AVAXUSDT, NEARUSDT, LINKUSDT]
+    interval: 1h
+    stop_loss_pct: 0.04
+    take_profit_pct: 0.12
+    enabled: true
+
+  funding_term_structure_v1:
+    stage: deployed
+    role: diversifier
+    type: funding_term_structure
+    params:
+      lookback_periods: 2             # GRID OPTIMIZED
+      dispersion_threshold: 0.0003
+      extreme_funding: 0.0005         # GRID OPTIMIZED
+      hold_period: 12                 # GRID OPTIMIZED
+      use_contrarian: true
+    symbols: [BTCUSDT, ETHUSDT, SOLUSDT]
+    interval: 1h
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.06
     enabled: true

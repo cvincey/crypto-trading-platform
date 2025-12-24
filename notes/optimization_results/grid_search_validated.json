@@ -1,0 +1,1480 @@
+{
+  "eth_btc_ratio_reversion": [
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.919624328289597,
+      "oos_sharpe": 5.219625554537103,
+      "oos_return_pct": 3.0723450830080807,
+      "total_trades": 290,
+      "sharpe_degradation": -18.047323742093905,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.919624328289597,
+      "oos_sharpe": 5.219625554537103,
+      "oos_return_pct": 3.0723450830080807,
+      "total_trades": 290,
+      "sharpe_degradation": -18.047323742093905,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.919624328289597,
+      "oos_sharpe": 5.219625554537103,
+      "oos_return_pct": 3.0723450830080807,
+      "total_trades": 290,
+      "sharpe_degradation": -18.047323742093905,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.919624328289597,
+      "oos_sharpe": 5.219625554537103,
+      "oos_return_pct": 3.0723450830080807,
+      "total_trades": 290,
+      "sharpe_degradation": -18.047323742093905,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 5.04416569708441,
+      "oos_sharpe": 5.047087505609849,
+      "oos_return_pct": 2.966880475914069,
+      "total_trades": 294,
+      "sharpe_degradation": -12.129175606349918,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 5.04416569708441,
+      "oos_sharpe": 5.047087505609849,
+      "oos_return_pct": 2.966880475914069,
+      "total_trades": 294,
+      "sharpe_degradation": -12.129175606349918,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 5.04416569708441,
+      "oos_sharpe": 5.047087505609849,
+      "oos_return_pct": 2.966880475914069,
+      "total_trades": 294,
+      "sharpe_degradation": -12.129175606349918,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 5.04416569708441,
+      "oos_sharpe": 5.047087505609849,
+      "oos_return_pct": 2.966880475914069,
+      "total_trades": 294,
+      "sharpe_degradation": -12.129175606349918,
+      "sharpe_spread": 7.593451952533321
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.681431213563495,
+      "oos_sharpe": 4.951251595839071,
+      "oos_return_pct": 2.9751567212697307,
+      "total_trades": 256,
+      "sharpe_degradation": -22.223214813599157,
+      "sharpe_spread": 7.200018061875862
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.681431213563495,
+      "oos_sharpe": 4.951251595839071,
+      "oos_return_pct": 2.9751567212697307,
+      "total_trades": 256,
+      "sharpe_degradation": -22.223214813599157,
+      "sharpe_spread": 7.200018061875862
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.681431213563495,
+      "oos_sharpe": 4.951251595839071,
+      "oos_return_pct": 2.9751567212697307,
+      "total_trades": 256,
+      "sharpe_degradation": -22.223214813599157,
+      "sharpe_spread": 7.200018061875862
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.681431213563495,
+      "oos_sharpe": 4.951251595839071,
+      "oos_return_pct": 2.9751567212697307,
+      "total_trades": 256,
+      "sharpe_degradation": -22.223214813599157,
+      "sharpe_spread": 7.200018061875862
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.648531572076649,
+      "oos_sharpe": 4.7135930187045965,
+      "oos_return_pct": 2.7065811227244634,
+      "total_trades": 260,
+      "sharpe_degradation": -22.06165304517653,
+      "sharpe_spread": 6.999382678265502
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.648531572076649,
+      "oos_sharpe": 4.7135930187045965,
+      "oos_return_pct": 2.7065811227244634,
+      "total_trades": 260,
+      "sharpe_degradation": -22.06165304517653,
+      "sharpe_spread": 6.999382678265502
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.648531572076649,
+      "oos_sharpe": 4.7135930187045965,
+      "oos_return_pct": 2.7065811227244634,
+      "total_trades": 260,
+      "sharpe_degradation": -22.06165304517653,
+      "sharpe_spread": 6.999382678265502
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.648531572076649,
+      "oos_sharpe": 4.7135930187045965,
+      "oos_return_pct": 2.7065811227244634,
+      "total_trades": 260,
+      "sharpe_degradation": -22.06165304517653,
+      "sharpe_spread": 6.999382678265502
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.7005035279534795,
+      "oos_sharpe": 4.695505793581318,
+      "oos_return_pct": 2.8211778955854534,
+      "total_trades": 260,
+      "sharpe_degradation": -16.398193000113423,
+      "sharpe_spread": 7.109971464404837
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.7005035279534795,
+      "oos_sharpe": 4.695505793581318,
+      "oos_return_pct": 2.8211778955854534,
+      "total_trades": 260,
+      "sharpe_degradation": -16.398193000113423,
+      "sharpe_spread": 7.109971464404837
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 4.7005035279534795,
+      "oos_sharpe": 4.695505793581318,
+      "oos_return_pct": 2.8211778955854534,
+      "total_trades": 260,
+      "sharpe_degradation": -16.398193000113423,
+      "sharpe_spread": 7.109971464404837
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 4.7005035279534795,
+      "oos_sharpe": 4.695505793581318,
+      "oos_return_pct": 2.8211778955854534,
+      "total_trades": 260,
+      "sharpe_degradation": -16.398193000113423,
+      "sharpe_spread": 7.109971464404837
+    }
+  ],
+  "eth_btc_ratio_confirmed": [
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4132970673867136,
+      "oos_sharpe": 4.051210593750539,
+      "oos_return_pct": 1.8887737098910005,
+      "total_trades": 151,
+      "sharpe_degradation": -29.960962055435505,
+      "sharpe_spread": 5.295037749965575
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4132970673867136,
+      "oos_sharpe": 4.051210593750539,
+      "oos_return_pct": 1.8887737098910005,
+      "total_trades": 151,
+      "sharpe_degradation": -29.960962055435505,
+      "sharpe_spread": 5.295037749965575
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4132970673867136,
+      "oos_sharpe": 4.051210593750539,
+      "oos_return_pct": 1.8887737098910005,
+      "total_trades": 151,
+      "sharpe_degradation": -29.960962055435505,
+      "sharpe_spread": 5.295037749965575
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4132970673867136,
+      "oos_sharpe": 4.051210593750539,
+      "oos_return_pct": 1.8887737098910005,
+      "total_trades": 151,
+      "sharpe_degradation": -29.960962055435505,
+      "sharpe_spread": 5.295037749965575
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4353345966879476,
+      "oos_sharpe": 3.997199269839047,
+      "oos_return_pct": 1.8916243581100505,
+      "total_trades": 155,
+      "sharpe_degradation": -26.65550360396013,
+      "sharpe_spread": 5.361150337869277
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4353345966879476,
+      "oos_sharpe": 3.997199269839047,
+      "oos_return_pct": 1.8916243581100505,
+      "total_trades": 155,
+      "sharpe_degradation": -26.65550360396013,
+      "sharpe_spread": 5.361150337869277
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4353345966879476,
+      "oos_sharpe": 3.997199269839047,
+      "oos_return_pct": 1.8916243581100505,
+      "total_trades": 155,
+      "sharpe_degradation": -26.65550360396013,
+      "sharpe_spread": 5.361150337869277
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.5,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4353345966879476,
+      "oos_sharpe": 3.997199269839047,
+      "oos_return_pct": 1.8916243581100505,
+      "total_trades": 155,
+      "sharpe_degradation": -26.65550360396013,
+      "sharpe_spread": 5.361150337869277
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.402632182027599,
+      "oos_sharpe": 3.9776466591770876,
+      "oos_return_pct": 1.7882313746561913,
+      "total_trades": 162,
+      "sharpe_degradation": -26.213377738635316,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.402632182027599,
+      "oos_sharpe": 3.9776466591770876,
+      "oos_return_pct": 1.7882313746561913,
+      "total_trades": 162,
+      "sharpe_degradation": -26.213377738635316,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.402632182027599,
+      "oos_sharpe": 3.9776466591770876,
+      "oos_return_pct": 1.7882313746561913,
+      "total_trades": 162,
+      "sharpe_degradation": -26.213377738635316,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 72,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.402632182027599,
+      "oos_sharpe": 3.9776466591770876,
+      "oos_return_pct": 1.7882313746561913,
+      "total_trades": 162,
+      "sharpe_degradation": -26.213377738635316,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4317903699621777,
+      "oos_sharpe": 3.8931179354266874,
+      "oos_return_pct": 1.7646078679036066,
+      "total_trades": 166,
+      "sharpe_degradation": -21.888132703431065,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4317903699621777,
+      "oos_sharpe": 3.8931179354266874,
+      "oos_return_pct": 1.7646078679036066,
+      "total_trades": 166,
+      "sharpe_degradation": -21.888132703431065,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 3.4317903699621777,
+      "oos_sharpe": 3.8931179354266874,
+      "oos_return_pct": 1.7646078679036066,
+      "total_trades": 166,
+      "sharpe_degradation": -21.888132703431065,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 96,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 3.4317903699621777,
+      "oos_sharpe": 3.8931179354266874,
+      "oos_return_pct": 1.7646078679036066,
+      "total_trades": 166,
+      "sharpe_degradation": -21.888132703431065,
+      "sharpe_spread": 5.175002927663305
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 2.962417808617618,
+      "oos_sharpe": 3.790615735074624,
+      "oos_return_pct": 1.4762565829683636,
+      "total_trades": 141,
+      "sharpe_degradation": -46.073671860997706,
+      "sharpe_spread": 5.095913817779844
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 2.962417808617618,
+      "oos_sharpe": 3.790615735074624,
+      "oos_return_pct": 1.4762565829683636,
+      "total_trades": 141,
+      "sharpe_degradation": -46.073671860997706,
+      "sharpe_spread": 5.095913817779844
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": 2.962417808617618,
+      "oos_sharpe": 3.790615735074624,
+      "oos_return_pct": 1.4762565829683636,
+      "total_trades": 141,
+      "sharpe_degradation": -46.073671860997706,
+      "sharpe_spread": 5.095913817779844
+    },
+    {
+      "params": {
+        "lookback": 120,
+        "entry_threshold": -1.5,
+        "exit_threshold": -0.7,
+        "max_hold_hours": 48,
+        "confirmation_delay": 2,
+        "stop_loss_pct": 0.06,
+        "take_profit_pct": 0.15
+      },
+      "quick_sharpe": 2.962417808617618,
+      "oos_sharpe": 3.790615735074624,
+      "oos_return_pct": 1.4762565829683636,
+      "total_trades": 141,
+      "sharpe_degradation": -46.073671860997706,
+      "sharpe_spread": 5.095913817779844
+    }
+  ],
+  "volume_divergence": [
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 2.489792200410697,
+      "oos_sharpe": 1.4739944083584702,
+      "oos_return_pct": 0.6914860059725089,
+      "total_trades": 37,
+      "sharpe_degradation": 22.042787880670897,
+      "sharpe_spread": 1.4341797381329642
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 2.489792200410697,
+      "oos_sharpe": 1.4739944083584702,
+      "oos_return_pct": 0.6914860059725089,
+      "total_trades": 37,
+      "sharpe_degradation": 22.042787880670897,
+      "sharpe_spread": 1.4341797381329642
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 2.489792200410697,
+      "oos_sharpe": 1.4739944083584702,
+      "oos_return_pct": 0.6914860059725089,
+      "total_trades": 37,
+      "sharpe_degradation": 22.042787880670897,
+      "sharpe_spread": 1.4341797381329642
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 2.489792200410697,
+      "oos_sharpe": 1.4739944083584702,
+      "oos_return_pct": 0.6914860059725089,
+      "total_trades": 37,
+      "sharpe_degradation": 22.042787880670897,
+      "sharpe_spread": 1.4341797381329642
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.9056585181224506,
+      "oos_sharpe": 1.3855047031720773,
+      "oos_return_pct": 0.6073855079886369,
+      "total_trades": 59,
+      "sharpe_degradation": -7.562994825223164,
+      "sharpe_spread": 0.3856133183162138
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.9056585181224506,
+      "oos_sharpe": 1.3855047031720773,
+      "oos_return_pct": 0.6073855079886369,
+      "total_trades": 59,
+      "sharpe_degradation": -7.562994825223164,
+      "sharpe_spread": 0.3856133183162138
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.9056585181224506,
+      "oos_sharpe": 1.3855047031720773,
+      "oos_return_pct": 0.6073855079886369,
+      "total_trades": 59,
+      "sharpe_degradation": -7.562994825223164,
+      "sharpe_spread": 0.3856133183162138
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.03,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.9056585181224506,
+      "oos_sharpe": 1.3855047031720773,
+      "oos_return_pct": 0.6073855079886369,
+      "total_trades": 59,
+      "sharpe_degradation": -7.562994825223164,
+      "sharpe_spread": 0.3856133183162138
+    },
+    {
+      "params": {
+        "price_lookback": 48,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.345924103403263,
+      "oos_sharpe": 1.2104048925300654,
+      "oos_return_pct": 0.41064137742568346,
+      "total_trades": 49,
+      "sharpe_degradation": -15.201730325426,
+      "sharpe_spread": 2.40073919435207
+    },
+    {
+      "params": {
+        "price_lookback": 48,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.345924103403263,
+      "oos_sharpe": 1.2104048925300654,
+      "oos_return_pct": 0.41064137742568346,
+      "total_trades": 49,
+      "sharpe_degradation": -15.201730325426,
+      "sharpe_spread": 2.40073919435207
+    },
+    {
+      "params": {
+        "price_lookback": 48,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.345924103403263,
+      "oos_sharpe": 1.2104048925300654,
+      "oos_return_pct": 0.41064137742568346,
+      "total_trades": 49,
+      "sharpe_degradation": -15.201730325426,
+      "sharpe_spread": 2.40073919435207
+    },
+    {
+      "params": {
+        "price_lookback": 48,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.345924103403263,
+      "oos_sharpe": 1.2104048925300654,
+      "oos_return_pct": 0.41064137742568346,
+      "total_trades": 49,
+      "sharpe_degradation": -15.201730325426,
+      "sharpe_spread": 2.40073919435207
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.7861448485330194,
+      "oos_sharpe": 1.1326518907461527,
+      "oos_return_pct": 0.4737258947186782,
+      "total_trades": 18,
+      "sharpe_degradation": 24.270655933091216,
+      "sharpe_spread": 4.162024399768011
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.7861448485330194,
+      "oos_sharpe": 1.1326518907461527,
+      "oos_return_pct": 0.4737258947186782,
+      "total_trades": 18,
+      "sharpe_degradation": 24.270655933091216,
+      "sharpe_spread": 4.162024399768011
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.7861448485330194,
+      "oos_sharpe": 1.1326518907461527,
+      "oos_return_pct": 0.4737258947186782,
+      "total_trades": 18,
+      "sharpe_degradation": 24.270655933091216,
+      "sharpe_spread": 4.162024399768011
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.25,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.7861448485330194,
+      "oos_sharpe": 1.1326518907461527,
+      "oos_return_pct": 0.4737258947186782,
+      "total_trades": 18,
+      "sharpe_degradation": 24.270655933091216,
+      "sharpe_spread": 4.162024399768011
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.3098617766143539,
+      "oos_sharpe": 0.6052732936976065,
+      "oos_return_pct": 0.3040604691496969,
+      "total_trades": 10,
+      "sharpe_degradation": 27.597872482061604,
+      "sharpe_spread": 2.6170558550711016
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.3098617766143539,
+      "oos_sharpe": 0.6052732936976065,
+      "oos_return_pct": 0.3040604691496969,
+      "total_trades": 10,
+      "sharpe_degradation": 27.597872482061604,
+      "sharpe_spread": 2.6170558550711016
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.05
+      },
+      "quick_sharpe": 1.3098617766143539,
+      "oos_sharpe": 0.6052732936976065,
+      "oos_return_pct": 0.3040604691496969,
+      "total_trades": 10,
+      "sharpe_degradation": 27.597872482061604,
+      "sharpe_spread": 2.6170558550711016
+    },
+    {
+      "params": {
+        "price_lookback": 24,
+        "volume_lookback": 48,
+        "price_threshold": 0.05,
+        "volume_decline_threshold": 0.35,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.07
+      },
+      "quick_sharpe": 1.3098617766143539,
+      "oos_sharpe": 0.6052732936976065,
+      "oos_return_pct": 0.3040604691496969,
+      "total_trades": 10,
+      "sharpe_degradation": 27.597872482061604,
+      "sharpe_spread": 2.6170558550711016
+    }
+  ],
+  "signal_confirmation_delay": [
+    {
+      "params": {
+        "confirmation_delay": 2,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.7368208024930407,
+      "oos_sharpe": 0.9273045484125912,
+      "oos_return_pct": -0.10843589947291231,
+      "total_trades": 159,
+      "sharpe_degradation": -58.59075224072448,
+      "sharpe_spread": 2.4432991664161072
+    },
+    {
+      "params": {
+        "confirmation_delay": 2,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.7368208024930407,
+      "oos_sharpe": 0.9273045484125912,
+      "oos_return_pct": -0.10843589947291231,
+      "total_trades": 159,
+      "sharpe_degradation": -58.59075224072448,
+      "sharpe_spread": 2.4432991664161072
+    },
+    {
+      "params": {
+        "confirmation_delay": 2,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.7368208024930407,
+      "oos_sharpe": 0.9273045484125912,
+      "oos_return_pct": -0.10843589947291231,
+      "total_trades": 159,
+      "sharpe_degradation": -58.59075224072448,
+      "sharpe_spread": 2.4432991664161072
+    },
+    {
+      "params": {
+        "confirmation_delay": 2,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.7368208024930407,
+      "oos_sharpe": 0.9273045484125912,
+      "oos_return_pct": -0.10843589947291231,
+      "total_trades": 159,
+      "sharpe_degradation": -58.59075224072448,
+      "sharpe_spread": 2.4432991664161072
+    },
+    {
+      "params": {
+        "confirmation_delay": 4,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.40696793989181534,
+      "oos_sharpe": 0.8406464928503286,
+      "oos_return_pct": 0.3716119674050425,
+      "total_trades": 95,
+      "sharpe_degradation": -43.97128560570752,
+      "sharpe_spread": 3.1904024600812795
+    },
+    {
+      "params": {
+        "confirmation_delay": 4,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.40696793989181534,
+      "oos_sharpe": 0.8406464928503286,
+      "oos_return_pct": 0.3716119674050425,
+      "total_trades": 95,
+      "sharpe_degradation": -43.97128560570752,
+      "sharpe_spread": 3.1904024600812795
+    },
+    {
+      "params": {
+        "confirmation_delay": 4,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.40696793989181534,
+      "oos_sharpe": 0.8406464928503286,
+      "oos_return_pct": 0.3716119674050425,
+      "total_trades": 95,
+      "sharpe_degradation": -43.97128560570752,
+      "sharpe_spread": 3.1904024600812795
+    },
+    {
+      "params": {
+        "confirmation_delay": 4,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.40696793989181534,
+      "oos_sharpe": 0.8406464928503286,
+      "oos_return_pct": 0.3716119674050425,
+      "total_trades": 95,
+      "sharpe_degradation": -43.97128560570752,
+      "sharpe_spread": 3.1904024600812795
+    },
+    {
+      "params": {
+        "confirmation_delay": 3,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.6097702452611214,
+      "oos_sharpe": 0.6311209172165396,
+      "oos_return_pct": 0.137735678131971,
+      "total_trades": 114,
+      "sharpe_degradation": -31.441205375917196,
+      "sharpe_spread": 2.528192489349665
+    },
+    {
+      "params": {
+        "confirmation_delay": 3,
+        "require_consistent": true,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.6097702452611214,
+      "oos_sharpe": 0.6311209172165396,
+      "oos_return_pct": 0.137735678131971,
+      "total_trades": 114,
+      "sharpe_degradation": -31.441205375917196,
+      "sharpe_spread": 2.528192489349665
+    },
+    {
+      "params": {
+        "confirmation_delay": 3,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.6097702452611214,
+      "oos_sharpe": 0.6311209172165396,
+      "oos_return_pct": 0.137735678131971,
+      "total_trades": 114,
+      "sharpe_degradation": -31.441205375917196,
+      "sharpe_spread": 2.528192489349665
+    },
+    {
+      "params": {
+        "confirmation_delay": 3,
+        "require_consistent": true,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.6097702452611214,
+      "oos_sharpe": 0.6311209172165396,
+      "oos_return_pct": 0.137735678131971,
+      "total_trades": 114,
+      "sharpe_degradation": -31.441205375917196,
+      "sharpe_spread": 2.528192489349665
+    }
+  ],
+  "basis_proxy": [
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.19368192595377084,
+      "oos_sharpe": 1.4216703888890307,
+      "oos_return_pct": 0.16836998140927206,
+      "total_trades": 84,
+      "sharpe_degradation": -262.4343015450451,
+      "sharpe_spread": 3.091113705866497
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.19368192595377084,
+      "oos_sharpe": 1.4216703888890307,
+      "oos_return_pct": 0.16836998140927206,
+      "total_trades": 84,
+      "sharpe_degradation": -262.4343015450451,
+      "sharpe_spread": 3.091113705866497
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.19368192595377084,
+      "oos_sharpe": 1.4216703888890307,
+      "oos_return_pct": 0.16836998140927206,
+      "total_trades": 84,
+      "sharpe_degradation": -262.4343015450451,
+      "sharpe_spread": 3.091113705866497
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.19368192595377084,
+      "oos_sharpe": 1.4216703888890307,
+      "oos_return_pct": 0.16836998140927206,
+      "total_trades": 84,
+      "sharpe_degradation": -262.4343015450451,
+      "sharpe_spread": 3.091113705866497
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.17780510136343583,
+      "oos_sharpe": 1.0556597283601146,
+      "oos_return_pct": 0.09875457559344246,
+      "total_trades": 82,
+      "sharpe_degradation": -607.4791375670682,
+      "sharpe_spread": 3.004419280439272
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.17780510136343583,
+      "oos_sharpe": 1.0556597283601146,
+      "oos_return_pct": 0.09875457559344246,
+      "total_trades": 82,
+      "sharpe_degradation": -607.4791375670682,
+      "sharpe_spread": 3.004419280439272
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.17780510136343583,
+      "oos_sharpe": 1.0556597283601146,
+      "oos_return_pct": 0.09875457559344246,
+      "total_trades": 82,
+      "sharpe_degradation": -607.4791375670682,
+      "sharpe_spread": 3.004419280439272
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0004,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.17780510136343583,
+      "oos_sharpe": 1.0556597283601146,
+      "oos_return_pct": 0.09875457559344246,
+      "total_trades": 82,
+      "sharpe_degradation": -607.4791375670682,
+      "sharpe_spread": 3.004419280439272
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0002,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.22344546806960489,
+      "oos_sharpe": 0.8447262370280336,
+      "oos_return_pct": -0.1164735801706445,
+      "total_trades": 109,
+      "sharpe_degradation": -27.75709663347034,
+      "sharpe_spread": 1.551911644252446
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0002,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.22344546806960489,
+      "oos_sharpe": 0.8447262370280336,
+      "oos_return_pct": -0.1164735801706445,
+      "total_trades": 109,
+      "sharpe_degradation": -27.75709663347034,
+      "sharpe_spread": 1.551911644252446
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0002,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.22344546806960489,
+      "oos_sharpe": 0.8447262370280336,
+      "oos_return_pct": -0.1164735801706445,
+      "total_trades": 109,
+      "sharpe_degradation": -27.75709663347034,
+      "sharpe_spread": 1.551911644252446
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0002,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.22344546806960489,
+      "oos_sharpe": 0.8447262370280336,
+      "oos_return_pct": -0.1164735801706445,
+      "total_trades": 109,
+      "sharpe_degradation": -27.75709663347034,
+      "sharpe_spread": 1.551911644252446
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.40027567062884617,
+      "oos_sharpe": 0.8244279052847916,
+      "oos_return_pct": -0.21992434629772248,
+      "total_trades": 106,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.7531099858870236
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.40027567062884617,
+      "oos_sharpe": 0.8244279052847916,
+      "oos_return_pct": -0.21992434629772248,
+      "total_trades": 106,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.7531099858870236
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.40027567062884617,
+      "oos_sharpe": 0.8244279052847916,
+      "oos_return_pct": -0.21992434629772248,
+      "total_trades": 106,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.7531099858870236
+    },
+    {
+      "params": {
+        "funding_lookback": 6,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.40027567062884617,
+      "oos_sharpe": 0.8244279052847916,
+      "oos_return_pct": -0.21992434629772248,
+      "total_trades": 106,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.7531099858870236
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.3253519547217271,
+      "oos_sharpe": 0.7299164403551702,
+      "oos_return_pct": -0.18100333514698416,
+      "total_trades": 104,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.32589690523977827
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.3253519547217271,
+      "oos_sharpe": 0.7299164403551702,
+      "oos_return_pct": -0.18100333514698416,
+      "total_trades": 104,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.32589690523977827
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.08
+      },
+      "quick_sharpe": -0.3253519547217271,
+      "oos_sharpe": 0.7299164403551702,
+      "oos_return_pct": -0.18100333514698416,
+      "total_trades": 104,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.32589690523977827
+    },
+    {
+      "params": {
+        "funding_lookback": 9,
+        "entry_threshold": -0.0003,
+        "exit_threshold": 0.0003,
+        "max_hold_hours": 72,
+        "stop_loss_pct": 0.04,
+        "take_profit_pct": 0.1
+      },
+      "quick_sharpe": -0.3253519547217271,
+      "oos_sharpe": 0.7299164403551702,
+      "oos_return_pct": -0.18100333514698416,
+      "total_trades": 104,
+      "sharpe_degradation": 0.0,
+      "sharpe_spread": 0.32589690523977827
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "mode": "Quick",
+  "tier": "Tier 1 Only",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT"
+  ],
+  "config": {
+    "train_window": 1440,
+    "test_window": 336,
+    "step_size": 336
+  },
+  "summary": [
+    {
+      "strategy": "cross_sectional_momentum",
+      "avg_oos_sharpe": 0.5679284544626566,
+      "avg_is_sharpe": 1.7812549304025616,
+      "degradation_pct": -68.11638554542525,
+      "avg_trades": 10.333333333333334,
+      "pass_rate": 0.6666666666666666,
+      "n_symbols": 3,
+      "n_passed": 2
+    },
+    {
+      "strategy": "liquidity_vacuum_detector",
+      "avg_oos_sharpe": 0.40115516180171534,
+      "avg_is_sharpe": 1.1400138148964827,
+      "degradation_pct": -64.81137714650049,
+      "avg_trades": 3.3333333333333335,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "gamma_mimic_breakout",
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.016688009726830273,
+      "degradation_pct": 100.0,
+      "avg_trades": 0.0,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "correlation_regime_switch",
+      "avg_oos_sharpe": 0.0,
+      "avg_is_sharpe": -0.839203799658235,
+      "degradation_pct": 100.0,
+      "avg_trades": 0.0,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "crash_only_trend_filter",
+      "avg_oos_sharpe": -0.15514174490719007,
+      "avg_is_sharpe": -1.1250536003115021,
+      "degradation_pct": 86.21027968229826,
+      "avg_trades": 27.0,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "gap_reversion",
+      "avg_oos_sharpe": -0.4110682512314234,
+      "avg_is_sharpe": 0.02669021929882291,
+      "degradation_pct": -1640.1456489701914,
+      "avg_trades": 35.333333333333336,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "volatility_targeting_overlay",
+      "avg_oos_sharpe": -0.6272450189989432,
+      "avg_is_sharpe": 0.3548893938669435,
+      "degradation_pct": -276.7438052076903,
+      "avg_trades": 21.0,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    },
+    {
+      "strategy": "market_breadth_alt_participation",
+      "avg_oos_sharpe": -2.995546679306455,
+      "avg_is_sharpe": -1.1895471697276279,
+      "degradation_pct": -151.82243760811514,
+      "avg_trades": 122.33333333333333,
+      "pass_rate": 0.0,
+      "n_symbols": 3,
+      "n_passed": 0
+    }
+  ]
+}

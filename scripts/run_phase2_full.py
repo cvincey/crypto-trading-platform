@@ -8,7 +8,7 @@ Runs the complete Phase 2 pipeline:
 3. Hybrid strategy testing
 4. Final research report generation
 
-Configuration: config/creative_testing.yaml (phase2_winners section)
+Configuration: config/research/creative_testing.yaml (phase2_winners section)
 
 Usage:
     python scripts/run_phase2_full.py                  # Run everything
@@ -69,8 +69,8 @@ OUTPUT_DIR = Path("notes/creative_testing_results")
 
 
 def load_config() -> dict:
-    """Load configuration from creative_testing.yaml."""
-    config_path = Path("config/creative_testing.yaml")
+    """Load configuration from research/creative_testing.yaml."""
+    config_path = Path("config/research/creative_testing.yaml")
     with open(config_path) as f:
         return yaml.safe_load(f)["creative_testing"]
 

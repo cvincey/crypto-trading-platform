@@ -1,0 +1,423 @@
+# Ratio Universe Configuration
+# Defines all potential ratio pairs for systematic trading
+#
+# Each pair compares a TARGET asset against a REFERENCE asset
+# When TARGET underperforms REFERENCE (z-score < threshold), go long TARGET
+#
+# =============================================================================
+# Strategy Lifecycle Tags
+# =============================================================================
+#
+# STAGE (validation/deployment state):
+#   deployed     - Passed validation, currently running in paper/live
+#   validated    - Passed validation, ready to deploy but not yet running  
+#   experimental - Not yet validated through walk-forward testing
+#   retired      - Failed validation or deprecated
+#
+# ROLE (portfolio function - optional):
+#   primary      - Core strategy, gets priority allocation
+#   diversifier  - Provides uncorrelated returns
+#
+# =============================================================================
+
+ratio_universe:
+  description: "Systematic ratio mean reversion across crypto pairs"
+  version: "1.0"
+  
+  # ============================================================================
+  # Reference Assets - The "denominator" in ratios
+  # ============================================================================
+  reference_assets:
+    primary: BTCUSDT      # Bitcoin is primary reference (market beta)
+    secondary: ETHUSDT    # Ethereum for alt-to-alt ratios
+  
+  # ============================================================================
+  # Target Universe - Assets to trade via ratio strategies
+  # ============================================================================
+  # Categorized by market cap and sector for systematic screening
+  
+  target_universe:
+    # Tier 1: Large Cap (>$10B market cap) - Most liquid, lowest risk
+    tier1_large:
+      - ETHUSDT      # ETH/BTC ratio
+      - BNBUSDT      # BNB/BTC ratio  
+      - SOLUSDT      # SOL/BTC ratio
+      - XRPUSDT      # XRP/BTC ratio
+      
+    # Tier 2: Mid Cap ($1-10B) - Good liquidity, moderate risk
+    tier2_mid:
+      - ADAUSDT      # Cardano
+      - AVAXUSDT     # Avalanche
+      - DOGEUSDT     # Doge
+      - DOTUSDT      # Polkadot
+      - LINKUSDT     # Chainlink
+      - LTCUSDT      # Litecoin
+      - MATICUSDT    # Polygon
+      - SHIBUSDT     # Shiba Inu
+      - TRXUSDT      # Tron
+      - UNIUSDT      # Uniswap
+      
+    # Tier 3: Smaller Cap ($200M-1B) - Less liquid, higher risk/reward
+    tier3_small:
+      - AAVEUSDT     # Aave
+      - APTUSDT      # Aptos
+      - ARBUSDT      # Arbitrum
+      - ATOMUSDT     # Cosmos
+      - FILUSDT      # Filecoin
+      - ICPUSDT      # ICP
+      - INJUSDT      # Injective
+      - NEARUSDT     # Near
+      - OPUSDT       # Optimism
+      - SUIUSDT      # Sui
+      - TIAUSDT      # Celestia
+
+  # ============================================================================
+  # Pair Definitions - Which ratios to trade
+  # ============================================================================
+  
+  pairs:
+    # ----- BTC Reference Pairs (Primary) -----
+    
+    eth_btc:
+      target: ETHUSDT
+      reference: BTCUSDT
+      stage: deployed
+      tier: 1
+      params:
+        lookback: 48                # REOPTIMIZED Dec 24
+        entry_threshold: -2.0       # REOPTIMIZED Dec 24
+        exit_threshold: -0.9        # REOPTIMIZED Dec 24
+        max_hold_hours: 24          # REOPTIMIZED Dec 24 (grid optimal)
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 22.35           # Reoptimized sharpe
+        oos_sharpe_original: 9.54   # Original Note 11
+        trades_per_month: 15
+        validated_date: "2024-12-24"
+    
+    sol_btc:
+      target: SOLUSDT
+      reference: BTCUSDT
+      stage: deployed
+      tier: 1
+      params:
+        lookback: 48                # REOPTIMIZED Dec 24
+        entry_threshold: -1.2       # Kept - optimal for SOL
+        exit_threshold: -0.9        # REOPTIMIZED Dec 24
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 14.4            # Reoptimized sharpe
+        oos_sharpe_original: 6.54   # Original Note 11
+        trades_per_month: 39
+        validated_date: "2024-12-24"
+    
+    ltc_btc:
+      target: LTCUSDT
+      reference: BTCUSDT
+      stage: deployed
+      tier: 1
+      params:
+        lookback: 48                # REOPTIMIZED Dec 24 (was 120)
+        entry_threshold: -1.5       # REOPTIMIZED Dec 24
+        exit_threshold: -0.9        # REOPTIMIZED Dec 24
+        max_hold_hours: 24          # REOPTIMIZED Dec 24 (grid optimal)
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 16.29           # Reoptimized sharpe
+        oos_sharpe_original: 8.31   # Original Note 11
+        trades_per_month: 26
+        validated_date: "2024-12-24"
+    
+    avax_btc:
+      target: AVAXUSDT
+      reference: BTCUSDT
+      stage: retired
+      tier: 2
+      params:
+        lookback: 96
+        entry_threshold: -1.5
+        exit_threshold: -0.7
+        max_hold_hours: 72
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.10
+      validation:
+        oos_sharpe: 3.10
+        retirement_reason: "Weakest ratio strategy (+19% return vs 160%+ for ETH/SOL/LTC)"
+    
+    bnb_btc:
+      target: BNBUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 1
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 23.94
+        total_return_pct: 439.2
+        win_rate: 85.9
+        trades_per_month: 15.1
+        validated_date: "2024-12-24"
+        
+    xrp_btc:
+      target: XRPUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 1
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 16.10
+        total_return_pct: 1359.9
+        win_rate: 82.6
+        trades_per_month: 20.8
+        validated_date: "2024-12-24"
+    
+    ada_btc:
+      target: ADAUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 2
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 19.74
+        total_return_pct: 2832.2
+        win_rate: 85.8
+        trades_per_month: 20.3
+        validated_date: "2024-12-24"
+    
+    link_btc:
+      target: LINKUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 2
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.5       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 24          # OPTIMIZED
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 12.65
+        total_return_pct: 1510.3
+        win_rate: 77.0
+        trades_per_month: 26.1
+        validated_date: "2024-12-24"
+        
+    dot_btc:
+      target: DOTUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 2
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 24          # OPTIMIZED
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      validation:
+        oos_sharpe: 14.74
+        total_return_pct: 992.4
+        win_rate: 79.0
+        trades_per_month: 18.8
+        validated_date: "2024-12-24"
+        
+    near_btc:
+      target: NEARUSDT
+      reference: BTCUSDT
+      stage: deployed  # ★ VALIDATED Dec 24
+      tier: 3
+      params:
+        lookback: 48                # OPTIMIZED
+        entry_threshold: -1.8       # OPTIMIZED
+        exit_threshold: -0.9        # OPTIMIZED
+        max_hold_hours: 48
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.10
+      validation:
+        oos_sharpe: 8.69
+        total_return_pct: 456.1
+        win_rate: 71.1
+        trades_per_month: 17.9
+        validated_date: "2024-12-24"
+    
+    apt_btc:
+      target: APTUSDT
+      reference: BTCUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe 0.48
+      tier: 3
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.10
+      retirement:
+        reason: "Negative OOS return (-1.4%), Sharpe 0.48"
+        tested_date: "2024-12-24"
+        
+    sui_btc:
+      target: SUIUSDT
+      reference: BTCUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe -2.51
+      tier: 3
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.10
+      retirement:
+        reason: "Negative OOS return (-29.6%), Sharpe -2.51"
+        tested_date: "2024-12-24"
+        
+    arb_btc:
+      target: ARBUSDT
+      reference: BTCUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe -1.55
+      tier: 3
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.04
+        take_profit_pct: 0.10
+      retirement:
+        reason: "Negative OOS return (-21.3%), Sharpe -1.55"
+        tested_date: "2024-12-24"
+        
+    # ----- ETH Reference Pairs (Alt vs Alt) -----
+    # Tested Dec 24: ETH reference pairs underperform BTC reference pairs
+    # Hypothesis: BTC is better "market beta" reference than ETH
+    
+    sol_eth:
+      target: SOLUSDT
+      reference: ETHUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe -5.22
+      tier: 2
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      retirement:
+        reason: "Negative OOS return (-36.4%), Sharpe -5.22. ETH not a good reference."
+        tested_date: "2024-12-24"
+        
+    bnb_eth:
+      target: BNBUSDT
+      reference: ETHUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe -5.21
+      tier: 2
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      retirement:
+        reason: "Negative OOS return (-21.1%), Sharpe -5.21. ETH not a good reference."
+        tested_date: "2024-12-24"
+        
+    link_eth:
+      target: LINKUSDT
+      reference: ETHUSDT
+      stage: retired  # ✗ RETIRED Dec 24 - Sharpe 0.56 after optimization -0.33
+      tier: 2
+      params:
+        lookback: 72
+        entry_threshold: -1.2
+        exit_threshold: -0.7
+        max_hold_hours: 48
+        stop_loss_pct: 0.03
+        take_profit_pct: 0.08
+      retirement:
+        reason: "OOS Sharpe 0.56, after optimization -0.33. Not viable."
+        tested_date: "2024-12-24"
+
+  # ============================================================================
+  # Screening Criteria - What makes a good ratio pair
+  # ============================================================================
+  
+  screening_criteria:
+    # Minimum correlation required for mean reversion to work
+    min_correlation: 0.70
+    
+    # Maximum correlation - if too high, ratio doesn't deviate enough
+    max_correlation: 0.98
+    
+    # Minimum average daily volume in USD
+    min_daily_volume_usd: 50_000_000
+    
+    # Minimum z-score standard deviation (ratio volatility)
+    min_ratio_volatility: 0.01
+    
+    # Minimum half-life in hours (mean reversion speed)
+    min_half_life_hours: 12
+    max_half_life_hours: 168
+    
+    # Minimum OOS Sharpe for deployment
+    min_oos_sharpe: 1.5
+    
+    # Minimum trades per month
+    min_trades_per_month: 10
+
+  # ============================================================================
+  # Default Parameters - Starting point for new pairs
+  # ============================================================================
+  
+  default_params:
+    lookback: 72
+    entry_threshold: -1.2
+    exit_threshold: -0.7
+    max_hold_hours: 48
+    stop_loss_pct: 0.03
+    take_profit_pct: 0.08
+
+  # ============================================================================
+  # Portfolio Rules
+  # ============================================================================
+  
+  portfolio_rules:
+    # Maximum number of ratio strategies active at once
+    max_active_strategies: 5
+    
+    # Maximum allocation to ratio strategies as a group
+    max_group_allocation: 0.70
+    
+    # Maximum allocation per single pair
+    max_per_pair_allocation: 0.25
+    
+    # Minimum diversification (different targets)
+    min_unique_targets: 3
+    
+    # Correlation limit between pairs in portfolio
+    max_pair_correlation: 0.60
+
