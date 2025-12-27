@@ -79,6 +79,12 @@ class LiveTrader:
         self._reference_data: dict[str, pd.DataFrame] = {}
         self._reference_update_interval = 3600  # Update reference data hourly
         self._last_reference_update: datetime | None = None
+        
+        # Polling fallback for when websocket doesn't work
+        self._last_candle_received: datetime | None = None
+        self._polling_task: asyncio.Task | None = None
+        self._polling_interval = 60  # Poll every 60 seconds as fallback
+        self._websocket_timeout = 180  # Consider websocket dead after 3 minutes of no data
 
     async def _load_reference_data(self, lookback_days: int = 30) -> None:
         """
@@ -142,6 +148,70 @@ class LiveTrader:
         if elapsed >= self._reference_update_interval:
             await self._load_reference_data()
 
+    async def _poll_for_candles(self) -> None:
+        """
+        Polling fallback for when websocket doesn't deliver data.
+        
+        This method periodically fetches candles via REST API and processes
+        any new ones that weren't received via websocket.
+        """
+        logger.info(f"Starting polling fallback for {self.symbol}")
+        last_processed_time: datetime | None = None
+        
+        while self._running:
+            try:
+                # Check if websocket is working
+                if self._last_candle_received:
+                    elapsed = (datetime.now(timezone.utc) - self._last_candle_received).total_seconds()
+                    if elapsed < self._websocket_timeout:
+                        # Websocket is delivering data, no need to poll
+                        await asyncio.sleep(self._polling_interval)
+                        continue
+                
+                # Fetch recent candles via REST API
+                end = datetime.now(timezone.utc)
+                start = end - timedelta(hours=6)  # Get last 6 hours
+                
+                candles = await self.exchange.fetch_ohlcv(
+                    self.symbol, self.interval, start, end
+                )
+                
+                if candles:
+                    # Process only new candles
+                    for candle in candles:
+                        candle_time = candle.open_time
+                        if candle_time.tzinfo is None:
+                            candle_time = candle_time.replace(tzinfo=timezone.utc)
+                        
+                        # Skip if we've already processed this candle
+                        if last_processed_time and candle_time <= last_processed_time:
+                            continue
+                        
+                        # Check if candle is already in buffer
+                        buffer_times = {c.open_time for c in self._candle_buffer}
+                        if candle.open_time not in buffer_times:
+                            logger.debug(f"Polling: Processing candle from {candle.open_time}")
+                            await self._process_candle(candle)
+                    
+                    if candles:
+                        last_candle = candles[-1]
+                        last_processed_time = last_candle.open_time
+                        if last_processed_time.tzinfo is None:
+                            last_processed_time = last_processed_time.replace(tzinfo=timezone.utc)
+                        
+                        # Log polling activity
+                        if not self._last_candle_received or \
+                           (datetime.now(timezone.utc) - self._last_candle_received).total_seconds() > self._websocket_timeout:
+                            logger.info(
+                                f"Polling active: fetched {len(candles)} candles, "
+                                f"buffer size: {len(self._candle_buffer)}"
+                            )
+                
+            except Exception as e:
+                logger.warning(f"Polling error: {e}")
+            
+            await asyncio.sleep(self._polling_interval)
+
     async def _load_warmup_data(self, lookback_days: int = 10) -> None:
         """
         Load warmup candle data for the main trading symbol.
@@ -185,12 +255,20 @@ class LiveTrader:
         # Load reference data for cross-symbol strategies
         await self._load_reference_data()
 
-        # Subscribe to candle updates
-        await self.exchange.subscribe_candles(
-            self.symbol,
-            self.interval,
-            self._on_candle,
-        )
+        # Subscribe to candle updates via websocket
+        try:
+            await self.exchange.subscribe_candles(
+                self.symbol,
+                self.interval,
+                self._on_candle,
+            )
+            logger.info(f"WebSocket subscription started for {self.symbol}")
+        except Exception as e:
+            logger.warning(f"WebSocket subscription failed: {e} - will use polling only")
+        
+        # Start polling fallback task
+        self._polling_task = asyncio.create_task(self._poll_for_candles())
+        logger.info("Polling fallback started")
 
         # Keep running and periodically update reference data
         while self._running:
@@ -201,6 +279,15 @@ class LiveTrader:
         """Stop the live trading loop."""
         logger.info("Stopping live trader...")
         self._running = False
+        
+        # Cancel polling task
+        if self._polling_task and not self._polling_task.done():
+            self._polling_task.cancel()
+            try:
+                await self._polling_task
+            except asyncio.CancelledError:
+                pass
+        
         await self.exchange.unsubscribe_all()
 
         # Cancel any pending orders
@@ -208,7 +295,9 @@ class LiveTrader:
             await self.executor.cancel_all(self.symbol)
 
     def _on_candle(self, candle: Candle) -> None:
-        """Handle new candle data."""
+        """Handle new candle data from websocket."""
+        # Track that websocket is delivering data
+        self._last_candle_received = datetime.now(timezone.utc)
         asyncio.create_task(self._process_candle(candle))
 
     async def _process_candle(self, candle: Candle) -> None:
@@ -385,7 +474,7 @@ async def start_trading(
     strategy_name: str,
     symbol: str = "BTCUSDT",
     interval: str = "1h",
-    exchange_name: str = "binance_testnet",
+    exchange_name: str = "binance",
     paper: bool = True,
     initial_capital: Decimal = Decimal("10000"),
 ) -> LiveTrader:

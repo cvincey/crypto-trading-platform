@@ -6,7 +6,9 @@ paper_trading:
   description: "Paper trading with validated strategies"
   
   # Exchange configuration
-  exchange: binance_testnet
+  # Using production Binance for real market data (testnet doesn't support websockets)
+  # Paper mode is still ON - no real trades will be placed
+  exchange: binance
   
   # =============================================================================
   # Strategy Lifecycle Tags
