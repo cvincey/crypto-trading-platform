@@ -55,10 +55,11 @@ def calculate_ratio_zscores(lookback: int = 72) -> list[dict]:
     Calculate current z-scores for all ratio pairs.
     
     Fetches data directly from Binance API (no database required).
+    Uses synchronous HTTP requests to avoid async issues in FastAPI.
     
     Returns list of dicts with pair info and current z-score.
     """
-    import asyncio
+    import httpx
     
     config = load_ratio_config()
     pairs = config.get("pairs", {})
@@ -66,34 +67,45 @@ def calculate_ratio_zscores(lookback: int = 72) -> list[dict]:
     if not pairs:
         return []
     
-    # Get exchange for fetching data
-    try:
-        from crypto.exchanges.registry import get_exchange
-        exchange = get_exchange("binance")
-    except Exception as e:
-        print(f"Failed to get exchange: {e}")
-        return []
-    
     results = []
-    end_date = datetime.now(timezone.utc)
-    start_date = end_date - timedelta(hours=lookback * 3)  # Extra buffer for warmup
     
     # Cache fetched data to avoid duplicate requests
     candle_cache: dict[str, pd.DataFrame] = {}
     
-    async def fetch_candles(symbol: str) -> pd.DataFrame:
-        """Fetch candles for a symbol, using cache if available."""
+    def fetch_candles_sync(symbol: str) -> pd.DataFrame:
+        """Fetch candles for a symbol using sync HTTP request."""
         if symbol in candle_cache:
             return candle_cache[symbol]
         
         try:
-            candles = await exchange.fetch_ohlcv(symbol, "1h", start_date, end_date)
-            if candles:
-                df = pd.DataFrame([c.to_dict() for c in candles])
+            # Direct Binance API call
+            end_ts = int(datetime.now(timezone.utc).timestamp() * 1000)
+            start_ts = end_ts - (lookback * 3 * 60 * 60 * 1000)  # lookback * 3 hours in ms
+            
+            url = "https://api.binance.com/api/v3/klines"
+            params = {
+                "symbol": symbol,
+                "interval": "1h",
+                "startTime": start_ts,
+                "endTime": end_ts,
+                "limit": 500,
+            }
+            
+            with httpx.Client(timeout=30) as client:
+                response = client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+            
+            if data:
+                df = pd.DataFrame(data, columns=[
+                    "open_time", "open", "high", "low", "close", "volume",
+                    "close_time", "quote_volume", "trades", "taker_buy_base",
+                    "taker_buy_quote", "ignore"
+                ])
+                df["open_time"] = pd.to_datetime(df["open_time"], unit="ms", utc=True)
                 df.set_index("open_time", inplace=True)
                 for col in ["open", "high", "low", "close", "volume"]:
-                    if col in df.columns:
-                        df[col] = df[col].astype(float)
+                    df[col] = df[col].astype(float)
                 candle_cache[symbol] = df
                 return df
         except Exception as e:
@@ -101,89 +113,81 @@ def calculate_ratio_zscores(lookback: int = 72) -> list[dict]:
         
         return pd.DataFrame()
     
-    async def process_pairs():
-        """Process all pairs asynchronously."""
-        # Collect unique symbols to fetch
-        symbols_needed = set()
-        for pair_config in pairs.values():
-            symbols_needed.add(pair_config.get("target"))
-            symbols_needed.add(pair_config.get("reference"))
+    # Collect unique symbols to fetch
+    symbols_needed = set()
+    for pair_config in pairs.values():
+        symbols_needed.add(pair_config.get("target"))
+        symbols_needed.add(pair_config.get("reference"))
+    
+    # Fetch all symbols
+    for symbol in symbols_needed:
+        if symbol:
+            fetch_candles_sync(symbol)
+    
+    # Now calculate z-scores for each pair
+    for pair_name, pair_config in pairs.items():
+        target = pair_config.get("target")
+        reference = pair_config.get("reference")
+        stage = pair_config.get("stage", "candidate")
+        params = pair_config.get("params", {})
+        lb = params.get("lookback", lookback)
+        entry_threshold = params.get("entry_threshold", -1.2)
         
-        # Fetch all symbols in parallel
-        await asyncio.gather(*[fetch_candles(s) for s in symbols_needed if s])
+        # Skip retired pairs
+        if stage == "retired":
+            continue
         
-        # Now calculate z-scores for each pair
-        for pair_name, pair_config in pairs.items():
-            target = pair_config.get("target")
-            reference = pair_config.get("reference")
-            stage = pair_config.get("stage", "candidate")  # Fixed: was "status"
-            params = pair_config.get("params", {})
-            lb = params.get("lookback", lookback)
-            entry_threshold = params.get("entry_threshold", -1.2)
+        try:
+            target_data = candle_cache.get(target, pd.DataFrame())
+            ref_data = candle_cache.get(reference, pd.DataFrame())
             
-            # Skip retired pairs
-            if stage == "retired":
+            if target_data.empty or ref_data.empty:
                 continue
             
-            try:
-                target_data = candle_cache.get(target, pd.DataFrame())
-                ref_data = candle_cache.get(reference, pd.DataFrame())
-                
-                if target_data.empty or ref_data.empty:
-                    continue
-                
-                # Align and calculate ratio
-                common_idx = target_data.index.intersection(ref_data.index)
-                if len(common_idx) < lb:
-                    continue
-                
-                target_close = target_data.loc[common_idx, "close"]
-                ref_close = ref_data.loc[common_idx, "close"]
-                
-                ratio = target_close / ref_close
-                ratio_mean = ratio.rolling(lb).mean()
-                ratio_std = ratio.rolling(lb).std()
-                z_score = (ratio - ratio_mean) / ratio_std
-                
-                current_z = float(z_score.iloc[-1]) if not pd.isna(z_score.iloc[-1]) else None
-                current_ratio = float(ratio.iloc[-1])
-                ratio_pct_change = float((ratio.iloc[-1] / ratio.iloc[-lb] - 1) * 100) if len(ratio) > lb else 0
-                
-                # Determine signal
-                signal = "HOLD"
-                if current_z is not None:
-                    if current_z < entry_threshold:
-                        signal = "BUY"
-                    elif current_z > -entry_threshold:  # Symmetric
-                        signal = "OVERBOUGHT"
-                
-                results.append({
-                    "pair_name": pair_name,
-                    "pair": f"{target[:-4]}/{reference[:-4]}",
-                    "target": target,
-                    "reference": reference,
-                    "stage": stage,  # Fixed: was "status"
-                    "z_score": round(current_z, 2) if current_z else None,
-                    "ratio": round(current_ratio, 6),
-                    "ratio_pct_change": round(ratio_pct_change, 2),
-                    "entry_threshold": entry_threshold,
-                    "signal": signal,
-                })
-            except Exception as e:
-                results.append({
-                    "pair_name": pair_name,
-                    "pair": f"{target[:-4]}/{reference[:-4]}",
-                    "stage": "error",
-                    "error": str(e),
-                })
-    
-    # Run async code
-    try:
-        asyncio.run(process_pairs())
-    except RuntimeError:
-        # Already in an event loop (e.g., in FastAPI)
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(process_pairs())
+            # Align and calculate ratio
+            common_idx = target_data.index.intersection(ref_data.index)
+            if len(common_idx) < lb:
+                continue
+            
+            target_close = target_data.loc[common_idx, "close"]
+            ref_close = ref_data.loc[common_idx, "close"]
+            
+            ratio = target_close / ref_close
+            ratio_mean = ratio.rolling(lb).mean()
+            ratio_std = ratio.rolling(lb).std()
+            z_score = (ratio - ratio_mean) / ratio_std
+            
+            current_z = float(z_score.iloc[-1]) if not pd.isna(z_score.iloc[-1]) else None
+            current_ratio = float(ratio.iloc[-1])
+            ratio_pct_change = float((ratio.iloc[-1] / ratio.iloc[-lb] - 1) * 100) if len(ratio) > lb else 0
+            
+            # Determine signal
+            signal = "HOLD"
+            if current_z is not None:
+                if current_z < entry_threshold:
+                    signal = "BUY"
+                elif current_z > -entry_threshold:  # Symmetric
+                    signal = "OVERBOUGHT"
+            
+            results.append({
+                "pair_name": pair_name,
+                "pair": f"{target[:-4]}/{reference[:-4]}",
+                "target": target,
+                "reference": reference,
+                "stage": stage,
+                "z_score": round(current_z, 2) if current_z else None,
+                "ratio": round(current_ratio, 6),
+                "ratio_pct_change": round(ratio_pct_change, 2),
+                "entry_threshold": entry_threshold,
+                "signal": signal,
+            })
+        except Exception as e:
+            results.append({
+                "pair_name": pair_name,
+                "pair": f"{target[:-4]}/{reference[:-4]}",
+                "stage": "error",
+                "error": str(e),
+            })
     
     # Sort by z-score (most oversold first)
     results.sort(key=lambda x: x.get("z_score") or 999)
